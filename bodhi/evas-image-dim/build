@@ -1,0 +1,4 @@
+fakeroot dpkg-deb -b evas-image-dim bevas-image-dim_0.0.1-1_amd64.deb
+
+objcopy --strip-debug --strip-unneeded  evas-image-dim evas-image-dim2
+
