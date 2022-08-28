@@ -1,0 +1,12 @@
+#!/bin/bash
+# Copyright 2021 ylee@bodhilinux.com
+#
+# This file is part of apturl-saf
+
+set -e
+if [ -z "$*" ]; then
+	exit 7
+fi
+
+synaptic --hide-main-window --non-interactive --progress-str 'Please wait, this can take some time.' --finish-str 'Update is complete' --update-at-startup
+synaptic --hide-main-window --non-interactive --progress-str 'Please wait, this can take some time.' --finish-str 'Update is complete' --set-selections-file "$1"

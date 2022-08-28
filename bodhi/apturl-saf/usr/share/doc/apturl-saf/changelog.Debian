@@ -1,0 +1,11 @@
+apturl-saf (0.0.1-2) focal; urgency=medium
+
+  * Do not fail on rc packages
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Fri, 28 May 2021 09:03:23 -0400
+
+apturl-saf (0.0.1-1) focal; urgency=medium
+
+  * Initial release
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Wed, 10 Mar 2021 16:23:03 -0500

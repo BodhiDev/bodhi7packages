@@ -1,0 +1,18 @@
+Package: apturl-saf
+Version: 0.0.1-2
+Section: utils
+Priority: optional
+Maintainer: Robert (ylee) Wiley <ylee@bodhilinux.com>
+Depends: bash (>=4.3.10), zenity, policykit-1, synaptic
+Recommends: policykit-1-gnome | polkit-kde-agent-1
+Suggests: policykit-desktop-privileges
+Conflicts: apturl, apturl-common
+Replaces: apturl, apturl-common
+Provides: apturl, apturl-common
+Architecture: all
+Homepage: https://www.bodhilinux.com/
+Description: Simple apturl script
+ A simple bash script to provide apturl using zenity and synaptic.
+ .
+ Not as full featured or as secure as Ubuntu's official version.
+ Use at your own risk.
