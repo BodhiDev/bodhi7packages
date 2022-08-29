@@ -1,0 +1,10 @@
+Package: bodhi-appcenter
+Version: 0.2.6-3
+Section: misc
+Priority: optional
+Recommends: bodhi-chromium|firefox|epiphany|palemoon
+Architecture: all
+Maintainer: Robert Wiley <ylee@bodhilinux.com>
+#Vcs-Browser: https://github.com/Deepspeed/bodhi3packages
+Description: Bodhi AppCenter Launcher
+ A menu entry that opens the Bodhi AppCenter
