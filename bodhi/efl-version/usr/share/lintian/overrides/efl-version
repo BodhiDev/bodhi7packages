@@ -1,0 +1,2 @@
+efl-version: binary-without-manpage
+efl-version: new-package-should-close-itp-bug

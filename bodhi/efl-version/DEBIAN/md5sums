@@ -1,0 +1,4 @@
+082627ad3afbf60e73775f4ff61f8eda  usr/bin/efl-version
+6c8e37792118c41a9efeb337472a1940  usr/share/doc/efl-version/changelog.Debian.gz
+de6e62e3590fa6cf7d73ddca029e3046  usr/share/doc/efl-version/copyright
+f11f73fde850ab592b3a399d5ba556a6  usr/share/lintian/overrides/efl-version

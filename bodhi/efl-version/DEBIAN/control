@@ -1,0 +1,10 @@
+Package: efl-version
+Version: 0.0.1-1
+Section: utils
+Priority: optional
+Maintainer: Robert (ylee) Wiley <ylee@bodhilinux.com>
+Depends:  libc6 (>= 2.29), libefl
+Architecture: amd64
+Homepage: https://www.bodhilinux.com/
+Description: Bodhi linux utility function
+ A simple utility to print the version of the EFL.
