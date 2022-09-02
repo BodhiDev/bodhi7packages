@@ -1,0 +1,591 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: efl
+Source: git://git.enlightenment.org/core/efl.git
+
+License: BSD-2-clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions are met:
+ .
+    1. Redistributions of source code must retain the above copyright
+       notice, this list of conditions and the following disclaimer.
+    2. Redistributions in binary form must reproduce the above copyright
+       notice, this list of conditions and the following disclaimer in the
+       documentation and/or other materials provided with the distribution.
+ .
+ THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+ INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
+ FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+ COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+ INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+ LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,
+ OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+License: GPL-2
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; version 2 of the License.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License
+ along with this package; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA
+ .
+ On Debian systems, the complete text of the GNU General
+ Public License can be found in `/usr/share/common-licenses/GPL-2'.
+
+License: LGPL-2.1
+ This library is free software; you can redistribute it and/or modify it
+ under the terms of the GNU Lesser General Public License as published by the
+ Free Software Foundation; either version 2.1 of the License.
+ .
+ This library is distributed in the hope that it will be useful, but WITHOUT
+ ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more
+ details.
+ .
+ You should have received a copy of the GNU Lesser General Public License
+ along with this package; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA
+ .
+ On Debian systems, the complete text of the GNU General
+ Public License can be found in `/usr/share/common-licenses/LGPL-2.1'.
+
+License: ISC
+ Permission to use, copy, modify, and/or distribute this software for any
+ purpose with or without fee is hereby granted, provided that the above
+ copyright notice and this permission notice appear in all copies.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+ REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+ AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+ INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+ LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+ OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+ PERFORMANCE OF THIS SOFTWARE.
+
+License: MIT/Expat
+ Permission is hereby granted, free of charge, to any person obtaining
+ a copy of this software and associated documentation files (the
+ "Software"), to deal in the Software without restriction, including
+ without limitation the rights to use, copy, modify, merge, publish,
+ distribute, sublicense, and/or sell copies of the Software, and to
+ permit persons to whom the Software is furnished to do so, subject to
+ the following conditions:
+ .
+ The above copyright notice and this permission notice shall be included
+ in all copies or substantial portions of the Software.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+ IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+License: Zlib
+ This software is provided 'as-is', without any express or implied
+ warranty. In no event will the authors be held liable for any damages
+ arising from the use of this software.
+ .
+ Permission is granted to anyone to use this software for any purpose,
+ including commercial applications, and to alter it and redistribute it
+ freely, subject to the following restrictions:
+ .
+   1. The origin of this software must not be misrepresented; you must not
+   claim that you wrote the original software. If you use this software
+   in a product, an acknowledgment in the product documentation would be
+   appreciated but is not required.
+ .
+   2. Altered source versions must be plainly marked as such, and must not be
+   misrepresented as being the original software.
+ .
+   3. This notice may not be removed or altered from any source
+   distribution.
+
+License: GPL-2+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or (at
+ your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License
+ along with this package; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA
+ .
+ On Debian systems, the complete text of the GNU General
+ Public License can be found in `/usr/share/common-licenses/GPL-2'.
+
+License: LGPL-2.1+
+ The GNU C Library is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Lesser General Public
+ License as published by the Free Software Foundation; either
+ version 2.1 of the License, or (at your option) any later version.
+ .
+ The GNU C Library is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Lesser General Public License for more details.
+ .
+ You should have received a copy of the GNU Lesser General Public
+ License along with the GNU C Library; if not, write to the Free
+ Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+ 02110-1301, USA.
+ .
+ On Debian systems, the complete text of the GNU General
+ Public License can be found in `/usr/share/common-licenses/LGPL-2.1'.
+
+License: FTL
+                     The FreeType Project LICENSE
+                     ----------------------------
+ .
+                             2006-Jan-27
+ .
+                     Copyright 1996-2002, 2006 by
+           David Turner, Robert Wilhelm, and Werner Lemberg
+ .
+ .
+ .
+ Introduction
+ ============
+ .
+   The FreeType  Project is distributed in  several archive packages;
+   some of them may contain, in addition to the FreeType font engine,
+   various tools and  contributions which rely on, or  relate to, the
+   FreeType Project.
+ .
+   This  license applies  to all  files found  in such  packages, and
+   which do not  fall under their own explicit  license.  The license
+   affects  thus  the  FreeType   font  engine,  the  test  programs,
+   documentation and makefiles, at the very least.
+ .
+   This  license   was  inspired  by  the  BSD,   Artistic,  and  IJG
+   (Independent JPEG  Group) licenses, which  all encourage inclusion
+   and  use of  free  software in  commercial  and freeware  products
+   alike.  As a consequence, its main points are that:
+ .
+     o We don't promise that this software works. However, we will be
+       interested in any kind of bug reports. (`as is' distribution)
+ .
+     o You can  use this software for whatever you  want, in parts or
+       full form, without having to pay us. (`royalty-free' usage)
+ .
+     o You may not pretend that  you wrote this software.  If you use
+       it, or  only parts of it,  in a program,  you must acknowledge
+       somewhere  in  your  documentation  that  you  have  used  the
+       FreeType code. (`credits')
+ .
+   We  specifically  permit  and  encourage  the  inclusion  of  this
+   software, with  or without modifications,  in commercial products.
+   We  disclaim  all warranties  covering  The  FreeType Project  and
+   assume no liability related to The FreeType Project.
+ .
+ .
+   Finally,  many  people  asked  us  for  a  preferred  form  for  a
+   credit/disclaimer to use in compliance with this license.  We thus
+   encourage you to use the following text:
+ .
+    """
+     Portions of this software are copyright � <year> The FreeType
+     Project (www.freetype.org).  All rights reserved.
+    """
+ .
+   Please replace <year> with the value from the FreeType version you
+   actually use.
+ .
+ .
+ Legal Terms
+ ===========
+ .
+ 0. Definitions
+ --------------
+ .
+   Throughout this license,  the terms `package', `FreeType Project',
+   and  `FreeType  archive' refer  to  the  set  of files  originally
+   distributed  by the  authors  (David Turner,  Robert Wilhelm,  and
+   Werner Lemberg) as the `FreeType Project', be they named as alpha,
+   beta or final release.
+ .
+   `You' refers to  the licensee, or person using  the project, where
+   `using' is a generic term including compiling the project's source
+   code as  well as linking it  to form a  `program' or `executable'.
+   This  program is  referred to  as  `a program  using the  FreeType
+   engine'.
+ .
+   This  license applies  to all  files distributed  in  the original
+   FreeType  Project,   including  all  source   code,  binaries  and
+   documentation,  unless  otherwise  stated   in  the  file  in  its
+   original, unmodified form as  distributed in the original archive.
+   If you are  unsure whether or not a particular  file is covered by
+   this license, you must contact us to verify this.
+ .
+   The FreeType  Project is copyright (C) 1996-2000  by David Turner,
+   Robert Wilhelm, and Werner Lemberg.  All rights reserved except as
+   specified below.
+ .
+ 1. No Warranty
+ --------------
+ .
+   THE FREETYPE PROJECT  IS PROVIDED `AS IS' WITHOUT  WARRANTY OF ANY
+   KIND, EITHER  EXPRESS OR IMPLIED,  INCLUDING, BUT NOT  LIMITED TO,
+   WARRANTIES  OF  MERCHANTABILITY   AND  FITNESS  FOR  A  PARTICULAR
+   PURPOSE.  IN NO EVENT WILL ANY OF THE AUTHORS OR COPYRIGHT HOLDERS
+   BE LIABLE  FOR ANY DAMAGES CAUSED  BY THE USE OR  THE INABILITY TO
+   USE, OF THE FREETYPE PROJECT.
+ .
+ 2. Redistribution
+ -----------------
+ .
+   This  license  grants  a  worldwide, royalty-free,  perpetual  and
+   irrevocable right  and license to use,  execute, perform, compile,
+   display,  copy,   create  derivative  works   of,  distribute  and
+   sublicense the  FreeType Project (in  both source and  object code
+   forms)  and  derivative works  thereof  for  any  purpose; and  to
+   authorize others  to exercise  some or all  of the  rights granted
+   herein, subject to the following conditions:
+ .
+     o Redistribution of  source code  must retain this  license file
+       (`FTL.TXT') unaltered; any  additions, deletions or changes to
+       the original  files must be clearly  indicated in accompanying
+       documentation.   The  copyright   notices  of  the  unaltered,
+       original  files must  be  preserved in  all  copies of  source
+       files.
+ .
+     o Redistribution in binary form must provide a  disclaimer  that
+       states  that  the software is based in part of the work of the
+       FreeType Team,  in  the  distribution  documentation.  We also
+       encourage you to put an URL to the FreeType web page  in  your
+       documentation, though this isn't mandatory.
+ .
+   These conditions  apply to any  software derived from or  based on
+   the FreeType Project,  not just the unmodified files.   If you use
+   our work, you  must acknowledge us.  However, no  fee need be paid
+   to us.
+ .
+ 3. Advertising
+ --------------
+ .
+   Neither the  FreeType authors and  contributors nor you  shall use
+   the name of the  other for commercial, advertising, or promotional
+   purposes without specific prior written permission.
+ .
+   We suggest,  but do not require, that  you use one or  more of the
+   following phrases to refer  to this software in your documentation
+   or advertising  materials: `FreeType Project',  `FreeType Engine',
+   `FreeType library', or `FreeType Distribution'.
+ .
+   As  you have  not signed  this license,  you are  not  required to
+   accept  it.   However,  as  the FreeType  Project  is  copyrighted
+   material, only  this license, or  another one contracted  with the
+   authors, grants you  the right to use, distribute,  and modify it.
+   Therefore,  by  using,  distributing,  or modifying  the  FreeType
+   Project, you indicate that you understand and accept all the terms
+   of this license.
+ .
+ 4. Contacts
+ -----------
+ .
+   There are two mailing lists related to FreeType:
+ .
+     o freetype@nongnu.org
+ .
+       Discusses general use and applications of FreeType, as well as
+       future and  wanted additions to the  library and distribution.
+       If  you are looking  for support,  start in  this list  if you
+       haven't found anything to help you in the documentation.
+ .
+     o freetype-devel@nongnu.org
+ .
+       Discusses bugs,  as well  as engine internals,  design issues,
+       specific licenses, porting, etc.
+ .
+   Our home page can be found at
+ .
+     http://www.freetype.org
+
+License: NTP
+ Permission to use, copy, modify, and distribute this
+ software and its documentation for any purpose and without
+ fee is hereby granted, provided that the above copyright
+ notice appear in all copies and that both that copyright
+ notice and this permission notice appear in supporting
+ documentation, and that the name of M.I.T. not be used in
+ advertising or publicity pertaining to distribution of the
+ software without specific, written prior permission.
+ M.I.T. makes no representations about the suitability of
+ this software for any purpose.  It is provided "as is"
+ without express or implied warranty.
+
+License: NTP~disclaimer
+ Permission to use, copy, modify, distribute, and sell this
+ software and its documentation for any purpose is hereby granted
+ without fee, provided that the above copyright notice appear in
+ all copies and that both that copyright notice and this permission
+ notice appear in supporting documentation, and that the name of
+ the copyright holders not be used in advertising or publicity
+ pertaining to distribution of the software without specific,
+ written prior permission.  The copyright holders make no
+ representations about the suitability of this software for any
+ purpose.  It is provided "as is" without express or implied
+ warranty.
+ .
+ THE COPYRIGHT HOLDERS DISCLAIM ALL WARRANTIES WITH REGARD TO THIS
+ SOFTWARE, INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND
+ FITNESS, IN NO EVENT SHALL THE COPYRIGHT HOLDERS BE LIABLE FOR ANY
+ SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN
+ AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION,
+ ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF
+ THIS SOFTWARE.
+
+Files: *
+License: BSD-2-clause
+Copyright: 2002-2017 Enlightenment Developers (see AUTHORS)
+
+Files: src/bin/edje/epp/*
+License: GPL-2+
+Copyright: 1986, 87, 89, 92, 93, 94, 1995 Free Software Foundation, Inc.
+           2003-2011 Kim Woelders
+
+Files: src/bin/embryo/*
+License: Zlib
+Copyright: ITB CompuPhase, 1997-2003
+           1996 Philip Gage
+           R. Cain, 1980
+           J.E. Hendrix, 1982, 1983
+           T. Riemersma, 1997-2003
+
+Files: src/*/ecore*/*
+License: BSD-2-clause
+Copyright: Enlightenment Developers (see AUTHORS)
+           Brad Hards (1999-2002)
+           Antonio José Ramos Márquez
+           Youness Alaoui
+           2012-2013 Collabora, Ltd.
+           2012, 2013 Intel Corporation
+           1990, 1998 The Open Group
+
+Files: src/lib/ecore_drm/*
+       src/lib/ecore_wayland/ecore_wl_dnd.c
+       src/lib/ecore_wayland/ivi-application-client-protocol.h
+       src/lib/ecore_wayland/ivi-application-protocol.c
+       src/lib/ecore_wl2/ecore_wl2_dnd.c
+       src/lib/ecore_wl2/ecore_wl2_input.c
+License: MIT/Expat
+Copyright: 2008-2012 Kristian Høgsberg
+           2010-2013 Intel Corporation
+           2010-2011 Benjamin Franzke
+           2010 Red Hat <mjg@redhat.com>
+           2011-2012 Collabora, Ltd.
+           2013, BMW Car IT GmbH
+           2013, DENSO CORPORATION
+
+Files: src/lib/ecore_drm/Ecore_Drm.h
+License: BSD-2-clause
+Copyright: Enlightenment Developers (see AUTHORS)
+
+Files: src/lib/ecore_wayland/subsurface-client-protocol.h
+       src/lib/ecore_wayland/subsurface-protocol.c
+       src/lib/ecore_wayland/xdg-shell-client-protocol.h
+       src/lib/ecore_wayland/xdg-shell-protocol.c
+       src/modules/ecore_imf/wayland/*
+License: NTP~disclaimer
+Copyright: 2010-2013 Intel Corporation
+
+Files: src/*/eina/*
+License: LGPL-2.1
+Copyright: Enlightenment Developers (see AUTHORS)
+           2002-2017 Cedric Bail
+           2002-2016 Carsten Haitzler
+           2002-2013 Gustavo Sverzut Barbieri
+           2002-2008 Tilman Sauerbeck
+           2002-2008 Corey Donohoe
+           2002-2008 Arnaud de Turckheim
+           2002-2008,2011 Alexandre Becoulet
+           2002-2014 Jorge Luis Zapata Muga
+           2002-2015 Vincent Torri
+           2002-2009 Rafael Antognolli
+           2002 Alexandre Julliard
+           2006,2010 Sebastian Dransfeld
+           2007-2009 Andre Dieb
+           2007 Christopher Michael
+           2008 Peter Wehrfritz
+           2010-2016 ProFUSION embedded systems
+           2010 Tom Hacohen
+           2010 Brett Nash
+           2011 Mike McCormack
+           2013 Jérémy Zurcher
+           2013-2014 Mike Blumenkrantz
+           2013 Vlad Brovko
+           2015 Vivek Ellur
+           2015 Subhransu Mohanty
+           2016 Sergey Osadchy
+           2016 Amitesh Singh
+
+Files: src/lib/eina/eina_str.c
+License: ISC
+Copyright: 1998 Todd C. Miller <Todd.Miller@courtesan.com>
+
+Files: src/benchmarks/eina/city.*
+License: MIT/Expat
+Copyright: 2011 Google, Inc.
+
+Files: src/*/eio/*
+       src/*/eldbus/*
+       src/*/emile/*
+License: LGPL-2.1
+Copyright: 2002-2017 Enlightenment Developers (see AUTHORS)
+
+Files: src/lib/embryo/*
+License: BSD-2-clause
+Copyright: Enlightenment Developers (see AUTHORS)
+           Carsten Haitzler, 2004-2010
+           ITB CompuPhase, 1997-2003
+           Artran, Inc. 1999
+
+Files: src/*/escape/*
+       src/generic/emotion/*
+License: GPL-2
+Copyright: Enlightenment Developers (see AUTHORS)
+
+Files: src/*/ethumb*/*
+License: LGPL-2.1
+Copyright: Enlightenment Developers (see AUTHORS)
+           2009 ProFUSION embedded systems
+
+Files: src/lib/ethumb/md5.c
+License: public-domain
+ File explicitly disclaims copyright:
+ .
+ This code implements the MD5 message-digest algorithm.
+ The algorithm is due to Ron Rivest.  This code was
+ written by Colin Plumb in 1993, no copyright is claimed.
+ This code is in the public domain; do with it what you wish.
+ .
+ Equivalent code is available from RSA Data Security, Inc.
+ This code has been tested against that, and is equivalent,
+ except that you don't need to include two pages of legalese
+ with every copy.
+ .
+ To compute the message digest of a chunk of bytes, declare an
+ MD5Context structure, pass it to MD5Init, call MD5Update as
+ needed on buffers full of bytes, and then call MD5Final, which
+ will fill a supplied 16-byte array with the digest.
+Copyright: none
+
+Files: src/*/evas/*
+License: BSD-2-clause
+Copyright: Enlightenment Developers (see AUTHORS)
+           1999 - Carsten Haitzler
+
+Files: src/lib/evas/Evas_GL.h
+License: MIT/Expat
+Copyright: 2013-2016, The Khronos Group Inc.
+
+Files: src/generic/evas/*
+Copyright: Enlightenment Developers (see AUTHORS)
+License: GPL-2+
+
+Files: src/*/evil/*
+License: BSD-2-clause
+Copyright: Enlightenment Developers (see AUTHORS)
+           2004 by Internet Systems Consortium, Inc. ("ISC")
+           1996,1999 by Internet Software Consortium.
+           1999, 2000, 2003, 2004, 2006 Free Software Foundation, Inc
+
+Files: src/tests/evil/*
+License: LGPL-2.1+
+Copyright: 2015 Vincent Torri <vincent.torri@gmail.com>
+
+Files: src/bin/evil/memcpy_glibc_i686.S
+License: LGPL-2.1+
+Copyright: 1999, 2000, 2003, 2004 Free Software Foundation, Inc.
+           1999 Ulrich Drepper <drepper@cygnus.com>
+
+Files: src/lib/evil/evil_inet.c
+License: ISC
+Copyright: 1996,1999 by Internet Software Consortium
+           2004 by Internet Systems Consortium, Inc. ("ISC")
+           2012-2015 Vincent Torri <vincent.torri@gmail.com>
+
+Files: src/lib/evil/evil_inet.h
+License: NTP
+Copyright: 2005 Daniel Stenberg
+
+Files: src/modules/evas/engines/psl1ght/rsxutil.*
+License: MIT/Expat
+Copyright: 2011 PSL1GHT Development Team
+
+Files: src/static_libs/libunibreak/*
+License: Zlib
+Copyright: 2008-2010 Wu Yongwei <wuyongwei at gmail dot com>
+           2011 Tom Hacohen <tom@stosb.com>
+
+Files: src/static_libs/lz4/*
+License: BSD-2-clause
+Copyright: 2011-2013 Yann Collet
+
+Files: src/lib/emile/Emile.h
+Copyright: 2013 Enlightenemnt Developers
+           2013 Cedric Bail <cedric.bail@samsung.com>s
+License: LGPL-2.1+
+
+Files: src/*/ector/*
+License: GPL-2 or FTL
+Copyright: Enlightenment Developers (see AUTHORS)
+
+Files: src/lib/ector/ector_main.c
+ src/tests/ector/suite/ector_suite.c
+ src/tests/ector/suite/ector_test_init.c
+Copyright: 2014 Cedric Bail
+License: LGPL-2.1+
+
+Files: src/lib/ector/ector_gl_internal.h
+Copyright: 2013-2016 The Khronos Group Inc.
+License: MIT/Expat
+
+Files: src/tests/ector/cxx_compile_test/cxx_compile_test.cxx
+Copyright: 2012 ProFUSION embedded systems
+License: LGPL-2.1+
+
+Files: src/bin/elementary/test_glview_manygears.c
+License: MIT/Expat
+Copyright: 1999-2001 Brian Paul
+
+Files: src/*/efl/*
+License: LGPL-2.1
+Copyright: Enlightenment Developers (see AUTHORS)
+           2008, 2013 Cedric Bail
+           2015 Carsten Haitzler
+
+Files: debian/*
+Copyright: 2018 Robert Wiley <ylee@bodhilinux.com>
+           2014 Niko2040 <niko2040@bynets.ru>
+License: GPL-2+
+ This package is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This package is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License
+ along with this program. If not, see <http://www.gnu.org/licenses/>
+ .
+ On Debian systems, the complete text of the GNU General
+ Public License version 2 can be found in "/usr/share/common-licenses/GPL-2".

@@ -1,0 +1,27 @@
+Description: skip a few elm widget previews
+ These preview generations crash sometimes, and the issue seems triggered by
+ build chroots.  Disable it until this issue is figured out.
+Author: Ross Vandegrift <ross@kallisti.us>
+Origin: other
+Forwarded: no
+Last-Update: 2010-11-02
+--- a/doc/meson.build
++++ b/doc/meson.build
+@@ -26,7 +26,7 @@
+   ['clock', 'preview-00.png', 'widget_preview_clock', '200', '100'],
+   ['colorselector', 'preview-00.png', 'widget_preview_colorselector', '320', '300'],
+   ['conformant', 'preview-00.png', 'widget_preview_conformant', '200', '400'],
+-  ['combobox', 'preview-00.png', 'widget_preview_combobox', '300', '300'],
++  # ['combobox', 'preview-00.png', 'widget_preview_combobox', '300', '300'],
+   ['ctxpopup', 'preview-00.png', 'widget_preview_ctxpopup', '200', '130'],
+   ['datetime', 'preview-00.png', 'widget_preview_datetime1', '360', '60'],
+   ['datetime', 'preview-01.png', 'widget_preview_datetime2', '200', '60'],
+@@ -37,7 +37,7 @@
+   ['entry', 'preview-01.png', 'widget_preview_entry2', '160', '50'],
+   ['entry', 'preview-02.png', 'widget_preview_entry3', '160', '50'],
+   ['entry', 'preview-03.png', 'widget_preview_entry4', '160', '50'],
+-  ['fileselector', 'preview-00.png', 'widget_preview_fileselector', '300', '300'],
++  # ['fileselector', 'preview-00.png', 'widget_preview_fileselector', '300', '300'],
+   ['fileselector_button', 'preview-00.png', 'widget_preview_fileselector_button1', '200', '50'],
+   ['fileselector_button', 'preview-01.png', 'widget_preview_fileselector_button2', '200', '50'],
+   ['fileselector_button', 'preview-02.png', 'widget_preview_fileselector_button3', '160', '50'],

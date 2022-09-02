@@ -1,0 +1,6 @@
+efl (1.26.99-0focal0) jammy; urgency=low
+
+  * Initial build for Jammy Jellyfish
+  * Commit: 6c642eb12b efl: Disable examples by default
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Fri, 02 Sep 2022 08:22:10 -0400
