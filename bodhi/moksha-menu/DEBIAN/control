@@ -1,0 +1,14 @@
+Package: moksha-menu
+Version: 0.2-2
+Architecture: all
+Maintainer: Robert Wiley <ylee@bodhilinux.com>
+Installed-Size: 190
+Section: x11
+Priority: optional
+Multi-Arch: foreign
+Homepage: http://mokshadesktop.org
+Description: Moksha freedesktop.org menu specification
+ Moksha-menu is a component for the Moksha Desktop Environment.
+ .
+ It contains files required to build desktop menus for Moksha complying to the
+ freedesktop.org menu specification.
