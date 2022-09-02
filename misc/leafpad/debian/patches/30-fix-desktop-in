@@ -1,0 +1,19 @@
+Description: Fix leafpad.desktop.in removing Encoding and add Keywords 
+Author: Paulo Roberto Alves de Oliveira (aka kretcheu) <kretcheu@gmail.com>
+Last-update: 2015-12-08
+Index: leafpad-0.8.18.1/data/leafpad.desktop.in
+===================================================================
+--- leafpad-0.8.18.1.orig/data/leafpad.desktop.in
++++ leafpad-0.8.18.1/data/leafpad.desktop.in
+@@ -1,5 +1,4 @@
+ [Desktop Entry]
+-Encoding=UTF-8
+ _Name=Leafpad
+ _Comment=Simple text editor
+ Exec=leafpad %f
+@@ -8,3 +7,5 @@ Terminal=false
+ Type=Application
+ MimeType=text/plain
+ Categories=GTK;Utility;TextEditor;
++Keywords=text;editor;
++InitialPreference=6

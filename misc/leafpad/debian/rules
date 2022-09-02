@@ -1,0 +1,20 @@
+#!/usr/bin/make -f
+#export DH_VERBOSE=1
+
+export DEB_BUILD_MAINT_OPTIONS	= hardening=+all
+export DEB_LDFLAGS_MAINT_APPEND = -Wl,--as-needed
+
+%:
+	dh $@ --with autoreconf
+
+override_dh_auto_test:
+	# The tests would consider Quilt .pc/ directory as
+	# a part of translation POTFILES. Dynamically exclude all.
+
+	( find .pc/ -type f > po/POTFILES.skip )
+	dh_auto_test
+	rm -f po/POTFILES.skip
+
+override_dh_installman:
+	$(MAKE) -C debian -f pod2man.mk PACKAGE=leafpad makeman
+	dh_installman

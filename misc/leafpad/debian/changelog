@@ -1,0 +1,461 @@
+leafpad (0.8.18.1-8) focal; urgency=medium
+
+  * Add Policy kit file
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Wed, 12 May 2021 16:26:04 -0400
+
+
+leafpad (0.8.18.1-7) focal; urgency=medium
+
+  * Control file update and cp year to 2021
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Thu, 15 Apr 2021 11:48:32 -0400
+
+leafpad (0.8.18.1-6) unstable; urgency=medium
+
+  * gvfs patch
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Sun, 11 Apr 2021 17:23:18 -0400
+
+leafpad (0.8.18.1-5) unstable; urgency=medium
+
+  * New Maintainer Thanks for Jari Aalto for your work (Closes: #806863).
+  * Migrations:
+    - Using autoreconf.
+    - Bumped Standards-Version to 3.9.7.
+  * debian/control:
+    - Updated VCS-* fields.
+    - Clarified long description.
+  * debian/copyright: Updated, reorganized and included author's e-mails.
+  * debian/docs: Removed because conflits to debian/leafpad.docs.
+  * debian/menu: Removed to compliant with CTTE #741573.
+  * debian/patches:
+    - Added headers to 20-format-spec.patch.
+    - Added patch 30-fix-desktop-in removing Encoding, add Keywords and
+      InitialPreference to fix leafpad.desktop.in thanks to Jari Aalto
+      (Closes: #806799, #563778).
+  * debian/pod2man.mk
+    - Fixed PODCENTER variable making builds reproducible thanks to
+      Reiner Herrmann <reiner@reiner-h.de> (Closes: #786711).
+  * debian/rules:
+    - Updated to new (reduced) format.
+    - Removed override_dh_auto_configure using autoreconf.
+    - Added DEB_BUILD_MAINT_OPTIONS and DEB_LDFLAGS_MAINT_APPEND for hardening.
+    - Removed commands that was workaround to bug: #563778.
+
+ -- Paulo Roberto Alves de Oliveira (aka kretcheu) <kretcheu@gmail.com>  Sat, 12 Mar 2016 03:04:00 -0300
+
+leafpad (0.8.18.1-4) unstable; urgency=low
+
+  * debian/control
+    - (Build-Depends): Add autotools-dev.
+    - (Standards-Version): Update to 3.9.4.
+    - (Vcs-*): Update to anonscm.debian.org.
+  * debian/copyright
+    - Update year.
+  * debian/rules
+    - (override_dh_auto_configure): Use latest config.* files to correct
+      Lintian warnings. Thanks to Jackson Doak <noskcaj@ubuntu.com>.
+    - (override_dh_installman): Add Keywords to *.desktop file
+      http://standards.freedesktop.org/desktop-entry-spec/latest/ar01s05.html
+
+ -- Jari Aalto <jari.aalto@cante.net>  Sat, 12 Oct 2013 09:46:50 +0300
+
+leafpad (0.8.18.1-3) unstable; urgency=low
+
+  * debian/control
+    - (Build-Depends): Rm dpkg-dev; not needed with debhelper 9.
+    - (Standards-Version): Update to 3.9.3.1.
+  * debian/copyright
+    - Update to format 1.0.
+  * debian/patches
+    - (10): Remove *.desktop Encoding fix. Handled now in debian/rules.
+  * debian/rules
+    - Enable all hardening flags.
+    - Use DEB_*_MAINT_* variables.
+    - (override_dh_installman): Remove encoding line from *.desktop.
+
+ -- Jari Aalto <jari.aalto@cante.net>  Fri, 23 Mar 2012 13:34:49 -0400
+
+leafpad (0.8.18.1-2) unstable; urgency=low
+
+  * debian/compat
+    - Update to 9
+  * debian/control
+    - (Build-Depends): update to debhelper 9, dpkg-dev 1.16.1.
+  * debian/patches
+    - (20): Fix code for gcc hardened format specifiers.
+  * debian/rules
+    - Use hardened CFLAGS (FTBFS; Closes: #646343).
+      http://wiki.debian.org/ReleaseGoals/SecurityHardeningBuildFlags
+
+ -- Jari Aalto <jari.aalto@cante.net>  Wed, 08 Feb 2012 07:03:31 -0500
+
+leafpad (0.8.18.1-1) unstable; urgency=low
+
+  * New upstream release (Closes: #620894).
+  * debian/compat
+    - Update to 8.
+  * debian/clean
+    - Add data/leafpad.desktop, so that Debian patches is not generated
+      (see patch 10). Thanks to Jonathan Marsden <jmarsden@fastmail.fm>
+  * debian/control
+    - (Build-Depends): update to debhelper 8. Add intltool.
+    - (Standards-Version): Update to 3.9.2.
+  * debian/copyright
+    - Update to new format.
+  * debian/patches
+    - (20): Delete. 'file:' protocol fix included.
+    - (30): Delete. UTF-8 file handling included.
+  * debian/rules
+    - (override_dh_auto_test): Skip quilt files and run tests.
+      Thanks to Jonathan Marsden <jmarsden@fastmail.fm> for the idea.
+
+ -- Jari Aalto <jari.aalto@cante.net>  Fri, 24 Jun 2011 10:46:42 +0300
+
+leafpad (0.8.17-5) unstable; urgency=low
+
+   * CANCEL 0.8.17-4 and rewind back to 0.8.17-3 to prepare fix
+     for stable release
+   * debian/patches
+     - (30): New. Fix saving with in UTF16 encoding.
+       Patch thanks to Alex <davian818@gmail.com>.
+       (Grave; Closes: #606145).
+ -- Jari Aalto <jari.aalto@cante.net>  Fri, 07 Jan 2011 17:45:51 +0200
+
+leafpad (0.8.17-4) unstable; urgency=medium
+
+  * debian/control
+    - (Standards-Version): Update to 3.9.1.
+  * debian/leafpad.1.pod
+    - (DESCRIPTION): Add warning about undefined locales and data loss
+  * debian/patches
+    - (30): New. Fix saving with in UTF16 encoding.
+      Patch thanks to Alex <davian818@gmail.com>.
+      (Grave; Closes: #606145).
+  * debian/rules
+    - Simplify targets for dh(1).
+
+ -- Jari Aalto <jari.aalto@cante.net>  Sun, 26 Dec 2010 16:04:23 +0200
+
+leafpad (0.8.17-3) unstable; urgency=low
+
+  * debian/control
+    - (Standards-Version): Update to 3.8.4.
+  * debian/patches
+    - (number 20): If the input parameter contains a ":", Leadpad
+      consideres it to be an URI. With the patch, names with a ":" run
+      through URI check. If no matching supported scheme is found, then
+      consider it filename. Patch thanks to Michael Dickson
+      <dickson.michael@gmail.com> (Closes: #551357).
+
+ -- Jari Aalto <jari.aalto@cante.net>  Fri, 26 Feb 2010 08:01:24 +0200
+
+leafpad (0.8.17-2) unstable; urgency=low
+
+  * Move to packaging format: 3.0 (quilt).
+  * debian/clean
+    - Move content from 'rules' for dh(1) to use.
+  * debian/compat
+    - Update to 7.
+  * debian/control
+    - (Build-Depends): debhelper 7.1 due to overrides
+      in debian/rules.
+    - (Maintainer): Remove GNOME team. No longer maintains.
+    - (Uploaders): Remove and move email to 'Maintainer'
+  * debian/copyright
+    - (GPL): Use FSF URL (FSF recommendation).
+  * debian/debian-vars.mk
+    - Delete, obsoleted by dh(1).
+  * debian/rules
+    - Remove rules obsoleted by dh(1).
+  * debian/patches
+    - Convert to quilt.
+  * debian/source/format
+    - New file.
+  * debian/leafpad.{docs,manpages}
+    - Move content from 'rules' for dh(1) to use.
+
+ -- Jari Aalto <jari.aalto@cante.net>  Fri, 01 Jan 2010 18:15:51 +0200
+
+leafpad (0.8.17-1) unstable; urgency=low
+
+  * New maintainer (Closes: #550141).
+  * New upstream release.
+  * debian/control:
+    - (Build-Depends): Add dpatch, upgrade debhelper.
+    - (Uploaders): New maintainer.
+    - (Vcs-*): add Git repository URLs.
+  * debian/rules
+    - Convert CDBS to debhelper
+
+ -- Jari Aalto <jari.aalto@cante.net>  Wed, 02 Dec 2009 07:46:43 +0000
+
+leafpad (0.8.16-1) unstable; urgency=low
+
+  [ Julien Lavergne ]
+  * New upstream release.
+  * Bump Standards-Version to 3.8.0.
+  * debian/README.source : Add (3.8.0 requirement).
+  * debian/patches/01-encoding-desktop.patch : Remove Encoding field in
+    desktop file.
+  * debian/copyright: Link to the GPL-2 licence instead of only GPL.
+
+  [ Loic Minier ]
+  * Include CDBS' debhelper rules before the gnome class.
+  * Set Maintainer to Debian GNOME Maintainers; closes: #512459.
+
+  [ Emilio Pozuelo Monfort ]
+  * debian/copyright: Update for the new version.
+  * Standards-Version is 3.8.3, no changes needed.
+
+ -- Emilio Pozuelo Monfort <pochu@debian.org>  Thu, 27 Aug 2009 23:26:11 +0200
+
+leafpad (0.8.13-1) unstable; urgency=low
+
+  [ Loic Minier ]
+  * Add a get-orig-source target to retrieve the upstream tarball.
+
+  [ Sven Arvidsson ]
+  * Register as gnome-text-editor in the alternatives system;
+    thanks roktas. (Closes: #418296)
+
+  [ Julien Lavergne ]
+  * New upstream version (Closes: #445702)
+   - Printing support with GTK+2.10 (Closes: #376015)
+  * debian/control.in
+   - Move Homepage to official field
+   - Bump libgtk-dev to >= 2.10
+   - Suggest evince-gtk for Print Preview
+   - Bump debhelper version to 5
+   - Bump Standards-Version to 3.7.3 (No changes needed)
+   - Wrap build-deps and deps.
+  * debian/rule
+   - Delete --disable-print flag
+   - Delete autotools cdbs rules, include in gnome rules
+  * debian/patches/70_relibtoolize_noguessub.patch : drop, take upstream.
+  * debian/menu : Fix lintian warning in section.
+
+  [ Loic Minier ]
+  * Merge changes bu Julien Lavergne; closes: #456787.
+  * Cleanups.
+
+ -- Julien Lavergne <julien.lavergne@gmail.com>  Tue, 20 Nov 2007 00:19:29 +0100
+
+leafpad (0.8.9-2) unstable; urgency=low
+
+  * debian/patches/70_relibtoolize_noguesssub.patch :
+    - updated with autoconf 2.59a-9 (Closes: #376078)
+
+ -- Carlos Z.F. Liu <carlosliu@users.sourceforge.net>  Tue,  4 Jul 2006 21:40:33 +1200
+
+leafpad (0.8.9-1) unstable; urgency=low
+
+  * New upstream version 0.8.9 (Closes: #374402)
+  * debian/patches :
+    - 70_relibtoolize_noguesssub.patch updated
+  * debian/rules :
+    - drop --enable-chooser, it's default now
+    - temporarily add --disable-print to avoid gnome dependencies
+  * debian/control[.in] :
+    - bump Standards-Version to 3.7.2, no change needed
+    - remove Recommends on "cupsys-bsd | lpr", printing is disabled
+
+ -- Carlos Z.F. Liu <carlosliu@users.sourceforge.net>  Thu, 22 Jun 2006 06:16:17 +1200
+
+leafpad (0.8.7-1) unstable; urgency=low
+
+  * New upstream release (Closes: #349215)
+  * deprecate old leafpad.xpm file, use upstream's icon.
+  * debian/patches: 00_relibtoolize_noguesssub.patch rename to
+    70_relibtoolize_noguesssub.patch, and updated
+  * debian/watch : updated
+  * update manpage (add a new command line option)
+  * debian/copyright : update FSF address
+  * debian/control.in :
+    - remove intltool and lpr from build-dep
+    - add gnome-pkg-tools to build-dep
+    - add ${misc:Depends} to Depend
+  * debian/rules :
+    - add uploaders.mk
+    - add utils.mk for list-missing feature
+    - remove dh_desktop and switch back to gnome.mk
+    - use += instead of := for DEB_CONFIGURE_EXTRA_FLAGS and
+      DEB_INSTALL_MANPAGES_leafpad
+
+ -- Carlos Z.F. Liu <carlosliu@users.sourceforge.net>  Fri, 10 Feb 2006 22:51:06 +1300
+
+leafpad (0.8.3-1) unstable; urgency=low
+
+  [ Carlos Z.F. Liu ]
+  * New upstream release
+
+  [ Ondřej Surý ]
+  * Gnome Team Upload.
+
+ -- Ondřej Surý <ondrej@sury.org>  Mon,  5 Sep 2005 09:49:27 +0200
+
+leafpad (0.8.2-1) unstable; urgency=low
+
+  * New upstream release
+  * Bump to Standards-Version 3.6.2
+  * debian/patches/00_relibtoolize_noguesssub.patch : updated
+  * debian/menu : add longtitle
+
+ -- Carlos Z.F. Liu <carlosliu@users.sourceforge.net>  Sun,  3 Jul 2005 17:12:31 +1200
+
+leafpad (0.8.1-1) unstable; urgency=low
+
+  * New upstream release
+    - Fixed space-separated filename bug (Closes: #307590)
+  * debian/control
+    - add lpr to Build-Depends field to enable the "print" menu item
+    - add "cupsys-bsd | lpr" to Recommends field
+  * debian/patches/00_relibtoolize_noguesssub.patch
+    - updated
+  * debian/leafpad.1
+    - updated
+
+ -- Carlos Z.F. Liu <carlosliu@users.sourceforge.net>  Thu, 19 May 2005 22:23:47 +1200
+
+leafpad (0.8.0-1) unstable; urgency=low
+
+  * New upstream release
+    - stop replacing string when user press Esc (Closes: #303502)
+  * debian/control
+    - extend Build-Depends a bit
+  * debian/rules
+    - use dh_desktop instead of cdbs's gnome.mk
+    - add --enable-chooser configure option
+  * move 00_relibtoolize.patch to 00_relibtoolize_noguesssub.patch
+    - regenerated, remove config.guess and config.sub from the patch,
+      let cdbs to handle them
+  * 01_leafpad-0.7.9-file_chooser.patch
+    - removed, merged in upstream
+  * 02_fix_mkinstalldirs_in_po.patch
+    - removed
+  * debian/leafpad.lintian-overrides, debian/source.lintian-overrides
+    - removed, lintian changed his mind
+
+ -- Carlos Z.F. Liu <carlosliu@users.sourceforge.net>  Sat, 30 Apr 2005 15:00:51 +1200
+
+leafpad (0.7.9-4) unstable; urgency=low
+
+  * debian/leafpad.lintian-overrides, debian/source.lintian-overrides
+    - use override to prevent lintian warning, thanks Lucas Wall
+  * upload to official debian repository (Closes: #274512)
+
+ -- Carlos Z.F. Liu <carlosliu@users.sourceforge.net>  Thu, 20 Jan 2005 16:59:48 +1300
+
+leafpad (0.7.9-3) unstable; urgency=low
+
+  * debian/rules
+    - swith to cdbs
+  * debian/copyright
+    - add a timestamp to the Copyright line, thanks Samuel Mimram
+  * debian/patches/00_relibtoolize.patch
+  * debian/patches/01_leafpad-0.7.9-file_chooser.patch
+    - use new filechooser, came from the upstream web page
+  * debian/patches/02_fix_mkinstalldirs_in_po.patch
+    - fix the mkinstalldirs error after relibtoolizing
+  * debian/leafpad.1
+    - replace "notepad clone" by "simple text editor"
+
+ -- Carlos Z.F. Liu <carlosliu@users.sourceforge.net>  Wed, 19 Jan 2005 02:22:35 +1300
+
+leafpad (0.7.9-2) unstable; urgency=low
+
+  * debian/rules: Clean some unused codes
+  * debian/watch: Switch to savannah.nongnu.org
+
+ -- Carlos Z.F. Liu <carlosliu@users.sourceforge.net>  Wed, 29 Dec 2004 01:41:14 +1300
+
+leafpad (0.7.9-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Carlos Z.F. Liu <carlosliu@users.sourceforge.net>  Wed, 29 Dec 2004 00:58:34 +1300
+
+leafpad (0.7.8-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Carlos Z.F. Liu <carlosliu@users.sourceforge.net>  Sun,  5 Dec 2004 22:32:07 +1300
+
+leafpad (0.7.7.1-1) unstable; urgency=low
+
+  * New upstream release
+  * Regenerate xpm icon from new leafpad.png
+
+ -- Carlos Z.F. Liu <carlosliu@users.sourceforge.net>  Wed, 24 Nov 2004 03:16:10 +1300
+
+leafpad (0.7.7-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Carlos Z.F. Liu <carlosliu@users.sourceforge.net>  Sat, 20 Nov 2004 13:46:54 +1300
+
+leafpad (0.7.6-1) unstable; urgency=low
+
+  * New upstream release
+  * Remove my additional .desktop file, upstream included it
+  * Change maintainer's email address
+
+ -- Carlos Z.F. Liu <carlosliu@users.sourceforge.net>  Tue, 16 Nov 2004 01:39:29 +1300
+
+leafpad (0.7.5-1) unstable; urgency=low
+
+  * New upstream release
+  * add pkg-config to Build-Depends
+
+ -- Carlos Z.F. Liu <carlos_liu@yahoo.com>  Sat, 30 Oct 2004 19:29:44 +1300
+
+leafpad (0.7.4-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Carlos Z.F. Liu <carlos_liu@yahoo.com>  Sat, 23 Oct 2004 15:22:19 +1300
+
+leafpad (0.7.3.1-1) unstable; urgency=low
+
+  * New upstream release
+  * Bump debhelper version to 4.2.21 for dh_desktop function.
+
+ -- Carlos Z.F. Liu <carlos_liu@yahoo.com>  Sun, 17 Oct 2004 23:59:09 +1300
+
+leafpad (0.7.3-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Carlos Z.F. Liu <carlos_liu@yahoo.com>  Sun, 17 Oct 2004 21:59:15 +1300
+
+leafpad (0.7.2-1) unstable; urgency=low
+
+  * Acknowledge NMU. Thanks for Ming Hua's work.
+  * Change upstream author's email address.
+  * Slightly change in the description, according to upstream source.
+  * Use pbuilder to avoid unexpected experimental dependencies.
+
+ -- Carlos Z.F. Liu <carlos_liu@yahoo.com>  Sat,  2 Oct 2004 22:17:51 +1200
+
+leafpad (0.7.2-0.1) unstable; urgency=low
+
+  * Non-maintainer upload with permission from maintainer.
+  * New upstream release.
+  * debian/control:  Remove useless ${misc:Depends}.  Also did a cosmetic
+    change in the description.
+  * Build in a pure unstable environment to get the dependencies correct.
+
+ -- Ming Hua <minghua@rice.edu>  Fri,  1 Oct 2004 12:53:10 -0500
+
+leafpad (0.7.1-2) unstable; urgency=low
+
+  * Add a leafpad.desktop file (partly stolen from gedit).
+
+ -- Carlos Z.F. Liu <carlos_liu@yahoo.com>  Wed, 29 Sep 2004 01:06:24 +1200
+
+leafpad (0.7.1-1) unstable; urgency=low
+
+  * Initial Release.
+
+ -- Carlos Z.F. Liu <carlos_liu@yahoo.com>  Mon, 27 Sep 2004 17:12:26 +1200

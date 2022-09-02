@@ -1,0 +1,118 @@
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0
+Upstream-Name: leafpad
+Upstream-Contact: Tarot Osuji <tarot@freeshell.org>, <tarot@sdf.lonestar.org>
+Source: http://tarot.freeshell.org/leafpad/
+X-Upstream-Bugs: <tarot@sdf.lonestar.org>
+Comment:
+  See also
+  http://tarot.freeshell.org/leafpad
+  http://savannah.nongnu.org/projects/leafpad
+  https://launchpad.net/~tarot
+
+Files: *
+Copyright:
+  2004-2010 Tarot Osujia <tarot@freeshell.org>
+License: GPL-2+
+
+Files: src/gtksourceiter.c src/gtksourceiter.h
+Copyright:
+  2000-2002 Paolo Maggi <paolo@gnome.org>
+  2002-2003 Jeroen Zwartepoorte <jeroen|@|xs4all.nl>
+License: LGPL-2+
+
+Files: po/*
+Copyright: 
+  2004-2009 Lucas Vieites <lucas@codexion.com>
+  2004      Alan Kelon Oliveira de Moraes <alankelon@yahoo.com.br>
+  2004      Artem Vakhitov <temcat@mail.ru>
+  2004      Carlos Z.F. Liu <carlos_liu@yahoo.com>
+  2004      David Rosal <davidrr@users.sourceforge.net>
+  2004      Isak Savo <iso01001@student.mdh.se>
+  2004      Lech Jankovski <godgard@gmail.com>
+  2004      Petr Vysloužil <evyslouz@volny.cz>
+  2004      Tarot Osuji <tarot@sdf.lonestar.org>
+  2004      Vijay Durairaj <vjd81@yahoo.com>
+  2005-2006 Stavros Giannouris <stavrosg2002@freemail.gr>
+  2005-2006 Yavor Doganov <yavor@doganov.org>
+  2005      Alessio D'Ascanio <g3ntaro@gmail.com>
+  2005      kaya oğuz <kaya@kuzeykutbu.org>
+  2005      Michal Wrobel <wrobel@task.gda.pl>
+  2005      OLS3 <ols3@lxer.idv.tw>
+  2005      Petr Chabada <leafpad_chabada_sk>
+  2005      Yo'av Moshe <black_jesus@myrealbox.com>
+  2006-2008 Kevin Patrick Scannell <scannell@SLU.EDU>
+  2006      Seo Sanghyeon <sanxiyn@gmail.com>
+  2006      Wouter Van Hemel <wouter-oss@publica.duodecim.org>
+  2007-2009 Clytie Siddall <clytie@riverland.net.au>
+  2007      Reviczky Ádám János <reviczky@freemail.hu>
+  2007      Youri Bulka <jblk@icmail.net>
+  2008      Benno Schulenberg <benno@vertaalt.nl>
+  2008      Gintautas Miliauskas <gintas@akl.lt>
+  2008      Inko Illarramendi Arancibia <inkoia@gmail.com>
+  2008      Joe Hansen <joedalton2@yahoo.dk>
+  2008      Leslie Harlley Watter <leslie@watter.org>
+  2008      LI Daobing <lidaobing@gmail.com>
+  2008      Marc Veillet <scouigne@gmail.com>
+  2008      Mikel Olasagasti <hey_neken@mundurat.net>
+  2008      Vincenzo Campanella <vinz65@gmail.com>
+  2008      Wei-Lun Chao <chaoweilun@gmail.com>
+  2009      Alan Pepelko <alan.pepelko@gmail.com>
+  2009      Andhika Padmawan <andhika.padmawan@gmail.com>
+  2009      Arvis Lācis <arvis.lacis@inbox.lv>
+  2009      Denis ARNAUD <denisarnuad@yahoo.fr>
+  2009      Jay Alexander Fleming <tito.nehru.naser@gmail.com>
+  2009      Mario Blättermann <mario.blaettermann@t-online.de>
+  2009      Michał Trzebiatowski <hippie_1968@hotmail.com>
+  2009      Rihards Priedītis <rprieditis@gmail.com>
+  2010      Jorma Karvonen <karvonen.jorma@gmail.com>
+  2010      Kalman Kemenczy <kkemenczy@gmail.com>
+  2010      Leandro Regueiro <leandro.regueiro@gmail.com>
+License: GPL-2+
+
+Files: debian/*
+Copyright:
+  2004-2006 Carlos Z.F. Liu <carlosliu@users.sourceforge.net>, <carlos_liu@yahoo.com>
+  2004      Ming Hua <minghua@rice.edu>
+  2005      Ondřej Surý <ondrej@sury.org>
+  2005      Carlos Z.F. Liu
+  2007      Sven Arvidsson
+  2007-2009 Julien Lavergne <julien.lavergne@gmail.com>
+  2007-2009 Loic Minier
+  2009      Emilio Pozuelo Monfort <pochu@debian.org>
+  2009-2013 Jari Aalto <jari.aalto@cante.net>
+  2016      Paulo Roberto Alves de Oliveira (aka kretcheu) <kretcheu@gmail.com>
+License: GPL-2+
+
+License: GPL-2+
+ This package is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This package is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License
+ along with this program. If not, see <http://www.gnu.org/licenses/>.
+ .
+ On Debian systems, the complete text of the GNU General
+ Public License can be found in "/usr/share/common-licenses/GPL-2".
+
+License: LGPL-2+
+ This package is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Library General Public
+ License as published by the Free Software Foundation; either
+ version 2 of the License, or (at your option) any later version.
+ .
+ This package is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Library General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License
+ along with this program; if not, see <http://www.gnu.org/licenses/>.
+ .
+ On Debian systems, the complete text of the GNU Library General
+ Public License can be found in "/usr/share/common-licenses/LGPL-2".
