@@ -1,0 +1,6 @@
+RELEASE=7.0
+CODENAME="durga"
+EDITION="Moksha"
+DESCRIPTION="Bodhi Linux 7.0"
+DESKTOP=Moksha
+GRUB_TITLE=Bodhi Linux 7.0 Moksha

@@ -1,0 +1,8 @@
+Package: bodhi-info-moksha
+Version: 0.0.1-1
+Architecture: all
+Maintainer: Robert (ylee) Wiley <ylee@bodhilinux.com>
+Section: admin
+Priority: optional
+Description: Supplies Bodhi Info file for Moksha
+ This file is used by ubuntu-system-adjustments.
