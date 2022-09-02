@@ -1,0 +1,46 @@
+#!/bin/bash
+if [[ "$DESKTOP" == *"Enlightenment"* ]] || [[ "$DESKTOP" == *"Moksha"* ]]; then
+	DSK=$(xdg-user-dir DESKTOP)
+	if [[ "$DSK" != "$HOME/Desktop" ]]; then
+		rm -rf "$HOME/Desktop"
+	fi
+
+	if [[ -f "/etc/bodhi/iso" ]]; then
+		cp "/usr/share/bodhi/desktop/ubiquity.desktop" "$DSK"
+		cp "/usr/share/bodhi/desktop/bodhi-help.desktop" "$DSK"
+	fi
+	if hash acpi 2>/dev/null; then
+			battery=$(acpi)
+	else
+			echo "Error: please install acpi!"
+			exit 1
+	fi
+
+	start_path="/home/$USER/.e/e/applications/startup/startupcommands"
+	keyboard="/etc/default/keyboard"
+	us='"us"'
+
+	if [ -n "$battery" ]; then
+		echo "Found a battery - enabling battery module"
+		enlightenment_remote -module-load battery
+		enlightenment_remote -module-enable battery
+	else
+		echo "No battery found - disabling battery module"
+		enlightenment_remote -module-unload battery
+	fi
+
+	if [ -f "$keyboard" ]; then
+		LAYOUT=$(grep XKBLAYOUT < "$keyboard" | sed 's/XKBLAYOUT=//g')
+		if [ "$LAYOUT" == "$us" ]; then
+			enlightenment_remote -module-unload xkbswitch
+		fi
+	 fi
+	 if [ -f "$start_path" ]; then
+		if [[ -n "$E_RESTART" ]]; then
+			sed -i 's/elaptopcheck//g' "$start_path"
+		fi
+	fi
+else
+	echo "Error: For enlightenment usage only."
+fi
+exit 0

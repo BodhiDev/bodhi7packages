@@ -1,0 +1,13 @@
+Package: elaptopcheck
+Version: 1.06
+Section: utils
+Priority: optional
+Depends: acpi, xdg-user-dirs
+Architecture: all
+Maintainer: Robert Wiley <ylee@bodhilinux.com>
+Description: Bodhi Linux utility script
+ A simple utility for the moksha or enlightenment desktop.
+ .
+ If a battery is not detected, disable the battery module. If it is - enable it.
+ Extended for ISO support.
+ On other desktops prints and error and exits.

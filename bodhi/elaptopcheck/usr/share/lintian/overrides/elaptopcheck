@@ -1,0 +1,2 @@
+elaptopcheck: binary-without-manpage
+elaptopcheck: new-package-should-close-itp-bug
