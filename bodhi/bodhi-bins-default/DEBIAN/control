@@ -1,0 +1,10 @@
+Package: bodhi-bins-default
+Version: 0.0.1-1
+Section: utils
+Priority: optional
+Maintainer: Robert (ylee) Wiley <ylee@bodhilinux.com>
+Depends: efl-version | libefl-dev, elaptopcheck, evas-image-dim, x11-xserver-utils
+Architecture: all
+Homepage: https://www.bodhilinux.com/
+Description: Useful Utilities for Bodhi
+ A few utilities for the Moksha/Enlightenment Desktop

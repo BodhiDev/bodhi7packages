@@ -1,0 +1,205 @@
+#!/bin/bash
+# Copyright 2021 ylee@bodhilinux.com
+# 
+# This work is free. You can redistribute it and/or modify it under the
+# terms of the Do What The Fuck You Want To Public License, Version 2,
+# as published by Sam Hocevar. See http://www.wtfpl.net/ for more details.
+
+# Note: I use a program I wrote, efl-version, to determine efl version
+#       and I am assuming the efl version is the same as the efreet version
+#       perhaps not necessarily true on debian (others?) where it is possible to
+#       install efl compontents separately.
+#       In the event that efl-version is not installed (in PATH) this program will
+#       fallback on pkg-config and assumes it as well as efl development files are installed.
+
+# I don't deal with non debian/standard --prefix instaations
+# should I kill efreetd first, is that even possible as it restarts...
+# FIXME: do I need to delete subdirs_$USER-VirtualBox.eet also
+# I only handle/test archs i686 and x86_64, unsure how it acts on other archs
+
+set -eu 
+
+print_help()
+{
+  printf '%s\n' "Bodhi's magical efreet cli tool."
+  printf '\t%s\n\n' "This tool attempts to fix a broken efreet cache. Use at your own risk."
+  printf 'Usage: %s [option] ...\n\n' "$0"
+  printf '%s %s\n\n'  "$0" "with no options, deletes all efreet caches, regenerates them all and resarts the WM"
+  printf 'Options:\n'
+  printf '\t%s\n' "-i, --icons:   Regenerate efreets icon cache "
+  printf '\t%s\n' "-d, --desks:   Regenerate efreets application data cache"
+  printf '\t%s\n' "-m, --mimes:   Regenerate efreets mime types cache"
+  printf '\t%s\n' "-s, --safe:    Do not delete efreet cache(s) before regeneration"
+  printf '\t%s\n' "--restart:     Restart Window Manager after regeneration of cache(s)"
+  printf '\t%s\n' "-l, --license: Prints license and exits"
+  printf '\t%s\n' "-v, --version: Prints version and exits"
+  printf '\t%s\n' "-h, --help:    Prints help and exits"
+}
+
+# # When called, the process ends.
+# Args:
+#   $1: The exit message (print to stderr)
+#   $2: The exit code (default is 1)
+# if env var _PRINT_HELP is set to 'yes', the usage is print to stderr (prior to $1)
+die()
+{
+  local _ret="${2:-1}"
+  test "${_PRINT_HELP:-no}" = yes && print_help >&2
+  echo -e "$1" >&2
+  exit "${_ret}"
+}
+
+# THE DEFAULTS INITIALIZATION
+_ICONS=0
+_DESKS=0
+_MIMES=0
+_SAFE=0
+_RESET=0
+
+# Check to ensure efreet is actually installed
+if ! hash efreetd 2>/dev/null; then
+  PRINT_HELP=no die "FATAL ERROR: EFreet is not installed!!" 1
+fi
+
+if hash efl-version 2>/dev/null; then
+  EFL_VERSION=$(efl-version | cut -c 1-4)
+else
+  pkg-config --modversion efl >/dev/null;
+  if [ $? -eq 1 ]; then
+    echo "Development files for EFL are not installed."
+    echo "Install either efl-version or libefl-dev."
+    echo
+    # FIXME: add link for efl-version
+    _PRINT_HELP=no die "FATAL ERROR: Unable to determine efl version." 1
+  else
+    EFL_VERSION=$(pkg-config --modversion efl | cut -c 1-4)
+  fi
+fi
+ARCH=$(uname -i | sed -e 's/686/386/g')
+EFREET_PATH="/usr/lib/$ARCH-linux-gnu/efreet/v-$EFL_VERSION"
+if [ ! -d "$EFREET_PATH" ]; then
+  PRINT_HELP=no die "FATAL ERROR: efreet path does not exist: $EFREET_PATH" 1
+fi
+
+xdg_data_dirs()
+{ 
+  local IFS=':'
+  local PATHS=''
+
+  read -ra ADDR <<< "$XDG_DATA_DIRS"
+  for i in "${ADDR[@]}"; do   # access each element of array
+      PATHS+=" \"$i/$1\""
+  done
+  echo "$PATHS"
+}
+
+ICON_PATHS="/usr/share/icons ~/.icons /usr/local/share/icons/ /usr/share/pixmaps/ /usr/local/share/pixmaps/"
+ICON_PATHS+=" $(xdg_data_dirs "icons")"
+DESK_PATHS="/usr/share/applications ~/.local/share/applications/"
+DESK_PATHS+=" $(xdg_data_dirs "applications")"
+
+do_all()
+{
+  echo "do all"
+  if [ $_SAFE -eq 0 ]; then
+   rm -rf ~/.cache/efreet
+  fi
+  "$EFREET_PATH/efreet_icon_cache_create" -d "$ICON_PATHS" -e .png .svg .jpg .xpm
+  "$EFREET_PATH/efreet_desktop_cache_create" -d "$DESK_PATHS" ~/.local/share/applications
+  "$EFREET_PATH/efreet_mime_cache_create"
+   enlightenment_remote -restart
+  exit 0
+}
+
+danger()
+{
+  echo "Really delete efreet cache and regenerate all data?"
+  if [[ "$(read -r -e -p 'Continue? [y/N]> '; echo "$REPLY")" == [Yy]* ]]; then
+    do_all
+  else
+    exit 0
+  fi
+}
+
+# The parsing of the command-line
+parse_commandline()
+{
+  if [ -z "$*" ]; then danger; fi
+  while test $# -gt 0
+  do
+    _key="$1"
+    case "$_key" in
+      -i|--icons)
+        _ICONS=1
+        ;;
+      -d|--desks)
+        _DESKS=1
+        ;;
+      -m|--mimes)
+        _MIMES=1
+        ;;
+      -s|--safe)
+        _SAFE=1
+        ;;
+      --restart)
+        _RESET=1
+        ;;
+      -l|--license)
+        echo "Do What The Fuck You Want To Public License, Version 2"
+        echo "See http://www.wtfpl.net/ for more details."
+        echo -e "\nTHIS SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESSED OR IMPLIED\n"
+        echo "Copyright 2021 Bodhi Linux, https://www.bodhilinux.com"
+        exit 0
+        ;;
+      -v|--version)
+        printf '%s v%s\n\n%s\n' "$0" "0.1" ''
+        exit 0
+        ;;
+      -h|--help)
+        print_help
+        exit 0
+        ;;
+      *)
+        _PRINT_HELP=yes die "\nFATAL ERROR: Got an unexpected argument '$1'" 1
+        ;;
+    esac
+    shift
+  done
+}
+
+parse_commandline "$@"
+
+sum=$(($_ICONS + $_MIMES + $_DESKS))
+if [ $sum -eq 3 ]; then
+  do_all
+fi
+
+if [ $sum -eq 0 ] && [ $_RESET -eq 1 ]; then
+  _PRINT_HELP=yes die "\nFATAL ERROR: Argument '$1' must be used with one or more cache to delete" 1
+fi
+
+if ((_ICONS)) ; then
+# FIXME: do I need to delete subdirs_$USER-VirtualBox.eet also
+  if [ $_SAFE -eq 0 ]; then
+     rm ~/.cache/efreet/icon*
+  fi
+   "$EFREET_PATH/efreet_icon_cache_create" -d "$ICON_PATHS" -e .png .svg .jpg .xpm
+fi
+
+if ((_DESKS)) ; then
+  if [ $_SAFE -eq 0 ]; then
+     rm ~/.cache/efreet/desktop*
+  fi
+  "$EFREET_PATH/efreet_desktop_cache_create" -d "$DESK_PATHS"
+fi
+
+if ((_MIMES)); then
+  if [ $_SAFE -eq 0 ]; then
+     rm ~/.cache/efreet/mime*
+  fi
+  "$EFREET_PATH/efreet_mime_cache_create"
+fi
+
+if [ $_RESET -eq 1 ]; then
+  enlightenment_remote -restart
+fi

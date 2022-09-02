@@ -1,0 +1,6 @@
+e787e5f4e5ef868070a95ee3a6a84c6f  usr/bin/efreetcc
+69eb2d0511de605ac16326548934d6fc  usr/bin/gksudo
+afaf829a0ef5cc3477abf7e1de60b806  usr/bin/set-background-bodhi
+f521c38684c149214e8c6e98a3f8b0fd  usr/share/doc/bodhi-bins-default/changelog.Debian.gz
+58aa44a523d4a3a1fda8170a900b38f9  usr/share/doc/bodhi-bins-default/copyright
+6f1a8a059cdf60579b582dc019644040  usr/share/lintian/overrides/bodhi-bins-default

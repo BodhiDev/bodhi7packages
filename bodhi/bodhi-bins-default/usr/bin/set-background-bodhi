@@ -1,0 +1,147 @@
+#!/bin/bash
+# Copyright 2021 ylee@bodhilinux.com
+#
+
+# "set-background-bodhi" is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License as published
+# by the Free Software Foundation; either version 3 of the License, or (at
+# your option) any later version.
+#
+# "set-background-bodhi" is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with "set-background-bodhi"; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+
+# FIXME: Deal with shellcheck errors
+# FIXME: need a help screen
+if [ -z "$*" ]; then
+	echo "Fatal Error: No arguments!!"
+	exit 1
+fi
+
+# FIXME: all these tests need simplified if possible
+if ! command -v enlightenment_remote > /dev/null 2>&1; then
+	echo "Fatal Error: enlightenment_remote not found!!"
+	exit 1
+fi
+
+if ! command -v edje_cc > /dev/null 2>&1; then
+	echo "Fatal Error: edje_cc not found!!"
+	exit 1
+fi
+
+if ! command -v evas-image-dim > /dev/null 2>&1; then
+	echo "Fatal Error: evas-image-dim not installed!!"
+	exit 1
+fi
+
+# FIXME: can we do without this?
+if ! command -v xrandr > /dev/null 2>&1; then
+	echo "Fatal Error: xrandr not installed!!"
+	exit 1
+fi
+
+if [ -r "$1" ]; then
+	WP="$1"
+else
+	echo "Fatal Error: can not read file $1!!"
+	exit 1
+fi
+
+# this test to see if we have an image
+#   FIXME: does moksha support all the valid image formats that pass here
+#          e supports images and videos and prob formats moksha does not
+#   this code can be fooled but should be accurate enough for our purposes
+#   see https://unix.stackexchange.com/questions/189364/script-to-determine-if-files-are-images
+if ! file "$WP" |grep -qE 'image|bitmap'; then
+	echo "File '$WP' is not an image!!"
+	exit 1
+fi
+
+# Needs Modules/System/DBus Extension loaded to work
+# FIXME: load module needed here
+if [[ "$DESKTOP" == *"Enlightenment"* ]] || [[ "$DESKTOP" == *"Moksha"* ]]; then
+	# Needs Modules/System/DBus Extension loaded to work
+	enlightenment_remote -module-load msgbus
+	enlightenment_remote -module-enable msgbus
+	OUTPUT_DIR="$HOME/.e/e/backgrounds"
+
+	TEMPLATE='
+	images { image: "@IMAGE@" LOSSY 90; }
+	collections {
+		group {
+		name: "e/desktop/background";
+		data { item: "style" "4"; item: "noanimation" "1"; }
+		max: @WIDTH@ @HEIGHT@;
+		parts {
+			part {
+			name: "bg";
+			mouse_events: 0;
+			description {
+				state: "default" 0.0;
+				aspect: @ASPECT@ @ASPECT@;
+				aspect_preference: NONE;
+				image { normal: "@IMAGE@"; scale_hint: STATIC; }
+			}
+			}
+		}
+		}
+	}
+	'
+	ODIR="$OUTPUT_DIR/thunar_wallpaper_$RANDOM"
+	mkdir -p "$ODIR"
+	cp "$WP" "$ODIR"
+
+	OFILE="$ODIR/thunar_wallpaper_$RANDOM"
+	DIMENSION="$(evas-image-dim "$WP")"
+
+	if [ -n "$DIMENSION" ]; then
+			WIDTH="$(echo "$DIMENSION" | cut -dx -f1)"
+			HEIGHT="$(echo "$DIMENSION" | cut -dx -f2)"
+			TEMP="$(basename "$WP")"
+			# shellcheck disable=SC2001
+			IMAGE="$(echo "$TEMP" | sed 's/[^[:alnum:]_-]/\\&/g')"
+			if [ -z "$HEIGHT" ] || [ "$HEIGHT" = "0" ]; then
+					ASPECT="0.0"
+			else
+					ASPECT="$(echo "scale=9; $WIDTH/$HEIGHT" | bc)"
+			fi
+	fi
+
+	printf "%s" "$TEMPLATE" | \
+	sed "s/@ASPECT@/$ASPECT/g; s/@WIDTH@/$WIDTH/g; s/@HEIGHT@/$HEIGHT/g; s|@IMAGE@|$IMAGE|g" > "$OFILE.edc"
+	edje_cc -id "$ODIR" "$OFILE.edc" -o "$OFILE.edj"
+	cp "$OFILE.edj" "$OUTPUT_DIR"
+	EDJ="$OUTPUT_DIR/$(basename "$OFILE")"
+	rm -rf "$ODIR"
+
+	## Get the current number of virtual desktops
+	desk_x_count=$(enlightenment_remote -desktops-get | awk '{print $1}')
+	desk_y_count=$(enlightenment_remote -desktops-get | awk '{print $2}')
+
+	## Get the current number of screens
+	screen_count=1
+	# If xrandr is available use it to get screen desk_x_count
+	if command -v xrandr >/dev/null 2>&1; then
+			screen_count=$(xrandr -q | grep -c ' connected')
+	fi
+
+	## Set the wallpaper for each virtual desktop
+	for ((x=0; x<desk_x_count; x++)); do
+			for ((y=0; y<desk_y_count; y++)); do
+					for ((z=0; z<screen_count; z++)); do
+							# -desktop-bg-add OPT1 OPT2 OPT3 OPT4 OPT5 Add a desktop bg definition.
+							# OPT1 = ContainerNo OPT2 = ZoneNo OPT3 = Desk_x. OPT4 = Desk_y. OPT5 = bg file path
+							enlightenment_remote -desktop-bg-add 0 "$z" "$x" "$y" "$EDJ.edj"&
+					done
+			done
+	done
+	exit 0
+fi
+
+# Should never happen
+exit 1

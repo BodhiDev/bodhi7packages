@@ -1,0 +1,4 @@
+#!/bin/bash
+# Copyright 2021 Bodhi Linux
+
+pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY $@
