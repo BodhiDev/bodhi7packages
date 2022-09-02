@@ -1,0 +1,27 @@
+#!/bin/sh
+
+set -e
+
+case "$1" in
+    configure|triggered)
+        if which systemctl >/dev/null 2>&1
+        then
+            echo "Reloading systemd"
+            systemctl enable ubuntu-system-adjustments.service
+            systemctl daemon-reload || true
+        fi
+
+        /usr/share/ubuntu-system-adjustments/systemd/start || true
+    ;;
+    abort-upgrade|abort-remove|abort-deconfigure)
+
+    ;;
+    *)
+        echo "postinst called with unknown argument \`$1'" >&2
+        exit 1
+    ;;
+esac
+
+exit 0
+
+

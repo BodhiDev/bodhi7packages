@@ -1,0 +1,5 @@
+ubuntu-system-adjustments: new-package-should-close-itp-bug
+# can't seem to override this one
+ubuntu-system-adjustments: package-installs-apt-preferences
+ubuntu-system-adjustments: maintainer-script-calls-systemctl
+ubuntu-system-adjustments: uses-implicit-await-trigger

@@ -1,0 +1,10 @@
+Package: ubuntu-system-adjustments
+Version: 0.0.1-1
+Architecture: all
+Maintainer: Robert (ylee) Wiley <ylee@bodhilinux.com>
+Section: admin
+Priority: optional
+Depends: python3 (>=3.8.2), bodhi-info-moksha | bodhi-info-enlightenment
+Description: Adjustments to the Ubuntu package base
+ These adjustments modify some unwanted behaviors of the Ubuntu package 
+ base and are specific to this base.

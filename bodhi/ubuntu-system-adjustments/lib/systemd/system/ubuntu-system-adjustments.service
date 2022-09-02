@@ -1,0 +1,11 @@
+[Unit]
+Description=Ubuntu system adjustments
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+ExecStart=/usr/share/ubuntu-system-adjustments/systemd/start
+ExecStop=/usr/share/ubuntu-system-adjustments/systemd/stop
+
+[Install]
+WantedBy=multi-user.target
