@@ -1,0 +1,29 @@
+Source: python-efl
+Maintainer: Robert (ylee) Wiley <ylee@bodhilinux.com>
+Section: python
+Priority: optional
+Build-Depends: dh-python, debhelper (>= 9), libefl-dev (>= 1.26.0), python-dbus-dev (>= 0.83.0), python3-all, python3-all-dev
+Standards-Version: 4.5.0
+Homepage: http://enlightenment.org
+Rules-Requires-Root: no
+
+Package: python3-efl
+Architecture: any
+Depends: ${misc:Depends}, ${python:Depends}, ${shlibs:Depends}, python3
+Description: Python3 bindings for Enlightenment Foundation Libraries
+ EFL is a collection of libraries for handling many common tasks a
+ developer may have such as data structures, communication, rendering,
+ widgets and more.
+ . 
+ PYTHON-EFL are the python bindings for the whole EFL stack (eo, evas, ecore,
+ edje, emotion, ethumb and elementary)
+
+Package: python3-efl-dbg
+Architecture: any
+Depends: python3-efl (=${binary:Version})
+Description: Python3 bindings for Enlightenment Foundation Libraries
+ EFL is a collection of libraries for handling many common tasks a
+ developer may have such as data structures, communication, rendering,
+ widgets and more.
+ . 
+ Debug symbols for python3-efl

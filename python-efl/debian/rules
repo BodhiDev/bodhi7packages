@@ -1,0 +1,14 @@
+#!/usr/bin/make -f
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+
+export PYBUILD_NAME=efl
+%:
+	dh $@ --with python3 --buildsystem=pybuild
+
+.PHONY: override_dh_strip
+
+override_dh_strip:
+	dh_strip --dbg-package=python3-efl-dbg
