@@ -1,0 +1,306 @@
+terminology (1.12.0-3) jammy; urgency=low
+
+   * BL7 release
+   * Commit: dab92df313 README: add about running on the framebuffer
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Sat, 03 Sep 2022 10:24:17 -0400
+
+terminology (1.12.0-2) focal; urgency=low
+
+   * Wrong version fix
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Mon, 03 Jan 2022 14:14:43 -0500
+
+terminology (1.12.0-1) focal; urgency=low
+
+   * New default theme
+   * Colorschemes generate their own configuration file, allowing for
+      easy management of outside contributions
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Mon, 03 Jan 2022 04:05:41 -0500
+
+terminology (1.11.0-1) focal; urgency=low
+
+   * Support for focus reporting escape codes
+   * Translation updates for Finnish and Ukrainian
+   * Fix handling of escape code OSC 11
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Sat, 13 Nov 2021 13:12:52 -0500
+
+terminology (1.10.0-1) bionic; urgency=low
+
+   * Colorshemes: add Black scheme
+   * New translations: Sinhala, Hebrew
+   * Translation updates for Chinese (Simplified), Croatian, Danish, French,
+      Greek, Italian, Norwegian Bokmål, Polish, Portuguese,
+      Portuguese (Brazil), Russian, Spanish, Swedish, Ukrainian
+   * Focus font search in the Font settings panel
+   * Fix issue when configuration was marked as Temporary
+   * Stop jumping down to the bottom when configuration changed
+   * Respect login shell on start
+   * Fix drag'n'drop of paths or media on the terminal
+   * Fix libintl detection
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Mon, 04 Oct 2021 06:42:47 -0400
+
+terminology (1.9.0-1) bionic; urgency=low
+
+   * Colorshemes: easily change the colors of the terminal
+   * Add the following color schemes: Tango Dark, Tango light, Dracula,
+     Belafonte Day, Belafonte Night, Material, Fahrenheit,
+     Tomorrow Night Burns, PaleNight, Soft Era, One Dark, Cobalt2
+   * New translations: Chinese (Simplified), Japanese,
+     Norwegian Bokmål, Russian and Ukrainian
+   * Handle `OSC 12` to change the cursor color
+   * Translation updates for Catalan, Croatian, Danish, Dutch, French,
+     German, Italian, Spanish
+   * Add font search in the fonts panel
+   * Set `TERM` to `xterm_256color` by default
+   * Focus simplifications when going into the settings
+   * Tests: better compatibility with debian-based systems
+   * Fix `tyls` with png/jpg thumbnails
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Tue, 19 Jan 2021 11:31:43 +0400
+
+terminology (1.8.1-2) focal; urgency=medium
+
+  * Switch to variable in terminology.install: fix FTBFS with -A
+
+ -- Ross Vandegrift <rvandegrift@debian.org>  Wed, 12 Aug 2020 11:47:38 -0700
+
+terminology (1.8.1-1) unstable; urgency=medium
+
+  * New upstream release.
+  * d/terminology-tests.*: remove unused files
+  * Minor lintian cleanups:
+    + d/p/0002-Fix-tests-for-debian-packaging.patch: set Forwarded: not-needed
+    + d/control: add missing Vcs-Git info
+    + Move test executatables from /usr/lib -> /usr/libexec
+    + d/terminology-data.lintian-overrides: update renamed tag
+  * d/control: switch to debhelper compat 13, no changes required
+
+ -- Ross Vandegrift <rvandegrift@debian.org>  Tue, 11 Aug 2020 22:56:11 -0700
+
+terminology (1.8.0-1) unstable; urgency=medium
+
+  * d/patches/*: defuzz
+  * d/copyright: update for changes since v1.7.0
+
+ -- Ross Vandegrift <rvandegrift@debian.org>  Mon, 27 Jul 2020 22:20:16 -0700
+
+terminology (1.7.0-1) unstable; urgency=medium
+
+  * New upstream release.
+  * d/terminology-data.lintian-override: update line number in override
+  * d/patches:
+    + fix-del-backspace-key.patch: defuzz
+    + 0002-Fix-tests-for-debian-packaging.patch: add new hash override
+  * d/tests/control: setup a writeable $HOME for the tests
+
+ -- Ross Vandegrift <rvandegrift@debian.org>  Mon, 11 May 2020 22:29:36 -0700
+
+terminology (1.6.0-2) unstable; urgency=medium
+
+  * Upload to unstable
+
+  [ Salman Mohammadi ]
+  * d/control: update homepage address
+
+  [ Ross Vandegrift ]
+  * d/gbp.conf: update config to point to debian/sid branch.
+  * d/control: update to Standards-Version 4.5.0, no changes needed.
+  * d/control: bump EFL Build-Depends to 1.20 to match upstream requirements
+
+ -- Ross Vandegrift <rvandegrift@debian.org>  Wed, 29 Jan 2020 22:30:16 -0800
+
+terminology (1.6.0-1) experimental; urgency=medium
+
+  * d/patches/fix-del-backspace-key.patch: defuzz
+  * d/p/0002-Fix-two-tests-for-debian-packaging.patch: defuzz
+  * terminology-data: mark as Multi-Arch: foreign
+
+ -- Ross Vandegrift <rvandegrift@debian.org>  Sat, 16 Nov 2019 17:35:49 -0800
+
+terminology (1.5.0-3) experimental; urgency=medium
+
+  * d/control:
+    + bump Standards-Version to 4.4.0, no changes needed
+    + update Vcs-Git branch location for experimental
+  * Update to debhelper 12, compat level 12
+
+ -- Ross Vandegrift <rvandegrift@debian.org>  Sat, 10 Aug 2019 09:10:21 -0700
+
+terminology (1.5.0-2) experimental; urgency=medium
+
+  * d/rules: only install tytest when building arch-dependent binary
+    packages (Closes: #932804)
+
+ -- Ross Vandegrift <rvandegrift@debian.org>  Tue, 30 Jul 2019 17:33:39 -0700
+
+terminology (1.5.0-1) experimental; urgency=medium
+
+  * New upstream release. (Closes: #912356)
+  * d/tests/control: depend on gcc so dpkg-architecture doesn't complain
+  * d/patches/*: defuzz, update for new release
+  * d/copyright: update
+
+ -- Ross Vandegrift <rvandegrift@debian.org>  Sun, 21 Jul 2019 10:38:36 -0700
+
+terminology (1.4.1-1) experimental; urgency=medium
+
+  * New upstream release. (Closes: #908843)
+  * d/gbp.conf:
+    + reduce duplication, make "gbp pull" easy
+    + drop cleaner to fix pipeline runs
+  * d/gitlab-ci.yml: enable salsa-ci pipeline
+  * d/control: use my debian email
+  * Enable terminology tests & autopkgtest
+  * d/p/fix-del-backspace-key.patch: defuzz
+  * Bump Standards-Version to 4.3.0, no changes required
+
+ -- Ross Vandegrift <rvandegrift@debian.org>  Mon, 17 Jun 2019 20:24:15 -0700
+
+terminology (1.3.2-1) unstable; urgency=low
+
+  * New upstream version 1.3.2.
+  * Simplify watchfile by using @ARCHIVE_EXT@.
+
+ -- Andreas Metzler <ametzler@debian.org>  Sun, 23 Dec 2018 06:42:47 +0100
+
+terminology (1.3.1-1) unstable; urgency=high
+
+  * New upstream release.
+    + Fix for CVE-2018-20167: Disable special escape handling for unknown media
+      types (Closes: #916630).
+  * d/p/0002-Minor-manpage-improvements.patch: drop, applied upstream
+
+ -- Ross Vandegrift <ross@kallisti.us>  Sun, 16 Dec 2018 10:28:36 -0800
+
+terminology (1.3.0-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Drop remnants of lz4 support, all support removed by upstream.
+  * Bump Standards-Version to 4.2.1, no changes required.
+  * d/p/0002-Minor-manpage-improvements.patch: add manpage for the ty*
+    helpers, fix terminology(1) header. (Closes: #836300)
+
+ -- Ross Vandegrift <ross@kallisti.us>  Sun, 25 Nov 2018 14:44:15 -0800
+
+terminology (1.2.1-1) unstable; urgency=medium
+
+  * New upstream release (Closes: #898384)
+
+ -- Ross Vandegrift <ross@kallisti.us>  Mon, 14 May 2018 19:49:50 -0700
+
+terminology (1.2.0-1) unstable; urgency=medium
+
+  * New upstream release (Closes: #896930)
+
+  [ Ross Vandegrift ]
+  * d/gbp.conf: point gbp to debian/sid branch
+  * d/control:
+    + Bump Standards-Version to 4.1.4, no changes required.
+    + Add branch name to Vcs-Git to fix vcswatch.
+  * Upgrade to debhelper 11.
+  * Convert to new meson build system.
+  * d/patches:
+    + fix-del-backspace-key.path: defuzz
+
+  [ Andreas Metzler ]
+  * refresh use-system-lz4.patch
+  * update README.source with better gbp workflow.
+
+ -- Ross Vandegrift <ross@kallisti.us>  Sat, 05 May 2018 10:37:44 -0700
+
+terminology (1.1.1-3) unstable; urgency=low
+
+  [ Ross Vandegrift ]
+  * Update Vcs URLs for alioth -> salsa transition
+
+  [ Andreas Metzler ]
+  * Drop dead, unapplied patches (thanks, lintian!):
+    cherrypick-geneet-fix.patch
+    fix-manpage-invalid-newline-charater.patch
+    fix-terminology-desktop-keywords.patch
+  * Upload to unstable.
+  * Add myself to uploaders.
+
+ -- Andreas Metzler <ametzler@debian.org>  Mon, 16 Apr 2018 19:20:18 +0200
+
+terminology (1.1.1-2) experimental; urgency=low
+
+  * d/control:
+    + drop Build-Dep on libelementary-dev, it's in libefl-all-dev now
+    + Update Vcs links for terminology git
+    + Bump Standards-Version to 4.1.2
+    + Set Rules-Requires-Root to disable building as root
+  * d/copyright: use https links for Format, Source
+  * Use fake_home.sh from efl for build, edje_cc writes to $HOME (Closes:
+    #884019)
+  * d/watch: use https in watch url
+
+ -- Ross Vandegrift <ross@kallisti.us>  Sun, 10 Dec 2017 12:52:34 -0800
+
+terminology (1.1.1-1) experimental; urgency=medium
+
+  * Team upload.
+  * New upstream release
+  * debian/copyright: update for recent contributions
+
+ -- Ross Vandegrift <ross@kallisti.us>  Fri, 22 Sep 2017 20:06:26 -0700
+
+terminology (1.1.0-1) experimental; urgency=medium
+
+  * Team upload.
+  * New upstream release
+  * Update gbp.conf for experimental branch
+
+ -- Ross Vandegrift <ross@kallisti.us>  Mon, 04 Sep 2017 21:03:31 -0700
+
+terminology (1.0.0-1) experimental; urgency=medium
+
+  * debian/gbp.conf: import & build upstream tarballs
+  * debian/patches/use-system-lz4.patch: fixup, defuzz
+  * debian/patches/fix-del-backspace-key.patch: fixup, defuzz
+  * Build-Depend on EFL >= 1.18 and simplify package list (Closes: #848370)
+
+ -- Ross Vandegrift <ross@kallisti.us>  Fri, 13 Jan 2017 13:50:18 -0500
+
+terminology (0.9.1-1) unstable; urgency=high
+
+  [ Ross Vandegrift ]
+  * New upstream release
+    - Fix for "CVE-2015-8971: Escape Sequence Command Execution
+      vulnerability" (Closes: #843434)
+  * fix-minus-signs-manpage.patch: drop patch, fixed upstream
+  * use-system-lz4.patch: defuzz
+  * fix-del-backspace-key.patch: defuzz
+  * Provide x-terminal-emulator alternative (Closes: #774111)
+  * debian/copyright: remove unused ltmain.sh paragraph
+  * Add gbp.conf and notes on usage in README.source
+  * Enable build hardening options
+  * Suggest libemotion-players for media support (Closes: #773057, #766705)
+  * Reformat package descriptions (Closes: #779494, #782082)
+  * Use secure Vcs- URLs in debian/control
+  * Bump Standards-Version to 3.9.8
+  * New Maintainer.  Thanks to Anthony for original work. (Closes: #844244)
+  * debian/gbp.conf: import & build upstream tarballs
+
+  [ Nicolas Braud-Santoni ]
+  * Normalize links and use HTTPS
+
+ -- Ross Vandegrift <ross@kallisti.us>  Sun, 11 Dec 2016 12:25:35 -0500
+
+terminology (0.7.0-1) unstable; urgency=medium
+
+  * New upstream release
+  * Removed patches included upstream, refreshed lz4 patch
+  * Updated Standards-Version to 3.9.6
+
+ -- Anthony F McInerney <afm404@gmail.com>  Thu, 16 Oct 2014 16:30:35 +0100
+
+terminology (0.6.1-1) unstable; urgency=medium
+
+  * Initial release (Closes: #718031)
+
+ -- Anthony F McInerney <afm404@gmail.com>  Mon, 25 Aug 2014 14:23:53 +0100

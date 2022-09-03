@@ -1,0 +1,10 @@
+/usr/bin/terminology
+/usr/bin/tyalpha
+/usr/bin/tybg
+/usr/bin/tycat
+/usr/bin/tyls
+/usr/bin/typop
+/usr/bin/tyq
+/usr/bin/tysend
+usr/bin/tytest /usr/libexec/${DEB_HOST_MULTIARCH}/terminology
+/usr/share/applications

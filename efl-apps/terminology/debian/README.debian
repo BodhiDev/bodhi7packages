@@ -1,0 +1,7 @@
+There is a suggests on package libelementary-bin so that you can run elementary_config
+ and change the default renderer from software to something sensible like opengl 
+otherwise the software renderer will use your cpu quite a bit.
+
+To make terminology work with input methods/IMF in general you need:
+export ECORE_IMF_MODULE="xim"
+export XMODIFIERS="@im=none"

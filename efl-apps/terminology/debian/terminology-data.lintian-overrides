@@ -1,0 +1,4 @@
+# this line documents control sequences with embedded newline chars,
+# hyphenation would make it even more confusing.
+terminology-data binary: groff-message usr/share/man/man1/terminology.1.gz*575*cannot adjust line
+terminology-data: manpage-has-errors-from-man usr/share/man/man1/terminology.1.gz 580: warning [p 7, 11.3i]: cannot adjust line

@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -e
+
+#DEBHELPER#
+
+if [ "$1" = "configure" ]; then
+    update-alternatives --install /usr/bin/x-terminal-emulator \
+			x-terminal-emulator /usr/bin/terminology 40
+fi

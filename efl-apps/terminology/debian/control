@@ -1,0 +1,55 @@
+Source: terminology
+Section: x11
+Priority: optional
+Maintainer: Robert Wiley <ylee@bodhilinux.com>
+Build-Depends: debhelper,
+               libefl-dev (>= 1.26),
+               meson
+Standards-Version: 4.5.0
+Homepage: https://www.enlightenment.org/about-terminology
+Rules-Requires-Root: no
+
+Package: terminology
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, terminology-data (= ${source:Version}), libefl
+Provides: x-terminal-emulator
+Description: Enlightenment efl based terminal emulator
+ It emulates a slightly extended vt100 with some extensions and bling:
+  * Most escapes supported by xterm, rxvt, Xterm 256 color, etc. work
+  * Background effects, Transparency, bitmap and scalable fonts supported
+  * Themes for the layout and design, and a visual bell.
+  * URL, file path and email address detection and link-handling
+  * Inline display of link content
+  * Multiple copy and paste selections and buffer support
+  * Works in X11, Wayland and directly in the Linux framebuffer (fbcon)
+  * Finger/touch controlled, scan scale by UI scaling factors
+  * Render using OpenGL or OpenGL-ES2 or Software mode.
+  * Can display inlined multimedia, multiple tabs and split into multiple panes
+  * Block text selection. Drag and drop of text selections and links
+  * Can stream media from URLs
+  * Tab switcher has live thumbnail content
+  * Single process, multiple windows/terminals support
+
+Package: terminology-data
+Architecture: all
+Depends: ${misc:Depends}
+Enhances: terminology
+Multi-Arch: foreign
+Description: Enlightenment efl based terminal emulator data
+ It emulates a slightly extended vt100 with some extensions and bling:
+  * Most escapes supported by xterm, rxvt, Xterm 256 color, etc. work
+  * Background effects, Transparency, bitmap and scalable fonts supported
+  * Themes for the layout and design, and a visual bell.
+  * URL, file path and email address detection and link-handling
+  * Inline display of link content
+  * Multiple copy and paste selections and buffer support
+  * Works in X11, Wayland and directly in the Linux framebuffer (fbcon)
+  * Finger/touch controlled, scan scale by UI scaling factors
+  * Render using OpenGL or OpenGL-ES2 or Software mode.
+  * Can display inlined multimedia, multiple tabs and split into multiple panes
+  * Block text selection. Drag and drop of text selections and links
+  * Can stream media from URLs
+  * Tab switcher has live thumbnail content
+  * Single process, multiple windows/terminals support
+ .
+ This package provides the shared data for all architectures.

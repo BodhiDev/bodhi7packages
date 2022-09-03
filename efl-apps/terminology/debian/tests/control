@@ -1,0 +1,6 @@
+Test-Command: /usr/bin/env HOME=$(mktemp -d)
+ /usr/libexec/terminology/tests/run_tests.sh -v
+ -t /usr/libexec/$(dpkg-architecture -qDEB_HOST_MULTIARCH)/terminology/tytest
+ -r /usr/libexec/terminology/tests/tests.results
+ -d /usr/libexec/terminology/tests
+Depends: gcc, terminology

@@ -1,0 +1,6 @@
+/usr/share/icons
+/usr/share/man
+/usr/share/terminology
+/usr/share/locale
+tests/*.sh /usr/libexec/terminology/tests
+tests/tests.results /usr/libexec/terminology/tests

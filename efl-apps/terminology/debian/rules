@@ -1,0 +1,22 @@
+#!/usr/bin/make -f
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
+
+%:
+	dh $@
+
+override_dh_auto_configure:
+	dh_auto_configure -- -Dtests=true
+
+override_dh_auto_build:
+	$(CURDIR)/debian/fake_home.sh dh_auto_build --verbose
+
+override_dh_install:
+	dh_install -XXFONT.txt -XTERMINUS.txt
+
+override_dh_installdeb:
+	chmod -x /home/ylee/code/terminology/debian/terminology-data/usr/libexec/terminology/tests/tests.results

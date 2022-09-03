@@ -1,0 +1,12 @@
+Notes on git-buildpackage and new releases
+------------------------------------------
+
+1 Make sure you are on the debian/sid (or debian/experimental) branch
+git checkout debian/sid
+
+2 Add a remote pointing to the upstream repository if it is not yet present
+git remote add upstream https://git.enlightenment.org/apps/terminology.git
+
+3 Then gbp can do all the heavy lifting:
+git fetch --tags upstream
+gbp import-orig --uscan

@@ -1,0 +1,12 @@
+Added as per Terminology Developers request: erase (backspace) sends DEL on debian by Boris Faure <billiob@gmail.com>
+--- a/src/bin/config.c
++++ b/src/bin/config.c
+@@ -573,7 +573,7 @@
+         config->urg_bell = EINA_TRUE;
+         config->multi_instance = EINA_FALSE;
+         config->xterm_256color = EINA_FALSE;
+-        config->erase_is_del = EINA_FALSE;
++        config->erase_is_del = EINA_TRUE;
+         config->custom_geometry = EINA_FALSE;
+         config->drag_links = EINA_FALSE;
+         config->login_shell = EINA_FALSE;
