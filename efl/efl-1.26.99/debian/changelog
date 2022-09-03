@@ -1,4 +1,4 @@
-efl (1.26.99-0focal0) jammy; urgency=low
+efl (1.26.99-0jammy0) jammy; urgency=low
 
   * Initial build for Jammy Jellyfish
   * Commit: 6c642eb12b efl: Disable examples by default
