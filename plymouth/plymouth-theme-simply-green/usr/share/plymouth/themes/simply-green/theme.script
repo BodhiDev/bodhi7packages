@@ -1,0 +1,204 @@
+### Black Background
+//Window.SetBackgroundTopColor(0.18, 0.18, 0.18);
+//Window.SetBackgroundBottomColor(0.18, 0.18, 0.18);
+Window.SetBackgroundTopColor(0, 0, 0);
+Window.SetBackgroundBottomColor(0.1, 0.1, 0.1);
+
+bg_image = Image("background.png");
+
+# Compute screen/image ratio and scale the background accordingly
+
+window_max_width = Window.GetX() * 2 + Window.GetWidth();
+window_max_height = Window.GetY() * 2 + Window.GetHeight();
+screen_ratio = window_max_width / window_max_height;
+bg_image_ratio = bg_image.GetWidth() / bg_image.GetHeight();
+if (screen_ratio > bg_image_ratio)
+    bg_scale_factor = window_max_width / bg_image.GetWidth();
+else
+    bg_scale_factor = window_max_height / bg_image.GetHeight();
+scaled_bg_image = bg_image.Scale(bg_image.GetWidth() * bg_scale_factor,
+                                 bg_image.GetHeight() * bg_scale_factor);
+
+#---- Display background ---------------
+bg_sprite = Sprite(scaled_bg_image);
+bg_sprite.SetPosition(Window.GetX() + Window.GetWidth() / 2 - scaled_bg_image.GetWidth() / 2,
+                      Window.GetY() + Window.GetHeight() / 2 - scaled_bg_image.GetHeight() / 2,
+                      -10000);
+                      
+# -------Bodhi logo -------------------- 
+LOGO_SIZE_PCT = 0.60;
+LOGO_CENTER_PCT.x = 0.5;
+LOGO_CENTER_PCT.y = 0.7;
+
+logo.image = Image("bodhi_logo.png");
+small_dimension = Math.Min(window_max_width, window_max_height);
+logo_size = small_dimension * LOGO_SIZE_PCT;
+logo_center.x = window_max_width * LOGO_CENTER_PCT.x;
+logo_center.y = window_max_height * LOGO_CENTER_PCT.y;
+logo_pos.x = logo_center.x - logo_size/2;
+logo_pos.y = logo_center.y - logo_size/2;
+logo_scale_factor = logo_size / logo.image.GetWidth();
+logo.image = logo.image.Scale(logo.image.GetWidth()  * logo_scale_factor,
+                  logo.image.GetHeight() * logo_scale_factor);
+logo.sprite = Sprite(logo.image);
+
+# ------ Throbber animation ------------- 
+THROBBER_SIZE_PCT = 0.10;
+THROBBER_CENTER_PCT.x = 0.491;
+THROBBER_CENTER_PCT.y = 0.55;
+throbber_size = small_dimension * THROBBER_SIZE_PCT;
+throbber_center.x = window_max_width * THROBBER_CENTER_PCT.x;
+throbber_center.y = window_max_height * THROBBER_CENTER_PCT.y;
+throbber_pos.x = throbber_center.x - throbber_size/2;
+throbber_pos.y = throbber_center.y - throbber_size/2;
+
+index = 0;
+while (1){
+    index_string = index;
+    if (index < 10) index_string = "0" + index_string;
+    frame_image[index] = ImageNew("throbber-" + index_string + ".png");
+    throbber_scale_factor = throbber_size / frame_image[index].GetWidth();
+    frame_image[index] = frame_image[index].Scale(frame_image[index].GetWidth()  * throbber_scale_factor,
+                  frame_image[index].GetHeight() * throbber_scale_factor);
+    if (!frame_image[index]) break;
+    index++;
+    }
+frame_count = index + 1;
+frame_index = 0;
+throbber_sprite = SpriteNew();
+
+fun refresh (){
+    if (status == "normal"){
+        frame_index += 20 / 50;
+        frame_index %= frame_count;
+        int_frame_index = MathInt(frame_index);
+        SpriteSetImage (throbber_sprite, frame_image[int_frame_index]);
+        throbber_sprite.SetPosition(throbber_pos.x, throbber_pos.y, -50);
+        SpriteSetOpacity (throbber_sprite, 1);
+        logo.sprite.SetPosition(logo_pos.x, logo_pos.y, -50);
+        SpriteSetOpacity (logo.sprite, 1);
+        }
+    else{
+        SpriteSetOpacity (throbber_sprite, 0);
+        logo.sprite.SetPosition(logo_pos.x, logo_pos.y, -50);
+        }
+    }
+
+PlymouthSetRefreshFunction (refresh);
+
+
+//---------------------------------------Dialogue stuff --------------------------------
+
+
+status = "normal";
+
+fun dialogue_setup(){
+    local.box;
+    local.lock;
+    local.entry;
+    local.bullet_image;
+    
+    box.image = ImageNew("box.png");
+    lock.image = ImageNew("lock.png");
+    entry.image = ImageNew("entry.png");
+    bullet_image = ImageNew("bullet.png");
+    
+    box.sprite = SpriteNew();
+    SpriteSetImage(box.sprite, box.image);
+    box.x = SpriteWindowGetWidth()  / 2 - ImageGetWidth (box.image)/2;
+    box.y = 1.1 * (SpriteWindowGetHeight() / 2 - ImageGetHeight(box.image)/2);
+    box.z = 10000;
+    SpriteSetPosition(box.sprite, box.x, box.y, box.z);
+    
+    lock.sprite = SpriteNew();
+    SpriteSetImage(lock.sprite, lock.image);
+    lock.x = box.x + ImageGetWidth(box.image)/2 - (ImageGetWidth(lock.image) + ImageGetWidth(entry.image)) / 2;
+    lock.y = box.y + ImageGetHeight(box.image)/2 - ImageGetHeight(lock.image)/2;
+    lock.z = box.z + 1;
+    SpriteSetPosition(lock.sprite, lock.x, lock.y, lock.z);
+    
+    entry.sprite = SpriteNew();
+    SpriteSetImage(entry.sprite, entry.image);
+    entry.x = lock.x + ImageGetWidth(lock.image);
+    entry.y = box.y + ImageGetHeight(box.image)/2 - ImageGetHeight(entry.image)/2;
+    entry.z = box.z + 1;
+    SpriteSetPosition(entry.sprite, entry.x, entry.y, entry.z);
+    
+    
+    global.dialogue = local;
+    }
+    
+fun dialogue_opacity(opacity){
+    global.dialogue.opacity = opacity;
+    local = global.dialogue;
+    SpriteSetOpacity (box.sprite, opacity);
+    SpriteSetOpacity (lock.sprite, opacity);
+    SpriteSetOpacity (entry.sprite, opacity);
+    for (index = 0; bullet[index]; index++){
+        SpriteSetOpacity(bullet[index].sprite, opacity);
+        }
+    }
+
+fun display_normal (){
+    global.status = "normal";
+    if (global.dialogue) dialogue_opacity (0);
+    }
+
+PlymouthSetDisplayNormalFunction(display_normal);
+
+fun display_password (prompt, bullets){
+    global.status = "password";
+    if (!global.dialogue) dialogue_setup();
+    dialogue_opacity (1);
+    for (index = 0; dialogue.bullet[index] || index < bullets; index++){
+        if (!dialogue.bullet[index]){
+            dialogue.bullet[index].sprite = SpriteNew();
+            SpriteSetImage(dialogue.bullet[index].sprite, dialogue.bullet_image);
+            dialogue.bullet[index].x = dialogue.entry.x + index * ImageGetWidth(dialogue.bullet_image);
+            SpriteSetX(dialogue.bullet[index].sprite, dialogue.bullet[index].x);
+            dialogue.bullet[index].y = dialogue.entry.y + ImageGetHeight(dialogue.entry.image) / 2 - ImageGetHeight(dialogue.bullet_image) / 2;
+            SpriteSetY(dialogue.bullet[index].sprite, dialogue.bullet[index].y);
+            dialogue.bullet[index].z = dialogue.entry.z + 1;
+            SpriteSetZ(dialogue.bullet[index].sprite, dialogue.bullet[index].z);
+            }
+        SpriteSetOpacity(dialogue.bullet[index].sprite, 0);
+        if (index < bullets){
+            SpriteSetOpacity(dialogue.bullet[index].sprite, 1);
+            }
+        }
+    }
+PlymouthSetDisplayPasswordFunction(display_password);
+
+
+//--------------------------------------Progress stuff --------------------------------
+
+
+fun progress (duration, progress){
+    global.progress = progress;
+    }
+
+PlymouthSetBootProgressFunction(progress);
+
+
+//--------------------------------------- Quit --------------------------------
+
+
+fun quit (){
+    logo.sprite.SetOpacity (1);
+    }
+
+Plymouth.SetQuitFunction(quit);
+
+
+//--------------------------------------- Message --------------------------------
+
+
+sprite_prompt = SpriteNew();
+
+fun display_message_callback (prompt) {
+	prompt = Image.Text(prompt,1.0, 1.0, 1.0);
+	sprite_prompt.SetImage(prompt);
+	sprite_prompt.SetPosition(Window.GetX() + (Window.GetWidth() - prompt.GetWidth()) / 2, Window.GetY() + Window.GetHeight() * 0.93, 2);
+}
+
+Plymouth.SetMessageFunction(display_message_callback);

@@ -1,0 +1,9 @@
+[Plymouth Theme]
+Name=Simply Green
+Description=Bodhi 5.0 Default theme
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/simply-green
+ScriptFile=/usr/share/plymouth/themes/simply-green/theme.script
+
