@@ -1427,6 +1427,7 @@ libecore_evas.so.1 libefl #MINVER#
  ecore_evas_dnd_position_set@Base 1.22.4
  ecore_evas_done@Base 1.22.2
  ecore_evas_drag_cancel@Base 1.22.4
+ ecore_evas_drag_offset_set@Base 1.26.99
  ecore_evas_drag_start@Base 1.22.4
  ecore_evas_draw_frame_get@Base 1.15.0
  ecore_evas_draw_frame_set@Base 1.15.0
@@ -4563,6 +4564,7 @@ libeet.so.1 libefl #MINVER#
  eet_read_direct@Base 1.15.0
  eet_shutdown@Base 1.15.0
  eet_sync@Base 1.15.0
+ eet_sync_sync@Base 1.26.99
  eet_version@Base 1.15.0
  eet_write@Base 1.15.0
  eet_write_cipher@Base 1.15.0
@@ -8204,6 +8206,7 @@ libelementary.so.1 libefl #MINVER#
 #MISSING: 1.22.4# efl_ui_dnd_container_mixin_get@Base 1.22.2
 #MISSING: 1.22.4# efl_ui_dnd_drag_action_set@Base 1.22.2
  efl_ui_dnd_drag_cancel@Base 1.22.2
+ efl_ui_dnd_drag_offset_set@Base 1.26.99
  efl_ui_dnd_drag_start@Base 1.22.2
  efl_ui_dnd_drop_data_get@Base 1.22.4
 #MISSING: 1.22.4# efl_ui_dnd_drop_target_add@Base 1.22.2
