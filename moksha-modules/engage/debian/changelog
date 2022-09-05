@@ -1,0 +1,29 @@
+moksha-module-engage (0.1.2-4) focal; urgency=medium
+
+  * Updated pt localization
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Tue, 02 Nov 2021 14:01:26 -0400
+
+moksha-module-engage (0.1.2-3) focal; urgency=medium
+
+  * pt localization
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Sat, 29 May 2021 16:42:00 -0400
+
+moksha-module-engage (0.1.2-2) focal; urgency=medium
+
+  * e_icon changes in trunk
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Wed, 07 Apr 2021 06:31:15 -0400
+
+moksha-module-engage (0.1.2-1) focal; urgency=medium
+
+  * Fix gcc warnings
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Fri, 25 Dec 2020 08:16:15 +0400
+
+moksha-module-engage (0.1.1-1) focal; urgency=medium
+
+  * Initial release
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Wed, 16 Dec 2020 12:03:46 +0004
