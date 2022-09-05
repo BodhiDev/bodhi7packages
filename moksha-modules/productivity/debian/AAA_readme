@@ -1,0 +1,4 @@
+e_mod_config_windows.c: In function ‘_e_mod_config_window_dpms_screen_blank_get’:
+e_mod_config_windows.c:545:9: warning: implicit declaration of function ‘DPMSInfo’ [-Wimplicit-function-declaration]
+  545 |         DPMSInfo(exd, &power_lvl, &state);
+      |         ^~~~~~~~
