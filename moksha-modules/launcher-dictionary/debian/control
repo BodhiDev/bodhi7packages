@@ -1,0 +1,23 @@
+Source: moksha-module-dictionary
+Section: utils
+Priority: optional
+Maintainer: Stefan Uram <thewaiter@centrum.sk>
+Build-Depends: debhelper (>= 10), autotools-dev, libc6 (>= 2.4),  autopoint, libtool, intltool, pkg-config, libefl-dev, moksha-dev
+Standards-Version: 4.1.2
+Homepage: https://github.com/thewaiter/launcher-dictionary
+
+Package: moksha-module-dictionary
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, sdcv, moksha
+Recommends: hunspell, aspell-en, hunspell-en-us
+Description: Dictionary plugin for Moksha Quick launcher
+ Launcher-dictionary is a plugin for Moksha's Quick Launcher to  
+ translate words using stardict CLI sdcv tool a backend.
+ .
+ It is based on the old e17 everything-aspell module with sdcv 
+ support.
+ .
+ Note: you must install some Stardict dictionary for sdcv 
+ for full functionality.
+ .
+ Source: https://github.com/thewaiter/launcher-dictionary
