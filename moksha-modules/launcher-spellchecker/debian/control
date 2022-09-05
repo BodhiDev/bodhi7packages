@@ -1,0 +1,25 @@
+Source: moksha-module-spellchecker
+Section: utils
+Priority: optional
+Maintainer: Robert Wiley <ylee@bodhilinux.com>
+Build-Depends: debhelper (>= 10), autotools-dev, libc6 (>= 2.4),  autopoint, libtool, intltool, pkg-config, libefl-dev,  moksha-dev
+Standards-Version: 4.1.2
+Homepage: https://github.com/rbtylee/launcher-spellchecker
+#Vcs-Git: https://anonscm.debian.org/git/collab-maint/moksha-module-spellchecker.git
+#Vcs-Browser: https://anonscm.debian.org/cgit/collab-maint/moksha-module-spellchecker.git
+
+Package: moksha-module-spellchecker
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, aspell
+Recommends: hunspell, aspell-en, hunspell-en-us
+Description: Spell Checker plugin for Moksha Quick launcher
+ Launcher-spellchecker is a plugin for Moksha's Quick Launcher to check 
+ the spelling of words using aspell or hunspell as a backend.
+ .
+ It is a resurrection of the old e17 everything-aspell module with only 
+ minor Bodhi specific changes.
+ .
+ Note: you must install a dictionary for aspell or hunspell 
+ for full functionality.
+ .
+ Source: https://github.com/rbtylee/launcher-spellchecker
