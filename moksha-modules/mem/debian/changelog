@@ -1,0 +1,29 @@
+moksha-module-mem (0.1.2-4) focal; urgency=medium
+
+  * Revert mouse events to code from edc
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Wed, 15 Sep 2021 12:33:56 -0400
+
+moksha-module-mem (0.1.2-3) focal; urgency=medium
+
+  * pt localization
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Sat, 29 May 2021 16:42:00 -0400
+
+moksha-module-mem (0.1.2-2) focal; urgency=medium
+
+  * Better visibility on shelf
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Sat, 26 Dec 2020 18:07:57 +0400
+
+moksha-module-mem (0.1.2-1) focal; urgency=medium
+
+  * Fix gcc warnings
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Fri, 25 Dec 2020 08:16:15 +0400
+
+moksha-module-mem (0.1.1-1) focal; urgency=medium
+
+  * Initial release
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Sun, 04 Oct 2020 08:16:15 +0400
