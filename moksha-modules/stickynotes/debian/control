@@ -1,0 +1,14 @@
+Source: moksha-module-stickynotes
+Section: utils
+Priority: optional
+Maintainer: Robert (ylee) Wiley <ylee@bodhilinux.com>
+Build-Depends: debhelper (>= 10), autotools-dev, pkg-config, libefl-dev, moksha-dev
+Standards-Version: 4.5.0
+Homepage: https://github.com/thewaiter/StickyNotes
+Rules-Requires-Root: no
+
+Package: moksha-module-stickynotes
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, moksha
+Description: stickynotes module for the Moksha desktop
+ stickynotes monitor for the Moksha desktop
