@@ -1,0 +1,20 @@
+moksha-module-desktitle (0.1.1-3) focal; urgency=low
+
+  * Russian Localization
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Sat, 20 Feb 2021 05:04:43 -0400
+
+moksha-module-desktitle (0.1.1-2) focal; urgency=low
+
+  * Localization
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Sat, 31 Oct 2020 09:59:19 -0400
+
+moksha-module-desktitle (0.1.1-1) focal; urgency=low
+
+  * Better placement
+  * Only one edit window per Virtual desktop
+  * Virtual desktop settings added to context menu
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Sun, 21 Jun 2020 09:11:03 -0400
+
