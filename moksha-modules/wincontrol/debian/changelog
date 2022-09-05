@@ -1,0 +1,17 @@
+moksha-module-wincontrol (0.1.1-3) focal; urgency=medium
+
+  * pt localization
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Sat, 29 May 2021 16:42:00 -0400
+
+moksha-module-wincontrol (0.1.1-2) focal; urgency=medium
+
+  * Initial release
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Mon, 26 Apr 2021 07:32:27 -0400
+
+moksha-module-wincontrol (0.1.1-1) focal; urgency=medium
+
+  * Initial release
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Mon, 18 Jan 2021 11:44:17 +0400
