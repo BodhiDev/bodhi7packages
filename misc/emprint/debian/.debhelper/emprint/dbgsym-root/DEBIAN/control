@@ -1,0 +1,13 @@
+Package: emprint-dbgsym
+Package-Type: ddeb
+Source: emprint
+Version: 0.1.1-1
+Auto-Built-Package: debug-symbols
+Architecture: amd64
+Maintainer: Robert (ylee) Wiley <ylee@bodhilinux.com>
+Installed-Size: 48
+Depends: emprint (= 0.1.1-1)
+Section: debug
+Priority: optional
+Description: debug symbols for emprint
+Build-Ids: 6bd328cea0661345342fc49e74366805a642f84f

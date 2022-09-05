@@ -1,0 +1,2 @@
+emprint: binary-without-manpage usr/bin/emprint
+emprint: new-package-should-close-itp-bug

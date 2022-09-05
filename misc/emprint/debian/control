@@ -1,0 +1,18 @@
+Source: emprint
+Section: utils
+Priority: optional
+Maintainer: Robert (ylee) Wiley <ylee@bodhilinux.com>
+Build-Depends: debhelper (>= 10), autotools-dev, pkg-config, libefl-dev, moksha
+Standards-Version: 4.5.0
+Homepage: https://github.com/JeffHoogland/moksha-modules-extra
+Rules-Requires-Root: no
+
+Package: emprint
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Utility for taking screenshots written with the EFL
+ Emprint is a utility for taking screenshots of the entire screen, a specific
+ window, or a specific region.
+ It is written with the Enlightenment Foundation Libraries.
+ .
+ This package contains the executable and common files.
