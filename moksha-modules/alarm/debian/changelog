@@ -1,0 +1,18 @@
+moksha-module-alarm (0.1.1-3) focal; urgency=medium
+
+  * Alarm module icon edje fix
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Wed, 22 Sep 2021 15:40:25 -0400
+
+moksha-module-alarm (0.1.1-2) focal; urgency=medium
+
+  * pt localization
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Sat, 29 May 2021 16:42:00 -0400
+
+
+moksha-module-alarm (0.1.1-1) focal; urgency=medium
+
+  * Initial release
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Sun, 23 Aug 2020 15:12:09 +0400
