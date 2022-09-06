@@ -1,0 +1,18 @@
+picom (9.1-1) jammy; urgency=medium
+
+  * BL7 Release
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Tue, 06 Sep 2022 05:58:13 -0400
+
+picom (8.2-2) focal; urgency=medium
+
+  * Add icon to desktop file
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Fri, 19 Mar 2021 07:50:59 -0400
+
+
+picom (8.2-1) focal; urgency=medium
+
+  * Initial Release
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Tue, 01 Dec 2020 11:47:38 -0500

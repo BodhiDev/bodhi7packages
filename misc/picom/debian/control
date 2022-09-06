@@ -1,0 +1,44 @@
+Source: picom
+Section: x11
+Priority: optional
+Maintainer: Robert Wiley <ylee@bodhilinux.com>
+Build-Depends: debhelper,
+               meson,
+               ninja-build,
+               libxext-dev,
+               libxcb1-dev,
+               libxcb-damage0-dev,
+               libxcb-xfixes0-dev,
+               libxcb-shape0-dev,
+               libxcb-render-util0-dev,
+               libxcb-render0-dev,
+               libxcb-randr0-dev,
+               libxcb-composite0-dev,
+               libxcb-image0-dev,
+               libxcb-present-dev,
+               libxcb-xinerama0-dev,
+               libpixman-1-dev,
+               libdbus-1-dev,
+               libconfig-dev,
+               libxdg-basedir-dev,
+               libgl1-mesa-dev,
+               libpcre2-dev,
+               libevdev-dev,
+               uthash-dev,
+               libev-dev,
+               libx11-xcb-dev,
+               libxcb-glx0-dev
+Standards-Version: 4.5.0
+Homepage: https://github.com/yshui/picom
+Rules-Requires-Root: no
+
+Package: picom
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Provides: compton
+Conflicts: compton
+Replaces: compton
+Description: X11 compositor based on xcompmgr
+ Picom is a compositor for X11, based on xcompmgr. In addition to shadows,
+ fading and translucency, compton implements window frame opacity control,
+ inactive window transparency, and shadows on argb windows.
