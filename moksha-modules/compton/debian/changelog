@@ -1,0 +1,11 @@
+moksha-module-compton (0.1.1-3) focal; urgency=medium
+
+  * Use config home for picom.conf
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Sun, 07 Aug 2022 09:01:57 -0400
+
+moksha-module-compton (0.1.1-1) focal; urgency=medium
+
+  * Initial release
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Wed, 09 Dec 2020 08:16:15 +0400

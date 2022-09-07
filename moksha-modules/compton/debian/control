@@ -1,0 +1,14 @@
+Source: moksha-module-compton
+Section: utils
+Priority: optional
+Maintainer: Robert (ylee) Wiley <ylee@bodhilinux.com>
+Build-Depends: debhelper (>= 10), autotools-dev, pkg-config, libefl-dev, moksha-dev
+Standards-Version: 4.5.0
+Homepage: https://github.com/thewaiter/comptonmod
+Rules-Requires-Root: no
+
+Package: moksha-module-compton
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, picom, moksha
+Description: Compton module for Moksha desktop
+ Compositing for the Moksha desktop using picom.
