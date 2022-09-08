@@ -1,0 +1,47 @@
+diff a/plugins/thunar-wallpaper/twp-provider.c b/plugins/thunar-wallpaper/twp-provider.c
+--- a/plugins/thunar-wallpaper/twp-provider.c
++++ b/plugins/thunar-wallpaper/twp-provider.c
+@@ -51,6 +51,7 @@
+ static gint   twp_get_active_workspace_number   (GdkScreen *screen);
+ 
+ static gboolean    _has_gsettings = FALSE;
++static gboolean    _has_setbg_bodhi = FALSE;
+ static GtkWidget   *main_window = NULL;
+ 
+ struct _TwpProviderClass
+@@ -100,6 +101,12 @@
+       _has_gsettings = TRUE;
+       g_free (program);
+     }
++  program = g_find_program_in_path ("set-background-bodhi");
++  if (G_LIKELY (program != NULL))
++    {
++      _has_setbg_bodhi = TRUE;
++      g_free (program);
++    }
+ }
+ 
+ 
+@@ -303,6 +310,22 @@
+           g_spawn_command_line_async (command, NULL);
+           g_free (command);
+         }
++      else
++        {
++          g_warning ("Failed to set wallpaper: Missing executable 'set-background-bodhi'");
++        }
++    }
++  else if (g_strcmp0 (desktop_type, "Enlightenment") == 0)
++    {
++      if (_has_setbg_bodhi)
++        {
++          g_debug ("set on enlightenment");
++
++          command = g_strdup_printf ("set-background-bodhi "
++                                     "'%s'", file_name);
++          g_spawn_command_line_async (command, NULL);
++          g_free (command);
++        }
+       else
+         {
+           g_warning ("Failed to set wallpaper: Missing executable 'gsettings'");
