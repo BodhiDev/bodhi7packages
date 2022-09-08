@@ -1,0 +1,23 @@
+@import "images.css";
+@import "styles.css";
+/*
+INTERNET
+*/
+div.live {font-size:80%; margin-bottom: 1%;}
+/*
+SOFTWARE REQUESTS
+*/
+div.sr {width: 100%; margin-bottom: 1%; margin-top: 0.5%; clear:both;}
+/*
+QUICKFAQ
+*/
+img.lonlowwidth {
+width: 47.5%;
+float: left;
+}
+
+@media screen and (min-width: 600px) and (max-width: 900px) {
+br.kic {
+display: none;
+}
+}

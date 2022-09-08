@@ -1,0 +1,16 @@
+/*******************************
+
+THAT ANNOYING FRIEND WHO ENDS UP COMING ALONG
+* I.E. SPECIAL ONLY
+* THAT SHITTY RENDERER DISPLAYS THE DROPDOWN IMPROPERLY	
+
+*******************************/
+#nav .nav {
+display: none;
+}
+#nav .mobile {
+display: block;
+}
+#nav li:hover > ul {
+display: none;
+}
