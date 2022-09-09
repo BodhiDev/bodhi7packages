@@ -1,0 +1,11 @@
+/etc/skel/.config/gtk-2.0/gtkfilechooser.ini
+/etc/skel/.config/dconf/user
+/etc/skel/.config/featherpad/fp.conf
+/etc/skel/.config/geany/geany.conf
+/etc/skel/.config/midori/config
+/etc/skel/.config/midori/search
+/etc/skel/.config/mimeapps.list
+/etc/skel/.config/terminology/config/standard/base.cfg
+/etc/skel/.config/Thunar/accels.scm
+/etc/skel/.config/Thunar/uca.xml
+/etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml

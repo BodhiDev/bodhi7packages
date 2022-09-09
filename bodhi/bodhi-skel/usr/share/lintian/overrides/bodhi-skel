@@ -1,0 +1,2 @@
+bodhi-skel: package-contains-file-in-etc-skel
+bodhi-skel: new-package-should-close-itp-bug
