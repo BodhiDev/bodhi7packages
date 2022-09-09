@@ -1,0 +1,3 @@
+/etc/apt/sources.list.d/bodhi-repositories.list
+/etc/profile.d/eina-log.sh
+/etc/udev/rules.d/80-local.rules
