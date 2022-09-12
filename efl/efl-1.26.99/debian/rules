@@ -16,10 +16,10 @@ export DEB_CXXFLAGS_MAINT_APPEND = -fvisibility=hidden -O3
 export DEB_LDFLAGS_MAINT_APPEND = -Wl,-z,defs -Wl,--as-needed
 
 ifneq (,$(filter $(DEB_HOST_ARCH), alpha arm64 hppa ia64 m68k powerpc riscv64 s390x sh4 sparc64 x32))
-	lua_flags = -Dlua-interpreter=lua -Delua=false -Dbindings=
+	lua_flags = -Dlua-interpreter=lua -Delua=false -Dbindings="['cxx']"
 	dhinstallflags += --exclude=elua
 else
-	lua_flags = -Delua=true -Dbindings=lua
+	lua_flags = -Delua=true -Dbindings="['lua', 'cxx']"
 
 endif
 
@@ -49,7 +49,6 @@ endif
 	dh_auto_configure --verbose -- \
 		-Dtslib=false \
 		-Dembedded-lz4=false \
-		-Dbindings=lua \
 		-Dnetwork-backend=none \
 		-Dwl=true \
 		-Ddrm=true \

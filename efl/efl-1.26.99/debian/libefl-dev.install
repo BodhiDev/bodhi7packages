@@ -24,6 +24,7 @@ usr/lib/*/cmake/EcoreCxx/*.cmake
 usr/include/eldbus-*
 usr/lib/*/libeldbus.so
 usr/lib/*/pkgconfig/eldbus.pc
+usr/lib/*/pkgconfig/eldbus-cxx.pc
 usr/lib/*/cmake/Eldbus/*.cmake
 
 #
@@ -34,6 +35,7 @@ usr/lib/*/libector.so
 #
 # libedje-dev.install
 usr/include/edje-1
+usr/include/edje-cxx-1
 usr/lib/*/libedje.so
 usr/lib/*/pkgconfig/edje*.pc
 usr/lib/*/cmake/Edje/*.cmake
@@ -41,6 +43,7 @@ usr/lib/*/cmake/Edje/*.cmake
 #
 # libeet-dev.install
 usr/include/eet-1
+usr/include/eet-cxx-1
 usr/lib/*/libeet.so
 usr/lib/*/pkgconfig/eet*.pc
 usr/lib/*/cmake/Eet/*.cmake
@@ -67,6 +70,7 @@ usr/lib/*/cmake/Efreet/*.cmake
 #
 # libeina-dev.install
 usr/include/eina-1
+usr/include/eina-cxx-1
 usr/lib/*/libeina.so
 usr/lib/*/pkgconfig/eina*.pc
 usr/lib/*/cmake/Eina/*.cmake
@@ -74,9 +78,11 @@ usr/lib/*/cmake//EinaCxx/*.cmake
 
 # libeo
 usr/include/eo-1
+usr/include/eo-cxx-1/
 usr/lib/*/libeo.so
 usr/lib/*/libeo_dbg.so
 usr/lib/*/pkgconfig/eo.pc
+usr/lib/*/pkgconfig/eo-cxx.pc
 usr/share/gdb/auto-load/usr/lib/libeo.so.*-gdb.py
 #usr/share/eo/gdb/eo_gdb.py
 usr/lib/*/cmake/Eo/*.cmake
@@ -86,6 +92,7 @@ usr/lib/*/cmake/EoCxx/*.cmake
 
 #libefl
 usr/include/efl-1
+usr/include/efl-cxx-1
 usr/include/efl-canvas-wl-1
 usr/lib/*/libefl.so
 usr/lib/*/libefl_canvas_wl.so
@@ -102,8 +109,10 @@ usr/lib/*/cmake/Eio/*.cmake
 #
 # libelementary-dev.install
 usr/include/elementary-1
+usr/include/elementary-cxx-1
 usr/lib/*/libelementary.so
 usr/lib/*/pkgconfig/elementary.pc
+usr/lib/*/pkgconfig/elementary-cxx.pc
 usr/lib/*/cmake/Elementary/*.cmake
 
 #
@@ -163,6 +172,7 @@ usr/lib/*/cmake/EthumbClient/*.cmake
 #
 # libevas-dev.install
 usr/include/evas-1
+usr/include/evas-cxx-1
 usr/lib/*/libevas.so
 usr/lib/*/pkgconfig/evas*.pc
 usr/lib/*/cmake/Evas/*.cmake
@@ -184,6 +194,7 @@ usr/lib/*/libexactness_record.so
 # install eo files
 #usr/share/eolian/include/ecore-1/*.eo*
 #usr/share/eolian/include/edje-1/*.eo*
+
 #usr/share/eolian/include/efl-1/*.eo*
 #usr/share/eolian/include/efl-canvas-wl-1/*.eo*
 #usr/share/eolian/include/eio-1/*.eo*
