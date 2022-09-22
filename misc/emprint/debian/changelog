@@ -1,3 +1,11 @@
+emprint (0.1.1-2) jammy; urgency=medium
+
+  * Screenshot camera sound fix
+  * Emprint: ESC can not exit region mode with 0 delay value
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Thu, 22 Sep 2022 14:06:43 -0400
+
+
 emprint (0.1.1-1) focal; urgency=medium
 
   * Initial release
