@@ -1,6 +1,6 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: efl
-Source: git://git.enlightenment.org/core/efl.git
+Source: https://git.enlightenment.org/enlightenment/efl
 
 License: BSD-2-clause
  Redistribution and use in source and binary forms, with or without
