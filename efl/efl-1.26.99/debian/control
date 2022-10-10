@@ -34,7 +34,7 @@ Build-Depends:
  libpoppler-cpp-dev,
  libpulse-dev,
  libraw-dev,
- librsvg2-dev,,
+ librsvg2-dev,
  libsndfile-dev,
  libspectre-dev,
  libsystemd-dev,
