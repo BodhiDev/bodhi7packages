@@ -3,7 +3,7 @@ Section: x11
 Priority: optional
 Maintainer: Robert Wiley <ylee@bodhilinux.com>
 Homepage: http://mokshadesktop.org/
-Build-Depends:  debhelper (>= 9), dh-autoreconf, libefl-dev, libasound2-dev [linux-any], libxext-dev, libpam0g-dev, libxcb-shape0-dev, dbus-x11, libxcb-keysyms1-dev, libudisks2-dev
+Build-Depends:  debhelper (>= 9), dh-autoreconf, libefl-dev, libasound2-dev [linux-any], libxext-dev, libpam0g-dev, libxcb-shape0-dev, dbus-x11, libxcb-keysyms1-dev
 Standards-Version: 4.1.4
 
 Package: moksha
@@ -23,6 +23,7 @@ Section: devel
 Depends:
  moksha (= ${binary:Version}),
  libefl-dev (>= 1.24.3),
+ libedbus-dev,
  ${misc:Depends},
 Description: Moksha headers, and static libraries.
  Moksha is an advanced window manager for X11 based on Enlightenment DR17.

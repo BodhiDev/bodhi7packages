@@ -1,3 +1,65 @@
+moksha (0.4.0-1) jammy; urgency=low
+
+  * eldbus API conversion
+  * Switch to udisk2 API
+  * Improved notification API
+  * Clipboard float menu segfault fix
+  * Dialog: widget value change with space key
+  * Menu: right mouse click for app editor from the item
+  * enlightenment_sys - fix security hole CVE-2022-37706
+  * Fix eap editor from ibar
+  * Wizard: page 11 properly close file
+  * Tasks: unwanted ellipsis in vert mode
+  * Tasks: icon only mode bug on vertical shelf
+  * Tasks: no need timer
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Sun, 16 Oct 2022 15:21:54 -0400
+
+moksha (0.3.4-18) focal; urgency=low
+
+  * Mouse and touchpad settings modifs
+  * e_fm DND unload loop fix
+  * Clock: no gadget frame in float orient - revert
+  * ilist scroller viewport search box fix
+  * efm - fix missing format strings in error reporting
+  * efm - handle cancel of async eio if icon is freed and eio still active
+  * Stringshare_replace in fwin
+  * efm_op no longer tries to close invalid fds during delete ops
+  * Tasks Module: strncat overflow warning fix
+  * restore EFM code
+  * e-open: better handling of terminal apps
+  * Notification: minor mem leak in config
+  * Fix for trying to del non-shared stringshare in config theme dialog
+  * Notification: unneeded NULL assignments
+  * Notification: use E_FREE for better sanity check
+  * Notification: potential seg fault fixes
+  * Notification: we miss dir path
+  * Mixer: user e_widget hook instead of evas smart call back
+  * Notify: use eina_convert_itoa for gadget text
+  * Mixer: slider value format change
+  * Notification: fix potential mem issues
+  * Notification: blacklist can be NULL
+  * Mixer: volume slider value added into popup
+  * Border menu 'move to' item fix
+  * Bad smart menu direction for multi monitors
+  * Systemd support for sysactions
+  * Notification conditions simplified
+  * Notification remove file check
+  * Widget preview fix (E port)
+  * Mixer gadget had no icon in gadgets list
+  * Places icon edj theming support
+  * Mouse theme section should be on separate frame
+  * BG scale reset (Slideshow extra module bad res bug fix)
+  * Updated localiations
+  
+ -- Robert Wiley <ylee@bodhilinux.com>  Sun, 28 Aug 2022 18:44:37 -0400
+
+moksha (0.3.4-17) focal; urgency=low
+
+  * Touchpad: better initial config for old PCs
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Sun, 22 May 2022 07:41:28 -04
+
 moksha (0.3.4-17) focal; urgency=low
 
   * Touchpad: better initial config for old PCs
