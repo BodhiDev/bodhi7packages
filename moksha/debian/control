@@ -23,7 +23,6 @@ Section: devel
 Depends:
  moksha (= ${binary:Version}),
  libefl-dev (>= 1.24.3),
- libedbus-dev,
  ${misc:Depends},
 Description: Moksha headers, and static libraries.
  Moksha is an advanced window manager for X11 based on Enlightenment DR17.
