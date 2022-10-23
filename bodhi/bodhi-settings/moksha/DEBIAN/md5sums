@@ -1,4 +1,4 @@
-5327416bd73735fcb622767aade99acd  etc/apt/sources.list.d/bodhi-repositories.list
+cbb8344d82d07bb9fbc5ab1ce44bf68c  etc/apt/sources.list.d/bodhi-repositories.list
 0d3710504568e7b75463d936fd43ef90  etc/profile.d/eina-log.sh
 18c703a3fbb46388f1d593db895fd289  etc/udev/rules.d/80-local.rules
 5049ae00683d9a9aa5bf5290d250bd07  usr/share/doc/bodhi-settings/changelog.Debian.gz
