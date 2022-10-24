@@ -1,4 +1,10 @@
-terminology (1.12.0-3) jammy; urgency=low
+terminology (1.12.1-3) jammy; urgency=low
+
+   * Commit: a6d634fc3f Translated using Weblate (Portuguese) 
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Mon, 24 Oct 2022 02:34:29 -0400
+
+terminology (1.12.1-2) jammy; urgency=low
 
    * BL7 release
    * Commit: dab92df313 README: add about running on the framebuffer
