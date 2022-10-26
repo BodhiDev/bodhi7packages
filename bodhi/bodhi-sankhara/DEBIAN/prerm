@@ -1,0 +1,12 @@
+#!/bin/sh
+set -e
+
+case "$1" in
+  remove|purge)
+  BASE="/usr/share/bodhi/sankhara"
+
+  if [ -f "$BASE/lsb-release.dist" ]; then
+    mv "$BASE/lsb-release.dist" "/etc/lsb-release"
+  fi
+  ;;
+esac

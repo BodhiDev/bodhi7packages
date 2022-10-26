@@ -1,0 +1,10 @@
+#!/bin/sh
+set -e
+
+BASE="/usr/share/bodhi/sankhara"
+
+if [ -f "/etc/lsb-release" ]; then
+  cp "/etc/lsb-release" "$BASE/lsb-release.dist"
+  cp "$BASE/lsb-release" "/etc/lsb-release"
+fi
+
