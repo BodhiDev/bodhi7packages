@@ -1,0 +1,2 @@
+# Suppress a harmless lintian warnings
+ubiquity-slideshow-bodhi1: embedded-javascript-library

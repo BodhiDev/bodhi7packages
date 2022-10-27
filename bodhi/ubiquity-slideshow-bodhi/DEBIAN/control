@@ -1,0 +1,15 @@
+Package: ubiquity-slideshow-bodhi1
+Version: 0.74
+Architecture: all
+Maintainer: Robert Wiley <ylee@bodhilinux.com>
+Conflicts: ubiquity-slideshow, ubiquity-slideshow-bodhi2
+Replaces: ubiquity-slideshow, ubiquity-slideshow-bodhi2
+Provides: ubiquity-slideshow
+Section: x11
+Priority: optional
+Homepage: https://github.com/BodhiDev/bodhi-slideshow-new
+Description: Ubiquity slideshow for Bodhi
+ A slideshow intended for the Ubiquity installer, designed as a quick
+ introduction to Bodhi.
+ .
+ Moksha Version
