@@ -1,0 +1,11 @@
+Package: moksha-debug
+Version: 0.0.3
+Architecture: all
+Maintainer: Rene Malmgren <rene.malmgren@gmail.com>
+Installed-Size: 23
+Depends: gdbserver
+Section: devel
+Priority: optional
+Homepage: https://github.com/dukeh3/moksha-debug
+Description: Moksha debug scripts
+ A set of scripts to make debugging of moksha more easy

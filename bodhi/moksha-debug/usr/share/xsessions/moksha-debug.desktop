@@ -1,0 +1,25 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Moksha GDB
+Name[ca]=Moksha
+Name[el]=Moksha
+Name[eo]=Moksha
+Name[fr]=Moksha
+Name[ru]=Moksha
+Name[tr]=Moksha
+Comment=Log in using Moksha (Version 0.3.0.16221)
+Comment[ca]=Iniciar sessió amb Moksha (Versió 0.3.0.16221)
+Comment[el]=Είσοδος με το Moksha (Έκδοση 0.3.0.16221)
+Comment[eo]=Ensaluti pere de Moksha (Versio 0.3.0.16221)
+Comment[es]=Iniciar sesión usando Moksha (Versión 0.3.0.16221)
+Comment[fr]=Ouvrir une session Moksha (Version 0.3.0.16221)
+Comment[gl]=Iniciar sesión usando Moksha (Versión 0.3.0.16221)
+Comment[it]=Accedi con Moksha (Versione 0.3.0.16221)
+Comment[ko]=Moksha 로그인(버전 0.3.0.16221)
+Comment[pt]=Iniciar sessão no Moksha (Versão 0.3.0.16221)
+Comment[ru]=Войти используя Moksha (Версия 0.3.0.16221)
+Comment[tr]=Moksha kullanarak giriş yaın (Version 0.3.0.16221)
+Icon=/usr/share/enlightenment/data/images/enlightenment.png
+TryExec=/usr/bin/enlightenment_start
+Exec=/usr/bin/moksha_debug_remote

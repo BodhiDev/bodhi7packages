@@ -1,0 +1,8 @@
+3b441857c75e76c42fd9bb7653cf031e  usr/bin/moksha_debug_log
+b8fba2d8c6cd68987b89b6c7cb3de71a  usr/bin/moksha_debug_remote
+3cf000739126f4598215bd88a59a7d2f  usr/share/doc/moksha-debug/README.Debian
+27d62067dcb48d10e1e3e7ca328ec9ce  usr/share/doc/moksha-debug/changelog.gz
+bc88c5ca41a005c754164fb8d24911e5  usr/share/doc/moksha-debug/copyright
+c0ffd63cda19ebb31b9329242169c30c  usr/share/lintian/overrides/moksha-debug
+5a6ddccba89277c866972eb17e4c0166  usr/share/xsessions/moksha-debug.desktop
+579187fec2857ab566baf63de46c883f  usr/share/xsessions/moksha-log.desktop
