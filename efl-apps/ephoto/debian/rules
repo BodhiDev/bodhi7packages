@@ -1,0 +1,21 @@
+#!/usr/bin/make -f
+
+# Uncomment this to turn on verbose mode.
+export DH_VERBOSE=1
+
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+
+%:
+	dh $@
+
+override_dh_install:
+	dh_install
+	rm debian/ephoto-bl/usr/share/ephoto/AUTHORS
+
+override_dh_auto_build:
+	$(CURDIR)/debian/fake_home.sh dh_auto_build
+
+.PHONY: override_dh_strip
+
+override_dh_strip:
+	dh_strip --dbg-package=ephoto-bl-dbg

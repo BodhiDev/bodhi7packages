@@ -1,0 +1,13 @@
+diff --git a/src/bin/ephoto_main.c b/src/bin/ephoto_main.c
+index c9455f2..42c6def 100644
+--- a/src/bin/ephoto_main.c
++++ b/src/bin/ephoto_main.c
+@@ -666,7 +666,7 @@ ephoto_window_add(const char *path, int gadget, int id)
+              evas_object_hide(ephoto->slideshow);
+              evas_object_show(ephoto->single_browser);
+              ephoto_single_browser_show_controls(ephoto);
+-             ephoto->state = EPHOTO_STATE_SINGLE;
++             ephoto->state = EPHOTO_STATE_SLIDESHOW;
+           }
+         else
+           _ephoto_slideshow_show(ephoto, NULL);
