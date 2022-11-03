@@ -41,6 +41,6 @@ e5d2ce63a3e915d240763206a0360020  usr/share/bodhi/quickstart/quickstartEN/moksha
 bb08eb1feb4671c7d76f8a909061f308  usr/share/bodhi/quickstart/quickstartEN/quickfaq.html
 b61c48f1cdafcaa88cc7a94dac000dde  usr/share/bodhi/quickstart/quickstartEN/resources.html
 55b5b26353b00458c7d86940ea3c1d7c  usr/share/bodhi/quickstart/quickstartEN/software.html
-a4b71b0beecb81ed74b76becc908366f  usr/share/doc/bodhi-quickstart/changelog.Debian.gz
+8a40a0e63b3496ab152c9944c9ed2986  usr/share/doc/bodhi-quickstart/changelog.Debian.gz
 1774e574365f97d405844696181395a4  usr/share/doc/bodhi-quickstart/copyright
 00954261be9956a6b7c0aeaaa1cb3c86  usr/share/lintian/overrides/bodhi-quickstart
