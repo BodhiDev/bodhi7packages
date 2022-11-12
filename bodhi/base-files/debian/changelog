@@ -1,3 +1,9 @@
+base-files (20.04-2) jammy; urgency=medium
+
+  * Update Help Text
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Sat, 12 Nov 2022 11:21:40 -0500
+
 base-files (20.04-1) jammy; urgency=medium
 
   * Prepare for BL7.0 release.

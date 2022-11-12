@@ -10,7 +10,7 @@ ENABLED=1
 # and have a valid certificate
 # Canonical runs a service at motd.ubuntu.com, and you
 # can easily run one too
-URLS="https://motd.ubuntu.com"
+URLS="https://motd.bodhilinux.com/"
 
 # Specify the time in seconds, you're willing to wait for
 # dynamic MOTD news

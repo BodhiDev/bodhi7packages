@@ -3,3 +3,4 @@
 # "other-package activates service" mechanism that motd-news uses
 #
 motd-news-config: init.d-script-should-always-start-service
+motd-news-config: initial-upload-closes-no-bugs

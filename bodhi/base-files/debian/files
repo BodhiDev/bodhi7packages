@@ -1,4 +1,4 @@
-base-files-dbgsym_20.04-1_amd64.ddeb debug optional automatic=yes
-base-files_20.04-1_amd64.buildinfo admin required
-base-files_20.04-1_amd64.deb admin required
-motd-news-config_20.04-1_all.deb admin optional
+base-files-dbgsym_20.04-2_amd64.ddeb debug optional automatic=yes
+base-files_20.04-2_amd64.buildinfo admin required
+base-files_20.04-2_amd64.deb admin required
+motd-news-config_20.04-2_all.deb admin optional
