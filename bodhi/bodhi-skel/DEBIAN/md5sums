@@ -9,7 +9,8 @@ ec576ee8eca0dc56d9b94d428f82fec1  etc/skel/.config/featherpad/fp.conf
 8e5640a0e6809ba61f125da3c2c357a9  etc/skel/.config/mimeapps.list
 ab75d5f8e5c07e3f019caea9d2c5c64f  etc/skel/.config/terminology/config/standard/base.cfg
 053d9d28a0354f19c143bd42f443a26d  etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml
+6d2e7e3a251dc320495729417f4ef43b  etc/skel/.local/share/epiphany/ bookmarks.gvd
 e1080bacdea1a49188e518da9151f5ea  usr/share/terminology/backgrounds/bodhi.png
-1eda32d438704a452e70e21f0ff99425  usr/share/doc/bodhi-skel/changelog.Debian.gz
+2318e5e277f794bc2ed47ccaf78a6bc8  usr/share/doc/bodhi-skel/changelog.Debian.gz
 4dfc1ad8358c37ff3bf6b239acbb9304  usr/share/doc/bodhi-skel/copyright
 152e47fe7bf4b8ddb393d9dd58976291  usr/share/lintian/overrides/bodhi-skel

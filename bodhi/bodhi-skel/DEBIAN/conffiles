@@ -9,3 +9,4 @@
 /etc/skel/.config/Thunar/accels.scm
 /etc/skel/.config/Thunar/uca.xml
 /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml
+/etc/skel/.local/share/epiphany/ bookmarks.gvd
