@@ -3,10 +3,8 @@ Version: 0.0.1-1
 Section: utils
 Priority: optional
 Maintainer: Robert (ylee) Wiley <ylee@bodhilinux.com>
-Depends: bash (>=4.3.10)
+Depends: bash (>=4.3.10), libglib2.0-bin
 Architecture: all
 Homepage: https://www.bodhilinux.com/
 Description: Bodhi patches for ubuntu
  Patch various system files to Bodhize a system
- In future versions of Bodhi this will be replaced
- by proper base files package.

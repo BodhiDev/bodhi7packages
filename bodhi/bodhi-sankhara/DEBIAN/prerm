@@ -5,8 +5,10 @@ case "$1" in
   remove|purge)
   BASE="/usr/share/bodhi/sankhara"
 
-  if [ -f "$BASE/lsb-release.dist" ]; then
-    mv "$BASE/lsb-release.dist" "/etc/lsb-release"
-  fi
+if [ -f "/usr/share/glib-2.0/schemas/org.gnome.epiphany.gschema.xml" ]; then
+  sed -i s/t=bodhi/t=epiphany/ /usr/share/glib-2.0/schemas/org.gnome.epiphany.gschema.xml
+  sleep 1
+  glib-compile-schemas /usr/share/glib-2.0/schemas
+fi
   ;;
 esac
