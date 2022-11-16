@@ -1,0 +1,10 @@
+#!/bin/sh
+set -e
+
+case "$1" in
+    remove|purge)
+	if [ -f /etc/apt/trusted.gpg.d/bodhi-archive-keyring.gpg ]; then
+		rm /etc/apt/trusted.gpg.d/bodhi-archive-keyring.gpg
+	fi
+	;;
+esac

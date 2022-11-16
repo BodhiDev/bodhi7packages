@@ -1,0 +1,7 @@
+#!/bin/sh
+set -e
+
+if [ -f /usr/share/keyrings/bodhi-archive-keyring.gpg ]; then
+    cp /usr/share/keyrings/bodhi-archive-keyring.gpg /etc/apt/trusted.gpg.d/
+fi
+
