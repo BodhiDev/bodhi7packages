@@ -1,0 +1,30 @@
+evisum (0.5.14-2) focal; urgency=medium
+
+  * Development release for jammy
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Thu, 17 Nov 2022 19:19:28 -0500
+
+evisum (0.5.14-1) focal; urgency=medium
+
+  * Development release for e25
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Tue, 04 Jan 2022 06:51:43 -0500
+
+evisum (0.5.9-1) focal; urgency=medium
+
+  * Upstream release
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Fri, 08 Jan 2021 09:02:24 -0400 
+
+evisum (0.5.6-1) focal; urgency=medium
+
+  * Upstream release
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Mon, 14 Sep 2020 18:43:52 -0400
+
+
+evisum (0.5.4-1) focal; urgency=medium
+
+  * Upstream release
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Wed, 26 Aug 2020 10:41:31 -0400
