@@ -1,0 +1,20 @@
+#!/usr/bin/make -f
+
+# Uncomment this to turn on verbose mode..
+#export DH_VERBOSE = 1
+
+
+# see FEATURE AREAS in dpkg-buildflags(1)
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+
+%:
+	dh $@ 
+
+execute_before_dh_install:
+	rm -f debian/tmp/usr/share/ecrire/COPYING
+	gzip -9n debian/tmp/usr/share/ecrire/AUTHORS
+
+.PHONY: override_dh_strip
+
+override_dh_strip:
+	dh_strip --dbg-package=ecrire-dbg
