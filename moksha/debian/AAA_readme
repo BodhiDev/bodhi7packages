@@ -1,2 +1,2 @@
-for some reason always end up with libedbus-dev in depends
+for some reason always end up with libedbus-dev in depends this is automake problem
 should add policy kit to depends
