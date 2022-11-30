@@ -996,7 +996,7 @@ get_distro() {
                 esac
                 # FIXME: bad hack to get needed info
                 # distro=$(lsb_release "$lsb_flags")
-                distro="Bodhi 6.1"
+                distro="Bodhi 7.0"
 
 
             elif [[ -f /etc/os-release || \
@@ -1016,8 +1016,7 @@ get_distro() {
                     tiny) distro="${NAME:-${DISTRIB_ID:-${TAILS_PRODUCT_NAME}}}" ;;
                     off)  distro="${PRETTY_NAME:-${DISTRIB_DESCRIPTION}} ${UBUNTU_CODENAME}" ;;
                 esac
-                distro="Bodhi 6.1"
-                echo "SHIT"
+                distro="Bodhi 7.0"
                 echo $distro
             elif [[ -f /etc/GoboLinuxVersion ]]; then
                 case $distro_shorthand in
