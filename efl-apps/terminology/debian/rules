@@ -17,6 +17,3 @@ override_dh_auto_build:
 
 override_dh_install:
 	dh_install -XXFONT.txt -XTERMINUS.txt
-
-override_dh_installdeb:
-	chmod -x /home/ylee/code/terminology/debian/terminology-data/usr/libexec/terminology/tests/tests.results
