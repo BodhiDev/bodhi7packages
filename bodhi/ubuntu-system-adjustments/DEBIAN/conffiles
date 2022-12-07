@@ -1,4 +1,5 @@
 /etc/apt/preferences.d/nosnap.pref
+/etc/apt/preferences.d/bodhi.pref
 /etc/default/grub.d/50_bodhilinux.cfg
 /etc/default/grub.d/backgrounds/grub.png
 /etc/systemd/system.conf.d/50_linuxbodhi.conf

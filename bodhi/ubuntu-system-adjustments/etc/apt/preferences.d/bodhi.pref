@@ -1,0 +1,3 @@
+Package: *
+Pin: origin "packages.bodhilinux.com"
+Pin-Priority: 750
