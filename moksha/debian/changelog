@@ -5,7 +5,7 @@ moksha (0.4.0-3) jammy; urgency=low
   * e syscon: use “System Controls” instead of Syscon
   * Improved localizations
 
- -- Robert Wiley <ylee@bodhilinux.com>  Thu, 24 Nov 2022 09:17:20 -0500
+ -- Robert Wiley <ylee@bodhilinux.com>  Sun, 18 Dec 2022 17:01:03 -0500
 
 moksha (0.4.0-2) jammy; urgency=low
 
