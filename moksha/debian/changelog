@@ -1,3 +1,31 @@
+moksha (0.4.0-4) jammy; urgency=low
+
+  * Clipboard: ws cleanup in history.c
+  * Menu crash fix when uninstalling apps
+  * ilist fix again
+  * Systray free space after app close fix
+  * Themes naming changes
+  * Border menu 'move to' item fix
+  * Clock: no gadget frame in float orient
+  * Fix for EEEK trying to del non-shared stringshare
+  * Pager each desk settings added on right click
+  * udisks were added to POTFILES.in
+  * Notification expired warning gettext fix
+  * Syscon buttons layout fix
+  * Theme: better align in notification counter
+  * Theme: ibar - better overlay text align
+  * Fix Syscon translations.
+  * Default theme misses syscon edc
+  * Shelf items size settings added
+  * Shelf settings text changed
+  * iBar gap code refactored
+  * iBar lock move revert. We need it for new iBar features
+  * Complete gadcon popup gap rework
+  * Gadcon config save after gadgets move end
+  * Improved localizations
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Sun, 12 Feb 2023 14:49:12 -0500
+
 moksha (0.4.0-3) jammy; urgency=low
 
   * iBar Icon menu
@@ -67,7 +95,7 @@ moksha (0.3.4-18) focal; urgency=low
   * Mouse theme section should be on separate frame
   * BG scale reset (Slideshow extra module bad res bug fix)
   * Updated localiations
-  
+
  -- Robert Wiley <ylee@bodhilinux.com>  Sun, 28 Aug 2022 18:44:37 -0400
 
 moksha (0.3.4-17) focal; urgency=low
@@ -285,7 +313,7 @@ moksha (0.3.3-12) focal; urgency=low
   * Add MX spanish locale in wizard module
   * Adding portuguese locale in wizard module
   * Analog clock: odd issue with mouse click fix
-  * Notification: EPulse added to blacklist 
+  * Notification: EPulse added to blacklist
   * Clipboard icon respects the icon set change
 
  -- Robert Wiley <ylee@bodhilinux.com>  Fri, 06 Aug 2021 17:04:00 -0400
@@ -305,7 +333,7 @@ moksha (0.3.3-10) focal; urgency=low
   * Updated some module and profile desktop files fr improvements
   * Update moksha.pot
   * Update moksha config
-  
+
  -- Robert Wiley <ylee@bodhilinux.com>  Sat, 08 May 2021 16:17:05 -0400
 
 moksha (0.3.3-9) focal; urgency=low
@@ -325,13 +353,13 @@ moksha (0.3.3-9) focal; urgency=low
   * Fix gcc-10 warnings
   * Evry config popup size increase
   * Evry zoom feature added
-  
+
  -- Robert Wiley <ylee@bodhilinux.com>  Mon, 03 May 2021 16:05:11 -0400
 
 moksha (0.3.3-8) focal; urgency=low
 
   * Improve e_wizard for ISO
-  
+
  -- Robert Wiley <ylee@bodhilinux.com>  Tue, 30 Mar 2021 07:32:14 -0400
 
 moksha (0.3.3-7) focal; urgency=low
@@ -340,7 +368,7 @@ moksha (0.3.3-7) focal; urgency=low
   * de, sk, nl localization updates
   * Settings Panel size to 600x500
   * Use thunar in bodhi profile
-  
+
  -- Robert Wiley <ylee@bodhilinux.com>  Fri, 26 Mar 2021 13:47:34 -0400
 
 moksha (0.3.3-6) focal; urgency=low
@@ -350,7 +378,7 @@ moksha (0.3.3-6) focal; urgency=low
   * Tasks, Battery, Systray: I am destroying dead timers
   * enlightenment_remote shellcheck compliant
   * clipboard hist list issue for small screens fixed
-  
+
  -- Robert Wiley <ylee@bodhilinux.com>  Mon, 22 Mar 2021 10:54:59 -0400
 
 moksha (0.3.3-5) focal; urgency=low
@@ -366,7 +394,7 @@ moksha (0.3.3-5) focal; urgency=low
   * Bodhi profile: show bookmarks by default
   * Suppress useless prints in stdout
   * Chromium support to iBar
-  
+
  -- Robert Wiley <ylee@bodhilinux.com>  Sun, 14 Mar 2021 15:00:35 -0400
 
 moksha (0.3.3-4) focal; urgency=low
