@@ -22,6 +22,7 @@ moksha (0.4.0-4) jammy; urgency=low
   * iBar lock move revert. We need it for new iBar features
   * Complete gadcon popup gap rework
   * Gadcon config save after gadgets move end
+  * pager preview fix
   * Improved localizations
 
  -- Robert Wiley <ylee@bodhilinux.com>  Sun, 12 Feb 2023 14:49:12 -0500
