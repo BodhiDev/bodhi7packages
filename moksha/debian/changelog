@@ -1,3 +1,23 @@
+moksha (0.4.0-5) jammy; urgency=low
+
+  * Swirch to MokshaGreen Theme
+  * Use bodhi-background-bodhileaf-cjn/
+  * Better prevention for adding more sytray gadgets
+  * File icon respects icon group (in case of fadded backgrounds)
+  * Theme: better vertical systray align
+  * Border missing when desktop flip (fix)
+  * Border: libreoffice and some apps cause segf after close
+  * Shelf: asan - using freed variable fix
+  * Some tweaks to e_exec (E port)
+  * Shelf recreate after style change
+  * Clipboard setting icon fix
+  * Theme clock: we do not want digitron frame
+  * Theme: more generic syscon gadget icon
+  * Theme: pager preview fix
+  * Update localizations
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Sat, 04 Mar 2023 05:28:29 -0500
+
 moksha (0.4.0-4) jammy; urgency=low
 
   * Clipboard: ws cleanup in history.c
