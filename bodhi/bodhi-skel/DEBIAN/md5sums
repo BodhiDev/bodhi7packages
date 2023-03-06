@@ -1,6 +1,7 @@
 3ddeaed46aa46c9007fa9bb342ed337b  etc/skel/.config/gtk-2.0/gtkfilechooser.ini
 c009aa2065d3f005161303887f2e081f  etc/skel/.config/dconf/user
 7a29efab38a8bc4840149dd035b86f4c  etc/skel/.config/geany/geany.conf
+40fdad5a50b5261865d5d64f648c8de9  etc/skel/.config/gtk-3.0/settings.ini
 5d420ca2ce1d0738c302d0690e3705a9  etc/skel/.config/Thunar/accels.scm
 58ca53c38d8d4e42b0cc26c8c3c7141a  etc/skel/.config/Thunar/uca.xml
 ec576ee8eca0dc56d9b94d428f82fec1  etc/skel/.config/featherpad/fp.conf
@@ -13,6 +14,6 @@ ab75d5f8e5c07e3f019caea9d2c5c64f  etc/skel/.config/terminology/config/standard/b
 a392266b3eb9d23f578c8654c70c47b6  etc/skel/.local/share/epiphany/ephy-history.db
 ab4d7bb83acbc7bbc38ae4161ad6a971  etc/skel/.local/share/epiphany/session_state.xml
 e1080bacdea1a49188e518da9151f5ea  usr/share/terminology/backgrounds/bodhi.png
-2318e5e277f794bc2ed47ccaf78a6bc8  usr/share/doc/bodhi-skel/changelog.Debian.gz
+260fc319b2b7a16c22fbd256be3255d0  usr/share/doc/bodhi-skel/changelog.Debian.gz
 4dfc1ad8358c37ff3bf6b239acbb9304  usr/share/doc/bodhi-skel/copyright
 152e47fe7bf4b8ddb393d9dd58976291  usr/share/lintian/overrides/bodhi-skel
