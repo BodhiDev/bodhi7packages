@@ -1,5 +1,10 @@
 moksha (0.4.0-5) jammy; urgency=low
 
+  * Tasks: autoresize cb timer for new window
+  * Tasks: Shrink to fit feature tweak
+  * Border left/right edges added
+  * iBar: bad context menu x coordinate
+  * Notification and clipboard menu headers added
   * Swirch to MokshaGreen Theme
   * Use bodhi-background-bodhileaf-cjn/
   * Better prevention for adding more sytray gadgets
@@ -16,7 +21,7 @@ moksha (0.4.0-5) jammy; urgency=low
   * Theme: pager preview fix
   * Update localizations
 
- -- Robert Wiley <ylee@bodhilinux.com>  Sat, 04 Mar 2023 05:28:29 -0500
+ -- Robert Wiley <ylee@bodhilinux.com>  Sun, 12 Mar 2023 13:30:21 -0400
 
 moksha (0.4.0-4) jammy; urgency=low
 
