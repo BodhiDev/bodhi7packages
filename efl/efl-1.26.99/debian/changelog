@@ -1,3 +1,9 @@
+efl (1.26.99-1jammy0) jammy; urgency=low
+
+  * Commit: 81cba676d7 theme-fileman-support special mono icons
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Sun, 12 Mar 2023 08:27:36 -0400
+
 efl (1.26.99-0jammy0) jammy; urgency=low
 
   * Initial build for Jammy Jellyfish
