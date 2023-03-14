@@ -1,4 +1,6 @@
 /etc/apt/sources.list.d/bodhi-repositories.list
+/etc/apt/preferences.d/mozillateam-ppa
+/etc/apt/sources.list.d/mozillateam-ubuntu-ppa-jammy.list
 /etc/profile.d/eina-log.sh
 /etc/udev/rules.d/80-local.rules
 /etc/systemd/system.conf.d/50_bodhilinux.conf

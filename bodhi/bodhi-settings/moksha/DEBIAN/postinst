@@ -1,0 +1,7 @@
+#!/bin/sh
+set -e
+
+if [ -f /usr/share/keyrings/mozillateam-ubuntu-ppa.gpg ]; then
+    cp /usr/share/keyrings/mozillateam-ubuntu-ppa.gpg /etc/apt/trusted.gpg.d/
+fi
+

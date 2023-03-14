@@ -1,3 +1,4 @@
 bodhi-settings: new-package-should-close-itp-bug
-bodhi-settings: package-installs-apt-sources etc/apt/sources.list.d/bodhi-repositories.list
+bodhi-settings: package-installs-apt-sources
+bodhi-settings: package-installs-apt-preferences etc/apt/preferences.d/mozillateam-ppa
 bodhi-settings: udev-rule-in-etc etc/udev/rules.d/80-local.rules
