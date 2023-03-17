@@ -20,8 +20,11 @@ moksha (0.4.0-5) jammy; urgency=low
   * Theme: more generic syscon gadget icon
   * Theme: pager preview fix
   * Update localizations
+  * Filepreview: no need resolution for audio files
+  * Filepreview: show resolution & edj file
+  * Filepreview fixes: image, video, audio
 
- -- Robert Wiley <ylee@bodhilinux.com>  Sun, 12 Mar 2023 13:30:21 -0400
+ -- Robert Wiley <ylee@bodhilinux.com>  Fri, 17 Mar 2023 11:44:22 -0400
 
 moksha (0.4.0-4) jammy; urgency=low
 
