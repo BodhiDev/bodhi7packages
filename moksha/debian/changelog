@@ -23,8 +23,9 @@ moksha (0.4.0-5) jammy; urgency=low
   * Filepreview: no need resolution for audio files
   * Filepreview: show resolution & edj file
   * Filepreview fixes: image, video, audio
+  * Notificiation: No need to free dead timer
 
- -- Robert Wiley <ylee@bodhilinux.com>  Fri, 17 Mar 2023 11:44:22 -0400
+ -- Robert Wiley <ylee@bodhilinux.com>  Sun, 19 Mar 2023 11:36:24 -0400
 
 moksha (0.4.0-4) jammy; urgency=low
 
