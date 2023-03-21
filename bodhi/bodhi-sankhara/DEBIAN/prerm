@@ -10,5 +10,8 @@ if [ -f "/usr/share/glib-2.0/schemas/org.gnome.epiphany.gschema.xml" ]; then
   sleep 1
   glib-compile-schemas /usr/share/glib-2.0/schemas
 fi
+if [ -f "/etc/skel/.bashrc" ]; then
+  sed -i s/force_color_prompt/#force_color_prompt/g /etc/skel/.bashrc
+fi
   ;;
 esac
