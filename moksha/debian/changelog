@@ -1,3 +1,9 @@
+moksha (0.4.0-6) jammy; urgency=low
+
+  * Border: fix related to iBar indicato
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Wed, 22 Mar 2023 14:09:40 -0400
+
 moksha (0.4.0-5) jammy; urgency=low
 
   * Tasks: autoresize cb timer for new window
