@@ -1,5 +1,6 @@
 ccc27fe688bdaa230c0dacfc00781040  etc/lightdm/slick-greeter.conf
 47b826bc0650984d2a41b17a8eba51b4  etc/lightdm/lightdm.conf.d/70-linuxbodhi.conf
-bc4bd7add6ee72907091a18e2f38c370  usr/share/backgrounds/bodhi/bodhi-login.png
-7c35a22aa600f91b36a9616342b96f86  usr/share/doc/bodhi-slick-theme/changelog.gz
-1cd687f9b112e6d7395c031b05d4a00d  usr/share/doc/bodhi-slick-theme/copyright
+7ff6bdfb4b53b3bb118d2b371a4a1e20  usr/share/backgrounds/bodhi/bodhi-login.png
+a27c98b192e4c9666b7b9ea33b503dfe  usr/share/doc/bodhi-slick-theme/changelog.gz
+7482d3373dfcac91256a79a59cfbbb42  usr/share/doc/bodhi-slick-theme/copyright
+5cbb1b4cf03a80e4c608235796ac26a6  usr/share/doc/bodhi-slick-theme/CREDITS
