@@ -6,5 +6,8 @@ case "$1" in
 	if [ -f /etc/apt/trusted.gpg.d/mozillateam-ubuntu-ppa.gpg ]; then
 		rm /etc/apt/trusted.gpg.dmozillateam-ubuntu-ppa.gpg
 	fi
+ if [ -f /etc/apt/trusted.gpg.d/kelebek333-ubuntu-nvidia-legacy.gpg ]; then
+		rm /etc/apt/kelebek333-ubuntu-nvidia-legacy.gpg
+	fi
 	;;
 esac

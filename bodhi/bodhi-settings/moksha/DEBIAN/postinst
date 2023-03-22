@@ -4,4 +4,6 @@ set -e
 if [ -f /usr/share/keyrings/mozillateam-ubuntu-ppa.gpg ]; then
     cp /usr/share/keyrings/mozillateam-ubuntu-ppa.gpg /etc/apt/trusted.gpg.d/
 fi
-
+if [ -f /usr/share/keyrings/kelebek333-ubuntu-nvidia-legacy.gpg ]; then
+    cp /usr/share/keyrings/kelebek333-ubuntu-nvidia-legacy.gpg /etc/apt/trusted.gpg.d/
+fi
