@@ -1,3 +1,10 @@
+moksha-module-tclock (0.1.1-4) focal; urgency=medium
+
+  * Center line if one only
+  * Scaled text
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Mon, 27 Mar 2023 03:08:33 -0400
+
 moksha-module-tclock (0.1.1-3) focal; urgency=medium
 
   * Gadcon size eval after config change
