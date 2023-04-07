@@ -1,9 +1,11 @@
 moksha (0.4.0-6) jammy; urgency=low
 
   * Border: fix related to iBar indicator
-  % systray tweaks to fix scale issues
+  * systray tweaks to fix scale issues
+  * Shelf: MAX macro added
+  * Window move info fix and disable by default
 
- -- Robert Wiley <ylee@bodhilinux.com>  Mon, 27 Mar 2023 04:27:17 -0400
+ -- Robert Wiley <ylee@bodhilinux.com>  Fri, 07 Apr 2023 16:17:48 -0400
 
 moksha (0.4.0-5) jammy; urgency=low
 
