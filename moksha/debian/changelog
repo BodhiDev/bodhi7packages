@@ -1,3 +1,14 @@
+moksha (0.4.0-7) jammy; urgency=low
+
+  * Use theme background in deb file
+  * Shelf: better offset for 1/5 icons size
+  * Winlist min/max height settings unnecessary
+  * Theme: battery gadget tweaks
+  * Systray: temporary fix for no icons
+  * Shelf content dialog resizable
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Sun, 23 Apr 2023 15:07:25 -0400
+
 moksha (0.4.0-6) jammy; urgency=low
 
   * Border: fix related to iBar indicator
