@@ -2,7 +2,6 @@ usr/lib/*/lib*.so.*
 usr/lib/*/ecore/system/*/*/module.so
 usr/lib/*/ecore_evas/engines/*/*/module.so
 usr/lib/*/ecore_imf/modules/*/*/module.so
-usr/lib/*/ecore_wl2/engines/*/*/module.so
 usr/lib/*/edje/modules/*/*/module.so
 usr/lib/*/eeze/modules/sensor/*/*/module.so
 usr/lib/*/emotion/modules/gstreamer1/*/module.so

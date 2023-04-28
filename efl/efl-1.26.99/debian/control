@@ -80,7 +80,6 @@ Architecture: any
 Pre-Depends: ${misc:Pre-Depends}
 Depends:
  libefl (= ${binary:Version}),
- debhelper (>= 12),
  check,
  libblkid-dev [linux-any],
  libssl-dev,

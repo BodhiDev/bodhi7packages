@@ -50,11 +50,12 @@ endif
 		-Dtslib=false \
 		-Dembedded-lz4=false \
 		-Dnetwork-backend=none \
-		-Dwl=true \
-		-Ddrm=true \
+		-Dwl=false \
+		-Ddrm=false \
 		-Dbuild-tests=false \
 		-Dxpresent=true \
 		-Devas-loaders-disabler="['json', 'avif', 'jxl']" \
+		-Dopengl=full \
 		$(arch_flags) \
 		$(fb_flags) \
 		$(lua_flags)

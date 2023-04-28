@@ -15,8 +15,6 @@ usr/lib/*/libecore_input.so
 usr/lib/*/libecore_input_evas.so
 usr/lib/*/libecore_ipc.so
 usr/lib/*/libecore_x.so
-usr/lib/*/libecore_wl2.so
-usr/lib/*/libecore_drm2.so
 usr/lib/*/pkgconfig/ecore*.pc
 usr/lib/*/cmake/Ecore/*.cmake
 usr/lib/*/cmake/EcoreCxx/*.cmake
@@ -93,9 +91,7 @@ usr/lib/*/cmake/EoCxx/*.cmake
 #libefl
 usr/include/efl-1
 usr/include/efl-cxx-1
-usr/include/efl-canvas-wl-1
 usr/lib/*/libefl.so
-usr/lib/*/libefl_canvas_wl.so
 usr/lib/*/pkgconfig/efl*.pc
 usr/lib/*/cmake/Efl/*.cmake
 

@@ -1,3 +1,9 @@
+efl (1.26.99-2jammy0) jammy; urgency=low
+
+  * Commit: 8c30cb2ef8 	edje, build: don't use fullpath()
+  
+ -- Robert Wiley <ylee@bodhilinux.com>  Tue, 25 Apr 2023 10:00:17 -0400
+
 efl (1.26.99-1jammy0) jammy; urgency=low
 
   * Commit: 81cba676d7 theme-fileman-support special mono icons

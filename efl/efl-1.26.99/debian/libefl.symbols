@@ -1204,106 +1204,6 @@ libecore_con.so.1 libefl #MINVER#
 #MISSING: 1.19.0# efl_network_url_class_get@Base 1.15.0
 #MISSING: 1.19.0# efl_network_url_get@Base 1.15.0
 #MISSING: 1.19.0# efl_network_url_set@Base 1.15.0
-libecore_drm2.so.1 libefl #MINVER#
- ECORE_DRM2_EVENT_ACTIVATE@Base 1.18.0
- ECORE_DRM2_EVENT_OUTPUT_CHANGED@Base 1.18.0
- ecore_drm2_device_calibrate@Base 1.18.0
- ecore_drm2_device_clock_id_get@Base 1.18.0
- ecore_drm2_device_close@Base 1.18.0
- ecore_drm2_device_crtcs_get@Base 1.18.0
- ecore_drm2_device_cursor_size_get@Base 1.18.0
- ecore_drm2_device_fd_get@Base 1.22.2
-#MISSING: 1.22.2# ecore_drm2_device_find@Base 1.18.0
-#MISSING: 1.22.2# ecore_drm2_device_free@Base 1.18.0
- ecore_drm2_device_keyboard_cached_context_set@Base 1.18.0
- ecore_drm2_device_keyboard_cached_keymap_set@Base 1.18.0
- ecore_drm2_device_keyboard_group_set@Base 1.20.1
- ecore_drm2_device_keyboard_info_set@Base 1.20.1
- ecore_drm2_device_open@Base 1.18.0
- ecore_drm2_device_pointer_accel_profile_set@Base 1.22.2
- ecore_drm2_device_pointer_accel_speed_set@Base 1.22.2
- ecore_drm2_device_pointer_left_handed_set@Base 1.18.0
- ecore_drm2_device_pointer_max_set@Base 1.18.0
- ecore_drm2_device_pointer_rotation_set@Base 1.20.1
- ecore_drm2_device_pointer_warp@Base 1.18.0
- ecore_drm2_device_pointer_xy_get@Base 1.18.0
- ecore_drm2_device_prefer_shadow@Base 1.19.0
- ecore_drm2_device_preferred_depth_get@Base 1.25.1
- ecore_drm2_device_screen_size_range_get@Base 1.18.0
- ecore_drm2_device_touch_tap_to_click_enabled_set@Base 1.22.2
- ecore_drm2_device_vt_set@Base 1.18.0
- ecore_drm2_device_window_set@Base 1.18.0
- ecore_drm2_event_handle@Base 1.19.0
- ecore_drm2_fb_bo_get@Base 1.19.0
- ecore_drm2_fb_busy_get@Base 1.19.0
-#MISSING: 1.20.1# ecore_drm2_fb_busy_set@Base 1.19.0
- ecore_drm2_fb_create@Base 1.18.0
- ecore_drm2_fb_data_get@Base 1.18.0
-#MISSING: 1.20.1# ecore_drm2_fb_destroy@Base 1.18.0
- ecore_drm2_fb_dirty@Base 1.18.0
- ecore_drm2_fb_discard@Base 1.20.1
- ecore_drm2_fb_dmabuf_import@Base 1.20.1
- ecore_drm2_fb_flip@Base 1.18.0
- ecore_drm2_fb_flip_complete@Base 1.19.0
- ecore_drm2_fb_gbm_create@Base 1.18.0
- ecore_drm2_fb_release@Base 1.19.0
- ecore_drm2_fb_size_get@Base 1.18.0
- ecore_drm2_fb_status_handler_set@Base 1.20.1
- ecore_drm2_fb_stride_get@Base 1.18.0
- ecore_drm2_init@Base 1.18.0
- ecore_drm2_output_background_color_set@Base 1.22.4
- ecore_drm2_output_backlight_get@Base 1.18.0
- ecore_drm2_output_blanktime_get@Base 1.20.1
- ecore_drm2_output_cloned_get@Base 1.18.0
- ecore_drm2_output_connected_get@Base 1.18.0
- ecore_drm2_output_connector_type_get@Base 1.18.0
- ecore_drm2_output_crtc_get@Base 1.18.0
-#MISSING: 1.22.2# ecore_drm2_output_crtc_size_get@Base 1.18.0
-#MISSING: 1.19.0# ecore_drm2_output_current_fb_get@Base 1.18.0
- ecore_drm2_output_dpi_get@Base 1.19.0
- ecore_drm2_output_dpms_get@Base 1.18.0
- ecore_drm2_output_dpms_set@Base 1.18.0
- ecore_drm2_output_edid_get@Base 1.18.0
- ecore_drm2_output_enabled_get@Base 1.18.0
- ecore_drm2_output_enabled_set@Base 1.18.0
- ecore_drm2_output_find@Base 1.18.0
- ecore_drm2_output_gamma_set@Base 1.19.0
-#MISSING: 1.22.2# ecore_drm2_output_geometry_get@Base 1.18.0
- ecore_drm2_output_info_get@Base 1.22.2
- ecore_drm2_output_latest_fb_get@Base 1.19.0
- ecore_drm2_output_mode_info_get@Base 1.18.0
- ecore_drm2_output_mode_set@Base 1.18.0
- ecore_drm2_output_model_get@Base 1.18.0
- ecore_drm2_output_modes_get@Base 1.18.0
- ecore_drm2_output_name_get@Base 1.18.0
-#MISSING: 1.19.0# ecore_drm2_output_next_fb_get@Base 1.18.0
-#MISSING: 1.19.0# ecore_drm2_output_next_fb_set@Base 1.18.0
- ecore_drm2_output_pending_get@Base 1.22.2
- ecore_drm2_output_physical_size_get@Base 1.18.0
- ecore_drm2_output_possible_crtc_get@Base 1.18.0
- ecore_drm2_output_primary_get@Base 1.18.0
- ecore_drm2_output_primary_set@Base 1.18.0
- ecore_drm2_output_relative_mode_get@Base 1.22.2
- ecore_drm2_output_relative_mode_set@Base 1.22.2
- ecore_drm2_output_relative_to_get@Base 1.22.2
- ecore_drm2_output_relative_to_set@Base 1.22.2
-#MISSING: 1.20.1# ecore_drm2_output_release_handler_set@Base 1.19.0
-#MISSING: 1.22.2# ecore_drm2_output_resolution_get@Base 1.18.0
- ecore_drm2_output_rotation_get@Base 1.22.2
- ecore_drm2_output_rotation_set@Base 1.19.0
- ecore_drm2_output_subpixel_get@Base 1.20.1
- ecore_drm2_output_supported_rotations_get@Base 1.19.0
- ecore_drm2_output_user_data_get@Base 1.22.2
- ecore_drm2_output_user_data_set@Base 1.19.0
- ecore_drm2_outputs_create@Base 1.18.0
- ecore_drm2_outputs_destroy@Base 1.18.0
- ecore_drm2_outputs_get@Base 1.18.0
- ecore_drm2_plane_assign@Base 1.20.1
- ecore_drm2_plane_destination_set@Base 1.20.1
- ecore_drm2_plane_fb_set@Base 1.20.1
- ecore_drm2_plane_release@Base 1.20.1
- ecore_drm2_shutdown@Base 1.18.0
- ecore_drm2_vblank_supported@Base 1.22.4
 libecore_evas.so.1 libefl #MINVER#
  ECORE_EVAS_EWS_EVENT_ACTIVATE@Base 1.15.0
  ECORE_EVAS_EWS_EVENT_ADD@Base 1.15.0
@@ -1878,261 +1778,6 @@ libecore_ipc.so.1 libefl #MINVER#
  ecore_ipc_server_send@Base 1.15.0
  ecore_ipc_shutdown@Base 1.15.0
  ecore_ipc_ssl_available_get@Base 1.15.0
-libecore_wl2.so.1 libefl #MINVER#
- ECORE_WL2_EVENT_AUX_HINT_ALLOWED@Base 1.20.1
- ECORE_WL2_EVENT_AUX_HINT_SUPPORTED@Base 1.20.1
- ECORE_WL2_EVENT_AUX_MESSAGE@Base 1.20.1
- ECORE_WL2_EVENT_CONNECT@Base 1.19.1
- ECORE_WL2_EVENT_DATA_SOURCE_ACTION@Base 1.19.1
- ECORE_WL2_EVENT_DATA_SOURCE_DROP@Base 1.19.1
- ECORE_WL2_EVENT_DATA_SOURCE_END@Base 1.19.1
- ECORE_WL2_EVENT_DATA_SOURCE_SEND@Base 1.19.1
- ECORE_WL2_EVENT_DATA_SOURCE_TARGET@Base 1.19.1
- ECORE_WL2_EVENT_DEVICE_ADDED@Base 1.19.1
- ECORE_WL2_EVENT_DEVICE_REMOVED@Base 1.19.1
- ECORE_WL2_EVENT_DISCONNECT@Base 1.19.1
- ECORE_WL2_EVENT_DND_DROP@Base 1.19.1
- ECORE_WL2_EVENT_DND_END@Base 1.19.1
- ECORE_WL2_EVENT_DND_ENTER@Base 1.19.1
- ECORE_WL2_EVENT_DND_LEAVE@Base 1.19.1
- ECORE_WL2_EVENT_DND_MOTION@Base 1.19.1
- ECORE_WL2_EVENT_FOCUS_IN@Base 1.19.1
- ECORE_WL2_EVENT_FOCUS_OUT@Base 1.19.1
- ECORE_WL2_EVENT_GLOBAL_ADDED@Base 1.19.1
- ECORE_WL2_EVENT_GLOBAL_REMOVED@Base 1.19.1
- ECORE_WL2_EVENT_OFFER_DATA_READY@Base 1.19.1
- ECORE_WL2_EVENT_OUTPUT_TRANSFORM@Base 1.20.1
- ECORE_WL2_EVENT_SEAT_CAPABILITIES_CHANGED@Base 1.19.1
- ECORE_WL2_EVENT_SEAT_KEYBOARD_REPEAT_CHANGED@Base 1.20.1
- ECORE_WL2_EVENT_SEAT_KEYMAP_CHANGED@Base 1.20.1
- ECORE_WL2_EVENT_SEAT_NAME_CHANGED@Base 1.19.1
- ECORE_WL2_EVENT_SEAT_SELECTION@Base 1.20.1
- ECORE_WL2_EVENT_SYNC_DONE@Base 1.19.1
- ECORE_WL2_EVENT_WINDOW_ACTIVATE@Base 1.20.1
- ECORE_WL2_EVENT_WINDOW_CONFIGURE@Base 1.19.1
- ECORE_WL2_EVENT_WINDOW_CONFIGURE_COMPLETE@Base 1.19.1
- ECORE_WL2_EVENT_WINDOW_CREATE@Base 1.25.1
- ECORE_WL2_EVENT_WINDOW_DEACTIVATE@Base 1.20.1
- ECORE_WL2_EVENT_WINDOW_DESTROY@Base 1.25.1
- ECORE_WL2_EVENT_WINDOW_HIDE@Base 1.20.1
- ECORE_WL2_EVENT_WINDOW_ICONIFY_STATE_CHANGE@Base 1.22.2
- ECORE_WL2_EVENT_WINDOW_OFFSCREEN@Base 1.22.2
- ECORE_WL2_EVENT_WINDOW_ROTATE@Base 1.20.1
- ECORE_WL2_EVENT_WINDOW_ROTATION_CHANGE_DONE@Base 1.20.1
- ECORE_WL2_EVENT_WINDOW_ROTATION_CHANGE_PREPARE@Base 1.20.1
- ECORE_WL2_EVENT_WINDOW_ROTATION_CHANGE_PREPARE_DONE@Base 1.20.1
- ECORE_WL2_EVENT_WINDOW_ROTATION_CHANGE_REQUEST@Base 1.20.1
- ECORE_WL2_EVENT_WINDOW_SHOW@Base 1.20.1
- _ecore_wl2_event_window_www@Base 1.19.1
- _ecore_wl2_event_window_www_drag@Base 1.19.1
- ecore_wl2_buffer_age_get@Base 1.22.2
- ecore_wl2_buffer_age_inc@Base 1.22.2
- ecore_wl2_buffer_age_set@Base 1.22.2
- ecore_wl2_buffer_busy_get@Base 1.22.2
- ecore_wl2_buffer_busy_set@Base 1.22.2
- ecore_wl2_buffer_create@Base 1.22.2
- ecore_wl2_buffer_destroy@Base 1.22.2
- ecore_wl2_buffer_discard@Base 1.22.2
- ecore_wl2_buffer_fit@Base 1.22.2
- ecore_wl2_buffer_init@Base 1.22.2
- ecore_wl2_buffer_lock@Base 1.22.2
- ecore_wl2_buffer_map@Base 1.22.2
- ecore_wl2_buffer_unlock@Base 1.22.2
- ecore_wl2_buffer_unmap@Base 1.22.2
- ecore_wl2_buffer_wl_buffer_get@Base 1.22.2
- ecore_wl2_connected_display_get@Base 1.22.4
- ecore_wl2_display_compositor_get@Base 1.22.4
- ecore_wl2_display_compositor_version_get@Base 1.19.1
- ecore_wl2_display_connect@Base 1.19.1
- ecore_wl2_display_create@Base 1.19.1
- ecore_wl2_display_destroy@Base 1.19.1
- ecore_wl2_display_disconnect@Base 1.19.1
- ecore_wl2_display_dmabuf_get@Base 1.19.1
- ecore_wl2_display_flush@Base 1.22.2
- ecore_wl2_display_get@Base 1.19.1
- ecore_wl2_display_globals_get@Base 1.19.1
- ecore_wl2_display_input_find@Base 1.20.1
- ecore_wl2_display_input_find_by_name@Base 1.20.1
- ecore_wl2_display_inputs_get@Base 1.19.1
- ecore_wl2_display_name_get@Base 1.20.1
- ecore_wl2_display_registry_get@Base 1.19.1
- ecore_wl2_display_screen_size_get@Base 1.19.1
- ecore_wl2_display_shm_get@Base 1.19.1
- ecore_wl2_display_sync_is_done@Base 1.20.1
- ecore_wl2_display_terminate@Base 1.19.1
-#MISSING: 1.22.2# ecore_wl2_display_window_find@Base 1.19.1
- ecore_wl2_display_window_find_by_surface@Base 1.22.4
- ecore_wl2_dnd_drag_end@Base 1.19.1
- ecore_wl2_dnd_drag_start@Base 1.19.1
- ecore_wl2_dnd_drag_types_set@Base 1.19.1
- ecore_wl2_dnd_selection_clear@Base 1.19.1
- ecore_wl2_dnd_selection_get@Base 1.19.1
- ecore_wl2_dnd_selection_set@Base 1.19.1
- ecore_wl2_dnd_set_actions@Base 1.20.1
- ecore_wl2_init@Base 1.19.1
- ecore_wl2_input_cursor_from_name_set@Base 1.20.1
- ecore_wl2_input_default_input_get@Base 1.22.4
- ecore_wl2_input_display_get@Base 1.20.1
-#MISSING: 1.22.2# ecore_wl2_input_grab@Base 1.19.1
- ecore_wl2_input_keyboard_repeat_get@Base 1.20.1
- ecore_wl2_input_keyboard_repeat_set@Base 1.22.4
- ecore_wl2_input_keymap_get@Base 1.20.1
- ecore_wl2_input_name_get@Base 1.20.1
- ecore_wl2_input_pointer_set@Base 1.20.1
- ecore_wl2_input_pointer_xy_get@Base 1.20.1
- ecore_wl2_input_seat_capabilities_get@Base 1.19.1
-#MISSING: 1.22.4# ecore_wl2_input_seat_device_get@Base 1.20.1
- ecore_wl2_input_seat_get@Base 1.19.1
- ecore_wl2_input_seat_id_get@Base 1.19.1
-#MISSING: 1.22.2# ecore_wl2_input_ungrab@Base 1.19.1
-#MISSING: 1.20.1# ecore_wl2_keyboard_get@Base 1.19.1
-#MISSING: 1.20.1# ecore_wl2_keyboard_repeat_info_set@Base 1.19.1
-#MISSING: 1.20.1# ecore_wl2_keyboard_resource_create@Base 1.19.1
- ecore_wl2_offer_accept@Base 1.20.1
- ecore_wl2_offer_action_get@Base 1.19.1
- ecore_wl2_offer_actions_get@Base 1.19.1
- ecore_wl2_offer_actions_set@Base 1.19.1
- ecore_wl2_offer_finish@Base 1.19.1
- ecore_wl2_offer_mimes_get@Base 1.19.1
- ecore_wl2_offer_mimes_set@Base 1.19.1
- ecore_wl2_offer_proxy_receive@Base 1.20.1
- ecore_wl2_offer_proxy_receive_end@Base 1.20.1
- ecore_wl2_offer_receive@Base 1.19.1
- ecore_wl2_offer_supports_mime@Base 1.19.1
- ecore_wl2_output_dpi_get@Base 1.19.1
- ecore_wl2_output_transform_get@Base 1.20.1
-#MISSING: 1.20.1# ecore_wl2_pointer_get@Base 1.19.1
-#MISSING: 1.20.1# ecore_wl2_pointer_resource_create@Base 1.19.1
-#MISSING: 1.20.1# ecore_wl2_seat_capabilities_send@Base 1.19.1
-#MISSING: 1.20.1# ecore_wl2_seat_create@Base 1.19.1
-#MISSING: 1.20.1# ecore_wl2_seat_destroy@Base 1.19.1
-#MISSING: 1.20.1# ecore_wl2_seat_pointer_release@Base 1.19.1
- ecore_wl2_session_recovery_disable@Base 1.19.1
- ecore_wl2_shutdown@Base 1.19.1
- ecore_wl2_subsurface_del@Base 1.19.1
- ecore_wl2_subsurface_new@Base 1.19.1
- ecore_wl2_subsurface_opaque_region_set@Base 1.19.1
- ecore_wl2_subsurface_place_above@Base 1.19.1
- ecore_wl2_subsurface_place_below@Base 1.19.1
- ecore_wl2_subsurface_position_get@Base 1.19.1
- ecore_wl2_subsurface_position_set@Base 1.19.1
- ecore_wl2_subsurface_surface_get@Base 1.19.1
- ecore_wl2_subsurface_sync_set@Base 1.19.1
- ecore_wl2_surface_alpha_get@Base 1.22.2
- ecore_wl2_surface_assign@Base 1.22.2
- ecore_wl2_surface_buffer_create@Base 1.22.2
- ecore_wl2_surface_create@Base 1.22.2
- ecore_wl2_surface_data_get@Base 1.22.2
- ecore_wl2_surface_destroy@Base 1.22.2
- ecore_wl2_surface_flush@Base 1.22.2
- ecore_wl2_surface_manager_add@Base 1.22.2
- ecore_wl2_surface_manager_del@Base 1.22.2
- ecore_wl2_surface_post@Base 1.22.2
- ecore_wl2_surface_reconfigure@Base 1.22.2
- ecore_wl2_surface_window_get@Base 1.22.2
- ecore_wl2_window_activated_get@Base 1.20.1
- ecore_wl2_window_alpha_get@Base 1.19.1
- ecore_wl2_window_alpha_set@Base 1.19.1
- ecore_wl2_window_aspect_get@Base 1.22.4
- ecore_wl2_window_aspect_set@Base 1.22.2
- ecore_wl2_window_aux_hint_add@Base 1.20.1
- ecore_wl2_window_aux_hint_change@Base 1.20.1
- ecore_wl2_window_aux_hint_del@Base 1.20.1
- ecore_wl2_window_aux_hints_supported_get@Base 1.20.1
- ecore_wl2_window_available_rotations_get@Base 1.20.1
- ecore_wl2_window_available_rotations_set@Base 1.20.1
- ecore_wl2_window_buffer_attach@Base 1.22.2
- ecore_wl2_window_buffer_transform_set@Base 1.20.1
- ecore_wl2_window_class_get@Base 1.22.4
- ecore_wl2_window_class_set@Base 1.19.1
- ecore_wl2_window_close_callback_set@Base 1.22.4
- ecore_wl2_window_commit@Base 1.22.2
-#MISSING: 1.20.1# ecore_wl2_window_cursor_from_name_set@Base 1.19.1
- ecore_wl2_window_damage@Base 1.22.2
- ecore_wl2_window_display_get@Base 1.19.1
- ecore_wl2_window_false_commit@Base 1.22.2
- ecore_wl2_window_floating_mode_get@Base 1.20.1
- ecore_wl2_window_floating_mode_set@Base 1.20.1
- ecore_wl2_window_focus_skip_get@Base 1.20.1
- ecore_wl2_window_focus_skip_set@Base 1.20.1
- ecore_wl2_window_frame_callback_add@Base 1.22.2
- ecore_wl2_window_frame_callback_del@Base 1.22.2
- ecore_wl2_window_free@Base 1.19.1
- ecore_wl2_window_fullscreen_get@Base 1.19.1
- ecore_wl2_window_fullscreen_set@Base 1.19.1
- ecore_wl2_window_geometry_get@Base 1.19.1
- ecore_wl2_window_geometry_set@Base 1.19.1
- ecore_wl2_window_hide@Base 1.19.1
-#MISSING: 1.22.2# ecore_wl2_window_iconified_get@Base 1.19.1
- ecore_wl2_window_iconified_set@Base 1.19.1
-#MISSING: 1.22.2# ecore_wl2_window_id_get@Base 1.19.1
-#MISSING: 1.20.1# ecore_wl2_window_input_get@Base 1.19.1
- ecore_wl2_window_input_region_get@Base 1.22.4
- ecore_wl2_window_input_region_set@Base 1.19.1
- ecore_wl2_window_maximized_get@Base 1.19.1
- ecore_wl2_window_maximized_set@Base 1.19.1
- ecore_wl2_window_move@Base 1.19.1
- ecore_wl2_window_new@Base 1.19.1
- ecore_wl2_window_opaque_region_get@Base 1.22.4
- ecore_wl2_window_opaque_region_set@Base 1.19.1
- ecore_wl2_window_output_find@Base 1.20.1
- ecore_wl2_window_pending_get@Base 1.22.2
-#MISSING: 1.20.1# ecore_wl2_window_pointer_device_xy_get@Base 1.19.1
-#MISSING: 1.20.1# ecore_wl2_window_pointer_set@Base 1.19.1
-#MISSING: 1.20.1# ecore_wl2_window_pointer_xy_get@Base 1.19.1
- ecore_wl2_window_popup_input_get@Base 1.22.4
- ecore_wl2_window_popup_input_set@Base 1.20.1
- ecore_wl2_window_preferred_rotation_get@Base 1.20.1
- ecore_wl2_window_preferred_rotation_set@Base 1.20.1
-#MISSING: 1.22.2# ecore_wl2_window_raise@Base 1.19.1
- ecore_wl2_window_resize@Base 1.19.1
- ecore_wl2_window_resizing_get@Base 1.22.2
- ecore_wl2_window_role_get@Base 1.22.4
- ecore_wl2_window_role_set@Base 1.20.1
- ecore_wl2_window_rotation_app_get@Base 1.20.1
- ecore_wl2_window_rotation_app_set@Base 1.20.1
- ecore_wl2_window_rotation_change_done_send@Base 1.20.1
- ecore_wl2_window_rotation_change_prepare_done_send@Base 1.20.1
- ecore_wl2_window_rotation_change_prepare_send@Base 1.20.1
- ecore_wl2_window_rotation_change_request_send@Base 1.20.1
- ecore_wl2_window_rotation_get@Base 1.19.1
- ecore_wl2_window_rotation_set@Base 1.19.1
- ecore_wl2_window_shell_surface_exists@Base 1.19.1
- ecore_wl2_window_show@Base 1.19.1
- ecore_wl2_window_surface_find@Base 1.22.4
- ecore_wl2_window_surface_flush@Base 1.22.2
- ecore_wl2_window_surface_get@Base 1.19.1
- ecore_wl2_window_surface_id_get@Base 1.19.1
- ecore_wl2_window_title_get@Base 1.22.4
- ecore_wl2_window_title_set@Base 1.19.1
-#MISSING: 1.22.2# ecore_wl2_window_transparent_set@Base 1.19.1
- ecore_wl2_window_type_get@Base 1.22.4
- ecore_wl2_window_type_set@Base 1.19.1
- ecore_wl2_window_update_begin@Base 1.22.2
- ecore_wl2_window_weight_set@Base 1.22.2
- ecore_wl2_window_wm_rotation_supported_get@Base 1.20.1
- ecore_wl2_window_wm_rotation_supported_set@Base 1.20.1
-#MISSING: 1.26.1# efl_aux_hints_interface@Base 1.20.1
-#MISSING: 1.26.1# efl_hints_interface@Base 1.22.2
-#MISSING: 1.26.1# www_interface@Base 1.19.1
-#MISSING: 1.26.1# www_surface_interface@Base 1.19.1
-#MISSING: 1.26.1# xdg_popup_interface@Base 1.19.1
-#MISSING: 1.26.1# xdg_positioner_interface@Base 1.22.2
-#MISSING: 1.22.2# xdg_shell_interface@Base 1.19.1
-#MISSING: 1.26.1# xdg_surface_interface@Base 1.19.1
-#MISSING: 1.26.1# xdg_toplevel_interface@Base 1.22.2
-#MISSING: 1.26.1# xdg_wm_base_interface@Base 1.22.2
-#MISSING: 1.26.1# zwp_e_session_recovery_interface@Base 1.19.1
-#MISSING: 1.26.1# zwp_linux_buffer_params_v1_interface@Base 1.19.1
-#MISSING: 1.26.1# zwp_linux_dmabuf_v1_interface@Base 1.19.1
-#MISSING: 1.26.1# zwp_teamwork_interface@Base 1.19.1
-#MISSING: 1.22.2# zwp_text_input_manager_v1_interface@Base 1.19.1
-#MISSING: 1.22.2# zwp_text_input_v1_interface@Base 1.19.1
-#MISSING: 1.26.1# zxdg_popup_v6_interface@Base 1.19.1
-#MISSING: 1.26.1# zxdg_positioner_v6_interface@Base 1.19.1
-#MISSING: 1.26.1# zxdg_shell_v6_interface@Base 1.19.1
-#MISSING: 1.26.1# zxdg_surface_v6_interface@Base 1.19.1
-#MISSING: 1.26.1# zxdg_toplevel_v6_interface@Base 1.19.1
 libecore_x.so.1 libefl #MINVER#
  ECORE_X_ATOM_ATOM@Base 1.15.0
  ECORE_X_ATOM_CARDINAL@Base 1.15.0
@@ -5865,36 +5510,6 @@ libefl.so.1 libefl #MINVER#
 #MISSING: 1.22.2# efl_vpath_manager_fetch@Base 1.18.0
 #MISSING: 1.22.2# efl_vpath_manager_register@Base 1.18.0
 #MISSING: 1.22.2# efl_vpath_manager_unregister@Base 1.18.0
-libefl_canvas_wl.so.1 libefl #MINVER#
- _EFL_CANVAS_WL_EVENT_CHILD_ADDED@Base 1.22.4
- _EFL_CANVAS_WL_EVENT_POPUP_ADDED@Base 1.22.4
- _EFL_CANVAS_WL_EVENT_SEAT_ADDED@Base 1.22.4
- _EFL_CANVAS_WL_EVENT_TOPLEVEL_ADDED@Base 1.22.4
- efl_canvas_wl_active_surface_get@Base 1.22.4
- efl_canvas_wl_active_surface_set@Base 1.22.4
- efl_canvas_wl_allowed_pid_add@Base 1.22.4
- efl_canvas_wl_allowed_pid_del@Base 1.22.4
- efl_canvas_wl_aspect_propagate_get@Base 1.22.4
- efl_canvas_wl_aspect_propagate_set@Base 1.22.4
- efl_canvas_wl_class_get@Base 1.22.4
- efl_canvas_wl_exec_flags_get@Base 1.22.4
- efl_canvas_wl_exec_flags_set@Base 1.22.4
- efl_canvas_wl_extracted_surface_object_find@Base 1.22.4
- efl_canvas_wl_global_add@Base 1.22.4
- efl_canvas_wl_minmax_propagate_get@Base 1.22.4
- efl_canvas_wl_minmax_propagate_set@Base 1.22.4
- efl_canvas_wl_rotation_get@Base 1.22.4
- efl_canvas_wl_rotation_set@Base 1.22.4
- efl_canvas_wl_run@Base 1.22.4
- efl_canvas_wl_seat_key_repeat_set@Base 1.22.4
- efl_canvas_wl_seat_keymap_set@Base 1.22.4
- efl_canvas_wl_surface_class_get@Base 1.22.4
- efl_canvas_wl_surface_extract@Base 1.22.4
- efl_canvas_wl_surface_extracted_get@Base 1.22.4
- efl_canvas_wl_surface_next@Base 1.22.4
- efl_canvas_wl_surface_parent_surface_get@Base 1.22.4
- efl_canvas_wl_surface_pid_get@Base 1.22.4
- efl_canvas_wl_surface_prev@Base 1.22.4
 libefreet.so.1 libefl #MINVER#
  EFREET_DESKTOP_TYPE_APPLICATION@Base 1.15.0
  EFREET_DESKTOP_TYPE_DIRECTORY@Base 1.15.0
@@ -6733,6 +6348,7 @@ libeina.so.1 libefl #MINVER#
  eina_safepointer_unregister@Base 1.18.0
  eina_sched_prio_drop@Base 1.15.0
  eina_seed@Base 1.15.0
+ eina_sha1@Base 1.26.99
  eina_shutdown@Base 1.15.0
  eina_simple_xml_attribute_free@Base 1.15.0
  eina_simple_xml_attribute_new@Base 1.15.0
@@ -8995,6 +8611,7 @@ libelementary.so.1 libefl #MINVER#
  efl_ui_win_keyboard_mode_set@Base 1.18.0
 #MISSING: 1.22.2# efl_ui_win_keygrab_set@Base 1.18.0
 #MISSING: 1.22.2# efl_ui_win_keygrab_unset@Base 1.18.0
+ efl_ui_win_legacy_class_get@Base 1.26.99
  efl_ui_win_maximized_get@Base 1.18.0
  efl_ui_win_maximized_set@Base 1.18.0
  efl_ui_win_minimized_get@Base 1.22.2
@@ -9016,6 +8633,7 @@ libelementary.so.1 libefl #MINVER#
  efl_ui_win_rotation_set@Base 1.22.2
  efl_ui_win_screen_constrain_get@Base 1.18.0
  efl_ui_win_screen_constrain_set@Base 1.18.0
+ efl_ui_win_shared_data_get@Base 1.26.99
  efl_ui_win_socket_class_get@Base 1.22.2
  efl_ui_win_socket_legacy_class_get@Base 1.22.2
  efl_ui_win_socket_listen@Base 1.18.0
@@ -13096,6 +12714,8 @@ libelementary.so.1 libefl #MINVER#
  elm_win_conformant_set@Base 1.18.0
  elm_win_demand_attention_get@Base 1.18.0
  elm_win_demand_attention_set@Base 1.18.0
+ elm_win_exit_on_close_get@Base 1.26.99
+ elm_win_exit_on_close_set@Base 1.26.99
  elm_win_fake_add@Base 1.18.0
  elm_win_fake_canvas_set@Base 1.18.0
  elm_win_floating_mode_get@Base 1.18.0
@@ -13185,10 +12805,10 @@ libelementary.so.1 libefl #MINVER#
  elm_win_socket_listen@Base 1.18.0
  elm_win_sticky_get@Base 1.18.0
  elm_win_sticky_set@Base 1.18.0
-#MISSING: 1.19.1# elm_win_teamwork_uri_hide@Base 1.18.0
-#MISSING: 1.19.1# elm_win_teamwork_uri_open@Base 1.18.0
-#MISSING: 1.19.1# elm_win_teamwork_uri_preload@Base 1.18.0
-#MISSING: 1.19.1# elm_win_teamwork_uri_show@Base 1.18.0
+ elm_win_teamwork_uri_hide@Base 1.26.99
+ elm_win_teamwork_uri_open@Base 1.26.99
+ elm_win_teamwork_uri_preload@Base 1.26.99
+ elm_win_teamwork_uri_show@Base 1.26.99
  elm_win_title_get@Base 1.18.0
  elm_win_title_set@Base 1.18.0
  elm_win_trap_data_get@Base 1.18.0
