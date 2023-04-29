@@ -3,8 +3,6 @@
 /etc/skel/.config/featherpad/fp.conf
 /etc/skel/.config/geany/geany.conf
 /etc/skel/.config/gtk-3.0/settings.ini
-/etc/skel/.config/midori/config
-/etc/skel/.config/midori/search
 /etc/skel/.config/mimeapps.list
 /etc/skel/.config/terminology/config/standard/base.cfg
 /etc/skel/.config/Thunar/accels.scm

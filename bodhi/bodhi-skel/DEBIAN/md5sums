@@ -5,15 +5,13 @@ c009aa2065d3f005161303887f2e081f  etc/skel/.config/dconf/user
 5d420ca2ce1d0738c302d0690e3705a9  etc/skel/.config/Thunar/accels.scm
 58ca53c38d8d4e42b0cc26c8c3c7141a  etc/skel/.config/Thunar/uca.xml
 ec576ee8eca0dc56d9b94d428f82fec1  etc/skel/.config/featherpad/fp.conf
-044e7879b19afb70681011b5526700ad  etc/skel/.config/midori/config
-88effc320dee985fe43b78227a09f00f  etc/skel/.config/midori/search
 8e5640a0e6809ba61f125da3c2c357a9  etc/skel/.config/mimeapps.list
-ab75d5f8e5c07e3f019caea9d2c5c64f  etc/skel/.config/terminology/config/standard/base.cfg
+0d03eb96afbdf10c5fc44d2d3a8d5e21  etc/skel/.config/terminology/config/standard/base.cfg
 053d9d28a0354f19c143bd42f443a26d  etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml
 6d2e7e3a251dc320495729417f4ef43b  etc/skel/.local/share/epiphany/bookmarks.gvdb
 a392266b3eb9d23f578c8654c70c47b6  etc/skel/.local/share/epiphany/ephy-history.db
 ab4d7bb83acbc7bbc38ae4161ad6a971  etc/skel/.local/share/epiphany/session_state.xml
 e1080bacdea1a49188e518da9151f5ea  usr/share/terminology/backgrounds/bodhi.png
-260fc319b2b7a16c22fbd256be3255d0  usr/share/doc/bodhi-skel/changelog.Debian.gz
+9e3b8141a51c6249969bf3db6c431544  usr/share/doc/bodhi-skel/changelog.Debian.gz
 4dfc1ad8358c37ff3bf6b239acbb9304  usr/share/doc/bodhi-skel/copyright
 152e47fe7bf4b8ddb393d9dd58976291  usr/share/lintian/overrides/bodhi-skel
