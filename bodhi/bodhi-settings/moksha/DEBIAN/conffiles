@@ -1,4 +1,5 @@
 /etc/apt/sources.list.d/bodhi-repositories.list
+/etc/apt/preferences.d/backports.pref
 /etc/apt/preferences.d/mozillateam-ppa
 /etc/apt/sources.list.d/kelebek333-ubuntu-nvidia-legacy-jammy.list
 /etc/apt/sources.list.d/mozillateam-ubuntu-ppa-jammy.list

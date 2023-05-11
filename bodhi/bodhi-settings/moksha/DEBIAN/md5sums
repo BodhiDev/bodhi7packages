@@ -3,9 +3,9 @@ f263dd80516b9f1a0d5ddff51a976501  etc/apt/sources.list.d/kelebek333-ubuntu-nvidi
 c4d3d1d11949192025bbd773b95797db  etc/apt/sources.list.d/mozillateam-ubuntu-ppa-jammy.list
 0d3710504568e7b75463d936fd43ef90  etc/profile.d/eina-log.sh
 18c703a3fbb46388f1d593db895fd289  etc/udev/rules.d/80-local.rules
-747f9f870f3cc02975fa05f998a66a49  usr/share/doc/bodhi-settings/changelog.Debian.gz
+e9b327c3ee04c5be7636ee645a34e0ec  usr/share/doc/bodhi-settings/changelog.Debian.gz
 6df4843ddcb31454947d729d37a4c90e  usr/share/doc/bodhi-settings/copyright
 0707acf932012484a7abc047dedde333  usr/share/keyrings/kelebek333-ubuntu-nvidia-legacy.gpg
 76cef3f1e93a78af2ad3a870b21665f5  usr/share/keyrings/mozillateam-ubuntu-ppa.gpg
-bb3b6393627f0c693876e7b564cc885e  usr/share/lintian/overrides/bodhi-settings
+ec913be98ee3fd840d3d81f5036ef73b  usr/share/lintian/overrides/bodhi-settings
 b96bc950d7d331fc311296ce2aed8e9c  etc/systemd/system.conf.d/50_bodhilinux.conf
