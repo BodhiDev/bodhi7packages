@@ -4,8 +4,9 @@ moksha (0.4.0-8) jammy; urgency=low
   * Clock conf text changes
   * Two O icons added
   * Menu category icons added for no icon set selected
+  * Systray: better fix for white square
 
- -- Robert Wiley <ylee@bodhilinux.com>  Sun, 07 May 2023 09:28:17 -0400
+ -- Robert Wiley <ylee@bodhilinux.com>  Thu, 11 May 2023 06:05:39 -0400
 
 moksha (0.4.0-7) jammy; urgency=low
 
