@@ -1,5 +1,5 @@
 Package: ubiquity-slideshow-bodhi1
-Version: 0.76
+Version: 0.77
 Architecture: all
 Maintainer: Robert Wiley <ylee@bodhilinux.com>
 Conflicts: ubiquity-slideshow, ubiquity-slideshow-bodhi2
