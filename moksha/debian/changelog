@@ -5,8 +5,14 @@ moksha (0.4.0-8) jammy; urgency=low
   * Two O icons added
   * Menu category icons added for no icon set selected
   * Systray: better fix for white square
+  * e mime cfg - skip work when string is empty
+  * xkbswitch menu header added
+  * Changing about scroller color to darker
+  * Fix gcc warning in e_widget_filepreview.c
+  * Theme: clock.edc clean up
+  * Border DnD in conflict with pager fix
 
- -- Robert Wiley <ylee@bodhilinux.com>  Thu, 11 May 2023 06:05:39 -0400
+ -- Robert Wiley <ylee@bodhilinux.com>  Wed, 31 May 2023 18:26:25 -0400
 
 moksha (0.4.0-7) jammy; urgency=low
 
