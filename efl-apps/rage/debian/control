@@ -1,0 +1,29 @@
+Source: rage
+Section: video
+Priority: optional
+Maintainer: Robert Wiley <ylee@bodhilinux.com>
+Build-Depends: debhelper (>=9), autotools-dev, automake, build-essential, ccache, check, libefl-dev (>=1.25.0)
+Standards-Version: 4.5.0
+Homepage: http://enlightenment.org
+Rules-Requires-Root: no
+
+Package: rage
+Architecture: any
+Depends: ${misc:Depends}, libc6 (>=2.21), libefl (>=1.19.0), mplayer | libxine2
+Recommends: gstreamer1.0-plugins-good, gstreamer1.0-plugins-bad, gstreamer1.0-plugins-ugly, ubuntu-restricted-extras
+Description: EFL Video Player
+ Rage is a Video + Audio player along the lines of mplayer. It's simple
+ yet decent looking. It finds album art for you for music files,
+ generates thumbnails for videos so you can select logaction by
+ thumbnail and more.
+
+Package: rage-dbg
+Architecture: any
+Depends: rage (=${binary:Version})
+Description: EFL Video Player
+ Rage is a Video + Audio player along the lines of mplayer. It's simple
+ yet decent looking. It finds album art for you for music files,
+ generates thumbnails for videos so you can select logaction by
+ thumbnail and more.
+ . 
+ Debug symbols for rage

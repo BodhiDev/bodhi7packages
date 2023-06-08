@@ -1,0 +1,3 @@
+rage: binary-without-manpage usr/bin/rage
+rage: new-package-should-close-itp-bug
+
