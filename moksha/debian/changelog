@@ -3,8 +3,9 @@ moksha (0.4.0-10) jammy; urgency=low
   * Tweak Bodhi cfg
   * Places skip usage warnings for CDROM
   * Tasks: little scrolling in shrink mode fix
+  *  Belarusian lang added to wizard
 
- -- Robert Wiley <ylee@bodhilinux.com>  Tue, 06 Jun 2023 06:14:49 -0400
+ -- Robert Wiley <ylee@bodhilinux.com>  Fri, 09 Jun 2023 10:30:06 -0400
 
 moksha (0.4.0-9) jammy; urgency=low
 
