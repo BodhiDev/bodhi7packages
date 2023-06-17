@@ -1,2 +1,1 @@
 bodhi-bins-default: binary-without-manpage
-bodhi-bins-default: new-package-should-close-itp-bug
