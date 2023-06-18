@@ -1,0 +1,10 @@
+Package: nvidia-ppa
+Version: 0.0.1
+Architecture: all
+Maintainer: Robert (ylee) Wiley <ylee@bodhilinux.com>
+Section: admin
+Priority: optional
+Depends: apt
+Recommends: bodhi-settings
+Description: Supplies kelebek333-ubuntu-nvidia-legacy PPA
+ Adds kelebek333 PPA for nvidia-legacy drivers.

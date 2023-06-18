@@ -1,0 +1,5 @@
+f263dd80516b9f1a0d5ddff51a976501  etc/apt/sources.list.d/kelebek333-ubuntu-nvidia-legacy-jammy.list
+8cb6d86081d0a7e835d3e5b79a5d18a0  usr/share/doc/nvidia-ppa/changelog.gz
+d573810d33059ee858cc407bf2dfb2cd  usr/share/doc/nvidia-ppa/copyright
+0707acf932012484a7abc047dedde333  usr/share/keyrings/kelebek333-ubuntu-nvidia-legacy.gpg
+ae2e9b6b538fceb11ed0dbabc328a3ee  usr/share/lintian/overrides/nvidia-ppa
