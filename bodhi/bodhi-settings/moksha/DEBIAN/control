@@ -1,10 +1,11 @@
 Package: bodhi-settings
-Version: 0.0.1-5
+Version: 0.0.1-6
 Architecture: all
 Maintainer: Robert (ylee) Wiley <ylee@bodhilinux.com>
 Section: admin
 Priority: optional
-Depends: ubuntu-system-adjustments, bodhilinux-keyring, resolvconf
+Depends: apt, ubuntu-system-adjustments, bodhilinux-keyring, resolvconf
 Recommends: bodhi-skel, bodhi-slick-theme
+Suggests: nvidia-ppa
 Description: Supplies Bodhi custom settings
  Adds bodhi repo and more.
