@@ -1,0 +1,19 @@
+Source: picom-conf
+Section: x11
+Priority: optional
+Maintainer: Robert Wiley <ylee@bodhilinux.com>
+Build-Depends: debhelper,
+               meson,
+               ninja-build,
+               libconfig++-dev,
+               libqt5gui5,
+               qttools5-dev
+Standards-Version: 4.5.0
+Homepage: https://github.com/redtide/picom-conf
+Rules-Requires-Root: no
+
+Package: picom-conf
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, picom
+Description: Configuration tool for Picom
+ GUI configuration tool for Picom X composite manager
