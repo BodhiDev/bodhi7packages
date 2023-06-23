@@ -36,7 +36,7 @@ Package: picom
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Provides: compton
-Conflicts: compton
+Conflicts: compton, compton-conf
 Replaces: compton
 Description: X11 compositor based on xcompmgr
  Picom is a compositor for X11, based on xcompmgr. In addition to shadows,

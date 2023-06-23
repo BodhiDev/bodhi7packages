@@ -1,3 +1,9 @@
+picom (9.1-2) jammy; urgency=medium
+
+  * Block install of compton-conf
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Fri, 23 Jun 2023 05:03:44 -0400
+
 picom (9.1-1) jammy; urgency=medium
 
   * BL7 Release
