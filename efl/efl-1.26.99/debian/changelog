@@ -1,3 +1,10 @@
+efl (1.26.99-3jammy0) jammy; urgency=low
+
+  * Commit: 8c30cb2ef8 	edje, build: don't use fullpath()
+  * Commit: 6efb60be59  Add a TODO doc for Simontek and libei support
+  
+ -- Robert Wiley <ylee@bodhilinux.com>  Sat, 24 Jun 2023 05:15:21 -0400
+
 efl (1.26.99-2jammy0) jammy; urgency=low
 
   * Commit: 8c30cb2ef8 	edje, build: don't use fullpath()
