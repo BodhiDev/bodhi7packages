@@ -1,4 +1,10 @@
-moksha-module-trash (0.0.6-1) unstable; urgency=low
+moksha-module-trash (0.0.6-2) jammy; urgency=low
+
+  * Trash: free a variable
+
+ -- the_waiter <thewaiter@centrum.sk>  Sat, 24 Jun 2023 08:37:01 -0400
+
+moksha-module-trash (0.0.6-1) focal; urgency=low
 
   * Code ready for theming
 
