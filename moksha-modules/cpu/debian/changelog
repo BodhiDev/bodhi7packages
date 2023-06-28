@@ -1,3 +1,11 @@
+moksha-module-cpu (0.1.1-4) jammy; urgency=medium
+
+  * Hide percent sysmbol for tiny gadget gcc
+  * Remove <br> for merged CPUs
+  * Better centered text v2
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Wed, 28 Jun 2023 06:20:33 -0400
+
 moksha-module-cpu (0.1.1-3) focal; urgency=medium
 
   * CPU gadcon rectangle to square
