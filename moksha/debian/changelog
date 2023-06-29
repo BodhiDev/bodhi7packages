@@ -1,3 +1,9 @@
+moksha (0.4.0-11) jammy; urgency=low
+
+  * fix be localization in package
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Wed, 28 Jun 2023 12:11:15 -0400
+
 moksha (0.4.0-10) jammy; urgency=low
 
   * Tweak Bodhi cfg
