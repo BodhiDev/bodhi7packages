@@ -1,3 +1,9 @@
+moksha-module-tclock (0.1.1-5) jammy; urgency=low
+
+  * Belarusian translation added
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Sat, 01 Jul 2023 03:07:47 -0400 
+
 moksha-module-tclock (0.1.1-4) focal; urgency=medium
 
   * Center line if one only
