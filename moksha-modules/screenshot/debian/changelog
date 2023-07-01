@@ -1,3 +1,9 @@
+moksha-module-screenshot (0.1.1-6) jammy; urgency=low
+
+  * Belarusian translation added
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Sat, 01 Jul 2023 03:07:47 -0400
+
 moksha-module-screenshot (0.1.1-5) jammy; urgency=medium
 
   * Screenshot freeze and thaw timer added
