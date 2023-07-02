@@ -1,3 +1,9 @@
+moksha-module-screenshot (0.1.1-7) jammy; urgency=low
+
+  * Belarusian translation for module.desktop.in
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Sun, 02 Jul 2023 16:28:18 -0400
+
 moksha-module-screenshot (0.1.1-6) jammy; urgency=low
 
   * Belarusian translation added
