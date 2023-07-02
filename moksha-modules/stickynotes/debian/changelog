@@ -1,3 +1,9 @@
+moksha-module-stickynotes (0.1.1-6) jammy; urgency=medium
+
+  * Rusian and Belarusian translations for module.desktop.in
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Sun, 02 Jul 2023 18:23:33 -0400
+
 moksha-module-stickynotes (0.1.1-5) jammy; urgency=medium
 
   * Belarusian translation
