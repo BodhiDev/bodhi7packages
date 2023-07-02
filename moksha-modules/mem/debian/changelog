@@ -1,3 +1,9 @@
+moksha-module-mem (0.1.2-6) jammy; urgency=low
+
+  * Belarusian added to desktop file
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Sun, 02 Jul 2023 15:13:44 -0400
+
 moksha-module-mem (0.1.2-5) jammy; urgency=low
 
   * Belarusian translation added
