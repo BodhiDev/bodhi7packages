@@ -36,11 +36,11 @@ fe95c2c697dd00b4c59d766d12f23b25  usr/share/bodhi/quickstart/quickstartEN/everyt
 06c2c0a61b5dd9dc4283f88981da6b72  usr/share/bodhi/quickstart/quickstartEN/getting_started.html
 e300219f9e3eff78fd4d0361cfcedd1d  usr/share/bodhi/quickstart/quickstartEN/index.html
 de47fe871cdd8346b396c986032b9be5  usr/share/bodhi/quickstart/quickstartEN/internet.html
-86e0318cbfddf801557845567c059793  usr/share/bodhi/quickstart/quickstartEN/landing.html
+7edac79147ef19e8ed567b0f66fee374  usr/share/bodhi/quickstart/quickstartEN/landing.html
 e5d2ce63a3e915d240763206a0360020  usr/share/bodhi/quickstart/quickstartEN/moksha.html
-bb08eb1feb4671c7d76f8a909061f308  usr/share/bodhi/quickstart/quickstartEN/quickfaq.html
+91c321b8d41b330f1858bd8d244ea7bb  usr/share/bodhi/quickstart/quickstartEN/quickfaq.html
 b61c48f1cdafcaa88cc7a94dac000dde  usr/share/bodhi/quickstart/quickstartEN/resources.html
-55b5b26353b00458c7d86940ea3c1d7c  usr/share/bodhi/quickstart/quickstartEN/software.html
-c7f56cb33903f91ab759297b1774cb19  usr/share/doc/bodhi-quickstart/changelog.Debian.gz
+c14109bb52e339f0e0dd83e7a4ac3a5a  usr/share/bodhi/quickstart/quickstartEN/software.html
+59cef41f90863e81eb0bfb05dcfc8e6a  usr/share/doc/bodhi-quickstart/changelog.Debian.gz
 1774e574365f97d405844696181395a4  usr/share/doc/bodhi-quickstart/copyright
 00954261be9956a6b7c0aeaaa1cb3c86  usr/share/lintian/overrides/bodhi-quickstart

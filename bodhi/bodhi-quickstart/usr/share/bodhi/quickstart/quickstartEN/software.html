@@ -72,13 +72,9 @@
               There are multiple methods to achieve this, but
               the simplest method is by using the terminal. Run the following command in Terminology :<br/><br/>
             </p>
-            <div class="content"><span class="greentext boldtext largelh"><code>sudo apt update && sudo apt dist-upgrade</code></span></div>
+            <div class="content"><span class="greentext boldtext largelh"><code>sudo apt update && sudo apt full-upgrade</code></span></div>
             <br />
-            <p>If you installed the new <em><b>hwe</b></em> version of <strong>Bodhi</strong>, kernel updates will be enabled by default.</p>
-            <p>But traditionally, <strong>Bodhi</strong> has taken the view of "<em>not forcing kernel updates.</em>" So users of non-hwe versions of Bodhi, who want to update the kernel, simply install this meta package to ensure you'll always be offered the latest kernel in the updates:<br><br></p>
-            <div class="content"><span class="greentext boldtext largelh"><code>
-              sudo apt install linux-generic</code></span>
-            </div>
+            <p>Traditionally, <strong>Bodhi</strong> has taken the view of "<em>not forcing kernel updates.</em>" We will be changing this in Bodhi Linux 7.0 because we have noticed many users are not updating kernels and kernel updates are important from a security view point.</p>
             <br />
             <br />
           </div>
