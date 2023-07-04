@@ -1,3 +1,9 @@
+moksha-module-wincontrol (0.1.1-4) jammy; urgency=medium
+
+  * Russian and Belarusian translations
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Tue, 04 Jul 2023 10:51:49 -0400
+
 moksha-module-wincontrol (0.1.1-3) focal; urgency=medium
 
   * pt localization
