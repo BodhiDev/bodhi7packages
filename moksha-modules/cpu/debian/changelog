@@ -1,3 +1,9 @@
+moksha-module-cpu (0.1.1-5) jammy; urgency=medium
+
+  * Belarusian translation
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Thu, 06 Jul 2023 18:52:42 -0400
+
 moksha-module-cpu (0.1.1-4) jammy; urgency=medium
 
   * Hide percent sysmbol for tiny gadget gcc
