@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Bodhi Быстрый старт - Установка программ</title>
+    <script src="../QuickStart_files/modernizr.js"></script><!--[if lt IE 9]><script src="../QuickStart_files/html5shiv/dist/html5shiv.js"></script><![endif]-->
+    <link href="../QuickStart_files/qs.css" rel="stylesheet" type="text/css" media="screen" />
+    <!--[if IE]>
+    <link href="../QuickStart_files/ie.css" rel="stylesheet" type="text/css" media="screen" />
+    <![endif]-->
+    <link rel="shortcut icon" href="../images/favicon.png" />
+  </head>
+  <body>
+    <header class="gradient">
+      <a class="img"  href="http://www.bodhilinux.com/" target="_blank"><img class="navbodhi" src="../images/bodhileaf.png" alt="(Bodhi Linux Logo)" /></a>
+      <a class="img"  href="http://www.bodhilinux.com/2015/04/28/introducing-the-moksha-desktop/" target="_blank"><img class="nave17" src="../images/mokshalogo.png" alt="(Moksha Logo)" /></a>
+      <nav>
+        <ul id="nav" class="navonlowwidth">
+          <li class="qsindex"><a class="mobile" target="_parent"  href="index.html">Быстрый старт - Оглавление</a><a class="nav" target="_parent"  href="index.html">Быстрый старт - Оглавление</a>
+          </li>
+          <li>
+            <a class="mobile" target="_parent"  href="moksha.html">Рабочий стол Moksha</a><a class="nav" target="_parent"  href="#">Приступая к работе</a>
+            <ul>
+              <li><a class="dropdown" target="_parent"  href="internet.html">Подключение к сети Интернет</a></li>
+              <li><a class="dropdown" target="_parent"  href="software.html">Установка программ</a></li>
+            </ul>
+          </li>
+          <li>
+            <a class="mobile" target="_parent"  href="getting_started.html">Приступая к работе</a><a class="nav" target="_parent"  href="#">Рабочий стол Moksha</a>
+            <ul>
+              <li><a class="dropdown" target="_parent"  href="moksha.html">Основы Moksha</a></li>
+              <li><a class="dropdown" target="_parent"  href="everything.html">Быстрый запуск</a></li>
+            </ul>
+          </li>
+          <li>
+            <a class="mobile" target="_parent"  href="appendix.html">Благодарности</a><a class="nav" target="_parent"  href="#">Дополнительные материалы</a>
+            <ul>
+              <li><a class="dropdown" target="_parent"  href="quickfaq.html">Вопросы и ответы</a></li>
+              <li><a class="dropdown" target="_parent"  href="resources.html">Дополнительные материалы</a></li>
+            </ul>
+          </li>
+          <li><a class="mobile" target="_parent"  href="resources.html">Дополнительные материалы</a><a class="nav" target="_parent"  href="appendix.html">Благодарности</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <div class="body">
+      <!-- Header -->
+      <div class="header">
+        <a class="img" href="index.html"><img src="../images/bodhilinux.png" alt="(Bodhi Linux Logo)" class="bodhiheader floatr imageonlowwidth" /></a>
+        <div class="h1">
+          <h1>Установка программ</h1>
+        </div>
+        <br />
+        <hr />
+      </div>
+      <!-- End of Header -->
+      <!-- Body -->
+      <div class="content">
+        <div class="contentcontainer ninetywidth center">
+          <p>В большинстве случаев для установки программ в <strong>Bodhi Linux</strong> необходимо работающее соединение с сетью Интернет.<br /><br />
+            Пожалуйста, перейдите по этой ссылке, если вам нужна помощь
+            <a class="normal" href="internet.html">Подключение к сети Интернет</a>.
+          </p>
+        </div>
+        <div class="contentcontainer">
+          <div class="green ninetywidth center">
+            <strong>Обновление системы с помощью Terminology</strong>
+            <p>Первое, что надо сделать после установки интернет-подключения, это обновить вашу систему.<br /><br />
+              Для этого есть несколько способов, но проще всего воспользоваться терминалом. Выполните в Terminology следующую команду:<br/><br/>
+            </p>
+            <div class="content"><span class="greentext boldtext largelh"><code>sudo apt update && sudo apt dist-upgrade</code></span></div>
+            <br />
+            <p>Если вы установили новый вариант <strong>Bodhi</strong> с расширенной поддержкой аппаратуры <em><b>HWE</b></em>, то обновления ядра будут устанавливаться по умолчанию.</p>
+            <p>Но традиционной позицией <strong>Bodhi</strong> является политика "<em>не форсировать обновление ядра</em>". Поэтому пользователи не-HWE вариантов Bodhi, желающие получить самое новое ядро, должны явным образом выполнить команду установки этого мета-пакета:<br><br></p>
+            <div class="content"><span class="greentext boldtext largelh"><code>
+              sudo apt install linux-generic</code></span>
+            </div>
+            <br />
+            <br />
+          </div>
+        </div>
+        <div class="contentcontainer">
+          <div class="green ninetywidth center">
+            <strong>Центр приложений Bodhi Linux</strong>
+            <a class="img normalpicture" href="../images/appcenter.png">
+            <img src="../images/appcenter.png" alt="(Bodhi Appcenter Website)" class="fiftywidth center changeonlowwidth" />
+            </a>
+            <p class="clear">Команда <strong>Bodhi Linux</strong> создала <a class="normal" href="http://appcenter.bodhilinux.com"><strong>Центр приложений</strong></a>
+              для быстрой и простой установки большинства наиболее востребованных программ.
+              И хотя вы не найдёте в <a class="normal" href="http://appcenter.bodhilinux.com"><strong>Центре приложений</strong></a> <em>все</em> программы, которые вы можете установить в <strong>Bodhi Linux</strong>, вы обнаружите там те, которые мы считаем <em>лучшими</em> в каждой конкретной категории.
+            </p>
+            <p>Вот краткая инструкция по установке программ из <a class="normal" href="http://appcenter.bodhilinux.com"><strong>Центра приложений</strong></a>: </p>
+            <ul>
+              <li>
+                <h4>Найдите программу.</h4>
+                <p class="brighttext">Если вы уже знаете название программы, которую хотите установить, просто наберите его в строке поиска.<br />
+                  В противном случае, просто просмотрите категории, представленные на главной странице. 
+                </p>
+              </li>
+              <li>
+                <h4>Перейдите на страницу.</h4>
+                <p class="brighttext">Вне зависимости от того, каким образом была найдена программа, вы получите ссылку на страницу с описанием этой программы.<br />
+                  У каждой программы есть своя страничка с её описанием и снимком экрана. 
+                </p>
+              </li>
+              <li>
+                <h4>Установите её!</h4>
+                <p class="brighttext">
+                  Просто нажмите кнопку "<em>Install
+                  Now</em>" и введите ваш пароль пользователя системы Bodhi, когда  когда появится соответствующий запрос. На этом &mdash; всё! Ваша программа со всеми зависимостями будет установлена. 
+                </p>
+              </li>
+            </ul>
+            <br /><br />
+          </div>
+        </div>
+        <div class="contentcontainer">
+          <div class="green ninetywidth center">
+            <strong>Менеджер пакетов Synaptic</strong>
+            <p>
+              <strong>Менеджер пакетов Synaptic</strong>, который знаком всем пользователям операционных систем, основанных на 
+              <strong>Debian</strong>, предустановлен в
+              <strong>Bodhi 6.0</strong>. Если у вас старая версия <strong>Bodhi</strong>, установите его нажатием на представленную ниже кнопку или воспользуйтесь командой <code>sudo apt install synaptic</code>.
+            </p>
+            <p>
+              <a href="apt:synaptic?refresh=yep"><img class="center" src="../images/installnow.png" alt="Install Now"></a>
+            </p>
+            <p>
+              <strong>Менеджер пакетов Synaptic</strong> открывает вам доступ ко всем программам, которые представлены в репозиториях 
+              <strong>Bodhi</strong> и <strong>Ubuntu</strong>.
+            </p>
+            <p>Обратитесь к нашей документации <a class="normal" href="http://wiki.bodhilinux.com">Wiki</a> для получения подробных сведений об использовании <strong>менеджера пакетов Synaptic</strong>.
+            </p>
+            <br />
+          </div>
+        </div>
+        <div class="contentcontainer">
+          <div class="green ninetywidth center">
+            <strong>Snap, Flatpak и AppImage</strong>
+            <p>
+              В результате усилий, направленных на устранение зависимости программ от используемых компьютерных платформ, были разработаны новые инструменты упаковки, распространения и установки программ. Наибольшего внимания из них заслуживают Snap, Flatpak и AppImage. По умолчанию они не поддерживаются в <strong>Bodhi</strong>.
+            <p>Обратитесь к нашей документации <a class="normal" href="http://wiki.bodhilinux.com">Wiki</a> для получения подробных сведений об использовании этих инструментов.
+            </p>
+            <br />
+          </div>
+        </div>
+        <div class="contentcontainer">
+          <div class="green ninetywidth center">
+            <strong>gDebi</strong>
+            <p>
+              gdebi &mdash; это простой инструмент для установки deb-файлов.
+              Он позволяет устанавливать локально сохранённые deb-пакеты, разрешая и устанавливая все их зависимости.
+            </p>
+            <p>gDebi предустановлен в последних версиях <strong>Bodhi</strong>. Если вы хотите установить его, нажмите на представленную ниже кнопку или используйте команду <code>sudo apt install gdebi</code>.</p>
+            <p>
+              <a href="apt:gdebi?refresh=yep"><img class="center" src="../images/installnow.png" alt="Install Now"></a>
+            </p>
+            <br />
+          </div>
+        </div>
+        <div class="contentcontainer">
+          <div class="green ninetywidth center">
+            <strong id="apt-get">apt-get &amp; dpkg (для опытных пользователей)</strong>
+            <p>Инструменты командной строки <code>apt</code>, <code>apt-get</code> и <code>dpkg</code> работают &quot;за кулисами&quot; описанных выше способов установки программ. Опытные пользователи могут использовать их напрямую из командной строки, но описание этого выходит за рамки данной инструкции.
+            </p>
+            <p>Опытные пользователи могут также собирать и устанавливать программы из их исходных текстов.</p>
+            <div id="lp">&nbsp;</div>
+          </div>
+        </div>
+      </div>
+      <!-- End of Body -->
+    </div>
+  </body>
+</html>
