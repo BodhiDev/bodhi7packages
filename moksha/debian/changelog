@@ -4,7 +4,7 @@ moksha (0.4.0-12) jammy; urgency=low
   * Msg Module: Fix Enlightment Usage in Module Documentation
   * Pager livethumb fix
 
- -- Robert Wiley <ylee@bodhilinux.com>  Sun, 09 Jul 2023 15:00:56 -0400
+ -- Robert Wiley <ylee@bodhilinux.com>  Tue, 11 Jul 2023 15:35:08 -0400
 
 moksha (0.4.0-11) jammy; urgency=low
 
