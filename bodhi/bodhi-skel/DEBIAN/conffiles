@@ -8,6 +8,8 @@
 /etc/skel/.config/Thunar/accels.scm
 /etc/skel/.config/Thunar/uca.xml
 /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml
+/etc/skel/.elementary/config/profile.cfg
+/etc/skel/.elementary/config/standard/base.cfg
 /etc/skel/.local/share/epiphany/bookmarks.gvdb
 /etc/skel/.local/share/epiphany/ephy-history.db
 /etc/skel/.local/share/epiphany/session_state.xml
