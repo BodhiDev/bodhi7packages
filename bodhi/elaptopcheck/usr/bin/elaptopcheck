@@ -33,13 +33,13 @@ if [[ "$DESKTOP" == *"Enlightenment"* ]] || [[ "$DESKTOP" == *"Moksha"* ]]; then
 		LAYOUT=$(grep XKBLAYOUT < "$keyboard" | sed 's/XKBLAYOUT=//g')
 		if [ "$LAYOUT" == "$us" ]; then
 			enlightenment_remote -module-unload xkbswitch
-		fi
 	 fi
-	 if [ -f "$start_path" ]; then
-		if [[ -n "$E_RESTART" ]]; then
-			sed -i 's/elaptopcheck//g' "$start_path"
-		fi
-	fi
+ fi
+ if [ -f "$start_path" ]; then
+  if [[ -n "$E_RESTART" ]]; then
+   sed -i 's/elaptopcheck//g' "$start_path"
+  fi
+ fi
 else
 	echo "Error: For enlightenment usage only."
 fi
