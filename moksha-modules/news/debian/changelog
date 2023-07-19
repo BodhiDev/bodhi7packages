@@ -1,3 +1,9 @@
+moksha-module-news (0.1.2-3) focal; urgency=medium
+
+  * fix  undefined symbol in module
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Wed, 19 Jul 2023 06:29:03 -0400
+
 moksha-module-news (0.1.2-2) focal; urgency=medium
 
   * pt localization
