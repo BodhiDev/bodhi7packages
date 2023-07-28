@@ -1,3 +1,13 @@
+moksha (0.4.0-13) jammy; urgency=low
+
+  * Prevent EFM from opening symlinks
+  * Systray arrow size scale fix
+  * Theme: border no 1 pixel visible in max mode
+  * Use localized QuickStart
+  * More localizations in module desktop files
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Fri, 28 Jul 2023 17:22:31 -0400
+
 moksha (0.4.0-12) jammy; urgency=low
 
   * Fix e_remote -desktop-bg-add
@@ -5,7 +15,6 @@ moksha (0.4.0-12) jammy; urgency=low
   * Pager livethumb fix
 
  -- Robert Wiley <ylee@bodhilinux.com>  Tue, 11 Jul 2023 15:35:08 -0400
-
 moksha (0.4.0-11) jammy; urgency=low
 
   * fix be localization in package
