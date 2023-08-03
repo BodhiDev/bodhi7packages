@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=Bodhi AppCenter
 Type=Application
+Name[be]=Цэнтр праграм Bodhi
 Name[ca]=Centre d'Aplicacions de Bodhi
 Name[cs]=Bodhi AppCentrum
 Name[cy]=Bodhi Canolfan App
@@ -14,6 +15,7 @@ Name[pt-BR]=Bodhi AppCenter
 Name[ru]=Центр приложений Bodhi
 Name[sk]=Bodhi AppCenter
 GenericName=Install Software
+GenericName[be]=Усталяванне праграм
 GenericName[ca]=Instal·lar programari
 GenericName[cs]=Instalace Softwaru
 GenericName[cy]=Gosod meddalwedd
