@@ -3,7 +3,7 @@ Source: ibm-plex-mono
 Version: 6.3.0
 Architecture: all
 Maintainer: Robert Wiley <ylee@bodhilinux.com>
-Installed-Size: 526
+Installed-Size: 2272
 Section: fonts
 Priority: optional
 Multi-Arch: foreign
