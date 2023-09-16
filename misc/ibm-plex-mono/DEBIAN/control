@@ -1,0 +1,15 @@
+Package: fonts-ibm-plex-mono
+Source: ibm-plex-mono
+Version: 6.3.0
+Architecture: all
+Maintainer: Robert Wiley <ylee@bodhilinux.com>
+Installed-Size: 526
+Section: fonts
+Priority: optional
+Multi-Arch: foreign
+Homepage: https://github.com/IBM/plex
+Description: IBM's Monospaced Font.
+ The IBM Plex typeface is an open-source project available for download and
+ various uses following the Open Font License (OFL).
+ .
+ This package contains only The IBM-Plex-Mono font. 
