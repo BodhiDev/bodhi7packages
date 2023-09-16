@@ -1,0 +1,13 @@
+Package: fonts-intel-one-mono
+Source: intel-one-mono
+Version: 1.3.0
+Architecture: all
+Maintainer: Robert Wiley <ylee@bodhilinux.com>
+Installed-Size: 526
+Section: fonts
+Priority: optional
+Multi-Arch: foreign
+Homepage: https://github.com/intel/intel-one-mono
+Description: Intel's Monospaced Font.
+ An expressive monospaced font family that’s built with clarity, legibility,
+ and the needs of developers in mind.
