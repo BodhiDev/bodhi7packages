@@ -17,7 +17,8 @@ moksha (0.4.0-15) jammy; urgency=low
   * iBar: Plank dock control added
   * iBar: items reorganizing
   * Places: edj - fix nomouse event in icon part
-  * Places: hide popup after run FMUpdate Moksha version in configure.ac
+  * Places: hide popup after run FM
+  * Update Moksha version in configure.ac
   * localization support for new strings in several languages
 
  -- Robert Wiley <ylee@bodhilinux.com>  Sun, 17 Sep 2023 14:58:19 -0400
