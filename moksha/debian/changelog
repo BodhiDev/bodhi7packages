@@ -1,3 +1,9 @@
+moksha (0.4.1-3) jammy; urgency=low
+
+  * iBar: configuration version added
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Wed, 20 Sep 2023 06:07:57 -0400
+
 moksha (0.4.1-1) jammy; urgency=low
 
   * Update Moksha version
