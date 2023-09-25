@@ -1,3 +1,17 @@
+moksha (0.4.1-5) jammy; urgency=low
+
+  * IBar: Shift and Ctrl added to left click
+  * Places: hide box after header click
+  * Pager: DnD decativate after gadcon moving
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Mon, 25 Sep 2023 06:06:44 -0400
+
+moksha (0.4.1-4) jammy; urgency=low
+
+  * IBar: Plank mode left click fix 
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Fri, 22 Sep 2023 06:07:59 -0400
+
 moksha (0.4.1-3) jammy; urgency=low
 
   * iBar: configuration version added
