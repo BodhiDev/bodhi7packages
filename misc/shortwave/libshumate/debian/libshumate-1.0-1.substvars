@@ -1,0 +1,7 @@
+gnome:NextUpstreamVersion=1.2
+gnome:NextVersion=1.2
+gnome:UpstreamVersion=1.0
+gnome:Version=1.0
+shlibs:Depends=libc6 (>= 2.29), libcairo2 (>= 1.16), libgdk-pixbuf-2.0-0 (>= 2.22.0), libglib2.0-0 (>= 2.68.0), libgraphene-1.0-0 (>= 1.5.4), libgtk-4-1 (>= 4.0.0), libsoup-3.0-0 (>= 3.0.3), libsqlite3-0 (>= 3.5.9)
+misc:Depends=
+misc:Pre-Depends=

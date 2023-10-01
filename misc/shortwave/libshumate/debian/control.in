@@ -1,0 +1,74 @@
+Source: libshumate
+Priority: optional
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+XSBC-Original-Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
+Uploaders: Matthias Geiger <matthias.geiger1024@tutanota.de>, @GNOME_TEAM@
+Build-Depends: debhelper-compat (= 13),
+               dh-sequence-gir,
+               dh-sequence-gnome,
+               gi-docgen,
+               libcairo2-dev (>= 1.16),
+               libglib2.0-dev (>= 2.68.0),
+               libgtk-4-dev,
+               libsoup-3.0-dev,
+               libsqlite3-dev (>= 1.12.0),
+               meson (>= 0.53.0),
+               xauth <!nocheck>,
+               xvfb <!nocheck>
+Standards-Version: 4.6.0
+Section: libs
+Homepage: https://gitlab.gnome.org/GNOME/libshumate
+Vcs-Browser: https://salsa.debian.org/gnome-team/libshumate
+Vcs-Git: https://salsa.debian.org/gnome-team/libshumate.git
+Rules-Requires-Root: no
+
+Package: libshumate-1.0-1
+Architecture: any
+Multi-Arch: same
+Depends: ${misc:Depends},
+         ${shlibs:Depends}
+Description: GTK4 widgets for embedded maps
+ It supports numerous free map sources such as OpenStreetMap,
+ OpenCycleMap, OpenAerialMap and Maps for free.
+
+Package: libshumate-dev
+Section: libdevel
+Architecture: any
+Multi-Arch: same
+Depends: gir1.2-shumate-1.0 (= ${binary:Version}),
+         libcairo2-dev (>= 1.16),
+         libglib2.0-dev (>= 2.68.0),
+         libgtk-4-dev,
+         libshumate-1.0-1 (= ${binary:Version}),
+         libsoup-3.0-dev,
+         libsqlite3-dev (>= 1.12.0),
+         ${misc:Depends}
+Description: GTK4 widgets for embedded maps -- development files
+ It supports numerous free map sources such as OpenStreetMap,
+ OpenCycleMap, OpenAerialMap and Maps for free.
+ .
+ This package contains the base development headers.
+
+Package: gir1.2-shumate-1.0
+Architecture: any
+Multi-Arch: same
+Section: introspection
+Depends: ${gir:Depends},
+         ${misc:Depends}
+Description: GTK4 widgets for embedded maps - gir bindings
+ It supports numerous free map sources such as OpenStreetMap,
+ OpenCycleMap, OpenAerialMap and Maps for free.
+ .
+ This package can be used by other packages using the GIRepository format to
+ generate dynamic bindings.
+
+Package: libshumate-doc
+Section: doc
+Architecture: all
+Multi-Arch: foreign
+Depends: ${misc:Depends}
+Description: GTK4 widgets for embedded maps - documentation
+ It supports numerous free map sources such as OpenStreetMap,
+ OpenCycleMap, OpenAerialMap and Maps for free.
+ .
+ This package contains the API reference.
