@@ -1,0 +1,39 @@
+Source: shortwave
+Section: gnome
+Priority: optional
+Standards-version: 4.6.1
+Maintainer: David Heidelberg <david@ixit.cz>
+Uploaders: Willem van den Akker <wvdakker@wilsoft.nl>
+Build-Depends: debhelper-compat (= 13),
+ appstream (>= 0.12.11),
+ desktop-file-utils,
+ ca-certificates,
+ cargo,
+ meson,
+ rustc,
+ git,
+ libglib2.0-dev,
+ libgdk-pixbuf2.0-dev,
+ libgtk-4-dev,
+ libadwaita-1-dev,
+ libsqlite3-dev,
+ libhandy-1-dev,
+ libgstreamer1.0-dev,
+ libgstreamer-plugins-bad1.0-dev,
+ libshumate-dev,
+ librust-gstreamer-audio-sys-dev,
+ libssl-dev (>= 1.1.1d),
+ libsoup2.4-dev (>= 2.68.2),
+ librust-url-dev (>= 2.1.0)
+Vcs-Browser: https://salsa.debian.org/debian/shortwave
+Vcs-Git: https://salsa.debian.org/debian/shortwave.git
+
+Package: shortwave
+Architecture: any
+Depends: ${shlibs:Depends},
+ ${misc:Depends},
+ libhandy-1-0
+Homepage: https://gitlab.gnome.org/World/Shortwave/
+Description: Find and listen to internet radio stations
+ Shortwave is application which let you enjoy your favorite internet
+ radio stations.

@@ -1,0 +1,3 @@
+shortwave: embedded-library curl usr/bin/shortwave
+shortwave: initial-upload-closes-no-bugs
+shortwave: no-manual-page usr/bin/shortwave 

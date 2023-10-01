@@ -1,0 +1,11 @@
+TODO
+
+Before shortwave can be uploaded to experimental, some work has
+to be done. For now shortwave only can be used if USENETWORK=yes
+is added to pbuilderrc which is a violation of the DP.
+
+Work to be done (feel free to add more .... )
+
+* use debian Cargo modules 
+
+* add missing Cargo modules to Debian repository
