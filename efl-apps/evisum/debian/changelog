@@ -1,8 +1,8 @@
-evisum (0.5.14-2) focal; urgency=medium
+evisum (0.6.0-1) jammy; urgency=medium
 
   * Development release for jammy
 
- -- Robert Wiley <ylee@bodhilinux.com>  Thu, 17 Nov 2022 19:19:28 -0500
+ -- Robert Wiley <ylee@bodhilinux.com>  Tue, 26 Sep 2023 07:17:03 -0400
 
 evisum (0.5.14-1) focal; urgency=medium
 
