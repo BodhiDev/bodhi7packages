@@ -4,7 +4,7 @@ set -e
 case "$1" in
     remove|purge)
 	if [ -f /etc/apt/trusted.gpg.d/mozillateam-ubuntu-ppa.gpg ]; then
-		rm /etc/apt/trusted.gpg.dmozillateam-ubuntu-ppa.gpg
+		rm /etc/apt/trusted.gpg.d/mozillateam-ubuntu-ppa.gpg
 	fi
 	;;
 esac
