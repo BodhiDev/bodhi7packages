@@ -1,0 +1,16 @@
+Source: equate
+Section: math
+Priority: optional
+Maintainer: Robert Wiley <ylee@bodhilinux.com>
+Homepage: https://git.enlightenment.org/apps/equate.git/
+Standards-Version: 3.9.7
+Build-Depends: autoconf (>= 2.60), automake (>= 1.6), debhelper (>= 9),
+ dh-autoreconf, libefl-dev (>= 1.7.0), pkg-config
+Vcs-Git: https://git.enlightenment.org/apps/equate.git
+Vcs-Browser: https://git.enlightenment.org/apps/equate.git/tree/
+
+Package: equate
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: EFL based calculator
+ This package contains the executable and common files.

@@ -1,0 +1,14 @@
+has eeasily fixed warnings when compiling
+calc.l: In function ‘yylex’:
+calc.l:49:18: warning: too many arguments for format [-Wformat-extra-args]
+   49 |             return OBRAK;
+      |                  ^~~~~
+Equate.h:7:23: note: in definition of macro ‘E’
+    7 |        fprintf(stderr,fmt, args);               \
+      |                       ^~~
+calc.l:53:18: warning: too many arguments for format [-Wformat-extra-args]
+   53 |             return CBRAK;
+      |                  ^~~~~
+Equate.h:7:23: note: in definition of macro ‘E’
+    7 |        fprintf(stderr,fmt, args);
+
