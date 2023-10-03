@@ -1,0 +1,33 @@
+Source: edi
+Section: editors
+Priority: optional
+Maintainer: Robert Wiley <ylee@bodhilinux.com>
+Build-Depends: debhelper (>= 10), autotools-dev, pkg-config, dh-autoreconf, meson, libclang-dev, bear, tar, check, libefl-dev (>=1.20.7)
+Standards-Version: 4.5.0
+Homepage: http://enlightenment.org
+Rules-Requires-Root: no
+
+
+Package: edi
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Enlightened IDE
+ An EFL based / focussed IDE.
+ .
+ Edi is a project to create a complete IDE using the EFL.
+ It aims to lower the barrier to getting involved in Enlightenment development
+ and in creating apps based on the EFL suite.
+
+
+Package: edi-dbg
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Enlightened IDE
+ An EFL based / focussed IDE.
+ .
+ Edi is a project to create a complete IDE using the EFL.
+ It aims to lower the barrier to getting involved in Enlightenment development
+ and in creating apps based on the EFL suite.
+ .
+ Debug symbols for edi.
+ 

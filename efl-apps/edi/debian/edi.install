@@ -1,0 +1,11 @@
+usr/bin
+usr/share/applications
+usr/share/icons/hicolor/256x256/apps/edi.png
+usr/share/doc/edi/*.1
+usr/share/info/edi
+usr/share/edi/templates
+usr/share/edi/examples
+usr/share/edi/images
+usr/share/edi/themes
+usr/share/edi/icons
+usr/lib/*/*

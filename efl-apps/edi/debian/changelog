@@ -1,0 +1,11 @@
+edi (0.8.99-1) jammy; urgency=medium
+
+  * Initial release
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Tue, 03 Oct 2023 16:14:34 -0400
+
+edi (0.8.0-1) bionic; urgency=medium
+
+  * Initial release
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Wed, 26 Aug 2020 10:41:31 -0400
