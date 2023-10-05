@@ -1,0 +1,36 @@
+Source: enventor
+Section: editors
+Priority: optional
+Maintainer: Robert Wiley <ylee@bodhilinux.com>
+Build-Depends: debhelper (>= 10), autotools-dev, libefl-dev (>=1.20.7)
+Standards-Version: 4.5.0
+Homepage: http://enlightenment.org
+Rules-Requires-Root: no
+
+Package: enventor
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: EDC script editor tool.
+ Enventor, which is also known as EDC (Edje Data Collections) Editor, is a EDC 
+ script editor  tool that supports text editing and previewing functions for
+ the EDC source code.
+ .
+ When your application requires real-time changeable layouts like animated ones,
+ then you can write the layout design using EDC script, compile it into EDJ 
+ format file, and import it into your application using a UI layout component.
+ You can also write design layouts from simple to complex ones using the EDC
+ script with Enventor. Enventor helps you write EDC script code easier and 
+ finish your work faster. 
+ .
+ If you are not familiar with EDC programming, see Edje Programming Guide:
+ https://www.enlightenment.org/program_guide/edje_pg for more information.
+
+Package: enventor-dbg
+Architecture: any
+Depends: enventor (=${binary:Version})
+Description: EFL Text Editor
+ Enventor, which is also known as EDC (Edje Data Collections) Editor, is a EDC 
+ script editor  tool that supports text editing and previewing functions for
+ the EDC source code.
+ . 
+ Debug symbols for enventor.

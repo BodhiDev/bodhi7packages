@@ -1,0 +1,16 @@
+usr/bin/enventor
+usr/include
+usr/lib/*/*
+usr/share/applications
+usr/share/enventor/autocomp
+usr/share/enventor/color
+usr/share/enventor/docs
+usr/share/enventor/help
+usr/share/enventor/images
+usr/share/enventor/reference
+usr/share/enventor/sounds
+usr/share/enventor/templates
+usr/share/enventor/themes
+usr/share/icons
+usr/share/locale
+usr/lib/*/pkgconfig

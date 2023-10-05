@@ -1,0 +1,2 @@
+depreciated macros in automake
+change rules to meson build since it was added and clearly automake is not gonna be fixed
