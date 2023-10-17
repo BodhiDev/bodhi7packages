@@ -1,0 +1,39 @@
+Source: orage
+Section: xfce
+Priority: optional
+Maintainer: Debian Xfce Maintainers <debian-xfce@lists.debian.org>
+Uploaders: Yves-Alexis Perez <corsac@debian.org>
+Build-Depends: debhelper-compat (= 13),
+               intltool,
+               libglib2.0-dev,
+               libgtk-3-dev,
+               libical-dev,
+               libnotify-dev,
+               libpopt-dev,
+               libxfce4ui-2-dev,
+               xfce4-dev-tools,
+Rules-Requires-Root: no
+Standards-Version: 4.6.2
+Homepage: https://docs.xfce.org/apps/orage/start
+Vcs-Git: https://salsa.debian.org/xfce-team/apps/orage.git
+Vcs-Browser: https://salsa.debian.org/xfce-team/apps/orage
+
+Package: orage
+Architecture: any
+Depends: orage-data (= ${source:Version}), ${misc:Depends}, ${shlibs:Depends}
+Recommends: default-dbus-session-bus | dbus-session-bus, ${shlibs:Recommends}
+Suggests: sox
+Description: Calendar for Xfce Desktop Environment
+ This package contains a calendar for the Xfce4 desktop environment.
+ It integrates itself nicely into the desktop environment, is highly
+ configurable and supports alerts based on dates. If you are looking
+ for a good graphical calendar, you will probably want to try out
+ orage. It stores its data in iCal format.
+
+Package: orage-data
+Architecture: all
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Multi-Arch: foreign
+Description: Calendar for Xfce Desktop Environment (data files)
+ This package contains architecture-independant files for Orage, a calendar for
+ the Xfce4 desktop environment.

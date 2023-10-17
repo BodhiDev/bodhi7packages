@@ -1,0 +1,4 @@
+orage-data_4.18.0-1_all.deb xfce optional
+orage-dbgsym_4.18.0-1_amd64.ddeb debug optional automatic=yes
+orage_4.18.0-1_amd64.buildinfo xfce optional
+orage_4.18.0-1_amd64.deb xfce optional
