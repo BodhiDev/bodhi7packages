@@ -1,0 +1,37 @@
+From: Lionel Le Folgoc <lionel@lefolgoc.net>
+Date: Tue, 11 Oct 2011 21:30:17 +0200
+Subject: Look for plugins in {non-,}multiarch THUNARX_DIRECTORY
+
+This will let a multiarch enabled libthunarx find plugins built against a
+non-multiarch thunar (load plugins from both /usr/lib/$triplet and /usr/lib).
+
+Forwarded: not-needed
+---
+ thunarx/thunarx-provider-factory.c |    3 +--
+ thunarx/thunarx-provider-module.c  |    3 +--
+ 2 files changed, 2 insertions(+), 4 deletions(-)
+
+--- a/thunarx/thunarx-provider-factory.c	2022-07-13 00:28:36.014066908 -0400
++++ b/thunarx/thunarx-provider-factory.c	2022-07-13 00:28:59.861980209 -0400
+@@ -163,8 +163,7 @@
+   if (g_strcmp0 (THUNARX_ENABLE_CUSTOM_DIRS, "TRUE") == 0)
+     dirs_string = (gchar *) g_getenv ("THUNARX_DIRS");
+ 
+-  if (dirs_string == NULL)
+-    dirs_string = THUNARX_DIRECTORY;
++  dirs_string = THUNARX_DIRECTORY":/usr/lib/thunarx-3";
+ 
+   dirs = g_strsplit (dirs_string, G_SEARCHPATH_SEPARATOR_S, 0);
+ 
+--- a/thunarx/thunarx-provider-module.c	2022-07-13 00:28:36.014066908 -0400
++++ b/thunarx/thunarx-provider-module.c	2022-07-13 00:29:09.669944553 -0400
+@@ -182,8 +182,7 @@
+   if (g_strcmp0 (THUNARX_ENABLE_CUSTOM_DIRS, "TRUE") == 0)
+     dirs_string = (gchar *) g_getenv ("THUNARX_DIRS");
+ 
+-  if (dirs_string == NULL)
+-    dirs_string = THUNARX_DIRECTORY;
++  dirs_string = THUNARX_DIRECTORY":/usr/lib/thunarx-3";
+ 
+   dirs = g_strsplit (dirs_string, G_SEARCHPATH_SEPARATOR_S, 0);
+ 

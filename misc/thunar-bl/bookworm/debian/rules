@@ -1,0 +1,34 @@
+#!/usr/bin/make -f
+
+export DEB_LDFLAGS_MAINT_APPEND=-Wl,-O1 -Wl,-z,defs
+export DEB_BUILD_MAINT_OPTIONS=hardening=+all
+
+DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
+
+%:
+	dh $@ --with gir
+
+override_dh_auto_configure:
+	dh_auto_configure -- \
+		--docdir=\$${prefix}/share/doc/thunar-data \
+		--enable-apr-plugin \
+		--enable-exif \
+		--enable-gtk-doc \
+		--enable-pcre \
+		--enable-sbr-plugin \
+		--enable-tpa-plugin \
+		--enable-uca-plugin \
+		--enable-introspection=yes
+
+execute_after_dh_auto_install:
+	find debian/tmp -name '*.la*' -delete
+
+override_dh_installchangelogs:
+	DEB_BUILD_OPTIONS=notrimdch dh_installchangelogs NEWS
+
+override_dh_shlibdeps:
+	dh_shlibdeps -X debian/thunar-bl/usr/lib/$(DEB_HOST_MULTIARCH)/xfce4/panel/plugins/libthunar-tpa.so -- \
+    -dRecommends debian/thunar-bl/usr/lib/$(DEB_HOST_MULTIARCH)/xfce4/panel/plugins/libthunar-tpa.so -dDepends
+
+override_dh_makeshlibs:
+	dh_makeshlibs -p libthunarx-bl-3-0 -X debian/libthunarx-3-0/usr/lib/$(DEB_HOST_MULTIARCH)/thunarx-3

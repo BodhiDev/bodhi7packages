@@ -1,0 +1,8 @@
+gir1.2-thunarx-3.0_4.18.4-3_i386.deb introspection optional
+libthunarx-bl-3-0-dbgsym_4.18.4-3_i386.deb debug optional automatic=yes
+libthunarx-bl-3-0_4.18.4-3_i386.deb libs optional
+libthunarx-bl-3-dev_4.18.4-3_i386.deb libdevel optional
+thunar-bl-dbgsym_4.18.4-3_i386.deb debug optional automatic=yes
+thunar-bl_4.18.4-3_i386.deb xfce optional
+thunar-data-bl_4.18.4-3_all.deb xfce optional
+thunar_4.18.4-3_i386.buildinfo xfce optional

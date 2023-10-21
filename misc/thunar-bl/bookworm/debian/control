@@ -1,0 +1,112 @@
+Source: thunar
+Section: xfce
+Priority: optional
+Maintainer: Debian Xfce Maintainers <debian-xfce@lists.debian.org>
+Uploaders: Yves-Alexis Perez <corsac@debian.org>
+Build-Depends: debhelper-compat (= 13),
+               gobject-introspection,
+               gtk-doc-tools,
+               intltool,
+               libgirepository1.0-dev,
+               libexif-dev,
+               libexo-2-dev (>= 4.17.0),
+               libglib2.0-dev,
+               libgtk-3-dev,
+               libgudev-1.0-dev [linux-any],
+               libjpeg-dev,
+               libnotify-dev,
+               libpcre2-dev,
+               libtool,
+               libxfce4panel-2.0-dev,
+               libxfce4ui-2-dev (>= 4.17.6),
+               libxfce4util-dev (>= 4.17.2),
+               libxfconf-0-dev,
+               xfce4-dev-tools
+Rules-Requires-Root: no
+Standards-Version: 4.6.2
+Homepage: https://docs.xfce.org/xfce/thunar/start
+Vcs-Git: https://salsa.debian.org/xfce-team/desktop/thunar.git
+Vcs-Browser: https://salsa.debian.org/xfce-team/desktop/thunar
+
+Package: libthunarx-bl-3-dev
+Section: libdevel
+Architecture: any
+Multi-Arch: same
+Depends: gir1.2-thunarx-3.0 (= ${binary:Version}),
+         libglib2.0-dev,
+         libgtk-3-dev,
+         libthunarx-bl-3-0 (= ${binary:Version}),
+         thunar-data-bl (= ${source:Version}),
+         ${misc:Depends}
+Conflicts: libthunarx-3-dev
+Replaces: libthunarx-3-dev
+Provides: libthunarx-3-dev
+Description: Development files for libthunarx
+ This package contains the headers and the static library for libthunarx,
+ the extension library used by thunar
+
+Package: libthunarx-bl-3-0
+Section: libs
+Architecture: any
+Multi-Arch: same
+Pre-Depends: ${misc:Pre-Depends}
+Depends: thunar-data-bl, ${misc:Depends}, ${shlibs:Depends}
+Recommends: ${shlibs:Recommends}
+Conflicts: libthunarx-3-0
+Replaces: libthunarx-3-0
+Provides: libthunarx-3-0 (= ${source:Version})
+Description: extension library for thunar
+ This package contains the Thunar extension library which permits adding new
+ features to the Thunar file manager.
+
+Package: gir1.2-thunarx-3.0
+Section: introspection
+Architecture: any
+Multi-Arch: same
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${gir:Depends}, ${misc:Depends}
+Description: Typelib file for thunar
+ This package contains the Thunar extension library which permits adding new
+ features to the Thunar file manager.
+ .
+ This package provides the introspection data for thunar.
+
+Package: thunar-bl
+Architecture: any
+Depends: desktop-file-utils,
+         exo-utils,
+         shared-mime-info,
+         thunar-data (= ${source:Version}),
+         ${misc:Depends},
+         ${shlibs:Depends}
+Recommends: default-dbus-session-bus | dbus-session-bus,
+            gvfs,
+            policykit-1-gnome | polkit-1-auth-agent,
+            thunar-volman [linux-any],
+            tumbler,
+            udisks2,
+            xdg-user-dirs,
+            ${shlibs:Recommends}
+Suggests: thunar-archive-plugin, thunar-media-tags-plugin, gvfs-backends
+Conflicts: thunar
+Replaces: thunar (>= 0.5.0rc2-1)
+Provides: thunar (= ${source:Version})
+Description: File Manager for Xfce
+ Thunar is the file manager designed to be the default file manager for the
+ Xfce desktop environment. It has been designed to be fast and easy to use.
+ .
+ Also included is an Xfce panel plugin which can manage the desktop trash.
+ .
+ This version has been patched to support setting background images in
+ Enlightenment/Moksha desktops.
+
+Package: thunar-data-bl
+Architecture: all
+Multi-Arch: foreign
+Depends: ${misc:Depends}
+Conflicts: thunar-data
+Replaces: thunar-data
+Provides: thunar-data (= ${source:Version})
+Description: Provides thunar documentation, icons and translations
+ This package contains architecture-independent files for thunar, the file
+ manager and file management libraries for Xfce desktop environment.
