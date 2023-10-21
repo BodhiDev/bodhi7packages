@@ -1,0 +1,9 @@
+usr/bin/*
+usr/lib/*/ecore_con/utils/*/efl_net_proxy_helper
+usr/lib/*/edje/utils/*/epp
+usr/lib/*/efreet/*/*
+usr/lib/*/ethumb_client/utils/*/*
+# desktop files
+usr/share/applications/elementary_test.desktop
+usr/share/applications/elementary_perf.desktop
+usr/share/applications/elementary_config.desktop
