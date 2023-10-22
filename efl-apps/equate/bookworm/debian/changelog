@@ -1,0 +1,5 @@
+equate (0.1.1-1) jammy; urgency=medium
+
+  * Initial release
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Tue, 03 Oct 2023 12:16:40 -0400
