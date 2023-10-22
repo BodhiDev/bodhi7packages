@@ -1,6 +1,6 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: ephoto
-Source: https://www.enlightenment.org/about-ephoto
+Source: https://github.com/rbtylee/ephoto
 
 Files: *
 Copyright: 2000-2018, Stephen Houston <smhouston88@gmail.com>
