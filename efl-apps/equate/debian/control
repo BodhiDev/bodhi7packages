@@ -6,8 +6,8 @@ Homepage: https://git.enlightenment.org/apps/equate.git/
 Standards-Version: 3.9.7
 Build-Depends: autoconf (>= 2.60), automake (>= 1.6), debhelper (>= 9),
  dh-autoreconf, libefl-dev (>= 1.7.0), pkg-config
-Vcs-Git: https://git.enlightenment.org/apps/equate.git
-Vcs-Browser: https://git.enlightenment.org/apps/equate.git/tree/
+Vcs-Git: https://git.enlightenment.org/enlightenment/equate
+Vcs-Browser: hhttps://git.enlightenment.org/enlightenment/equate
 
 Package: equate
 Architecture: any

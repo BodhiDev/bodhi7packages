@@ -1,6 +1,6 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: Equate
-Source: https://git.enlightenment.org/apps/equate.git/tree/
+Source: https://git.enlightenment.org/enlightenment/equate
 
 Files: *
 Copyright: 2011-2016 Andy Williams <andy@andywilliams.me>
