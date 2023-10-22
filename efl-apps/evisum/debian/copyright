@@ -1,6 +1,6 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: evisum
-Source: https://git.enlightenment.org/apps/evisum.git/
+Source: https://git.enlightenment.org/enlightenment/evisum
 
 Files: *
 Copyright: 2019 Alastair Poole <netstar@gmail.com>
