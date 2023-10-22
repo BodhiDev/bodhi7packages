@@ -1,0 +1,27 @@
+Source: evisum
+Section: utils
+Priority: optional
+Maintainer: Robert Wiley <ylee@bodhilinux.com>
+Build-Depends: debhelper, libefl (>=1.19.0)
+Standards-Version: 4.5.0
+Rules-Requires-Root: no
+
+Package: evisum
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: System Information (EFL)
+ This is a process monitor and system monitor for Linux, macOS,
+ FreeBSD, DragonFlyBSD and OpenBSD.
+
+
+Package: evisum-dbg
+Architecture: any
+Section: debug
+Depends: ${misc:Depends}, evisum (= ${binary:Version})
+Priority: optional
+Description: Evisum- debugging symbols
+ This package contains unstripped shared libraries for Evisum.
+ It is provided primarily  to provide a backtrace with names in a 
+ debugger, this makes it somewhat  easier to interpret core dumps.
+ The libraries are installed in  /usr/lib/debug and are automatically 
+ used by gdb.

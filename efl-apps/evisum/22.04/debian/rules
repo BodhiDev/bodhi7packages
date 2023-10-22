@@ -1,0 +1,21 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+# This has to be exported to make some magic below work.
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
+
+
+%:
+	dh $@
+
+override_dh_auto_build:
+	$(CURDIR)/debian/fake_home.sh dh_auto_build --verbose
+
+.PHONY: override_dh_strip
+
+override_dh_strip:
+	dh_strip --dbg-package=evisum-dbg
