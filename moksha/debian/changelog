@@ -1,3 +1,18 @@
+moksha (0.4.1-7) jammy; urgency=low
+
+  * Theme: Notification counter corrections
+  * Remove BL6 hack no longer needed
+  * Shelf: plain style offset correction
+  * Clock: easy dismissal added
+  * CLock: Always on top setting added  
+  * Clock: set date complete rework
+  * Places Module: possible truncation
+  * Notification Module: fix new gcc warning
+  * e_fm_ipc: silence another gcc warning
+  * e_desklock.c: fix for comparision always true
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Tue, 24 Oct 2023 10:53:40 -0400
+
 moksha (0.4.1-6) jammy; urgency=low
 
   * e_open: var not initialized
