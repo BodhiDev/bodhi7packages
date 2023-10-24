@@ -9,7 +9,7 @@ moksha (0.4.1-7) jammy; urgency=low
   * Places Module: possible truncation
   * Notification Module: fix new gcc warning
   * e_fm_ipc: silence another gcc warning
-  * e_desklock.c: fix for comparision always true
+  * e_desklock.c: fix for comparison always true
 
  -- Robert Wiley <ylee@bodhilinux.com>  Tue, 24 Oct 2023 10:53:40 -0400
 
