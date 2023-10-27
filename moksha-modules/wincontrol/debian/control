@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Robert (ylee) Wiley <ylee@bodhilinux.com>
 Build-Depends: debhelper (>= 10), autotools-dev, pkg-config, libefl-dev, moksha-dev
 Standards-Version: 4.5.0
-Homepage: https://github.com/JeffHoogland/moksha-modules-extra
+Homepage: https://github.com/thewaiter/wincontrol
 Rules-Requires-Root: no
 
 Package: moksha-module-wincontrol
