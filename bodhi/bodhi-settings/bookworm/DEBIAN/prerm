@@ -1,0 +1,11 @@
+#!/bin/sh
+set -e
+
+case "$1" in
+    remove|purge)
+	if [ -f //etc/apt/sources.list.bak]; then
+        cp /etc/apt/sources.list.bak /etc/apt/sources.list
+		rm /etc/apt/sources.list.bak
+	fi
+	;;
+esac

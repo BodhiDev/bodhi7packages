@@ -1,0 +1,10 @@
+Package: bodhi-settings
+Version:  0.0.1-8
+Architecture: all
+Maintainer: Robert (ylee) Wiley <ylee@bodhilinux.com>
+Section: admin
+Priority: optional
+Depends: apt, debian-system-adjustments, bodhilinux-keyring
+Recommends: bodhi-skel, bodhi-slick-theme
+Description: Supplies Bodhi custom settings
+ Adds bodhi repo and more.
