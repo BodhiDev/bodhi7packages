@@ -1,0 +1,8 @@
+bcec90bc5dcb4d73c10a599ae90f8495  lib/systemd/system/debian-system-adjustments.service
+2e9e567f5d84a203184170f73961a2c3  usr/share/debian-system-adjustments/systemd/adjust-grub-title
+0c331ca6fee4f3b7c0d8afbd816c2eff  usr/share/debian-system-adjustments/systemd/start
+0bc1de11583dc83546fc8936da79274b  usr/share/debian-system-adjustments/systemd/stop
+84867a91737ec2e3e212a32fb569f751  usr/share/doc/debian-system-adjustments/changelog.gz
+df833acfdb774424d8d21d234704aed1  usr/share/doc/debian-system-adjustments/copyright
+a7814acfb03dfb96568773e4f406f123  usr/share/debian-system-adjustments/fonts/53-monospace-lcd-filter.conf
+50c6017934b0648c01440eabeb2c97dc  usr/share/lintian/overrides/debian-system-adjustments

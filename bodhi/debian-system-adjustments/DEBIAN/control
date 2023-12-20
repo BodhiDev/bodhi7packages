@@ -1,0 +1,9 @@
+Package: debian-system-adjustments
+Version: 2023.12.02
+Architecture: all
+Maintainer: Robert Wiley <ylee@bodhilinux.com>
+Depends: libglib2.0-bin, python3
+Section: admin
+Priority: optional
+Description: Debian adjustments specific to Bodhi Linux.
+ Adjustments made to the Debian base.

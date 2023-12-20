@@ -1,0 +1,4 @@
+debian-system-adjustments: new-package-should-close-itp-bug
+# can't seem to override this one
+debian-system-adjustments: udev-rule-in-etc [etc/udev/rules.d/61-debian-system-adjustments-polling.rules]
+debian-system-adjustments: maintainer-script-calls-systemctl [postinst:25]

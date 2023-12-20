@@ -1,0 +1,7 @@
+/etc/default/grub.d/50_bodhilinux.cfg
+/etc/grub.d/backgrounds/grub.png
+/etc/fonts/conf.d/10-bodhi.conf
+/etc/sysctl.d/bodhi.conf
+/etc/systemd/system.conf.d/50_linuxbodhi.conf
+/etc/timeshift/restore-hooks.d/50_bodhi
+/etc/udev/rules.d/61-debian-system-adjustments-polling.rules
