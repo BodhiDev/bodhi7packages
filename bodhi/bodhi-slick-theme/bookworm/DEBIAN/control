@@ -1,0 +1,12 @@
+Package: bodhi-slick-theme
+Version: 0.1.3
+Architecture: all
+Maintainer: Robert Wiley <ylee@bodhilinux.com>
+Depends: slick-greeter
+Replaces: bodhi-lightdm-theme, lightdm-kde-greeter, lightdm-gkt-greeter, unity-greeter
+Conflicts: bodhi-lightdm-theme, lightdm-kde-greeter, lightdm-gtk-greeter, unity-greeter
+Recommends: bodhi-theme-moksha-green
+Section: misc
+Priority: optional
+Description: Bodhi Linux slick login
+ Slick greeter login screen configuration for Bodhi Linux 7.0

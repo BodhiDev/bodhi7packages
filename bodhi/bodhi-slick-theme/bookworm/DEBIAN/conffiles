@@ -1,0 +1,2 @@
+/etc/lightdm/slick-greeter.conf
+/etc/lightdm/lightdm.conf.d/70-linuxbodhi.conf
