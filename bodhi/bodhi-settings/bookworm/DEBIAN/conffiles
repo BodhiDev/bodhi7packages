@@ -1,5 +1,6 @@
 /etc/apt/sources.list.d/bodhi-repositories.list
 /etc/apt/preferences.d/bodhi.pref
+/etc/apt/preferences.d/debian.pref
 /etc/profile.d/bodhi-paths.sh
 /etc/profile.d/eina-log.sh
 /etc/udev/rules.d/80-local.rules
