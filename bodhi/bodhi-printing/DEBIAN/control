@@ -1,0 +1,9 @@
+Package: bodhi-printing
+Version: 0.6.2
+Section: utils
+Priority: optional
+Architecture: all
+Depends: cups, system-config-printer, cups-bsd
+Maintainer: Robert Wiley <ylee@bodhilinux.com>
+Description: Printing utilities for Bodhi Linux
+ A meta package containing packages required for printing
