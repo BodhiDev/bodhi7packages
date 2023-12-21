@@ -1,0 +1,10 @@
+Package: firefox
+Version: 2023.12.22
+Section: misc
+Priority: optional
+Depends: firefox-esr
+Architecture: all
+Maintainer: Robert Wiley <ylee@bodhilinux.com>
+#Vcs-Browser: https://github.com/Deepspeed/bodhi3packages
+Description: Debian Firefox meta package
+ A meta-package for Debian. Installs firefox-esr.
