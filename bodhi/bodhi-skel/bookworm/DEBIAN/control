@@ -1,0 +1,9 @@
+Package: bodhi-skel
+Version: 1.5-8
+Section: misc
+Priority: optional
+Architecture: all
+Depends: sensible-utils
+Maintainer: Robert Wiley <rbtylee@bodhilinux.com>
+Description: Bodhi Skel Files
+ Provides skel files for new users

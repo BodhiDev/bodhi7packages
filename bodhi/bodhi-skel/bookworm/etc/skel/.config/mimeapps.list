@@ -1,0 +1,15 @@
+[Added Associations]
+inode/directory=thunar.desktop;
+x-scheme-handler/http=chromium-browser.desktop;
+x-scheme-handler/https=chromium-browser.desktop;
+x-scheme-handler/terminal=terminology.desktop;
+image/jpeg=ephoto.desktop;
+image/png=ephoto.desktop;
+
+[Default Applications]
+inode/directory=thunar.desktop
+x-scheme-handler/http=chromium-browser.desktop
+x-scheme-handler/https=chromium-browser.desktop
+x-scheme-handler/terminal=terminology.desktop
+image/jpeg=ephoto.desktop
+image/png=ephoto.desktop

@@ -1,0 +1,16 @@
+/etc/skel/.bash_aliases
+/etc/skel/.config/gtk-2.0/gtkfilechooser.ini
+/etc/skel/.config/dconf/user
+/etc/skel/.config/featherpad/fp.conf
+/etc/skel/.config/geany/geany.conf
+/etc/skel/.config/gtk-3.0/settings.ini
+/etc/skel/.config/mimeapps.list
+/etc/skel/.config/terminology/config/standard/base.cfg
+/etc/skel/.config/Thunar/accels.scm
+/etc/skel/.config/Thunar/uca.xml
+/etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml
+/etc/skel/.elementary/config/profile.cfg
+/etc/skel/.elementary/config/standard/base.cfg
+/etc/skel/.local/share/epiphany/bookmarks.gvdb
+/etc/skel/.local/share/epiphany/ephy-history.db
+/etc/skel/.local/share/epiphany/session_state.xml
