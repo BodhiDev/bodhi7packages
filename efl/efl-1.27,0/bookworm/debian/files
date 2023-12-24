@@ -1,0 +1,7 @@
+efl-doc_1.27.0-0bookworm_all.deb doc optional
+efl_1.27.0-0bookworm_amd64.buildinfo libs optional
+libefl-bin_1.27.0-0bookworm_amd64.deb libs optional
+libefl-data_1.27.0-0bookworm_all.deb misc optional
+libefl-dbg_1.27.0-0bookworm_amd64.deb libs optional
+libefl-dev_1.27.0-0bookworm_amd64.deb libdevel optional
+libefl_1.27.0-0bookworm_amd64.deb libs optional

@@ -1,0 +1,6 @@
+10_remove_google_analytics.diff
+20_disable_doxygen_timestamps.diff
+25_exactness_use_system_python3.diff
+30_drop_crashing_widget_previews.diff
+45_disable_doc_pack.diff
+99-fix-shader-regen.diff

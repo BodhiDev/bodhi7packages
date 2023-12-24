@@ -1,0 +1,16 @@
+./src/examples/ecore
+./src/examples/ecore_avahi
+./src/examples/edje
+./src/examples/eet
+./src/examples/efl_mono
+./src/examples/eina
+./src/examples/eina_cxx
+./src/examples/eio
+./src/examples/eldbus
+./src/examples/elementary
+./src/examples/emile
+./src/examples/emotion
+./src/examples/eolian_cxx
+./src/examples/ephysics
+./src/examples/ethumb_client
+./src/examples/evas

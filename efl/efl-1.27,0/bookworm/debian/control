@@ -1,0 +1,194 @@
+Source: efl
+Section: libs
+Priority: optional
+Maintainer: Robert (ylee) Wiley <ylee@bodhilinux.com>
+Build-Conflicts: systemctl
+Build-Depends:
+ debhelper (>= 12),
+ check,
+ libblkid-dev [linux-any],
+ libssl-dev,
+ libcurl4-openssl-dev,
+ libdbus-1-dev,
+ libefl <cross>,
+ libfontconfig-dev,
+ libfreetype-dev,
+ libfribidi-dev,
+ libgbm-dev,
+ libgcrypt-dev,
+ libgif-dev,
+ libgles2-mesa-dev,
+ libglib2.0-dev,
+ libgstreamer-plugins-base1.0-dev,
+ libgstreamer1.0-dev,
+ libharfbuzz-dev,
+ libheif-dev,
+ libinput-dev,
+ libjpeg-dev,
+ liblua5.2-dev [alpha arm64 hppa ia64 m68k powerpc riscv64 s390x sh4 sparc64 x32],
+ libluajit-5.1-dev,
+ liblz4-dev,
+ libmount-dev [linux-any],
+ libopenjp2-7-dev,
+ libpixman-1-dev,
+ libpng-dev,
+ libpoppler-cpp-dev,
+ libpulse-dev,
+ libraw-dev,
+ librsvg2-dev,
+ libscim-dev,
+ libsndfile-dev,
+ libspectre-dev,
+ libsystemd-dev,
+ libtiff-dev,
+ libudev-dev [linux-any],
+ libunwind-dev [amd64 arm64 armel armhf hppa i386 ia64 mips mips64 mips64el mipsel powerpc powerpcspe ppc64 ppc64el sh4],
+ libvlc-dev,
+ libwayland-dev,
+ libwebp-dev,
+ libx11-dev,
+ libx11-xcb-dev,
+ libxcb-image0-dev,
+ libxcb-shm0-dev,
+ libxcb1-dev,
+ libxcomposite-dev,
+ libxcursor-dev,
+ libxdamage-dev,
+ libxext-dev,
+ libxi-dev,
+ libxinerama-dev,
+ libxkbcommon-x11-dev,
+ libxpm-dev,
+ libxpresent-dev,
+ libxrandr-dev,
+ libxrender-dev,
+ libxss-dev,
+ libxtst-dev,
+ mesa-common-dev,
+ meson,
+ pkg-config,
+ systemd,
+ wayland-protocols,
+ x11proto-xext-dev,
+ zlib1g-dev,
+ valgrind
+Build-Depends-Indep: doxygen, ghostscript, imagemagick, texlive-font-utils
+Standards-Version: 4.5.0
+Homepage: http://enlightenment.org
+Rules-Requires-Root: no
+
+Package: libefl-dev
+Section: libdevel
+Architecture: any
+Pre-Depends: ${misc:Pre-Depends}
+Depends:
+ libefl (= ${binary:Version}),
+ check,
+ libblkid-dev [linux-any],
+ libssl-dev,
+ libcurl4-openssl-dev,
+ libdbus-1-dev,
+ libfontconfig-dev,
+ libfreetype-dev,
+ libfribidi-dev,
+ libgbm-dev,
+ libgcrypt-dev,
+ libgif-dev,
+ libgles2-mesa-dev,
+ libglib2.0-dev,
+ libgstreamer-plugins-base1.0-dev,
+ libgstreamer1.0-dev,
+ libharfbuzz-dev,
+ libheif-dev,
+ libinput-dev,
+ libjpeg-dev,
+ liblua5.2-dev [alpha arm64 hppa ia64 m68k powerpc riscv64 s390x sh4 sparc64 x32],
+ liblz4-dev,
+ libmount-dev [linux-any],
+ libopenjp2-7-dev,
+ libpixman-1-dev,
+ libpng-dev,
+ libpoppler-cpp-dev,
+ libpulse-dev,
+ libraw-dev,
+ librsvg2-dev,,
+ libsndfile-dev,
+ libspectre-dev,
+ libsystemd-dev,
+ libtiff-dev,
+ libudev-dev [linux-any],
+ libunwind-dev [amd64 arm64 armel armhf hppa i386 ia64 mips mips64 mips64el mipsel powerpc powerpcspe ppc64 ppc64el sh4],
+ libvlc-dev,
+ libwayland-dev,
+ libwebp-dev,
+ libx11-dev,
+ libx11-xcb-dev,
+ libxcb-image0-dev,
+ libxcb-shm0-dev,
+ libxcb1-dev,
+ libxcomposite-dev,
+ libxcursor-dev,
+ libxdamage-dev,
+ libxext-dev,
+ libxi-dev,
+ libxinerama-dev,
+ libxkbcommon-x11-dev,
+ libxpm-dev,
+ libxrandr-dev,
+ libxrender-dev,
+ libxss-dev,
+ libxtst-dev,
+ mesa-common-dev,
+ meson,
+ pkg-config,
+ systemd,
+ wayland-protocols,
+ x11proto-xext-dev,
+ zlib1g-dev,
+ valgrind
+ ${misc:Depends},
+ ${shlibs:Depends},
+Description: Enlightenment Foundation Libraries (development files)
+ Development files for EFL.
+
+Package: libefl
+Section: libs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libefl-data (= ${binary:Version}), libefl-bin (= ${binary:Version})
+Provides: libecore-audio1, libecore-bin, libecore-con1, libecore-drm2-1, libecore-evas1, libecore-fb1, libecore-file1, libecore-imf1, libecore-input1, libecore-ipc1, libecore-wl2-1, libecore-x1, libecore1, libector1, libedje1, libeet1, libeeze1, libefreet-bin, libefreet1a, libeina1a, libeio1, libelementary-bin, libelementary-data, libelementary1, libelocation1, libelput1, libembryo1, libemile1, libemotion1, libethumb-client-bin, libethumb-client1, libethumb1, libevas-loaders, libevas1, libevas1-engines-dr
+Conflicts: libecore-audio1, libecore-bin, libecore-con1, libecore-drm2-1, libecore-evas1, libecore-fb1, libecore-file1, libecore-imf1, libecore-input1, libecore-ipc1, libecore-wl2-1, libecore-x1, libecore1, libector1, libedje1, libeet1, libeeze1, libefreet-bin, libefreet1a, libeina1a, libeio1, libelementary-bin, libelementary-data, libelementary1, libelocation1, libelput1, libembryo1, libemile1, libemotion1, libethumb-client-bin, libethumb-client1, libethumb1, libevas-loaders, libevas1, libevas1-engines-dr
+Replaces: libecore-audio1, libecore-bin, libecore-con1, libecore-drm2-1, libecore-evas1, libecore-fb1, libecore-file1, libecore-imf1, libecore-input1, libecore-ipc1, libecore-wl2-1, libecore-x1, libecore1, libector1, libedje1, libeet1, libeeze1, libefreet-bin, libefreet1a, libeina1a, libeio1, libelementary-bin, libelementary-data, libelementary1, libelocation1, libelput1, libembryo1, libemile1, libemotion1, libethumb-client-bin, libethumb-client1, libethumb1, libevas-loaders, libevas1, libevas1-engines-dr
+Description: Enlightenment Foundation Libraries
+ The Enlightenment Foundation Libraries (EFL) is a set of libraries
+ providing building blocks used in the Enlightenment window manager
+
+Package: libefl-data
+Section: misc
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Enlightenment Foundation Libraries (data files)
+ Miscellaneous files for EFL.
+ 
+Package: libefl-bin
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, python3
+Description: Enlightenment Foundation Libraries (binary files)
+ Binary files for EFL.
+ 
+Package: libefl-dbg
+Architecture: any
+Depends: libefl (=${binary:Version})
+Description: Enlightenment Foundation Libraries (debug symbols)
+ Debug symbols for EFL
+
+Package: efl-doc
+Architecture: all
+Section: doc
+Depends: ttf-bitstream-vera, ${misc:Depends}
+Description: Documentation for the Enlightenment Foundation Libraries
+ The Enlightenment Foundation Libraries (EFL) is a set of libraries
+ providing building blocks used in the Enlightenment window manager.
+ This package contains the Doxygen-generated HTML documentation and
+ examples for the API of the EFL.
+ .
+ This is part of the Enlightenment Foundation Libraries (EFL).
