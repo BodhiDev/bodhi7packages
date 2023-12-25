@@ -1,0 +1,10 @@
+This needs rethought 
+
+I have stuff in libefl-data that should not be there
+
+check against what should be installed
+
+add efl physics shit
+ for some reason have libefl: symbols-file-contains-current-version-with-debian-revision
+ 
+ see libefl.lintian-overrides file
