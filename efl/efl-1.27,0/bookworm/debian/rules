@@ -67,6 +67,7 @@ override_dh_auto_build:
 	cd src && modules/evas/engines/gl_common/shader/gen_shaders.sh
 
 	$(CURDIR)/debian/fake_home.sh env \
+
 		dh_auto_build --verbose
 ifeq ($(filter efl-doc,$(BINPKGS)),efl-doc)
 ifeq (,$(filter nodoc,$(DEB_BUILD_OPTIONS) $(DEB_BUILD_PROFILES)))
