@@ -1,0 +1,11 @@
+0518716eef488d01e376d883d6af1e9b  etc/default/motd-news
+7da7d4070391da5836f44234cc9869c7  etc/update-motd.d/00-header
+e218cbff254836ef45adc2798b314e47  etc/update-motd.d/10-help-text
+166d11e36fdb05b10e6fc840848cdb6e  etc/update-motd.d/50-motd-news
+18f746c5c90ff506445f615ae44f5a7b  lib/systemd/system/motd-news.service
+79b82d315319fdb55ccf0f2b4c83fe62  lib/systemd/system/motd-news.timer
+0c34b41743f58b2862ffdb5d23ce3fe9  usr/share/bodhi/motd/README
+89cabf60034d2c48fa48c0d32743d40a  usr/share/doc/bodhi-motd/changelog.Debian.gz
+ab5b2a981a95b723eaf1d260b038566f  usr/share/doc/bodhi-motd/copyright
+dc5630222f813cdd43d9d50c64f80d43  usr/share/lintian/overrides/bodhi-motd
+b6f1e3295bf46788208bdeaeb6387439  usr/share/man/man5/update-motd.5.gz

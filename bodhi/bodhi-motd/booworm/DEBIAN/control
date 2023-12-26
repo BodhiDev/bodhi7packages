@@ -1,0 +1,10 @@
+Package: bodhi-motd
+Version: 0.0.1-1
+Architecture: all
+Maintainer: Robert (ylee) Wiley <ylee@bodhilinux.com>
+Depends: bash (>= 4.3.10), lsb-release, libpam0g, libpam-modules-bin, systemd
+Section: admin
+Priority: optional
+Homepage: https://www.bodhilinux.com/
+Description: Bodhi message of the day
+ Bodhi MOTD for Debian 

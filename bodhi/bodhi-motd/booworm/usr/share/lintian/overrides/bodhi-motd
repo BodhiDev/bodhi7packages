@@ -1,0 +1,2 @@
+bodhi-motd: new-package-should-close-itp-bug
+bodhi-motd: init.d-script-should-always-start-service etc/default/motd-news

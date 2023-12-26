@@ -1,0 +1,4 @@
+/etc/default/motd-news
+/etc/update-motd.d/00-header
+/etc/update-motd.d/10-help-text
+/etc/update-motd.d/50-motd-news

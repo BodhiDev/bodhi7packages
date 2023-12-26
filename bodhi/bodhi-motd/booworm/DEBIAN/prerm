@@ -1,0 +1,12 @@
+#!/bin/sh
+set -e
+
+case "$1" in
+  remove|purge)
+  BASE="/usr/share/bodhi/motd"
+
+  if [ -f "$BASE/10-uname.dist" ]; then
+    mv "$BASE/10-uname.dist" "/etc/update-motd.d/10-uname"
+  fi
+  ;;
+esac
