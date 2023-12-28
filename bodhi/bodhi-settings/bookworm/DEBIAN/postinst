@@ -18,7 +18,7 @@ set -e
 
 case "$1" in
     configure|upgrade|update|reconfigure|triggered)
-       	if [ -f //etc/apt/sources.list.bak]; then
+       	 if [ -f /etc/apt/sources.list.bak ]; then
             cp /etc/apt/sources.list /etc/apt/sources.list.bak
          fi
          echo "# Do Not Edit" > etc/apt/sources.list
