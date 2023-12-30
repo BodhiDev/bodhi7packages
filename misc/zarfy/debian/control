@@ -1,0 +1,25 @@
+Source: zarfy
+Section: x11
+Priority: optional
+Maintainer: Robert Wiley <ylee@bodhilinux.com>
+Build-Depends: debhelper (>= 9),
+               dh-autoreconf,
+               libgdk-pixbuf2.0-dev,
+               libglade2-dev,
+               libx11-dev,
+               libxrandr-dev,
+               libxrender-dev,
+               pkg-config
+Standards-Version: 3.9.7
+Vcs-Browser: https://github.com/rbtylee/zarfy
+Vcs-Git: https://github.com/rbtylee/zarfy
+Homepage: https://github.com/rbtylee/zarfy
+
+Package: zarfy
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: GTK+ based front end for XRandR
+ Zarfy presents the user with visual representaion of active displays on
+ an interactive map of the screen memory. Features free postioning, 
+ configuration saving, scripting for R&R and an alternate gui for 
+ switching between monitors.
