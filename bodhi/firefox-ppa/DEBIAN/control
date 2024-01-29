@@ -1,0 +1,10 @@
+Package: firefox-ppa
+Version: 0.0.1
+Architecture: all
+Maintainer: Robert (ylee) Wiley <ylee@bodhilinux.com>
+Section: admin
+Priority: optional
+Depends: apt
+Recommends: bodhi-settings
+Description: Supplies the official firefox PPA
+ Adds the firefox PPA to apts sources.list.

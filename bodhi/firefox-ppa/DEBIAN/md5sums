@@ -1,0 +1,5 @@
+c0962d408997cf2a598cd26f6807134e  etc/apt/sources.list.d/mozilla.list
+5b9388cd2814d3019d6dae7db7a913ff  usr/share/doc/firefox-ppa/changelog.gz
+f2df1cd218b23488911f06195f9bf622  usr/share/doc/firefox-ppa/copyright
+6acd97d045f8d8ef7516c3241c088a09  usr/share/keyrings/packages.mozilla.org.asc
+f2c8ec97da228ff0774109e534c1c0d7  usr/share/lintian/overrides/firefox-ppa
