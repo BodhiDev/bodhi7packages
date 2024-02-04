@@ -1,5 +1,5 @@
 Package: bodhi-settings
-Version:  0.0.1-10
+Version:  0.0.1-12
 Architecture: all
 Maintainer: Robert (ylee) Wiley <ylee@bodhilinux.com>
 Section: admin

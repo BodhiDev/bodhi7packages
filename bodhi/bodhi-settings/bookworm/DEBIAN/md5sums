@@ -1,8 +1,6 @@
-928d7cb685146b716f95d45a5f8123e5  etc/apt/sources.list.d/bodhi-repositories.list
-742fb3b18ba2723194c161757d31aee9  etc/apt/preferences.d/bodhi.pref
-56a6109ea85f4a571dc58d58804d2e07  etc/apt/preferences.d/debian.pref
+e588cef9681705d8a657d4db17c97733  etc/apt/sources.list.d/bodhi-repositories.list
 0d3710504568e7b75463d936fd43ef90  etc/profile.d/eina-log.sh
 18c703a3fbb46388f1d593db895fd289  etc/udev/rules.d/80-local.rules
-2ee3e2f48885dbe3dc41b8b71d1a7161  usr/share/doc/bodhi-settings/changelog.Debian.gz
+0610010ac4930747cae84fa70022318e  usr/share/doc/bodhi-settings/changelog.Debian.gz
 6df4843ddcb31454947d729d37a4c90e  usr/share/doc/bodhi-settings/copyright
 11bde795f2326f71ffda9b1f3e59ab94  usr/share/lintian/overrides/bodhi-settings

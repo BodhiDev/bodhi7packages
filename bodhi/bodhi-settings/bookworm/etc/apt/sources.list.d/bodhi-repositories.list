@@ -8,5 +8,3 @@ deb https://deb.debian.org/debian bookworm-backports main contrib non-free non-f
 # Bodhi Linux 7.0 repo
 
 deb http://packages.bodhilinux.com/bodhi bookworm b7debbie
-deb http://packages.bodhilinux.com/bodhi jammy b7main
-
