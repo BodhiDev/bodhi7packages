@@ -1,0 +1,7 @@
+eee7448abaf8a22405cfee28dc2f0f7b  usr/bin/apturl
+55ffb148aa00e98bfb5dd49dc1a84195  usr/bin/apturl.synaptic
+4bd6e933c4d337fdb27eee28abbd289d  usr/share/applications/apturl.desktop
+a348a3cf6d40b3213e4f84513295afbd  usr/share/doc/apturl-saf/changelog.Debian.gz
+cd029d923992c6815074a10dd6b730cd  usr/share/doc/apturl-saf/copyright
+24b345707ba4cf004f470e2848a2f2eb  usr/share/lintian/overrides/apturl-saf
+b6e99dacf894fb07363f1ef1f14ea472  usr/share/man/man8/apturl.8.gz
