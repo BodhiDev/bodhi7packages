@@ -1,0 +1,10 @@
+Package: chromium
+Version: 2024.0.1
+Section: web
+Priority: optional
+Maintainer: Robert (ylee) Wiley <ylee@bodhilinux.com>
+Depends: bodhi-chromium, bodhi-chromium, bodhi-chromium-sandbox
+Architecture: all
+Homepage: https://www.bodhilinux.com/
+Description: Metapackage for chromium web browser
+ Install Bodhi's version of chromium.
