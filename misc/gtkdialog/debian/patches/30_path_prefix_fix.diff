@@ -1,0 +1,15 @@
+Description: Use right path in standalone_file example
+ This ensures the standalone_file example works correctly
+Author: Robert Wiley <ylee@bodhilinux.com>
+Origin: other
+Forwarded: no
+Last-Update: 2024-02-13
+index 94984c1..1432646 100755
+--- a/examples/miscellaneous/standalone_file
++++ b/examples/miscellaneous/standalone_file
+@@ -1,4 +1,4 @@
+-#! /usr/local/bin/gtkdialog -f
++#! /usr/bin/gtkdialog -f
+
+ <window>
+        <vbox>

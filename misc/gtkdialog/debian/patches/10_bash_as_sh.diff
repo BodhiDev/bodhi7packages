@@ -1,0 +1,17 @@
+Description: Use /bin/bash in terminal example
+ This ensures the terminal example works correctly
+Author: Robert Wiley <ylee@bodhilinux.com>
+Origin: other
+Forwarded: no
+Last-Update: 2024-02-13
+--- a/examples/terminal/terminal
++++ b/examples/terminal/terminal
+@@ -18,7 +18,7 @@ date
+ cal
+ arch
+ uname -a
+-/bin/sh --version
++/bin/bash --version | grep version
+ top
+ qecho restarting..." > "$TEMPDIR"/demo
+ echo 0 > "$TEMPDIR"/demoindex
