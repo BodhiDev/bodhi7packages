@@ -39,7 +39,7 @@ Depends:
 Recommends: libgtk-layer-shell0
 Suggests: ncal
 Description: GUI creation tool for shells and arbitrary interpreters.
- Gtkdialog is an XML like simple language as a GUI description
+ Gtkdialog uses an XML like simple language as a GUI description
  language to produce dialog boxes. The program can be used with shells
  and arbitrary interpreters.
 
@@ -48,7 +48,7 @@ Architecture: all
 Section: doc
 Depends: fonts-dejavu-core, ${misc:Depends}
 Description: Documentation for Gtkdialog
- Gtkdialog is an XML like simple language as a GUI description
+ Gtkdialog uses an XML like simple language as a GUI description
  language to produce dialog boxes. The program can be used with shells
  and arbitrary interpreters.
  .
