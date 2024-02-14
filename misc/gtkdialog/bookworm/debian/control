@@ -1,0 +1,59 @@
+Source: gtkdialog
+Section:  utils
+Priority: optional
+Maintainer: Robert Wiley <ylee@bodhilinux.com>
+Build-Depends:
+ debhelper (>=9),
+ autoconf,
+ bison,
+ build-essential,
+ flex,
+ libgtk2.0-dev,
+ libgtk-3-dev,
+ libvte-dev,
+ libvte-2.91-dev,
+ libgtk-layer-shell-dev,
+ meson,
+ pkg-config
+Standards-Version: 3.9.6
+Homepage: https://github.com/puppylinux-woof-CE/gtkdialog
+
+Package: gtkdialog
+Architecture: any
+Depends:
+ libc6,
+ libgtk-3-0,
+ libglade2-0,
+ procps,
+ libgdk-pixbuf-2.0-0,
+ libgdk-pixbuf-xlib-2.0-0,
+ libglib2.0-0,
+ libatk1.0-0,
+ libpango-1.0-0, 
+ libpangocairo-1.0-0, 
+ libpangoft2-1.0-0 ,
+ libcairo2,
+ libfreetype6,
+ libfontconfig1,
+ libxml2,
+ x11-utils,
+ libxapp-gtk3-module,
+ libvte9
+Recommends: libgtk-layer-shell0
+Suggests: ncal
+Description: GUI creation tool for shells and arbitrary interpreters.
+ Gtkdialog is an XML like simple language as a GUI description
+ language to produce dialog boxes. The program can be used with shells
+ and arbitrary interpreters.
+
+Package: gtkdialog-doc
+Architecture: all
+Section: doc
+Depends: fonts-dejavu-core, ${misc:Depends}
+Description: Documentation for Gtkdialog
+ Gtkdialog is an XML like simple language as a GUI description
+ language to produce dialog boxes. The program can be used with shells
+ and arbitrary interpreters.
+ .
+ This package contains the HTML documentation and examples for
+ the API of the Gtkdialog.
