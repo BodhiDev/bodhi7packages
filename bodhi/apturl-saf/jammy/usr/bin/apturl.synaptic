@@ -1,12 +1,27 @@
 #!/bin/bash
-# Copyright 2021 ylee@bodhilinux.com
+# Copyright 2024 ylee@bodhilinux.com
 #
 # This file is part of apturl-saf
+# This file is part of apturl-saf
+#
+# "apturl"-saf is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License as published
+# by the Free Software Foundation; either version 3 of the License, or (at
+# your option) any later version.
+#
+# "apturl"-saf is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with "apturl"-saf; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 
 set -e
 if [ -z "$*" ]; then
 	exit 7
 fi
 
-synaptic --hide-main-window --non-interactive --progress-str 'Please wait, this can take some time.' --finish-str 'Update is complete' --update-at-startup
-synaptic --hide-main-window --non-interactive --progress-str 'Please wait, this can take some time.' --finish-str 'Update is complete' --set-selections-file "$1"
+synaptic --hide-main-window --non-interactive --progress-str "$2" --finish-str "%3" --update-at-startup
+synaptic --hide-main-window --non-interactive --progress-str "$2" --finish-str "$3" --set-selections-file "$1"

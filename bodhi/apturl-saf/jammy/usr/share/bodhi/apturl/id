@@ -1,0 +1,19 @@
+# Indonesian localization file for apturl_saf.
+#
+# Copyright 2024 Bodhi Linux <moksha@bodhilinux.com>
+# Under the GNU GPL v3
+# Last update: 
+#   Robert Wiley <ylee@bodhilinux.com>
+#   Fri, 05 Jan 2024 09:16:37 -0500
+
+LOKAL0="apturl"
+LOCAL1="Silakan instal manajer paket Synaptic."
+LOCAL2="Silakan instal policykit-1."
+LOCAL3="Tidak ada argumen"
+LOCAL4="Url Tidak Valid."
+LOCAL5="Tidak dapat menemukan paket '$pkg'"
+LOCAL6="Apakah Anda ingin memasang $pkg?"
+LOCAL7="'$pkg' sudah terpasang!"
+LOCAL8="Harap tunggu, ini memerlukan waktu."
+LOCAL9="Pembaruan selesai"
+LOCALA="menginstal $pkg..."

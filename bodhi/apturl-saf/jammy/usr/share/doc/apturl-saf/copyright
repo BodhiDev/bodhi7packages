@@ -1,6 +1,6 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name:apturl-saf
-Source: https://www.bodhilinux.com/
+Source: https://github.com/BodhiDev/apturl-saf
 
 Files: *
 Copyright: Robert Wiley <ylee@bodhilinux.com>
