@@ -1,0 +1,19 @@
+# Ukrainian localization file for apturl_saf.
+#
+# Copyright 2024 Bodhi Linux <moksha@bodhilinux.com>
+# Under the GNU GPL v3
+# Last update: 
+#   Robert Wiley <ylee@bodhilinux.com>
+#   Fri, 05 Jan 2024 09:16:37 -0500
+
+LOCAL0="apturl"
+LOCAL1="Встановіть менеджер пакетів Synaptic."
+LOCAL2="Будь ласка, установіть policykit-1."
+LOCAL3="Без аргументів"
+LOCAL4="Недійсна URL-адреса."
+LOCAL5="Не вдалося знайти пакет '$pkg'"
+LOCAL6="Ви бажаєте встановити $pkg?"
+LOCAL7=""$pkg" уже встановлено!"
+LOCAL8="Зачекайте, це може зайняти деякий час."
+LOCAL9="Оновлення завершено"
+LOCALA="встановлення $pkg..."

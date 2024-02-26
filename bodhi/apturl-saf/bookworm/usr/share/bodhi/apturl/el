@@ -1,0 +1,19 @@
+# Greek localization file for apturl_saf.
+#
+# Copyright 2024 Bodhi Linux <moksha@bodhilinux.com>
+# Under the GNU GPL v3
+# Last update: 
+#   Robert Wiley <ylee@bodhilinux.com>
+#   Fri, 05 Jan 2024 09:16:37 -0500
+
+LOCAL0="apturl"
+LOCAL1="Εγκαταστήστε τη διαχείριση πακέτων Synaptic."
+LOCAL2="Εγκαταστήστε το policykit-1."
+LOCAL3="Δεν υπάρχουν επιχειρήματα"
+LOCAL4="Μη έγκυρη διεύθυνση URL."
+LOCAL5="Δεν ήταν δυνατή η εύρεση του πακέτου '$pkg'"
+LOCAL6="Θέλετε να εγκαταστήσετε το $pkg;"
+LOCAL7="Το '$pkg' είναι ήδη εγκατεστημένο!"
+LOCAL8="Παρακαλώ περιμένετε, αυτό μπορεί να πάρει λίγο χρόνο."
+LOCAL9="Η ενημέρωση ολοκληρώθηκε"
+LOCALA="εγκατάσταση $pkg..."

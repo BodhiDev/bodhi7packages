@@ -1,0 +1,19 @@
+# Italian localization file for apturl_saf.
+#
+# Copyright 2024 Bodhi Linux <moksha@bodhilinux.com>
+# Under the GNU GPL v3
+# Last update: 
+#   Robert Wiley <ylee@bodhilinux.com>
+#   Fri, 05 Jan 2024 09:16:37 -0500
+
+LOCAL0="apturl"
+LOCAL1="Installare il gestore pacchetti Synaptic."
+LOCAL2="Installare policykit-1."
+LOCAL3="Nessun argomento"
+LOCAL4="URL non valido."
+LOCAL5="Impossibile trovare il pacchetto '$pkg'"
+LOCAL6="Vuoi installare $pkg?"
+LOCAL7="'$pkg' è già installato!"
+LOCAL8="Attendere, l'operazione può richiedere del tempo."
+LOCAL9="L'aggiornamento è stato completato"
+LOCALA="installazione di $pkg..."

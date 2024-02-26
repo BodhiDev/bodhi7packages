@@ -1,0 +1,19 @@
+# Catalan localization file for apturl_saf.
+#
+# Copyright 2024 Bodhi Linux <moksha@bodhilinux.com>
+# Under the GNU GPL v3
+# Last update: 
+#   Robert Wiley <ylee@bodhilinux.com>
+#   Fri, 05 Jan 2024 09:16:37 -0500
+
+LOCAL0="apturl"
+LOCAL1="Si us plau, instal·leu el gestor de paquets Synaptic."
+LOCAL2="Instal·leu policykit-1."
+LOCAL3="Sense arguments"
+LOCAL4="URL no vàlid."
+LOCAL5="No s'ha pogut trobar el paquet '$pkg'"
+LOCAL6="Voleu instal·lar $pkg?"
+LOCAL7="'$pkg' ja està instal·lat!"
+LOCAL8="Espereu, això pot trigar una mica."
+LOCAL9="L'actualització s'ha completat"
+LOCALA="instal·lant $pkg..."

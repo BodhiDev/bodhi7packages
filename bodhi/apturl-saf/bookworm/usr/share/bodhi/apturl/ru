@@ -1,0 +1,19 @@
+# Russian localization file for apturl_saf.
+#
+# Copyright 2024 Bodhi Linux <moksha@bodhilinux.com>
+# Under the GNU GPL v3
+# Last update: 
+#   Robert Wiley <ylee@bodhilinux.com>
+#   Fri, 05 Jan 2024 09:16:37 -0500
+
+LOCAL0="apturl"
+LOCAL1="Пожалуйста, установите менеджер пакетов Synaptic."
+LOCAL2="Пожалуйста, установите policykit-1."
+LOCAL3="Нет аргументов"
+LOCAL4="Неверный URL-адрес."
+LOCAL5="Не удалось найти пакет $pkg"
+LOCAL6="Хотите установить $pkg?"
+LOCAL7="'$pkg' уже установлен!"
+LOCAL8="Пожалуйста, подождите, это может занять некоторое время."
+LOCAL9="Обновление завершено"
+LOCALA="установка $pkg..."

@@ -1,0 +1,19 @@
+# Czech localization file for apturl_saf.
+#
+# Copyright 2024 Bodhi Linux <moksha@bodhilinux.com>
+# Under the GNU GPL v3
+# Last update: 
+#   Robert Wiley <ylee@bodhilinux.com>
+#   Fri, 05 Jan 2024 09:16:37 -0500
+
+LOCAL0="apturl"
+LOCAL1="Prosím, nainstalujte správce balíčků Synaptic."
+LOCAL2="Nainstalujte prosím policykit-1."
+LOCAL3="Žádné argumenty"
+LOCAL4="Neplatná adresa URL."
+LOCAL5="Nelze najít balíček '$pkg'"
+LOCAL6="Přejete si nainstalovat $pkg?"
+LOCAL7="'$pkg' je již nainstalován!"
+LOCAL8="Čekejte prosím, může to chvíli trvat."
+LOCAL9="Aktualizace je dokončena"
+LOCALA="instalace $pkg..."

@@ -1,0 +1,19 @@
+# Dutch localization file for apturl_saf.
+#
+# Copyright 2024 Bodhi Linux <moksha@bodhilinux.com>
+# Under the GNU GPL v3
+# Last update: 
+#   Robert Wiley <ylee@bodhilinux.com>
+#   Fri, 05 Jan 2024 09:16:37 -0500
+
+LOCAL0="apturl"
+LOCAL1="Installeer Synaptic pakketbeheer."
+LOCAL2="Installeer policykit-1."
+LOCAL3="Geen argumenten"
+LOCAL4="Ongeldige URL."
+LOCAL5="Kon pakket '$pkg' niet vinden"
+LOCAL6="Wilt u $pkg installeren?"
+LOCAL7="'$pkg' is al geïnstalleerd!"
+LOCAL8="Even geduld, dit kan enige tijd duren."
+LOCAL9="Update is voltooid"
+LOCALA="$pkg installeren..."

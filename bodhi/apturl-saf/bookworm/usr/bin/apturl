@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright 2021 ylee@bodhilinux.com
+# Copyright 2024 ylee@bodhilinux.com
 #
 # This file is part of apturl-saf
 #
@@ -17,45 +17,100 @@
 # along with "apturl"-saf; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 
+LOCALES="/usr/share/bodhi/apturl"
+
+locale_error() {
+  if [[ -r $$LOCALES/en ]]; then
+    . $LOCALES/en
+  else
+    echo "ERROR: Apturl-safe is broken. Please reinstall!!" 
+    zenity --error --text="An error occurred while sourcing locales." "${TITLE[@]}"
+  fi
+  exit 255
+}
+LOCALES="/usr/share/bodhi/apturl"
+pkg="$(printf '%s' "$1" | cut -c5-)"
+# Set up a trap to call the error_handler function when an error is encountered
+trap 'locale_error' ERR
+
+if   [[ $LANG == *be* ]]; then
+  . $LOCALES/be &> /dev/null
+elif [[ $LANG == *ca* ]]; then
+  . $LOCALES/ca &> /dev/null
+elif [[ $LANG == *cs* ]]; then
+  . $LOCALES/cs &> /dev/null
+elif [[ $LANG == *de* ]]; then
+  . $LOCALES/de &> /dev/null
+elif [[ $LANG == *el* ]]; then
+  . $LOCALES/el &> /dev/null
+elif [[ $LANG == *es* ]]; then
+  . $LOCALES/es &> /dev/null
+elif [[ $LANG == *it* ]]; then
+  . $LOCALES/it &> /dev/null
+elif [[ $LANG == *fr* ]]; then
+  . $LOCALES/fr &> /dev/null
+elif [[ $LANG == *he* ]]; then
+  . $LOCALES/he &> /dev/null
+elif [[ $LANG == *nl* ]]; then
+  . $LOCALES/nl &> /dev/null
+elif [[ $LANG == *pt* ]]; then
+  if [[ $LANG == *pt_BR* ]]; then
+	  . $LOCALES/pt_BR &> /dev/null
+  else
+	  . $LOCALES/pt &> /dev/null
+  fi
+elif [[ $LANG == *ru* ]]; then
+  . $LOCALES/he &> /dev/null
+elif [[ $LANG == *ru* ]]; then
+  . $LOCALES/he &> /dev/null
+elif [[ $LANG == *sk* ]]; then
+  . $LOCALES/sk &> /dev/null
+else
+  . $LOCALES/en &> /dev/null
+fi
+trap - ERR
+
+TITLE=(--width=400 --title="$LOCAL0")
+
 if ! hash synaptic-pkexec 2>/dev/null; then
-	zenity "$OPTIONS" --error --text="Please install Synaptic package manager." --width=400 --title="apturl"
-	exit 255
+	zenity --error --text="$LOCAL1" "${TITLE[@]}"
+	exit 254
 fi
 
 if ! hash pkexec 2>/dev/null; then
-	zenity "$OPTIONS" --error --text="Please install policykit-1." --width=400 --title="apturl"
-	exit 255
+	zenity --error --text="$LOCAL2" "${TITLE[@]}"
+	exit 254
 fi
 
 if [ -z "$*" ]; then
-	zenity "$OPTIONS" --error --text="No arguments" --width=400 --title="apturl"
+	zenity --error --text="$LOCAL3" "${TITLE[@]}"
 	exit 1
 fi
 
 apt_part="$(printf '%s' "$1" | cut -c1-4)"
 if [ "$apt_part" != "apt:" ]; then
-	zenity "$OPTIONS" --error --text="Invalid Url."
+	zenity --error --text="$LOCAL4"
 	exit 2
 fi
 
-pkg="$(printf '%s' "$1" | cut -c5-)"
+
 if ! apt-cache show "$pkg" &>/dev/null; then
-	zenity "$OPTIONS" --error --text="Could not find package '$pkg'" --width=400 --title="apturl"
+	zenity --error --text="$LOCAL5" "${TITLE[@]}"
 	exit 3
 fi
 
-if ! zenity "$OPTIONS" --question --text="Do you wish to install $pkg?" --width=400 --title="apturl"; then
+if ! zenity --question --text="$LOCAL6" "${TITLE[@]}"; then
 	exit 4
 fi
 
 if dpkg -s "$pkg" &>/dev/null; then
-	if  ! dpkg -l | grep '^rc' | grep $pkg &>/dev/null; then
-		zenity "$OPTIONS" --info --text="'$pkg' is already installed!" --width=400 --title="apturl"
+	if  ! dpkg -l | grep '^rc' | grep "$pkg" &>/dev/null; then
+		zenity --info --text="$LOCAL7" "${TITLE[@]}"
 		exit 5
 	fi
 fi
 
-echo "installing $pkg..."
+echo "$LOCALA"
 
 tmpfile=$(mktemp /tmp/tmp-XXXXXX)
 chmod +r "$tmpfile"
@@ -64,9 +119,9 @@ trap 'rm -f -- "$tmpfile"' INT TERM HUP EXIT
 
 echo "$pkg install" >"$tmpfile"
 if [ -z ${BODHI_APTURL+x} ]; then
-	pkexec synaptic --hide-main-window --non-interactive --progress-str 'Please wait, this can take some time.' --finish-str 'Update is complete' --set-selections-file "$tmpfile"
+	pkexec synaptic --hide-main-window --non-interactive --progress-str "$LOCAL8" --finish-str "$LOCAL9" --set-selections-file "$tmpfile"
 else
-	pkexec env DISPLAY="$DISPLAY" XAUTHORITY="$XAUTHORITY" apturl.synaptic "$tmpfile"
+	pkexec env DISPLAY="$DISPLAY" XAUTHORITY="$XAUTHORITY" apturl.synaptic "$tmpfile" "$LOCAL8" "$LOCAL9"
 fi
 
 if ! dpkg -s "$pkg" &> /dev/null; then

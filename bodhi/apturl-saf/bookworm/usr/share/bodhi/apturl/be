@@ -1,0 +1,19 @@
+# Belarusian localization file for apturl_saf.
+#
+# Copyright 2024 Bodhi Linux <moksha@bodhilinux.com>
+# Under the GNU GPL v3
+# Last update: 
+#   Robert Wiley <ylee@bodhilinux.com>
+#   Fri, 05 Jan 2024 09:16:37 -0500
+
+LOCAL0="apturl"
+LOCAL1="Калі ласка, усталюйце менеджэр пакетаў Synaptic."
+LOCAL2="Калі ласка, усталюйце policykit-1."
+LOCAL3="Няма аргументаў"
+LOCAL4="Няправільны URL."
+LOCAL5="Немагчыма знайсці пакет '$pkg'"
+LOCAL6="Вы хочаце ўсталяваць $pkg?"
+LOCAL7="'$pkg' ужо ўсталяваны!"
+LOCAL8="Калі ласка, пачакайце, гэта можа заняць некаторы час."
+LOCAL9="Абнаўленне завершана"
+LOCALA="усталяванне $pkg..."

@@ -1,0 +1,19 @@
+# Japanese localization file for apturl_saf.
+#
+# Copyright 2024 Bodhi Linux <moksha@bodhilinux.com>
+# Under the GNU GPL v3
+# Last update: 
+#   Robert Wiley <ylee@bodhilinux.com>
+#   Fri, 05 Jan 2024 09:16:37 -0500
+
+LOCAL0="アプトゥル"
+LOCAL1="Synaptic パッケージ マネージャーをインストールしてください。"
+LOCAL2="policykit-1 をインストールしてください。"
+LOCAL3="引数なし"
+LOCAL4="無効な URL。"
+LOCAL5="パッケージ '$pkg' が見つかりませんでした"
+LOCAL6="$pkg をインストールしますか?"
+LOCAL7="'$pkg' はすでにインストールされています!"
+LOCAL8="しばらくお待ちください。時間がかかる場合があります。"
+LOCAL9="アップデートが完了しました"
+LOCALA="$pkg をインストールしています..."
