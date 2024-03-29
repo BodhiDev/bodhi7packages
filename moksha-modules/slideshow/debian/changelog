@@ -1,3 +1,12 @@
+moksha-module-slideshow (0.1.1-4) jammy; urgency=medium
+
+  * gcc warnings fixed
+  * Day/Night feature added
+  * ASAN memory error fixed
+  * Module versioning added
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Fri, 29 Mar 2024 04:01:18 -0400
+
 moksha-module-slideshow (0.1.1-3) focal; urgency=medium
 
   * Covert imgs to edj for proper pager preview
