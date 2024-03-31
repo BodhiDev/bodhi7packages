@@ -1,0 +1,15 @@
+Source: moksha-module-extramenu
+Section: utils
+Priority: optional
+Maintainer: Robert (ylee) Wiley <ylee@bodhilinux.com>
+Build-Depends: debhelper (>= 10), autotools-dev, pkg-config, libefl-dev, moksha-dev
+Standards-Version: 4.5.0
+Homepage: https://git.enlightenment.org/enlightenment/enlightenment-module-extramenu
+Rules-Requires-Root: no
+
+Package: moksha-module-extramenu
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, moksha
+Description:  Extramenu Module for Moksha
+ This  module is able to generate as many new submenus as you want in the
+ Moksha main menu. For usage see the README doc.

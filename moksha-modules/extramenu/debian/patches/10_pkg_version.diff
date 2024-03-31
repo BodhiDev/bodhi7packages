@@ -1,0 +1,18 @@
+Description: pkg-config fix for Moksha
+ Use Moksha version not Enlightenments.
+Author: Robert Wiley <ylee@bodhilinux.com>
+Origin: other
+Forwarded: no
+Last-Update: 2024-03-31
+
+--- a/meson.build
++++ b/meson.build
+@@ -7,7 +7,7 @@ project('extramenu', 'c',
+ 
+ 
+ #### Enlightenemnt ####
+-dep_e = dependency('enlightenment', version: '>= 0.23.99')
++dep_e = dependency('enlightenment', version: '>= 0.4.1')
+ e_modules_dir = dep_e.get_variable('modules')
+ e_release = dep_e.get_variable('release')
+ e_module_arch = dep_e.get_variable('module_arch')
