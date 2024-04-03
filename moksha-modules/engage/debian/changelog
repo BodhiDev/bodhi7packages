@@ -1,3 +1,10 @@
+moksha-module-engage (0.1.2-6) jammy; urgency=medium
+
+  * GCC warnings addressed
+  * Use E_FREE where needed
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Wed, 03 Apr 2024 12:38:55 -0400
+
 moksha-module-engage (0.1.2-5) jammy; urgency=medium
 
   * Belarusian localization
