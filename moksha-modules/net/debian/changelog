@@ -1,3 +1,10 @@
+moksha-module-net (0.1.1-5) jammy; urgency=medium
+
+  * GCC warnings addressed
+  * Menu memory ownership fix
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Wed, 03 Apr 2024 12:38:55 -0400
+
 moksha-module-net (0.1.1-4) jammy; urgency=medium
 
   * Belarusian localization
