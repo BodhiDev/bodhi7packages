@@ -1,3 +1,10 @@
+moksha-module-news (0.1.2-4) focal; urgency=medium
+
+  * GCC warnings addressed
+  * Menu memory ownership fix
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Wed, 03 Apr 2024 12:38:55 -0400
+
 moksha-module-news (0.1.2-3) focal; urgency=medium
 
   * fix  undefined symbol in module
