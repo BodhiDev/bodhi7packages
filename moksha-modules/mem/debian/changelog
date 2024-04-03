@@ -1,3 +1,10 @@
+moksha-module-mem (0.1.2-7) jammy; urgency=low
+
+  * GCC warnings addressed
+  * Menu memory ownership fix
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Wed, 03 Apr 2024 12:38:55 -0400
+
 moksha-module-mem (0.1.2-6) jammy; urgency=low
 
   * Belarusian added to desktop file
