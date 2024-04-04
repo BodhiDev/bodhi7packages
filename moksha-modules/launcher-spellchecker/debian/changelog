@@ -1,3 +1,10 @@
+moksha-module-spellchecker (0.0.1-2) jammy; urgency=low
+
+  * gcc warnings addressed
+  * Improved localizations
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Wed, 03 Apr 2024 12:38:55 -0400
+
 moksha-module-spellchecker (0.0.1-1) bionic; urgency=low
 
   * Initial release
