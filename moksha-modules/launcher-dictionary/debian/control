@@ -1,7 +1,7 @@
 Source: moksha-module-dictionary
 Section: utils
 Priority: optional
-Maintainer: Stefan Uram <thewaiter@centrum.sk>
+Maintainer: Robert Wiley <ylee@bodhilinux.com>
 Build-Depends: debhelper (>= 10), autotools-dev, libc6 (>= 2.4),  autopoint, libtool, intltool, pkg-config, libefl-dev, moksha-dev
 Standards-Version: 4.1.2
 Homepage: https://github.com/thewaiter/launcher-dictionary
