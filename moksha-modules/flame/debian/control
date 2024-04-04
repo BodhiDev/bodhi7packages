@@ -1,7 +1,7 @@
 Source: moksha-module-flame
 Section: utils
 Priority: optional
-Maintainer: Jeff Hoogland <jeffhoogland@linux.com>
+Maintainer: Robert Wiley <ylee@bodhilinux.com>
 Build-Depends: debhelper (>= 10), autotools-dev, libefl-dev, moksha-dev
 Standards-Version: 4.1.2
 Homepage: https://github.com/JeffHoogland/moksha-modules-extra
