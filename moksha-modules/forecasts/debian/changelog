@@ -1,3 +1,9 @@
+moksha-module-forecasts (0.1.1-6) jammy; urgency=low
+
+  * Menu memory ownership fix
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Wed, 03 Apr 2024 12:38:55 -0400
+
 moksha-module-forecasts (0.1.1-5) jammy; urgency=low
 
   * Belarusian translation added
