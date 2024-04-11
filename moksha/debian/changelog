@@ -1,3 +1,43 @@
+moksha (0.4.1-8) jammy; urgency=low
+
+  * Touchpad on/off feature added
+  * Touchpad keybind upgrade in conf
+  * Super_L key added to config
+  * Tasks items move project start
+  * e exec - fix exec of enlightenment_open to use actual e prefix
+  * e_exec.c: use e_util_exe_safe_run
+  * Keybinds: better checkbox text
+  * Bar: launch app from not in order list
+  * Evry: win key for show/hide popup
+  * conf_intl: fix crash on trying to write to non-writable input method file
+  * Tasks popup respects moving
+  * Tasks: standard 3 dots indent
+  * Clock Always on top checkbox pos fix
+  * Theme: border no bottom line in dialogs
+  * Tasks popup hide while shelf autohide
+  * Theme: IBar menu popup scaled
+  * Add Georgian Lang
+  * Systray: hide arrow when invisible shelf
+  * xkb: better event handle
+  * Notification: unwanted notif logo move when gc repopulate
+  * exec - store out incremented startup id to avoid clashes
+  * Border left_control fix
+  * Key bindings viewer in standalone source file
+  * conf_keybindings: Ensure key bindings viewer is localized
+  * Notification timeout fix
+  * e_powersave: document Modes
+  * Xkb switch on app feature
+  * Xkb: config version added
+  * e_about.c: correct url
+  * Clock: free handlers on mod shudtown
+  * Systray gcc warning fix, gc_popup clean
+  * Notification gadget: Multiple issues
+  * Fix Menu tracking in several modules
+  * Add module_arch to pc file
+  * e_remote: add default-bg get and set options
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Thu, 11 Apr 2024 07:16:49 -0400
+
 moksha (0.4.1-7) jammy; urgency=low
 
   * Theme: Notification counter corrections
