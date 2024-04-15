@@ -1,1 +1,1 @@
-bodhi-quickstart: desktop-command-not-in-package
+bodhi-quickstart: no-manual-page usr/bin/bodhi-help

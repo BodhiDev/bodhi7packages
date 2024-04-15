@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Guía rápida de Bodhi - Instalando Software</title>
+    <script src="../QuickStart_files/modernizr.js"></script><!--[if lt IE 9]><script src="../QuickStart_files/html5shiv/dist/html5shiv.js"></script><![endif]-->
+    <link href="../QuickStart_files/qs.css" rel="stylesheet" type="text/css" media="screen" />
+    <!--[if IE]>
+    <link href="../QuickStart_files/ie.css" rel="stylesheet" type="text/css" media="screen" />
+    <![endif]-->
+    <link rel="shortcut icon" href="../images/favicon.png" />
+  </head>
+  <body>
+    <header class="gradient">
+      <a class="img"  href="http://www.bodhilinux.com/" target="_blank"><img class="navbodhi" src="../images/bodhileaf.png" alt="(Logo de Bodhi Linux)" /></a>
+      <a class="img"  href="http://www.bodhilinux.com/2015/04/28/introducing-the-moksha-desktop/" target="_blank"><img class="nave17" src="../images/mokshalogo.png" alt="(Logo de Moksha)" /></a>
+      <nav>
+        <ul id="nav" class="navonlowwidth">
+          <li class="qsindex"><a class="mobile" target="_parent"  href="index.html">Guía de inicio rápido</a><a class="nav" target="_parent"  href="index.html">Guía de inicio rápido</a>
+          </li>
+          <li>
+            <a class="mobile" target="_parent"  href="moksha.html">Moksha</a><a class="nav" target="_parent"  href="#">Comenzando en Moksha</a>
+            <ul>
+              <li><a class="dropdown" target="_parent"  href="internet.html">Connectándose a Internet</a></li>
+              <li><a class="dropdown" target="_parent"  href="software.html">Instalación de software</a></li>
+            </ul>
+          </li>
+          <li>
+            <a class="mobile" target="_parent"  href="getting_started.html">Comenzando</a><a class="nav" target="_parent"  href="#">Moksha</a>
+            <ul>
+              <li><a class="dropdown" target="_parent"  href="moksha.html">Primeros pasos en Moksha</a></li>
+              <li><a class="dropdown" target="_parent"  href="everything.html">Lanzador Rápido</a></li>
+            </ul>
+          </li>
+          <li>
+            <a class="mobile" target="_parent"  href="appendix.html">Créditos</a><a class="nav" target="_parent"  href="#">Aún más información</a>
+            <ul>
+              <li><a class="dropdown" target="_parent"  href="quickfaq.html">Preguntas Frecuentes Rápidas</a></li>
+              <li><a class="dropdown" target="_parent"  href="resources.html">Recursos</a></li>
+            </ul>
+          </li>
+          <li><a class="mobile" target="_parent"  href="appendix.html">ún más información</a><a class="nav" target="_parent"  href="appendix.html">Créditos</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <div class="body">
+      <!-- Header -->
+      <div class="headerindex">
+        <a class="img" href="index.html">
+        <img class="fortywidth center imageonlowwidth" src="../images/bodhilinux.png" alt="(Logo de Bodhi Linux)" />
+        </a>
+        <h4 class="boldtext centertext">Bienvenido y gracias por probar Bodhi Linux: 
+        ¡el escritorio Linux iluminado y minimalista!
+        </h4>
+        <br /><br />
+        <div class="h1index">
+          <h1>Instalando Software</h1>
+        </div>
+        <hr />
+      </div>
+      <!-- End of Header -->
+      <!-- Body -->
+      <div class="content">
+        <div class="contentcontainer ninetywidth center">
+          <p>En la mayoría de los casos, querrá tener una conexión a Internet 
+            para instalar el software en <strong>Bodhi Linux</strong>.<br /><br />
+            Siga este enlace si necesita ayuda para conectarse a Internet: 
+            <a class="normal" href="internet.html">Conectando a
+            Internet</a>.
+          </p>
+        </div>
+        <div class="contentcontainer">
+          <div class="green ninetywidth center">
+            <strong>Actualización del sistema a través de Terminology</strong>
+            <p>Lo primero que debe hacer después de establecer una conexión a Internet es actualizar su sistema.<br /><br />
+              Hay varios métodos para lograr esto, pero el método más simple 
+              es usar la terminal. Ejecute el siguiente comando en Terminology:
+              <br/><br/>
+            </p>
+            <div class="content"><span class="greentext boldtext largelh"><code>sudo apt update && sudo apt full-upgrade</code></span></div>
+            <br />
+            <p>Tradicionalmente, <strong>Bodhi</strong> ha adoptado la postura de <em>no forzar las actualizaciones del kernel</em>. Cambiaremos esto en Bodhi Linux 7.0 porque hemos notado que muchos usuarios no están actualizando los kernels y las actualizaciones del kernel son importantes desde el punto de vista de la seguridad.</p>
+            <br />
+            <br />
+          </div>
+        </div>
+        <div class="contentcontainer">
+          <div class="green ninetywidth center">
+            <strong>Bodhi Linux AppCenter</strong>
+            <a class="img normalpicture" href="../images/appcenter.png">
+            <img src="../images/appcenter.png" alt="(portal web de Bodhi Appcenter)" class="fiftywidth center changeonlowwidth" />
+            </a>
+            <p class="clear">El equipo de <strong>Bodhi Linux</strong> ha creado el <a class="normal" href="http://appcenter.bodhilinux.com"><strong>AppCenter</strong></a>
+              como una forma muy rápida y sencilla de instalar muchas aplicaciones comunes. Si bien no encontrará en el 
+              <a class="normal" href="http://appcenter.bodhilinux.com"><strong>AppCenter</strong></a> todas las aplicaciones 
+              que se pueden instalar en <strong>Bodhi Linux</strong>, encontrará lo que consideramos las aplicaciones "mejores de su clase" 
+              para cada categoría en particular.
+            </p>
+            <p>Aquí hay un tutorial rápido sobre cómo instalar aplicaciones en el <a class="normal" href="http://appcenter.bodhilinux.com"><strong>AppCenter</strong></a>: </p>
+            <ul>
+              <li>
+                <h4>Encuentra tu aplicación</h4>
+                <p class="brighttext">Si ya conoce el nombre de la aplicación que desea instalar, 
+                  simplemente escríbalo en la barra de búsqueda.
+                  <br />
+                  De no ser así, simplemente navegue por las categorías enumeradas en la página principal.
+                </p>
+              </li>
+              <li>
+                <h4>Navegar a la página</h4>
+                <p class="brighttext">Cualquiera que sea el método que elija para encontrar su aplicación, se le presentará un enlace que lleva a una página con una descripción de la aplicación.<br />
+                  Cada aplicación tiene su propia página con una descripción y una captura de pantalla.
+                </p>
+              </li>
+              <li>
+                <h4>¡A instalar!</h4>
+                <p class="brighttext">
+                  Simplemente haga clic en el botón "<em>Instalar ahora</em>" e ingrese su contraseña cuando se le solicite. ¡Eso es todo! 
+                  Su aplicación y todas sus dependencias se instalarán automáticamente.
+                </p>
+              </li>
+            </ul>
+            <br /><br />
+          </div>
+        </div>
+        <div class="contentcontainer">
+          <div class="green ninetywidth center">
+            <strong>Synaptic Package Manager</strong>
+            <p><strong>El administrador de paquetes Synaptic</strong>, común a todas las distribuciones basadas en <strong>Debian</strong>, 
+              está instalado en <strong>Bodhi 7.0</strong> de forma predeterminada. Si tiene una versión anterior de <strong>Bodhi</strong>, 
+              instálelo haciendo clic en el ícono mostrado a continuación, o use <code>sudo apt install synaptic</code> desde la línea de comandos.
+            </p>
+            <p>
+              <a href="apt:synaptic"><img class="center" src="../images/installnow.png" alt="Instalar Ahora"></a>
+            </p>
+            <p>Con el
+              <strong>Administrador de paquetes Synaptic</strong>,
+              tiene acceso a todas las aplicaciones en los repositorios de 
+              <strong>Bodhi</strong> y <strong>Ubuntu</strong>.
+            </p>
+            <p>Por favor lea nuestro <a class="normal" href="https://www.bodhilinux.com/w/wiki/">Wiki</a> para obtener
+              instrucciones completas acerca del uso del <strong>Administrador de paquetes Synaptic</strong>.
+            </p>
+            <br />
+          </div>
+        </div>
+        <div class="contentcontainer">
+          <div class="green ninetywidth center">
+            <strong>Snap, Flatpak y AppImage</strong>
+            <p>
+              En un esfuerzo por alejarse de los métodos de empaquetamiento específicos de plataforma a métodos agnósticos, 
+              se han desarrollado varias herramientas nuevas para empaquetar, distribuir e instalar software. Las más destacadas son 
+              Snap, Flatpak y AppImage. Estas no son compatibles de forma predeterminada con <strong>Bodhi</strong>.
+            <p>Por favor lea nuestro <a class="normal" href="https://www.bodhilinux.com/w/wiki/">Wiki</a> para obtener
+              instrucciones completas sobre el uso de estas herramientas.
+            </p>
+            <br />
+          </div>
+        </div>
+        <div class="contentcontainer">
+          <div class="green ninetywidth center">
+            <strong>gDebi</strong>
+            <p>
+              gDebi es una herramienta sencilla para instalar archivos deb. Le permite instalar paquetes deb locales, 
+              resolviendo e instalando todas las dependencias.
+            </p>
+            <p>gDebi se instalaba de forma predeterminada en versiones anteriores recientes de <strong>Bodhi</strong>. Si desea instalarlo, haga clic en el ícono a continuación o use <code>sudo apt install gdebi</code> desde la línea de comandos.</p>
+            <p>
+              <a href="apt:gdebi"><img class="center" src="../images/installnow.png" alt="Instalar ahora"></a>
+            </p>
+            <br />
+          </div>
+        </div>
+        <div class="contentcontainer">
+          <div class="green ninetywidth center">
+            <strong>apt y dpkg (avanzado)</strong>
+            <p>Las herramientas de línea de comandos <code>apt</code> and <code>dpkg</code>
+              son el "backend" de los métodos anteriores de instalación de aplicaciones. 
+              Los usuarios avanzados pueden usar estas herramientas desde la línea de comandos, 
+              pero esto va más allá del alcance de este documento.
+            </p>
+            <p>Los usuarios avanzados también pueden instalar desde código fuente.</p>
+            <div id="lp">&nbsp;</div>
+          </div>
+        </div>
+      </div>
+      <!-- End of Body -->
+    </div>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+#!/bin/sh
+# Display localized version of the QuickStart pages.
+#
+# Developed by Ihar Areshchankau <robursw@gmail.com> in July 2023
+#   for the Bodhi Linux project.
+# Modified by Robert Wiley <ylee@bodhilinux.com>
+#
+# This file is put in the public domain.
+#
+# Copyright: 2023 The Bodhi Team <moksha@bodhilinux.com>
+# License: Unlicense
+#   For more information, please refer to http://unlicense.org/
+
+QSPATH=/usr/share/bodhi/quickstart
+
+if [ "$LANG" != "pt_BR.UTF-8" ]; then
+  # First two letters of the locale variable LANG capitalized
+  LANG2=$(echo "${LANG%%_*}" | tr '[:lower:]' '[:upper:]')
+else
+  LANG2=PT_BR
+fi
+
+# Path to the localized version of the QuickStart pages.
+if [ "$1" = "-i" ]; then
+  DEFAULTFILE=$QSPATH/quickstartEN/index.html
+  LANGFILE=$QSPATH/quickstart$LANG2/index.html
+else
+  DEFAULTFILE=$QSPATH/quickstartEN/landing.html
+  LANGFILE=$QSPATH/quickstart$LANG2/landing.html
+fi
+
+if [ -f $LANGFILE ]; then
+  # QuickStart translation exists.
+  xdg-open file://$LANGFILE &
+else
+  # Use default QuickStart.
+  xdg-open file://$DEFAULTFILE &
+fi
