@@ -1,3 +1,11 @@
+moksha (0.4.1-9) jammy; urgency=low
+
+  * Shot: dialog key_down fix
+  * Updated locales
+  * More xkb fixes
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Thu, 25 Apr 2024 06:48:01 -0400
+
 moksha (0.4.1-8) jammy; urgency=low
 
   * Touchpad on/off feature added
