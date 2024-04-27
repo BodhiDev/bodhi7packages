@@ -1,3 +1,9 @@
+moksha (0.4.1-10) jammy; urgency=low
+
+  * remember and xkb segfault fix
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Sat, 27 Apr 2024 13:13:57 -0400
+
 moksha (0.4.1-9) jammy; urgency=low
 
   * Shot: dialog key_down fix
