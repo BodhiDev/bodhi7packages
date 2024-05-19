@@ -1826,7 +1826,7 @@ get_wm() {
                            -e westeros \
                            -e westford \
                            -e weston)
-
+                           
     elif [[ $DISPLAY && $os != "Mac OS X" && $os != "macOS" && $os != FreeMiNT ]]; then
         type -p xprop &>/dev/null && {
             id=$(xprop -root -notype _NET_SUPPORTING_WM_CHECK)
@@ -1901,6 +1901,7 @@ get_wm() {
     # Rename window managers to their proper values.
     [[ $wm == *WINDOWMAKER* ]] && wm=wmaker
     [[ $wm == *GNOME*Shell* ]] && wm=Mutter
+    [[ "$DESKTOP" == "Enlightenment-0.17.0" ]] && wm=E17
 
     wm_run=1
 }
@@ -1951,8 +1952,7 @@ get_wm_theme() {
 
         E17|Enlightenment|Moksha)
             if type -p eet >/dev/null; then
-                wm_profile=$(eet -x "$HOME/.e/e/config/profile.cfg" config)
-                wm_theme=$(eet -d "$HOME/.e/e/config/$wm_profile/e.cfg" config |\
+                wm_theme=$(eet -d "$HOME/.e/e/config/$E_CONF_PROFILE/e.cfg" config |\
                             awk '/value \"file\" string.*.edj/ {print $4}')
                 wm_theme=${wm_theme##*/}
                 wm_theme=${wm_theme%.*}
@@ -3068,15 +3068,14 @@ get_style() {
 
             "Enlightenment"*)
                 if type -p eet >/dev/null; then
-                    wm_profile=$(eet -x "$HOME/.e/e/config/profile.cfg" config)
                     if [ "$name" = "gtk-icon-theme-name" ];then
-                        gtk3_theme=$(eet -d "$HOME/.e/e/config/$wm_profile/e.cfg" config |\
+                        gtk3_theme=$(eet -d "$HOME/.e/e/config/$E_CONF_PROFILE/e.cfg" config |\
                                 awk '/value \"icon_theme\" string/ {print $4}')
                         gtk3_theme="${gtk3_theme%?}"
                         gtk3_theme="${gtk3_theme//\"}"
                         gtk2_theme="$gtk3_theme"
                     elif [ "$name" = "gtk-theme-name" ];then
-                        gtk3_theme=$(eet -d "$HOME/.e/e/config/$wm_profile/e.cfg" config |\
+                        gtk3_theme=$(eet -d "$HOME/.e/e/config/$E_CONF_PROFILE/e.cfg" config |\
                             awk '/value \"xsettings.net_theme_name\" string/ {print $4}')
                         gtk3_theme="${gtk3_theme%?}"
                         gtk3_theme="${gtk3_theme//\"}"
@@ -4026,13 +4025,12 @@ END
                    if type -p eet >/dev/null; then
                        wm_profile=$(eet -x "$HOME/.e/e/config/profile.cfg" config)
                        if [ "$name" = "gtk-icon-theme-name" ];then
-                           gtk3_theme=$(eet -d "$HOME/.e/e/config/$wm_profile/e.cfg" config |\
-                                   awk '/value \"icon_theme\" string/ {print $4}')
-                           gtk3_theme="${gtk3_theme%?}"
-                           gtk3_theme="${gtk3_theme//\"}"
+                           gtk3_theme=$E_ICON_THEME 
+                           //gtk3_theme="${gtk3_theme%?}"
+                           //gtk3_theme="${gtk3_theme//\"}"
                            gtk2_theme="$gtk3_theme"
                        elif [ "$name" = "gtk-theme-name" ];then
-                           gtk3_theme=$(eet -d "$HOME/.e/e/config/$wm_profile/e.cfg" config |\
+                           gtk3_theme=$(eet -d "$HOME/.e/e/config/$E_CONF_PROFILE/e.cfg" config |\
                                awk '/value \"xsettings.net_theme_name\" string/ {print $4}')
                            gtk3_theme="${gtk3_theme%?}"
                            gtk3_theme="${gtk3_theme//\"}"
