@@ -1,3 +1,18 @@
+moksha (0.4.1-12) jammy; urgency=low
+
+  * Menus: separator after menu title causes freez?
+  * Clock: we need all modifiersCalloc num fix, size where it's wrong (E-port)
+  * Clock: NULL check
+  * Clock: keyboard toggle callendar fix for Always on top popup
+  * Clock: all calendar popups close on demand (mouse or esc key) 
+  * xkb: set the selected layout after reboot fix
+  * xkb: code caused fast layouts switch. Event cb calls the same cb - fix
+  * e_menu: don't access NULL menu item
+  * Calloc num fix, size where it's wrong (E-port)
+  * Update localizations
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Wed, 12 Jun 2024 15:24:24 -0400
+
 moksha (0.4.1-11) jammy; urgency=low
 
   * Screensaver: blank now feature
