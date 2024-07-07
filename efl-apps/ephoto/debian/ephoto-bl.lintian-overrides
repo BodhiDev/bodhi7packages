@@ -1,1 +1,2 @@
-ephoto-bl: binary-without-manpage usr/bin/ephoto
+ephoto-bl: no-manual-page usr/bin/ephoto
+ephoto-bl: executable-in-usr-lib usr/lib/x86_64-linux-gnu/ephoto/ephoto_thumbnail

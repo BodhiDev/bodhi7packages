@@ -1,3 +1,13 @@
+ephoto-bl (1.6-3) jammy; urgency=medium
+
+  * Imgur upload fix
+  * Upload toolbar button size fix
+  * Slideshow mode when opened from FM
+  * FM opening dirextories fix
+  * Show/hide folders button fix in single mode
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Sun, 07 Jul 2024 10:58:40 -0400
+
 ephoto-bl (1.6-2) focal; urgency=medium
 
   * Kill DND
