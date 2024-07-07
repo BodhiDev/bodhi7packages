@@ -103,6 +103,7 @@ Depends:
  libinput-dev,
  libjpeg-dev,
  liblua5.2-dev [alpha arm64 hppa ia64 m68k powerpc riscv64 s390x sh4 sparc64 x32],
+ libluajit-5.1-dev,
  liblz4-dev,
  libmount-dev [linux-any],
  libopenjp2-7-dev,
