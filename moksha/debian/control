@@ -14,8 +14,11 @@ Conflicts: e17, enlightenment
 Depends: ${shlibs:Depends}, ${misc:Depends}, xserver-xorg, dbus-x11, pulseaudio | pipewire
 Recommends: acpi, elaptopcheck, gtk-recent, pavucontrol, bodhi-quickstart, xclip, terminology, bc, thunar-bl | thunar | pcmanfm, udisks2, moksha-menu, bodhi-theme-moksha-green (>= 0.4.0-5), xdg-user-dirs, policykit-1-gnome | polkit-1-auth-agent, policykit-desktop-privileges, bodhi-bins-default, qt5-gtk2-platformtheme, faenza-icon-theme, systemd
 Suggests: qdbus-qt5
-Description: Moksha Desktop
+Description: X11 window manager based on EFL
  Moksha is an advanced window manager for X11 based on Enlightenment DR17.
+ .
+ Unique features include: a fully animated background backed by an extremely
+ clean and optimized foundation of APIs.
 
 Package: moksha-dev
 Architecture: any
@@ -23,7 +26,7 @@ Section: devel
 Depends:
  moksha (= ${binary:Version}),
  libefl-dev (>= 1.24.3),
- debhelper (>= 9),
+ debhelper-compat (= 13),
  dh-autoreconf,
  libasound2-dev,
  libpam0g-dev,
@@ -31,8 +34,11 @@ Depends:
  libxcb-keysyms1-dev,
  libudisks2-dev,
  ${misc:Depends}
-Description: Moksha headers, and static libraries.
+Description: Moksha headers, and static libraries
  Moksha is an advanced window manager for X11 based on Enlightenment DR17.
+ .
+ Unique features include: a fully animated background backed by an extremely
+ clean and optimized foundation of APIs.
  .
  This package contains headers, static libraries and documentation for
  Moksha.
@@ -44,6 +50,9 @@ Depends: ${misc:Depends}, moksha (= ${binary:Version})
 Priority: optional
 Description: Moksha Desktop- debugging symbols
  Moksha is an advanced window manager for X11 based on Enlightenment DR17.
+ .
+ Unique features include: a fully animated background backed by an extremely
+ clean and optimized foundation of APIs.
  .
  This package contains unstripped shared libraries. It is provided primarily
  to provide a backtrace with names in a debugger, this makes it somewhat

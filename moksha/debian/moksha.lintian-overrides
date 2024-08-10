@@ -1,11 +1,19 @@
-moksha: setuid-binary
-moksha: description-starts-with-package-name
-moksha: binary-without-manpage
+moksha: elevated-privileges
+moksha: executable-in-usr-lib
+moksha: no-manual-page
 moksha: non-empty-dependency_libs-in-la-file
 moksha: package-name-doesnt-match-sonames
-moksha: shared-lib-without-dependency-information 
-moksha: shlib-without-versioned-soname
-moksha: new-package-should-close-itp-bug
-moksha: package-has-unnecessary-activation-of-ldconfig-trigger
-moksha: dev-pkg-without-shlib-symlink
+moksha: shared-library-lacks-prerequisites 
+moksha: shared-library-lacks-version
 moksha: library-not-linked-against-libc
+moksha: package-contains-documentation-outside-usr-share-doc
+moksha: package-contains-empty-directory
+moksha: desktop-entry-lacks-keywords-entry
+# "Viet Nam"
+moksha: spelling-error-in-binary usr/lib/x86_64-linux-gnu/enlightenment/modules/conf_intl/linux-gnu-x86_64/module.so Nam Name
+# Included locales: should be in a moksha-data package
+moksha: arch-dep-package-has-big-usr-share
+moksha: hardening-no-fortify-functions
+moksha: no-symbols-control-file
+# todo
+moksha: exit-in-shared-library

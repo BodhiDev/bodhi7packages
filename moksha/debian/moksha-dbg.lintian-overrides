@@ -1,1 +1,1 @@
-moksha-dbg: new-package-should-close-itp-bug
+moksha-dbg: elf-error In program headers: Unable to find program interpreter name *

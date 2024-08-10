@@ -1,10 +1,29 @@
+moksha (0.4.1-13) jammy; urgency=low
+
+  * Edgebindings: flip to workspace with drag only
+  * Nicer edge binds dialog layout
+  * About Bodhi localized
+  * Tasks: DnD handler added
+  * Personal apps - fix bug when removing item from list
+  * iBar: vertical min not possible to set on desktop
+  * Temperature: some conditions and corrections
+  * Theme: efm list - text over icon fix
+  * xkb: layout does not store correctly when shortcut used
+  * Xkb: keep the current layout after config apply
+  * Theme: bigger analog clock in popup
+  * Clock: date in mouse hover added
+  * Gadman popup width fix
+  * Updated locals
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Sat, 10 Aug 2024 13:27:50 -0400
+
 moksha (0.4.1-12) jammy; urgency=low
 
   * Menus: separator after menu title causes freez?
   * Clock: we need all modifiersCalloc num fix, size where it's wrong (E-port)
   * Clock: NULL check
   * Clock: keyboard toggle callendar fix for Always on top popup
-  * Clock: all calendar popups close on demand (mouse or esc key) 
+  * Clock: all calendar popups close on demand (mouse or esc key)
   * xkb: set the selected layout after reboot fix
   * xkb: code caused fast layouts switch. Event cb calls the same cb - fix
   * e_menu: don't access NULL menu item
@@ -19,7 +38,7 @@ moksha (0.4.1-11) jammy; urgency=low
   * Check & radio widget text offset fix
   * Shot: copy to clipboard button added
   * Shot Module: upload fix
-  * e sys main - fix minor leaking iterator (E port) 
+  * e sys main - fix minor leaking iterator (E port)
   * Update localizations
 
  -- Robert Wiley <ylee@bodhilinux.com>  Sun, 19 May 2024 19:33:40 -0400
@@ -84,7 +103,7 @@ moksha (0.4.1-7) jammy; urgency=low
   * Remove BL6 hack no longer needed
   * Shelf: plain style offset correction
   * Clock: easy dismissal added
-  * CLock: Always on top setting added  
+  * CLock: Always on top setting added
   * Clock: set date complete rework
   * Places Module: possible truncation
   * Notification Module: fix new gcc warning
@@ -111,7 +130,7 @@ moksha (0.4.1-5) jammy; urgency=low
 
 moksha (0.4.1-4) jammy; urgency=low
 
-  * IBar: Plank mode left click fix 
+  * IBar: Plank mode left click fix
 
  -- Robert Wiley <ylee@bodhilinux.com>  Fri, 22 Sep 2023 06:07:59 -0400
 
