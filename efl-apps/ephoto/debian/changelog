@@ -1,9 +1,27 @@
+ephoto-bl (1.6-4) jammy; urgency=medium
+
+  * Entry free prevention hack
+  * Single_browser seg fault issue
+  * Set focus on grid after search dialog cancel
+  * Return keydown for entries
+  * Callbacks for new dir popup and entry
+  * Callbacks for rename popup and entry
+  * Rename popup del fix
+  * Copy to Clipboard added
+  * Select gengrid item after single viewer back
+  * Show always thumb browser when click on dir
+  * Return is used for selecting item in gengrid
+  * Rename popup ESC key added
+  * CTRL TAB for view pic replaced by Return
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Sun, 11 Aug 2024 09:16:08 -0400
+
 ephoto-bl (1.6-3) jammy; urgency=medium
 
   * Imgur upload fix
   * Upload toolbar button size fix
   * Slideshow mode when opened from FM
-  * FM opening dirextories fix
+  * FM opening directories fix
   * Show/hide folders button fix in single mode
 
  -- Robert Wiley <ylee@bodhilinux.com>  Sun, 07 Jul 2024 10:58:40 -0400
@@ -44,7 +62,7 @@ ephoto-bl (1.5-5) focal; urgency=medium
   * Missing Icon
 
  -- Robert Wiley <ylee@bodhilinux.com>  Thu, 15 Apr 2021 10:32:11 -0400
- 
+
 ephoto-bl (1.5-4) focal; urgency=medium
 
   * Bump Standards-Version, no changes needed
