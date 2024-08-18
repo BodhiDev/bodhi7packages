@@ -1,2 +1,2 @@
-apturl-saf: binary-without-manpage
+apturl-saf: no-manual-page
 apturl-saf: new-package-should-close-itp-bug
