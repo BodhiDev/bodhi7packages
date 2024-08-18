@@ -1,1 +1,1 @@
-libefl-bin: binary-without-manpage
+libefl-bin: no-manual-page

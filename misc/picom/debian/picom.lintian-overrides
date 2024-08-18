@@ -1,2 +1,2 @@
-picom: binary-without-manpage
+picom: no-manual-page
 picom: new-package-should-close-itp-bug

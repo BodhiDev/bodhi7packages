@@ -1,5 +1,5 @@
 enventor: package-name-doesnt-match-sonames
 enventor: new-package-should-close-itp-bug
-enventor: binary-without-manpage
+enventor: no-manual-page
 enventor: non-empty-dependency_libs-in-la-file
 enventor: non-dev-pkg-with-shlib-symlink

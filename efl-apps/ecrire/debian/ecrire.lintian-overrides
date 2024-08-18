@@ -1,2 +1,2 @@
-ecrire: binary-without-manpage usr/bin/ecrire
+ecrire: no-manual-page  usr/bin/ecrire
 

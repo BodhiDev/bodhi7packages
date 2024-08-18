@@ -1,5 +1,4 @@
-edi: binary-without-manpage usr/bin/edi_build
-edi: binary-without-manpage usr/bin/edi_scm
+edi: no-manual-page
 edi: new-package-should-close-itp-bug
 edi: non-dev-pkg-with-shlib-symlink usr/lib/x86_64-linux-gnu/libedi.so.0.8.99 usr/lib/x86_64-linux-gnu/libedi.so
 edi: package-name-doesnt-match-sonames libedi0

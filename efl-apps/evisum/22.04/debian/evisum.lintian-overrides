@@ -1,2 +1,2 @@
-evisum: binary-without-manpage usr/bin/evisum
+evisum: no-manual-page usr/bin/evisum
 evisum: icon-size-and-directory-name-mismatch
