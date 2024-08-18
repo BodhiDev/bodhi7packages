@@ -1,1 +1,1 @@
-bodhi-bins-default: binary-without-manpage
+bodhi-bins-default: no-manual-page

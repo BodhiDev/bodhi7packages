@@ -18,21 +18,54 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 
 b43 () {
-   sudo apt purge bcmwl-kernel-source
-   sudo apt install firmware-b43-installer && sudo apt install linux-firmware
+   if [ "$platform" == "Ubuntu" ]; then
+       if dpkg -s bcmwl-kernel-source  >/dev/null 2>&1; then
+          sudo apt purge bcmwl-kernel-source
+       fi
+   fi
+   if [ "$platform" == "Debian" ]; then
+       if dpkg -s broadcom-sta-dkms  >/dev/null 2>&1; then
+          sudo apt purge broadcom-sta-dkms
+       fi
+   fi
+   sudo apt install firmware-b43-installer
 }
 
 b43legacy () {
-   sudo apt purge bcmwl-kernel-source
-   sudo apt install firmware-b43legacy-installer && sudo apt install linux-firmware
+   if [ "$platform" == "Ubuntu" ]; then
+       if dpkg -s bcmwl-kernel-source  >/dev/null 2>&1; then
+          sudo apt purge bcmwl-kernel-source
+       fi
+   fi
+   if [ "$platform" == "Debian" ]; then
+       if dpkg -s broadcom-sta-dkms  >/dev/null 2>&1; then
+          sudo apt purge broadcom-sta-dkms
+       fi
+   fi
+   sudo apt install firmware-b43legacy-installer
 }
  
 bcmwl () {
-   sudo apt purge firmware-b43-installer
-   sudo apt install bcmwl-kernel-source
+   if dpkg -s firmware-b43-installer >/dev/null 2>&1; then
+     sudo apt-get purge firmware-b43-installer
+   fi
+   if dpkg -s firmware-b43legacy-installer >/dev/null 2>&1; then
+     sudo apt-get purge firmware-b43legacy-installer
+   fi
+   if [ "$platform" == "Ubuntu" ]; then
+       if ! dpkg -s bcmwl-kernel-source  >/dev/null 2>&1; then
+          sudo apt install bcmwl-kernel-source
+       fi
+   fi
+   if [ "$platform" == "Debian" ]; then
+       if ! dpkg -s broadcom-sta-dkms  >/dev/null 2>&1; then
+          sudo apt broadcom-sta-dkms
+       fi
+   fi
 }
 
 installer () {
+   sudo apt update
    case $1 in
       b43)         b43;;
       b43legacy)   b43legacy;;
@@ -55,8 +88,14 @@ unknown () {
    echo 'Unidentified Wifi card. Please check Bodhi wiki!'
 }
 
+platform=$(lsb_release -si | awk -F"\t" '{print $1}')
+echo $'Your platform: \e[1;31m'$platform$'\e[0m'
+
 input=$(lspci -nn -d 14e4:) # executes command and incializes variable
 token=$(echo "$input" | awk -F"14e4:" '{print $2}') # find token
+# exclude 1693 (rev 02) card from the list (it is an ethernet bcm card
+# Use | for next excluded card
+token=$(echo "$token" | awk '!/^(1693\] \(rev 02)/')
 
 var=$(echo "$token" | sed 's/[][()]//g' | sed 's/ //g')
 
@@ -69,6 +108,7 @@ else
 fi
 
 case $var in
+    16bc)           question "b43";;
     1713)           question "b43";;
     4301)           question "b43legacy";;
     4306rev02)      question "b43legacy";;
@@ -86,6 +126,7 @@ case $var in
     4320rev02)      question "b43";;
     4320rev03)      question "b43";;
     4321)           question "b43";;
+    4322rev01)      question "b43";;
     4324)           question "b43";;
     4325)           question "b43";;
     4328)           question "b43";;
@@ -93,11 +134,13 @@ case $var in
     4329)           question "bcmwl";;
     432a)           question "bcmwl";;
     432b)           question "bcmwl";;
+    432brev01)      question "bcmwl";;
     432c)           question "bcmwl";;
     432d)           question "bcmwl";;
     4331)           question "b43";;
     4335)           question "b43";;
     4350)           question "b43";;
+    4353)           question "b43";;
     4353rev01)      question "b43";;
     4358)           question "bcmwl";;
     4359)           question "b43";;
