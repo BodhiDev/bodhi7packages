@@ -1,5 +1,20 @@
+moksha (0.4.1-15) jammy; urgency=low
+
+  * xkbswitch: focus variable causes any app remember - fix
+  * Menu: invoke eap editor only if desktop file exists
+  * Clock: buff overflow
+  * Clock: NULL check
+  * Tasks: expand tasks DnD possibilities
+  * Clock versioning added
+  * Startup: put unused function out of compiling
+  * Clock: mouse in tip tweaks
+  * Theme: clock tip popup prevent from blinking when in/out mouse
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Tue, 10 Sep 2024 14:00:39 -0400
+
 moksha (0.4.1-13) jammy; urgency=low
 
+  * Xsession: depreciated fix
   * Edgebindings: flip to workspace with drag only
   * Nicer edge binds dialog layout
   * About Bodhi localized
