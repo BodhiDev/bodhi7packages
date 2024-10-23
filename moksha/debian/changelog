@@ -1,3 +1,32 @@
+moksha (0.4.1-17) jammy; urgency=low
+
+  * Updated locals
+  * Set current gadcon style menu item to disabled, only use default style as menu item if current style not set
+  * Gadcon: various callback tweaks
+  * Gadcon: fix bug where gadgets on shelves would randomly reorder
+  * Gadcon: remove resize callback on gadcon parent 
+  * Gadcon: gadgets now delete the right menu when menu is deactivated
+  * Gadcon: fix crash after moving gadget between two zones
+  * Start: menu align tweaks
+  * Theme: left/right edges added for resize
+  * Theme: border bottom fix
+  * Start: position adjusted for multi screen
+  * Gadcon: problematic move in shelf shrink mode
+  * Tiles: static gravity windows tilable
+  * xkb conf: we want a focus on ilist
+  * Border: Snap edges feature in conflict with tiling mode 
+  * Clock: we need a version in src file
+  * Modules whitelist update
+  * Ilist: I want backspace for ilist search box
+  * Menu: 3 px gap added for submenus
+  * Theme: widgets focus frame align fix
+  * Theme: slider right focus frame fix
+  * Battery: Health status added to popup
+  * Battery: timer del in popup destroy
+  * WIN key upstroke activation fix for NUMLOCK, CAPSLOCK and SCROLL_LOCK
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Wed, 23 Oct 2024 06:17:02 -0400
+
 moksha (0.4.1-15) jammy; urgency=low
 
   * xkbswitch: focus variable causes any app remember - fix
