@@ -24,8 +24,11 @@ moksha (0.4.1-17) jammy; urgency=low
   * Battery: Health status added to popup
   * Battery: timer del in popup destroy
   * WIN key upstroke activation fix for NUMLOCK, CAPSLOCK and SCROLL_LOCK
+  * iBar: an another condition to clear app instances number
+  * Filter out dummy batteries with no design and no full charge level
+  * xkb support for only 4 layouts (setxkbmap)
 
- -- Robert Wiley <ylee@bodhilinux.com>  Wed, 23 Oct 2024 06:17:02 -0400
+ -- Robert Wiley <ylee@bodhilinux.com>  Tue, 29 Oct 2024 16:46:39 -0400
 
 moksha (0.4.1-15) jammy; urgency=low
 
