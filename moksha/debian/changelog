@@ -1,7 +1,8 @@
 moksha (0.4.1-17) jammy; urgency=low
 
   * Updated locals
-  * Set current gadcon style menu item to disabled, only use default style as menu item if current style not set
+  * Set current gadcon style menu item to disabled, only use default 
+    style as menu item if current style not set
   * Gadcon: various callback tweaks
   * Gadcon: fix bug where gadgets on shelves would randomly reorder
   * Gadcon: remove resize callback on gadcon parent 
@@ -26,9 +27,10 @@ moksha (0.4.1-17) jammy; urgency=low
   * WIN key upstroke activation fix for NUMLOCK, CAPSLOCK and SCROLL_LOCK
   * iBar: an another condition to clear app instances number
   * Filter out dummy batteries with no design and no full charge level
-  * xkb support for only 4 layouts (setxkbmap)
+  * Xkb support for only 4 layouts (setxkbmap)
+  * Xkb config: 4 layout warning condition on better place
 
- -- Robert Wiley <ylee@bodhilinux.com>  Tue, 29 Oct 2024 16:46:39 -0400
+ -- Robert Wiley <ylee@bodhilinux.com>  Thu, 07 Nov 2024 00:31:32 -0500
 
 moksha (0.4.1-15) jammy; urgency=low
 
