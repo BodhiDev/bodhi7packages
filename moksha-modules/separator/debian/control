@@ -1,0 +1,18 @@
+Source: moksha-module-separator
+Section: utils
+Priority: optional
+Maintainer: Robert (ylee) Wiley <ylee@bodhilinux.com>
+Build-Depends: debhelper (>= 10), autotools-dev, pkg-config, libefl-dev, moksha-dev
+Standards-Version: 4.5.0
+Homepage: https://github.com/thewaiter/separator
+Rules-Requires-Root: no
+
+Package: moksha-module-separator
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, moksha
+Description: Separator module for Moksha desktop
+ The Separator module adds the ability to place a Separator gadget to a
+ shelf in the Moksha Desktop.
+ .
+ Useful for the shelf in shrink mode as in this mode there is no free space
+ between gadgets.
