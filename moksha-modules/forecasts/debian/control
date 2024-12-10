@@ -12,4 +12,7 @@ Package: moksha-module-forecasts
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, moksha
 Description: Forecasts Module Moksha
- Get weather updates on your desktop! Moksha Module.
+ Weather updates on your desktop! 
+ .
+ A simple forecast Module for the Moksha Desktop.It is a refactoring of 
+ the old e17 forecast module.

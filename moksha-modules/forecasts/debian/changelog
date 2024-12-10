@@ -1,3 +1,10 @@
+moksha-module-forecasts (0.1.1-7) jammy; urgency=low
+
+  * Meson Build
+  * Locale fix
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Tue, 10 Dec 2024 09:40:45 -0500
+
 moksha-module-forecasts (0.1.1-6) jammy; urgency=low
 
   * Menu memory ownership fix
