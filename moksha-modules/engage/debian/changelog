@@ -1,3 +1,10 @@
+moksha-module-engage (0.1.2-8) jammy; urgency=medium
+
+  * Meson build added
+  * Locale issue fixed
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Tue, 10 Dec 2024 15:51:49 -0500
+
 moksha-module-engage (0.1.2-7) jammy; urgency=medium
 
   * Astro issues fixed

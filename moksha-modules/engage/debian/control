@@ -12,3 +12,6 @@ Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, moksha
 Description: Engage Moksha Module
  OSX style application launcher for the Moksha desktop
+ .
+ Engage will hold all of your open applications for fast switching and
+ is also an apllication launcher.
