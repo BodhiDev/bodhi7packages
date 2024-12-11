@@ -10,5 +10,9 @@ Rules-Requires-Root: no
 Package: moksha-module-stickynotes
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, moksha
-Description: stickynotes module for the Moksha desktop
- stickynotes monitor for the Moksha desktop
+Description: Sticky Notes Moksha Module
+ Sticky Notes module for the Moksha Desktop.
+ .
+ This module allows you to display sticky notes on your desktop, featuring 
+ markdown support and integration with `ncal` and other command-line tools.
+   

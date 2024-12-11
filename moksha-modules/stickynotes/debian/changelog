@@ -1,3 +1,10 @@
+moksha-module-stickynotes (0.1.1-8) jammy; urgency=medium
+
+  * Meson Build
+  * Local Fix
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Wed, 11 Dec 2024 10:08:07 -0500
+
 moksha-module-stickynotes (0.1.1-7) jammy; urgency=medium
 
   * Update translations
