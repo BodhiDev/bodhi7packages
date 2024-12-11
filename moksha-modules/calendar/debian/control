@@ -11,4 +11,6 @@ Package: moksha-module-calendar
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, moksha
 Description: Calendar module for the Moksha desktop
- Displays the current date on your Moksha desktop
+ Displays the current date on your Moksha desktop.
+ .
+ A moksha port of the old e17 module.
