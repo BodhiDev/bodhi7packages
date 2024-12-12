@@ -1,3 +1,10 @@
+moksha-module-dictionary (0.0.1-4) jammy; urgency=low
+
+  * Meson Build Added
+  * Locale Issue fixed
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Thu, 12 Dec 2024 07:54:08 -0500
+
 moksha-module-dictionary (0.0.1-3) jammy; urgency=low
 
   * gcc warnings addressed
