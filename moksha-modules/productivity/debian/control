@@ -2,7 +2,7 @@ Source: moksha-module-productivity
 Section: utils
 Priority: optional
 Maintainer: Robert (ylee) Wiley <ylee@bodhilinux.com>
-Build-Depends: debhelper (>= 10), autotools-dev, pkg-config, libefl-dev, libxext-dev, moksha-dev
+Build-Depends: debhelper (>= 10),libc6 (>= 2.4), meson, pkg-config, libtool, intltool, libefl-dev, libxext-dev, moksha-dev
 Standards-Version: 4.5.0
 Homepage: https://github.com/rbtylee/emodule-productivity
 Rules-Requires-Root: no
