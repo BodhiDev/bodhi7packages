@@ -1,0 +1,15 @@
+Source: moksha-module-moon
+Section: utils
+Priority: optional
+Maintainer: Robert (ylee) Wiley <ylee@bodhilinux.com>
+Build-Depends: debhelper (>= 10), meson, libtool, intltool, pkg-config, libefl-dev, moksha-dev
+Standards-Version: 4.5.0
+Homepage: https://github.com/rbtylee/moksha-moon-module
+Rules-Requires-Root: no
+
+Package: moksha-module-moon
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, moksha
+Description:  Moon Module for Moksha
+ This module is a port of the old e17 Moon Module. It supplies a gadget that 
+ displays the current phase of the moon on your desktop or shelf.
