@@ -1,10 +1,10 @@
 moksha (0.4.1-18) jammy; urgency=low
 
   * Updated locals
-  * Entry copy/paste fix via elemementary
+  * Entry copy/paste fix via elementary
   * Gadman position save fix
   * Added sendtodesktop to e_remote
-  * Fix monitoring of non-existant files/dirs in clock module
+  * Fix monitoring of non-existent files/dirs in clock module
   * Duplicated entries in Module Desktop files
 
  -- Robert Wiley <ylee@bodhilinux.com>  Fri, 27 Dec 2024 15:12:49 -0500
