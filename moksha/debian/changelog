@@ -3,10 +3,8 @@ moksha (0.4.1-18) jammy; urgency=low
   * Updated locals
   * Entry copy/paste fix via elemementary
   * Gadman position save fix
-  * Steam related conditions to border properties
-  * Reduce cpu usage with proton/steam games
 
- -- Robert Wiley <ylee@bodhilinux.com>  Sun, 22 Dec 2024 13:36:53 -0500
+ -- Robert Wiley <ylee@bodhilinux.com>  Fri, 27 Dec 2024 15:12:49 -0500
 
 moksha (0.4.1-17) jammy; urgency=low
 
