@@ -1,0 +1,107 @@
+This work was packaged for Debian by:
+
+    Robert Wiley <ylee@bodhilinux.com> on Sun, 05 Jan 2025 13:23:49 -0500.
+
+It was downloaded from:
+
+    http://uncrustify.sourceforge.net
+
+Upstream Author:
+
+    Ben Gardner <gardner.ben@gmail.com>
+
+Copyright:
+
+    2005-2010 Ben Gardner <gardner.ben@gmail.com>
+    1995-1999 Simon G. Vogl <simon@tk.uni-linz.ac.at>
+    2006 David Thompson <da.thompson@yahoo.com>
+    1999-2006 Digital Mars <http://digitalmars.com/>
+
+License (except src/md5.cpp, documentation/htdocs/examples/c-1.out.c,
+         documentation/htdocs/examples/c-1.in.c, scripts/cmpcfg.pl as
+         well as tests/input/d/Lexer.d, tests/input/d/HashMap.d,
+         tests/input/c/i2c-core.c, and the corresponding files in
+         tests/output, i. e.: tests/output/c/20100-i2c-core.c,
+         tests/output/c/20000-i2c-core.c, tests/output/d/40006-Lexer.d,
+         tests/output/d/40007-Lexer.d and tests/output/d/40000-HashMap.d):
+
+        Copyright (C) 2005-2008 by Ben Gardner
+
+        You are free to distribute this software under the terms of
+        the GNU General Public License, either version 2 of the License,
+        or (at your option) any later version.
+
+License (tests/input/c/i2c-core.c, documentation/htdocs/examples/c-1.out.c,
+         tests/output/c/20100-i2c-core.c, tests/output/c/20000-i2c-core.c,
+         and documentation/htdocs/examples/c-1.in.c):
+
+        Copyright (C) 1995-1999 by Simon G. Vogl <simon@tk.uni-linz.ac.at>
+
+        You are free to distribute this software under the terms of
+        the GNU General Public License, either version 2 of the License,
+        or (at your option) any later version.
+
+License (scripts/cmpcfg.pl):
+
+        Copyright (C) 2006 by David Thompson
+
+        You are free to distribute this software under the terms of
+        the GNU General Public License.
+
+On Debian systems, the complete text of the GNU General Public License
+can be found in the file /usr/share/common-licenses/GPL.
+
+License (src/md5.cpp):
+
+        This code was written by Colin Plumb in 1993, no copyright is claimed.
+        This code is in the public domain; do with it what you wish.
+
+License (tests/input/d/Lexer.d, tests/output/d/40006-Lexer.d
+         and tests/output/d/40007-Lexer.d):
+
+	Copyright (c) 1999-2006 by Digital Mars
+	All Rights Reserved
+	written by Walter Bright www.digitalmars.com
+
+	License for redistribution is either the Artistic License or
+        the GNU General Public License.
+
+On Debian systems, the complete text of the GNU General Public License
+can be found in the file /usr/share/common-licenses/GPL.
+The complete text of the Artistic License is available in the
+file /usr/share/common-licenses/Artistic.
+
+License (tests/input/d/HashMap.d and tests/output/d/40000-HashMap.d):
+
+        Copyright (C) 2004 by Doug Lea
+
+        This software is provided 'as-is', without any express or implied
+        warranty. In no event will the authors be held liable for damages
+        of any kind arising from the use of this software.
+
+        Permission is hereby granted to anyone to use this software for any
+        purpose, including commercial applications, and to alter it and/or
+        redistribute it freely, subject to the following restrictions:
+
+        1. The origin of this software must not be misrepresented; you must
+           not claim that you wrote the original software. If you use this
+           software in a product, an acknowledgment within documentation of
+           said product would be appreciated but is not required.
+
+        2. Altered source versions must be plainly marked as such, and must
+           not be misrepresented as being the original software.
+
+        3. This notice may not be removed or altered from any distribution
+           of the source.
+
+        4. Derivative works are permitted, but they must carry this notice
+           in full and credit the original source.
+
+The Debian packaging is
+
+    Copyright (C) 2006-2009 Johann Rudloff <cypheon@gmx.net>
+    Copyright (C) 2009-2012 Fathi Boudra <fabo@debian.org>
+    Copyright (C) 2016 Alexander GQ Gerasiov <gq@debian.org>
+
+and is licensed under the GPL version 2 or any later version,
+see `/usr/share/common-licenses/GPL-2'.

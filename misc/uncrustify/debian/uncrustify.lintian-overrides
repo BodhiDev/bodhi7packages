@@ -1,0 +1,8 @@
+uncrustify: initial-upload-closes-no-bugs
+uncrustify: wrong-name-for-upstream-changelog
+uncrustify: acute-accent-in-manual-page
+uncrustify: possible-documentation-but-no-doc-base-registration
+uncrustify: spelling-error-in-binary
+uncrustify: copyright-refers-to-symlink-license
+uncrustify: duplicate-files
+uncrustify: extra-license-file

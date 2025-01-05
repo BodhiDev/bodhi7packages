@@ -1,0 +1,17 @@
+Source: uncrustify
+Section: devel
+Priority: optional
+Maintainer: Alexander GQ Gerasiov <gq@debian.org>
+Build-Depends: debhelper-compat (= 12), cmake, python3
+Standards-Version: 4.5.0
+Homepage: https://github.com/uncrustify/uncrustify
+Vcs-Git: https://salsa.debian.org/debian/uncrustify.git
+Vcs-Browser: https://salsa.debian.org/debian/uncrustify
+
+Package: uncrustify
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: C, C++, ObjectiveC, C#, D, Java, Pawn and VALA source code beautifier
+ Uncrustify is a highly configurable source code formatter. It aligns
+ preprocessor define's, assignments, arithmetics and is able to fix spacing
+ between operators.
