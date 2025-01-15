@@ -1,3 +1,10 @@
+moksha-module-mem (0.1.2-8) jammy; urgency=low
+
+  * Meson build
+  * Local issue fixed
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Wed, 15 Jan 2025 17:32:15 -0500
+
 moksha-module-mem (0.1.2-7) jammy; urgency=low
 
   * GCC warnings addressed
