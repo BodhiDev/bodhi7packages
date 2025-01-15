@@ -1,3 +1,10 @@
+moksha-module-cpu (0.1.1-7) jammy; urgency=medium
+
+  * Meson build
+  * Local issue fixed
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Wed, 15 Jan 2025 14:31:59 -0500
+
 moksha-module-cpu (0.1.1-6) jammy; urgency=medium
 
   * GCC warnings addressed
