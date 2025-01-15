@@ -1,3 +1,10 @@
+moksha-module-flame (0.1.1-5) jammy; urgency=medium
+
+  * Meson Build
+  * Local issued fixed
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Wed, 15 Jan 2025 14:31:59 -0500
+
 moksha-module-flame (0.1.1-4) jammy; urgency=medium
 
   * GCC warnings addressed
