@@ -1,3 +1,10 @@
+moksha-module-net (0.1.1-6) jammy; urgency=medium
+
+  * Meson build
+  * Local issue fixed
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Thu, 16 Jan 2025 07:21:38 -0500
+
 moksha-module-net (0.1.1-5) jammy; urgency=medium
 
   * GCC warnings addressed
