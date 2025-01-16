@@ -1,3 +1,10 @@
+moksha-module-tclock (0.1.1-8) jammy; urgency=low
+
+  * Meson build added
+  * Local issue fixed
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Thu, 16 Jan 2025 16:21:39 -0500
+
 moksha-module-tclock (0.1.1-7) jammy; urgency=low
 
   * Tclock tip position fix
