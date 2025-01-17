@@ -1,3 +1,9 @@
+moksha-module-winselector (0.1.1-4) jammy; urgency=medium
+
+  * Meson build added
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Fri, 17 Jan 2025 17:59:33 -0500
+
 moksha-module-winselector (0.1.1-3) jammy; urgency=medium
 
   * GCC warnings addressed
