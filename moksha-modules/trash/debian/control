@@ -2,7 +2,7 @@ Source: moksha-module-trash
 Section: utils
 Priority: optional
 Maintainer: Robert Wiley <ylee@bodhilinux.com>
-Build-Depends: debhelper (>= 10), cdbs, autotools-dev, pkg-config, libefl-dev, moksha
+Build-Depends: debhelper (>= 10), cdbs, libc6 (>= 2.4), meson, pkg-config, libtool, intltool, libefl-dev, moksha
 Standards-Version: 4.5.0
 Homepage: https://github.com/JeffHoogland/moksha-modules-extra
 Rules-Requires-Root: no

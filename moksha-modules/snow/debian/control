@@ -2,11 +2,10 @@ Source: moksha-module-snow
 Section: utils
 Priority: optional
 Maintainer: Jeff Hoogland <jeffhoogland@linux.com>
-Build-Depends: debhelper (>= 10), autotools-dev, libc6 (>= 2.7), libefl-dev, moksha-dev
+Build-Depends: debhelper (>= 10), libc6 (>= 2.4), meson, pkg-config, libtool, intltool, libefl-dev, moksha-dev
 Standards-Version: 4.1.2
 Homepage: https://github.com/JeffHoogland/moksha-modules-extra
-#Vcs-Git: https://anonscm.debian.org/git/collab-maint/snow.git
-#Vcs-Browser: https://anonscm.debian.org/cgit/collab-maint/snow.git
+Rules-Requires-Root: no
 
 Package: moksha-module-snow 
 Architecture: any
