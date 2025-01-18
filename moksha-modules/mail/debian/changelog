@@ -1,3 +1,10 @@
+moksha-module-mail (0.1.1-5) jammy; urgency=low
+
+  * Meson build
+  * Local issue fixed
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Sat, 18 Jan 2025 12:01:29 -0500
+
 moksha-module-mail (0.1.1-4) jammy; urgency=low
 
   * GCC warnings addressed
