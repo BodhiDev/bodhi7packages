@@ -12,3 +12,5 @@ Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, moksha
 Description: Flame Module for Moksha
  Adds hot fire to your Moksha desktop.
+ .
+ Load the module to display flames on the desktop.
