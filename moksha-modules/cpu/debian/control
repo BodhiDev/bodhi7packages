@@ -11,4 +11,6 @@ Package: moksha-module-cpu
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, moksha
 Description: CPU module for the Moksha desktop
- CPU monitor for the Moksha desktop
+ CPU monitor for the Moksha desktop.
+ .
+ One can place a gadget of the shelf or desktop to monitor CPU usage.
