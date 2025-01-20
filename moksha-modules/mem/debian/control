@@ -11,4 +11,6 @@ Package: moksha-module-mem
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, moksha
 Description: Memory module for the Moksha desktop
- Memory monitor for the Moksha desktop
+ Memory monitor for the Moksha desktop.
+ .
+ Add a gadget to a shelf or desktop to monitor memory utilization.
