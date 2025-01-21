@@ -1,0 +1,32 @@
+class @beta Efl.Ui.Tab_Bar extends Efl.Ui.Layout_Base
+   implements Efl.Ui.Single_Selectable
+   composites Efl.Pack_Linear, Efl.Pack
+{
+   [[A selectable box of items.
+
+     Within one object only one @Efl.Ui.Tab_Bar_Default_Item can be selected at the same time.
+   ]]
+   methods {
+
+   }
+   implements {
+      Efl.Object.constructor;
+      Efl.Object.finalize;
+      Efl.Object.destructor;
+      Efl.Ui.Single_Selectable.last_selected {get;}
+      Efl.Ui.Single_Selectable.fallback_selection {get; set;}
+      Efl.Ui.Single_Selectable.allow_manual_deselection {get; set;}
+      Efl.Pack.pack;
+      Efl.Pack.pack_clear;
+      Efl.Pack.unpack_all;
+      Efl.Pack.unpack;
+      Efl.Pack_Linear.pack_unpack_at;
+      Efl.Pack_Linear.pack_begin;
+      Efl.Pack_Linear.pack_end;
+      Efl.Pack_Linear.pack_before;
+      Efl.Pack_Linear.pack_after;
+      Efl.Pack_Linear.pack_at;
+      Efl.Container.content_count;
+      Efl.Container.content_iterate;
+   }
+}

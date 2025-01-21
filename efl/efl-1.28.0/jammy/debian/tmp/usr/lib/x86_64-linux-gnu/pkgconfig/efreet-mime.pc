@@ -1,0 +1,12 @@
+prefix=/usr
+libdir=${prefix}/lib/x86_64-linux-gnu
+includedir=${prefix}/include
+
+Name: efreet-mime
+Description: Deprecated, please just use efreet
+Version: 1.28.99
+Requires: eina, eo, efl
+Requires.private: eet, emile, ecore, ecore-con, ecore-file, ecore-ipc
+Libs: -L${libdir} -lefreet
+Libs.private: -lm -pthread -ldl
+Cflags: -I${includedir}/efreet-1

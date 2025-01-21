@@ -1,0 +1,14 @@
+prefix=/usr
+libdir=${prefix}/lib/x86_64-linux-gnu
+includedir=${prefix}/include
+
+themes=/usr/share/elementary/themes
+
+Name: elementary
+Description: efl: elementary
+Version: 1.28.99
+Requires: eina, eet, evas, ecore, ecore-evas, ecore-file, ecore-input, ecore-imf, ecore-con, edje, eldbus, efreet-mime, ethumb-client, efl, eo, emotion, efreet, efreet-trash, eio
+Requires.private: emile, ector, ethumb, ecore-x
+Libs: -L${libdir} -lelementary
+Libs.private: -lm -pthread -ldl
+Cflags: -I${includedir}/elementary-1

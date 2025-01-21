@@ -1,0 +1,529 @@
+import efl_text_types;
+
+struct Efl.Event_Animator_Tick {
+   [[EFL event animator tick data structure
+
+     @since 1.22
+   ]]
+   update_area: Eina.Rect; [[Area of the canvas that will be pushed to screen.]]
+}
+
+abstract Efl.Canvas.Object extends Efl.Loop_Consumer implements Efl.Gfx.Entity, Efl.Gfx.Color, Efl.Gfx.Stack,
+                            Efl.Input.Interface, Efl.Gfx.Hint,
+                            Efl.Gfx.Mapping, Efl.Canvas.Pointer, Efl.Canvas.Object_Animation
+{
+   [[Efl canvas object abstract class
+
+     @since 1.22
+   ]]
+   data: Evas_Object_Protected_Data;
+   methods {
+      @property pointer_mode_by_device @beta {
+         [[Low-level pointer behaviour by device.
+           See @.pointer_mode.get and @.pointer_mode.set for more explanation.
+         ]]
+         keys {
+            dev: Efl.Input.Device; [[The pointer device to set/get the mode. Use $null for the default pointer.]]
+         }
+         values {
+             pointer_mode: Efl.Input.Object_Pointer_Mode; [[The pointer mode]]
+         }
+         set {
+            return: bool; [[$true if pointer mode was set, $false otherwise]]
+         }
+         get {
+         }
+      }
+      @property pointer_mode @beta {
+         [[Low-level pointer behaviour.
+
+           This function has a direct effect on event callbacks related to
+           pointers (mouse, ...).
+
+           If the value is @Efl.Input.Object_Pointer_Mode.auto_grab (default),
+           then when mouse is pressed down over this object, events will be
+           restricted to it as source, mouse moves, for example, will be
+           emitted even when the pointer goes outside this objects
+           geometry.
+
+           If the value is @Efl.Input.Object_Pointer_Mode.no_grab, then events
+           will be emitted just when inside this object area.
+
+           See also: @.pointer_mode_by_device.get and @.pointer_mode_by_device.set
+           Note: This function will only set/get the mode for the default pointer.
+         ]]
+         get {
+         }
+         set {
+            return: bool; [[$true if pointer behaviour was set, $false otherwise]]
+         }
+         values {
+            pointer_mode: Efl.Input.Object_Pointer_Mode(Efl.Input.Object_Pointer_Mode.auto_grab); [[Input pointer mode]]
+         }
+      }
+      @property render_op {
+         [[Render mode to be used for compositing the Evas object.
+
+           Only two modes are supported:
+           - @Efl.Gfx.Render_Op.blend means the object will be merged on
+           top of objects below it using simple alpha compositing.
+           - @Efl.Gfx.Render_Op.copy means this object's pixels will replace
+           everything that is below, making this object opaque.
+
+           Please do not assume that @Efl.Gfx.Render_Op.copy mode can be
+           used to "poke" holes in a window (to see through it), as only the
+           compositor can ensure that. Copy mode should only be used with
+           otherwise opaque widgets or inside non-window surfaces (e.g. a
+           transparent background inside a buffer canvas).
+         ]]
+         set {
+         }
+         get {
+         }
+         values {
+            render_op: Efl.Gfx.Render_Op; [[Blend or copy.]]
+         }
+      }
+      @property clipper {
+         [[Clip one object to another.
+
+           This property will clip the object $obj to the area occupied
+           by the object $clip. This means the object $obj will only be
+           visible within the area occupied by the clipping object
+           ($clip).
+
+           The color of the object being clipped will be multiplied by
+           the color of the clipping one, so the resulting color for the
+           former will be "RESULT = (OBJ * CLIP) / (255 * 255)", per color
+           element (red, green, blue and alpha).
+
+           Clipping is recursive, so clipping objects may be clipped by
+           others, and their color will in term be multiplied. You may
+           not set up circular clipping lists (i.e. object 1 clips
+           object 2, which clips object 1): the behavior of Evas is
+           undefined in this case.
+
+           Objects which do not clip others are visible in the canvas as
+           normal; those that clip one or more objects become invisible
+           themselves, only affecting what they clip. If an object ceases
+           to have other objects being clipped by it, it will become
+           visible again.
+
+           The visibility of an object affects the objects that are
+           clipped by it, so if the object clipping others is not shown
+           (as in @Efl.Gfx.Entity.visible), the objects clipped by it will
+           not be shown  either.
+
+           If $obj was being clipped by another object when this function
+           is  called, it gets implicitly removed from the old clipper's
+           domain and is made now to be clipped by its new clipper.
+
+           If $clip is $null, this call will disable clipping for the object
+           i.e. its visibility and color get detached from the previous
+           clipper. If it wasn't, this has no effect.
+
+           Note: Only rectangle and image (masks) objects can be used
+           as clippers. Anything else will result in undefined behaviour.
+         ]]
+         set {
+         }
+         get {
+         }
+         values {
+            clipper: Efl.Canvas.Object; [[The object to clip $obj by.]]
+         }
+      }
+      @property has_fixed_size @beta {
+            [[A hint for an object that its size will not change.
+
+              When this flag is set, various optimizations may be employed by the
+              renderer based on the fixed size of the object.
+
+              It is a user error to change the size of an object while this flag
+              is set.
+
+              @since 1.23
+            ]]
+         set {}
+         get {}
+         values {
+            enable: bool; [[Whether the object size is known to be static.]]
+         }
+      }
+      @property repeat_events {
+         [[Whether an Evas object is to repeat events to objects below it.
+
+           If $repeat is $true, it will make events on $obj to also be
+           repeated for the next lower object in the objects' stack (see
+           see @Efl.Gfx.Stack.below).
+
+           If $repeat is $false, events occurring on $obj will be
+           processed only on it.
+         ]]
+         /* FIXME-doc
+         Example:
+         @dontinclude evas-stacking.c
+         @skip if (strcmp(ev->key, "r") == 0)
+         @until }
+
+         See the full @ref Example_Evas_Stacking "example".
+         */
+         set {
+         }
+         get {
+         }
+         values {
+            repeat: bool; [[Whether $obj is to repeat events ($true) or
+                            not ($false).]]
+         }
+      }
+      @property key_focus {
+         [[Indicates that this object is the keyboard event receiver on
+           its canvas.
+
+           Changing focus only affects where (key) input events go.
+           There can be only one object focused at any time. If $focus
+           is $true, $obj will be set as the currently focused object
+           and it will receive all keyboard events that are not
+           exclusive key grabs on other objects.
+           See also @.seat_focus_check,
+           @.seat_focus_add, @.seat_focus_del.
+         ]]
+         set {
+         }
+         get {
+         }
+         values {
+            focus: bool; [[$true when set as focused or $false otherwise.]]
+         }
+      }
+      @property seat_focus {
+         [[
+            Check if this object is focused.
+         ]]
+         get {
+         }
+         values {
+            focus: bool; [[$true if focused by at least one seat or $false otherwise.]]
+         }
+      }
+      /* FIXME Efl.Input.Device is not stable yet*/
+      seat_focus_check @beta {
+         [[ Check if this object is focused by a given seat ]]
+         params {
+            @in seat: Efl.Input.Device; [[The seat to check if the object is focused. Use $null for the default seat.]]
+         }
+         return: bool; [[$true if focused or $false otherwise.]]
+      }
+      /* FIXME Efl.Input.Device is not stable yet*/
+      seat_focus_add @beta  {
+         [[ Add a seat to the focus list.
+
+           Evas allows the Efl.Canvas.Object to be focused by multiple seats
+           at the same time. This function adds a new seat to the focus list. In other words,
+           after the seat is added to the list this object will now be also focused by this new seat.
+
+           Note: The old focus APIs still work, however they will only act on the default seat.
+         ]]
+         params {
+            @in seat: Efl.Input.Device; [[The seat that should be added to the focus list. Use $null for the default
+                                          seat.]]
+         }
+         return: bool; [[$true if the focus has been set or $false otherwise.]]
+      }
+      /* FIXME Efl.Input.Device is not stable yet*/
+      seat_focus_del @beta {
+         [[ Remove a seat from the focus list.
+         ]]
+         params {
+            @in seat: Efl.Input.Device; [[The seat that should be removed from the focus list. Use $null for the
+                                          default seat.]]
+         }
+         return: bool; [[$true if the seat was removed from the focus list or $false otherwise.]]
+      }
+      @property precise_is_inside {
+         [[Whether to use precise (usually expensive) point collision
+           detection for a given Evas object.
+
+           Use this property to make Evas treat objects' transparent
+           areas as not belonging to it with regard to mouse pointer
+           events. By default, all of the object's boundary rectangle
+           will be taken in account for them.
+
+           Warning: By using precise point collision detection you'll be
+           making Evas more resource intensive.
+         ]]
+         /* FIXME-doc
+         Example code follows.
+         @dontinclude evas-events.c
+         @skip if (strcmp(ev->key, "p") == 0)
+         @until }
+
+         See the full example @ref Example_Evas_Events "here".
+         */
+         set {
+         }
+         get {
+         }
+         values {
+            precise: bool(false); [[Whether to use precise point collision detection.]]
+         }
+      }
+      @property propagate_events {
+         [[Whether events on a smart object's member should be
+           propagated up to its parent.
+
+           This function has no effect if $obj is not a member of a
+           smart object.
+
+           If $prop is $true, events occurring on this object will be
+           propagated on to the smart object of which $obj is a member.
+           If $prop is $false, events occurring on this object will not
+           be propagated on to the smart object of which $obj is a
+           member.
+
+           See also @.repeat_events.set, @.pass_events.set.
+         ]]
+         set {
+         }
+         get {
+         }
+         values {
+            propagate: bool(true); [[Whether to propagate events.]]
+         }
+      }
+      @property pass_events {
+         [[Whether an Evas object is to pass (ignore) events.
+
+           If $pass is $true, it will make events on $obj to be ignored.
+           They will be triggered on the next lower object (that is not
+           set to pass events), instead (see @Efl.Gfx.Stack.below).
+
+           If $pass is $false events will be processed on that object
+           as normal.
+
+           See also @.repeat_events.set, @.propagate_events.set
+         ]]
+         set {
+         }
+         get {
+            /* FIXME-doc
+            Example:
+            @dontinclude evas-stacking.c
+            @skip if (strcmp(ev->key, "p") == 0)
+            @until }
+
+            See the full @ref Example_Evas_Stacking "example".
+            */
+         }
+         values {
+            pass: bool; [[Whether $obj is to pass events ($true) or not
+                         ($false).]]
+         }
+      }
+      @property anti_alias {
+         [[Whether or not the given Evas object is to be drawn
+           anti-aliased.
+         ]]
+         set {
+         }
+         get {
+         }
+         values {
+            anti_alias: bool; [[$true if the object is to be anti_aliased,
+                                $false otherwise.]]
+         }
+      }
+      @property clipped_objects {
+         [[List of objects currently clipped by $obj.
+
+           This returns the internal list handle containing all
+           objects clipped by the object $obj. If none are clipped by
+           it, the call returns $null. This list is only valid until
+           the clip list is changed and should be fetched again with
+           another call to this function if any objects being clipped
+           by this object are unclipped, clipped by a new object,
+           deleted or get the clipper deleted. These operations will
+           invalidate the list returned, so it should not be used
+           anymore after that point. Any use of the list after this
+           may have undefined results, possibly leading to crashes.
+
+           See also @.clipper.
+         ]]
+         get {
+         }
+         values {
+            objects: iterator<Efl.Canvas.Object> @move; [[An iterator over the
+                                             list of objects clipped by $obj.]]
+         }
+      }
+      @property render_parent @protected {
+         [[Gets the parent smart object of a given Evas object, if it has one.
+
+           This can be different from @Efl.Object.parent because this one is
+           used internally for rendering and the normal parent is what the
+           user expects to be the parent.
+         ]]
+         get {
+         }
+         values {
+            parent: Efl.Canvas.Object; [[The parent smart object of $obj or $null.]]
+         }
+      }
+      @property paragraph_direction {
+         [[This handles text paragraph direction of the given object.
+           Even if the given object is not textblock or text, its smart child
+           objects can inherit the paragraph direction from the given object.
+           The default paragraph direction is $inherit.
+         ]]
+         values {
+            dir: Efl.Text_Bidirectional_Type; [[Paragraph direction for the given object.]]
+         }
+      }
+      clipped_objects_count @const {
+         [[Returns the number of objects clipped by $obj
+         ]]
+         return: uint @no_unused; [[The number of objects clipped by $obj]]
+      }
+      key_grab {
+         /* FIXME: can't reference Eolian object, .eo file not being installed */
+         [[Requests $keyname key events be directed to $obj.
+
+           Key grabs allow one or more objects to receive key events for
+           specific key strokes even if other objects have focus. Whenever
+           a key is grabbed, only the objects grabbing it will get the
+           events for the given keys.
+
+           $keyname is a platform dependent symbolic name for the key
+           pressed.
+
+           $modifiers and $not_modifiers are bit masks of all the
+           modifiers that must and mustn't, respectively, be pressed along
+           with $keyname key in order to trigger this new key grab.
+           Modifiers can be things such as Shift and Ctrl as well as
+           user defined types via \@ref evas_key_modifier_add.
+           $exclusive will make the given object the only one permitted to
+           grab the given key. If given $true, subsequent calls on this
+           function with different $obj arguments will fail, unless the key
+           is ungrabbed again.
+
+           Warning: Providing impossible modifier sets creates undefined
+           behavior.
+         ]]
+         return: bool @no_unused; [[$true if the call succeeded, $false otherwise.]]
+         params {
+            @in keyname: string; [[The key to request events for.]]
+            @in modifiers: Efl.Input.Modifier; [[A combination of modifier
+                              keys that must be present to trigger the event.]]
+            @in not_modifiers: Efl.Input.Modifier; [[A combination of modifier
+                          keys that must not be present to trigger the event.]]
+            @in exclusive: bool; [[Request that the $obj is the only object
+                                   receiving the $keyname events.]]
+         }
+      }
+      key_ungrab {
+         [[Removes the grab on $keyname key events by $obj.
+
+           Removes a key grab on $obj if $keyname, $modifiers, and
+           $not_modifiers match.
+
+           See also @.key_grab, @.key_focus.get, @.key_focus.set,
+           and the legacy API evas_focus_get.
+         ]]
+         params {
+            @in keyname: string; [[The key the grab is set for.]]
+            @in modifiers: Efl.Input.Modifier; [[A mask of modifiers that must be
+                                                 present to trigger the event.]]
+            @in not_modifiers: Efl.Input.Modifier; [[A mask of modifiers that must
+                                                     not not be present to trigger
+                                                     the event.]]
+         }
+      }
+      @property no_render {
+         [[Disables all rendering on the canvas.
+
+           This flag will be used to indicate to Evas that this object
+           should never be rendered on the canvas under any
+           circumstances. In particular, this is useful to avoid
+           drawing clipper objects (or masks) even when they don't
+           clip any object. This can also be used to replace the old
+           source_visible flag with proxy objects.
+
+           This is different to the visible property, as even visible
+           objects marked as "no-render" will never appear on screen.
+           But those objects can still be used as proxy sources or
+           clippers. When hidden, all "no-render" objects will
+           completely disappear from the canvas, and hide their
+           clippees or be invisible when used as proxy sources.
+         ]]
+         get {
+         }
+         set {
+         }
+         values {
+            enable: bool; [[Enable "no-render" mode.]]
+         }
+      }
+      @property coords_inside {
+         [[Whether the coordinates are logically inside the object.
+
+           A value of $true indicates the position is logically
+           inside the object, and $false implies it is logically
+           outside the object.
+
+           If $obj is not a valid object, the return value is undefined.
+          ]]
+         get {
+         }
+         keys {
+            pos: Eina.Position2D; [[The coordinates in pixels.]]
+         }
+         values {
+            return: bool; [[$true if the coordinates are inside the object, $false otherwise]]
+         }
+      }
+   }
+   constructors {
+        Efl.Object.parent;
+   }
+   implements {
+      Efl.Object.constructor;
+      Efl.Object.finalize;
+      Efl.Object.invalidate;
+      Efl.Object.destructor;
+      Efl.Object.provider_find;
+      Efl.Object.event_freeze;
+      Efl.Object.event_thaw;
+      Efl.Object.debug_name_override;
+      Efl.Gfx.Entity.visible { get; set; }
+      Efl.Gfx.Color.color { get; set; }
+      Efl.Gfx.Entity.geometry { get; set; }
+      Efl.Gfx.Entity.position { get; set; }
+      Efl.Gfx.Entity.size { get; set; }
+      Efl.Gfx.Stack.layer { get; set; }
+      Efl.Gfx.Stack.below { get; }
+      Efl.Gfx.Stack.above { get; }
+      Efl.Gfx.Stack.stack_below;
+      Efl.Gfx.Stack.stack_above;
+      Efl.Gfx.Stack.raise_to_top;
+      Efl.Gfx.Stack.lower_to_bottom;
+      Efl.Gfx.Hint.hint_aspect { get; set; }
+      Efl.Gfx.Hint.hint_align { get; set; }
+      Efl.Gfx.Hint.hint_size_combined_min { get; }
+      Efl.Gfx.Hint.hint_size_combined_max { get; }
+      Efl.Gfx.Hint.hint_size_restricted_min { get; set; }
+      Efl.Gfx.Hint.hint_size_restricted_max { get; set; }
+      Efl.Gfx.Hint.hint_size_min { get; set; }
+      Efl.Gfx.Hint.hint_size_max { get; set; }
+      Efl.Gfx.Hint.hint_margin { get; set; }
+      Efl.Gfx.Hint.hint_weight { get; set; }
+      Efl.Gfx.Hint.hint_fill { get; set; }
+      Efl.Gfx.Entity.scale { set; get; }
+      Efl.Input.Interface.seat_event_filter { get; set; }
+      Efl.Loop_Consumer.loop { get; }
+      Efl.Canvas.Pointer.pointer_inside { get; }
+   }
+   events {
+      animator,tick: Efl.Event_Animator_Tick; [[Animator tick synchronized with screen vsync if possible.]]
+   }
+}

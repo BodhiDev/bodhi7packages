@@ -1,0 +1,53 @@
+import efl_canvas_gesture_types;
+
+abstract @beta Efl.Canvas.Gesture_Recognizer extends Efl.Object
+{
+   [[Base abstract class for Gesture Recognizers. For internal use only.
+
+     Gesture recognizers listen to events that occur on a target object
+     to see if a particular gesture has occurred.
+
+     Recognizer-specific configuration values can be modified through @Efl.Config.config,
+     and the global config object can be found using @Efl.Object.provider_find.
+     Default configuration values are taken from the system's configuration.
+   ]]
+   c_prefix: efl_gesture_recognizer;
+   methods {
+      @property type @pure_virtual {
+         [[This property returns the class type of gesture recognized by this recognizer.
+           It must be implemented for the recognizer to function.]]
+         get {}
+         values {
+            type: const(Efl.Class); [[The gesture type to recognize.]]
+         }
+      }
+      recognize @pure_virtual {
+         [[Analyzes the given $event and the current state of the $gesture object to see if the state
+           has to be modified. For example, to signal a complete gesture detection.
+
+           Updates the state of the gesture object as required, and returns a
+           suitable result for the current recognition step.
+
+           This method must be implemented for the recognizer to function.
+         ]]
+         params {
+            @in gesture: Efl.Canvas.Gesture; [[The gesture object.]]
+            @in watched: Efl.Object; [[The target canvas object.]]
+            @in event: Efl.Canvas.Gesture_Touch; [[The pointer event being analyzed.]]
+         }
+         return: Efl.Canvas.Gesture_Recognizer_Result; [[Returns the result of the analysis.]]
+      }
+      @property continues {
+         [[This property determines whether a gesture recognizer should continue
+           to try processing events after returning @Efl.Canvas.Gesture_Recognizer_Result.finish
+           or @Efl.Canvas.Gesture_Recognizer_Result.cancel.]]
+         get {
+         }
+         set {
+         }
+         values {
+            value: bool; [[Value of the property.]]
+         }
+      }
+   }
+}

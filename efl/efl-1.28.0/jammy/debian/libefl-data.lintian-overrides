@@ -1,0 +1,3 @@
+libefl-data: font-in-non-font-package
+libefl-data: font-outside-font-dir
+libefl-data: package-contains-documentation-outside-usr-share-doc

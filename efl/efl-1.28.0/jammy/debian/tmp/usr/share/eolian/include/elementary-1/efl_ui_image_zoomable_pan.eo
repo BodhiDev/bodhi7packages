@@ -1,0 +1,15 @@
+class @beta Efl.Ui.Image_Zoomable_Pan extends Efl.Ui.Pan
+{
+   [[Elementary photocom pan class]]
+   implements {
+      class.constructor;
+      Efl.Object.destructor;
+      Efl.Gfx.Entity.position { set; }
+      Efl.Gfx.Entity.size { set; }
+      Efl.Canvas.Group.group_calculate;
+      Efl.Ui.Pan.content_size { get; }
+      Efl.Ui.Pan.pan_position { get; set; }
+      Efl.Ui.Pan.pan_position_min { get; }
+      Efl.Ui.Pan.pan_position_max { get; }
+   }
+}

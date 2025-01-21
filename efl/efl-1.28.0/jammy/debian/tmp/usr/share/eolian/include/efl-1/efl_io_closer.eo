@@ -1,0 +1,73 @@
+import eina_types;
+
+interface Efl.Io.Closer {
+    [[Generic interface for objects that can close themselves.
+
+      This interface allows external objects to transparently close an
+      input or output stream, cleaning up its resources.
+
+      Calls to @.close() may or may not block, that's not up to this
+      interface to specify.
+
+      @since 1.22
+    ]]
+
+    methods {
+        close {
+            [[Closes the Input/Output object.
+
+              This operation will be executed immediately and may or
+              may not block the caller thread for some time. The
+              details of blocking behavior is to be defined by the
+              implementation and may be subject to other parameters
+              such as non-blocking flags, maximum timeout or even
+              retry attempts.
+
+              You can understand this method as close(2) libc function.
+            ]]
+            return: Eina.Error; [[0 on succeed, a mapping of errno otherwise]]
+        }
+
+        @property closed {
+            [[If true will notify object was closed.]]
+            get { }
+            values {
+                is_closed: bool; [[$true if closed, $false otherwise]]
+            }
+        }
+
+        @property close_on_exec {
+            [[If true will automatically close resources on exec() calls.
+
+              When using file descriptors this should set FD_CLOEXEC
+              so they are not inherited by the processes (children or
+              self) doing exec().
+            ]]
+            get { }
+            set {
+                [[If $true, will close on exec() call.]]
+                return: bool; [[$true if could set, $false if not supported or failed.]]
+            }
+            values {
+                close_on_exec: bool; [[$true if close on exec(), $false otherwise]]
+            }
+        }
+
+        @property close_on_invalidate {
+            [[If true will automatically close() on object invalidate.
+
+              If the object was disconnected from its parent (including the main loop) without close,
+	      this property will state whenever it should be closed or not.
+            ]]
+            get { }
+            set { }
+            values {
+                close_on_invalidate: bool; [[$true if close on invalidate, $false otherwise]]
+            }
+        }
+    }
+
+    events {
+        closed: void; [[Notifies closed, when property is marked as true]]
+    }
+}

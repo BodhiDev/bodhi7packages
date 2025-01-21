@@ -1,0 +1,21 @@
+mixin @beta Efl.Io.Reader_Fd extends Efl.Io.Reader {
+    [[Reads fd using read(2).
+    ]]
+
+    methods {
+        @property reader_fd {
+            [[Reader file descriptor]]
+            get {}
+            set @protected {}
+            values {
+                fd: int; [[File descriptor]]
+            }
+        }
+    }
+
+    implements {
+        Efl.Io.Reader.read;
+        Efl.Io.Reader.can_read { get; set; }
+        Efl.Io.Reader.eos { get; set; }
+    }
+}

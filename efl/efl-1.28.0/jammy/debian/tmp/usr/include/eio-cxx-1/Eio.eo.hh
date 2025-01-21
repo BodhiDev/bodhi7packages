@@ -1,0 +1,6 @@
+#include "efl_io_manager.eo.hh"
+#include "efl_io_model.eo.hh"
+#include "eio_sentry.eo.hh"
+#include "efl_io_manager.eo.impl.hh"
+#include "efl_io_model.eo.impl.hh"
+#include "eio_sentry.eo.impl.hh"

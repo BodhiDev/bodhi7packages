@@ -1,0 +1,99 @@
+import efl_canvas_gesture_types;
+
+/* FIXME: This class lacks a lot of useful helpers. */
+
+class @beta Efl.Canvas.Gesture_Touch extends Efl.Object
+{
+   [[EFL Gesture Touch class
+   
+     This gesture class defines a method that records touch points and supports
+     properties - first touch point, current touch point, timestamp, multi-touch 
+     and state information.]]
+   c_prefix: efl_gesture_touch;
+   methods {
+      point_record {
+         [[Touch point record method]]
+         params {
+            @in event      : Efl.Input.Pointer; [[The pointer information ]]
+         }
+      }
+      /* FIXME: This is most likely not useful (without timestamps). */
+      delta @const {
+         [[Compute the distance between the last two events]]
+         params {
+            @in tool        : int; [[The finger id ]]
+         }
+         return: Eina.Vector2; [[The distance vector.]]
+      }
+      distance @const {
+         [[Compute the distance between the first touch and the last event.]]
+         params {
+            @in tool        : int; [[The finger id ]]
+         }
+         return: Eina.Vector2; [[The distance vector.]]
+      }
+      @property start_point {
+         [[Returns the first touch point.]]
+         get {}
+         values {
+            pos: Eina.Position2D; [[The start position.]]
+         }
+      }
+      @property current_point {
+         [[Returns the current touch point.]]
+         get {}
+         values {
+            pos: Eina.Position2D; [[The current position.]]
+         }
+      }
+      @property current_timestamp {
+         [[Returns the timestamp.]]
+         get {}
+         values {
+            time: uint; [[The timestamp.]]
+         }
+      }
+      @property touch_points_count {
+         [[This provides the number of touch points active.]]
+         get {
+         }
+         values {
+            touch_count: uint; [[The number of active touch points.]]
+         }
+      }
+      @property state {
+         [[This property holds the state of the touch event.]]
+         get {
+            return : Efl.Canvas.Gesture_Touch_State; [[touch event state]]
+         }
+      }
+      @property current_data {
+         [[This property holds the data struct of the most recent touch point.]]
+         get {}
+         values {
+            data: const(Efl.Canvas.Gesture_Touch_Point_Data) @by_ref; [[The current data.]]
+         }
+      }
+      @property previous_data {
+         [[This property holds the data struct of the second-most recent touch point.
+           If there is only one touch point active, it will return NULL.
+         ]]
+         get {}
+         values {
+            data: const(Efl.Canvas.Gesture_Touch_Point_Data) @by_ref; [[The previous touch point's data.]]
+         }
+      }
+      data_get @const {
+         [[This fetches the data for a specified touch point.]]
+         params {
+            @in id: uint; [[The id of the touch point to return.]]
+         }
+         return: const(Efl.Canvas.Gesture_Touch_Point_Data) @by_ref; [[The specified data if it exists.]]
+      }
+      /* FIXME: finger_list was broken by design - TODO */
+   }
+   implements {
+      Efl.Object.constructor;
+      Efl.Object.destructor;
+   }
+}

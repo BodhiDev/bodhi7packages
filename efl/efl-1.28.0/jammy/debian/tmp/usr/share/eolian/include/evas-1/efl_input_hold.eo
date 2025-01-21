@@ -1,0 +1,33 @@
+class Efl.Input.Hold extends Efl.Object implements Efl.Input.Event
+{
+   [[Event data sent when inputs are put on hold or resumed.
+
+     @since 1.23
+   ]]
+   methods {
+      @property input_hold {
+         [[Property to show if inputs are now on hold.]]
+         values {
+            val: bool; [[$true if inputs are on hold, $false otherwise]]
+         }
+      }
+   }
+   implements {
+      class.destructor;
+      Efl.Object.constructor;
+      Efl.Object.destructor;
+      Efl.Input.Event.reset;
+      Efl.Duplicate.duplicate;
+         [[Creates a copy of this event. @Efl.Input.Event.fake is $true.
+
+           The returned event object is similar to the given object in most
+           ways except that @Efl.Input.Event.fake will be $true.
+
+           Note: A reference is given to the caller. In order to avoid leaks
+           the C API users should call $efl_unref() after use.
+         ]]
+      Efl.Input.Event.timestamp { get; set; }
+      Efl.Input.Event.event_flags { get; set; }
+      Efl.Input.Event.device { get; set; }
+   }
+}

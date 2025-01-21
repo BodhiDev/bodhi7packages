@@ -1,0 +1,5 @@
+/* Elementary legacy-only types.
+ * NOTE: Some of those types still need to be moved to Efl.Ui
+ */
+
+/* Legacy-only function pointer types, for the legacy EO classes (genlist, etc...) */

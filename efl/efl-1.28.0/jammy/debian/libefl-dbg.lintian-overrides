@@ -1,0 +1,8 @@
+# libefreet_trash and libefreet_mime have had all of their symbols
+# moved into libefreet.  But the files must be kept to avoid breaking
+# stable ABI users (consumers must be linked to libefreet anyhow).  So
+# they are expected to generate no debug symbols.
+#
+# This override doesn't actually work due #820310.
+libefl-dbg: debug-file-with-no-debug-symbols
+libefl-dbg: elf-error

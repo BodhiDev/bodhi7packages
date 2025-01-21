@@ -1,0 +1,149 @@
+/* FIXME: "dragable" is not as common as "draggable" outside EFL... */
+
+import efl_ui_drag_types;
+
+interface @beta Efl.Ui.Drag
+{
+   [[Common interface for draggable objects and parts.
+   ]]
+   methods {
+      @property drag_value {
+         [[The draggable object relative location.
+
+           Some parts in Edje can be dragged along the X/Y axes, if the part
+           contains a "draggable" section (in EDC). For instance, scroll bars
+           can be draggable objects.
+
+           $dx and $dy are real numbers that range from 0 to 1, representing
+           the relative position to the draggable area on that axis.
+
+           This value means, for the vertical axis, that 0.0 will be at the top
+           if the first parameter of $y in the draggable part theme is 1 and at
+           the bottom if it is -1.
+
+           For the horizontal axis, 0.0 means left if the first parameter of $x
+           in the draggable part theme is 1, and right if it is -1.
+         ]]
+         set {
+            return: bool; [[$true on success, $false otherwise]]
+         }
+         get {
+            return: bool; [[$true on success, $false otherwise]]
+         }
+         values {
+            dx: double; [[The x relative position, from 0 to 1.]]
+            dy: double; [[The y relative position, from 0 to 1.]]
+         }
+      }
+      @property drag_size {
+         [[The draggable object relative size.
+
+           Values for $dw and $dh are real numbers that range from 0 to 1,
+           representing the relative size of the draggable area on that axis.
+
+           For instance a scroll bar handle size may depend on the size of
+           the scroller's content.
+         ]]
+         set {
+            return: bool; [[$true on success, $false otherwise]]
+         }
+         get {
+            return: bool; [[$true on success, $false otherwise]]
+         }
+         values {
+            dw: double; [[The drag relative width, from 0 to 1.]]
+            dh: double; [[The drag relative height, from 0 to 1.]]
+         }
+      }
+      @property drag_dir {
+         [[Determines the draggable directions (read-only).
+
+           The draggable directions are defined in the EDC file, inside the
+           "draggable" section, by the attributes $x and $y. See the EDC
+           reference documentation for more information.
+         ]]
+         get {
+            return: Efl.Ui.Drag_Dir; [[The direction(s) premitted for drag.]]
+         }
+      }
+      @property drag_step {
+         [[The drag step increment.
+
+           Values for $dx and $dy are real numbers that range from 0 to 1,
+           representing the relative size of the draggable area on that axis by
+           which the part will be moved.
+
+           This differs from @.drag_page in that this is meant to
+           represent a unit increment, like a single line for example.
+
+           See also @.drag_page.
+         ]]
+         set {
+            return: bool; [[$true on success, $false otherwise]]
+         }
+         get {
+            return: bool; [[$true on success, $false otherwise]]
+         }
+         values {
+            dx: double; [[The x step relative amount, from 0 to 1.]]
+            dy: double; [[The y step relative amount, from 0 to 1.]]
+         }
+      }
+      drag_step_move {
+         [[Moves the draggable by $dx,$dy steps.
+
+           This moves the draggable part by $dx,$dy steps where the step
+           increment is the amount set by @.drag_step.set().
+
+           $dx and $dy can be positive or negative numbers, integer values are
+           recommended.
+         ]]
+         return: bool; [[$true on success, $false otherwise]]
+         params {
+            @in dx: double; [[The number of steps horizontally.]]
+            @in dy: double; [[The number of steps vertically.]]
+         }
+      }
+      @property drag_page {
+         [[The page step increments.
+
+           Values for $dx and $dy are real numbers that range from 0 to 1,
+           representing the relative size of the draggable area on that axis by
+           which the part will be moved.
+
+           This differs from @.drag_step in that this is meant to be a
+           larger step size, basically an entire page as opposed to a single
+           or couple of lines.
+
+           See also @.drag_step.
+         ]]
+         set {
+            return: bool; [[$true on success, $false otherwise]]
+         }
+         get {
+            return: bool; [[$true on success, $false otherwise]]
+         }
+         values {
+            dx: double; [[The x page step increment]]
+            dy: double; [[The y page step increment]]
+         }
+      }
+      drag_page_move {
+         [[Moves the draggable by $dx,$dy pages.
+
+           This moves the draggable by $dx,$dy pages. The increment is
+           defined by @.drag_page.set().
+
+           $dx and $dy can be positive or negative numbers, integer values are
+           recommended.
+
+           Warning: Paging is bugged!
+         ]]
+         return: bool; [[$true on success, $false otherwise]]
+         params {
+            @in dx: double; [[The number of pages horizontally.]]
+            @in dy: double; [[The number of pages vertically.]]
+         }
+      }
+   }
+}

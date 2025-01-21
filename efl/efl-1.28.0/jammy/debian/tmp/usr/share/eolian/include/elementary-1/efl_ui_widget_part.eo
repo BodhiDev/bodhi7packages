@@ -1,0 +1,22 @@
+class Efl.Ui.Widget_Part extends Efl.Object implements Efl.Ui.Property_Bind, Efl.Gfx.Entity, Efl.Canvas.Layout_Part_Type_Provider
+{
+   [[This is the base class for all "Part" handles in Efl.Ui widgets.
+
+     Since objects of this type are returned by @Efl.Part.part_get, their lifetime
+     is limited to exactly one function call only. Each widget class should
+     expose more specific types for their API-defined parts.
+
+     @since 1.23
+   ]]
+   data: Elm_Part_Data;
+   implements {
+      Efl.Object.destructor;
+      Efl.Ui.Property_Bind.property_bind;
+      @empty Efl.Gfx.Entity.visible { get; set; }
+      Efl.Gfx.Entity.geometry { get; set @empty ; }
+      @empty Efl.Gfx.Entity.position { get; set; }
+      @empty Efl.Gfx.Entity.size { get; set; }
+      @empty Efl.Gfx.Entity.scale { set; get; }
+      Efl.Canvas.Layout_Part_Type_Provider.part_type { get; }
+   }
+}

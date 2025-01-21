@@ -1,0 +1,71 @@
+import eina_types;
+
+mixin @beta Efl.Access.Component extends Efl.Gfx.Entity, Efl.Gfx.Stack
+{
+   [[AT-SPI component mixin]]
+   data: null;
+   methods {
+      @property z_order @protected @beta {
+         [[Gets the depth at which the component is shown in relation to other
+           components in the same container.]]
+         get {
+         }
+         values {
+            z_order: int; [[Z order of component]]
+         }
+      }
+      @property extents @protected @beta {
+         [[Geometry of accessible widget.]]
+         get {
+         }
+         set {
+            return: bool; [[$true if geometry was set, $false otherwise]]
+         }
+         keys {
+            screen_coords: bool; [[If $true x and y values will be relative to
+                                   screen origin, otherwise relative to canvas]]
+         }
+         values {
+            rect: Eina.Rect; [[The geometry.]]
+         }
+      }
+      @property screen_position @protected @beta {
+         [[Position of accessible widget.]]
+         set {
+            return: bool; [[$true if position was set, $false otherwise]]
+         }
+         get {
+         }
+         values {
+            x: int; [[X coordinate]]
+            y: int; [[Y coordinate]]
+         }
+      }
+      contains @protected @beta {
+          [[Contains accessible widget]]
+         params {
+            screen_coords: bool; [[If $true x and y values will be relative to
+                                   screen origin, otherwise relative to canvas]]
+            @in x: int; [[X coordinate]]
+            @in y: int; [[Y coordinate]]
+         }
+         return: bool; [[$true if params have been set, $false otherwise]]
+      }
+      focus_grab @protected @beta {
+         [[Focuses accessible widget.]]
+
+         return: bool; [[$true if focus grab focus succeed, $false otherwise.]]
+
+      }
+      accessible_at_point_get @protected @beta {
+         [[Gets top component object occupying space at given coordinates.]]
+         params {
+            screen_coords: bool; [[If $true x and y values will be relative to
+                                   screen origin, otherwise relative to canvas]]
+            @in x: int; [[X coordinate]]
+            @in y: int; [[Y coordinate]]
+         }
+         return: Efl.Object; [[Top component object at given coordinate]]
+      }
+   }
+}

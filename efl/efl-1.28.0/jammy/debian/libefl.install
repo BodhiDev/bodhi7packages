@@ -1,0 +1,15 @@
+usr/lib/*/lib*.so.*
+usr/lib/*/ecore/system/*/*/module.so
+usr/lib/*/ecore_evas/engines/*/*/module.so
+usr/lib/*/ecore_imf/modules/*/*/module.so
+usr/lib/*/edje/modules/*/*/module.so
+usr/lib/*/eeze/modules/sensor/*/*/module.so
+usr/lib/*/emotion/modules/gstreamer1/*/module.so
+usr/lib/*/ethumb/modules/emotion/*/module.so
+usr/lib/*/evas/modules/engines/*/*/module.so
+usr/lib/*/evas/modules/image_loaders/*/*/module.so
+usr/lib/*/evas/modules/image_savers/*/*/module.so
+usr/lib/*/edje/modules/elm/*/module.so
+usr/lib/*/evas/utils/*
+usr/lib/*/elementary/modules/*/*/module.so
+usr/lib/*/elementary/modules/*/*/*/module.so

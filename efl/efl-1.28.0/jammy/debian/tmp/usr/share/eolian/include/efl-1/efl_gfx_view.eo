@@ -1,0 +1,40 @@
+import eina_types;
+
+interface @beta Efl.Gfx.View
+{
+   [[Interface for graphical objects with a native size which might be
+     different from the desired rendered size (controlled through the
+     @.view_size property).
+   ]]
+   c_prefix: efl_gfx;
+   methods {
+      @property view_size {
+         [[The dimensions of this object's viewport.
+
+           This property represents the size of an image (file on disk,
+           vector graphics, GL or 3D scene, ...) view: this is the logical
+           size of a view, not the number of pixels in the buffer, nor its
+           visible size on the window.
+
+           For scalable scenes (vector graphics, 3D or GL), this means scaling
+           the contents of the scene and drawing more pixels as a result; For
+           pixmaps this means zooming and stretching up or down the backing
+           buffer to fit this view.
+
+           In most cases the view should have the same dimensions as the
+           object on the canvas, for best quality.
+
+           @.view_size.set may not be implemented. If it is, it might trigger
+           a complete recalculation of the scene, or reload of the pixel data.
+
+           Refer to each implementing class specific documentation for more
+           details.
+         ]]
+         set {}
+         get {}
+         values {
+            size: Eina.Size2D; [[Size of the view.]]
+         }
+      }
+   }
+}

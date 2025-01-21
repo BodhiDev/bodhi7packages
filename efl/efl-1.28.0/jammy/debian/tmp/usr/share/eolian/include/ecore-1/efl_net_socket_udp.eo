@@ -1,0 +1,181 @@
+import efl_net_ip_address;
+
+class @beta Efl.Net.Socket_Udp extends Efl.Net.Socket_Fd {
+    [[A base UDP socket.
+
+      This is the common class and takes an existing FD, usually
+      created by an dialer.
+
+      Since for the server 'clients' there is no accepted connection
+      it will reuse the same file decriptor. To avoid it being
+      closed, another class Efl.Net.Server_Udp_Client is used instead.
+    ]]
+
+    methods {
+        next_datagram_size_query {
+            [[Queries the next datagram size.
+
+              This will use system calls to determine the next
+              datagram size, in bytes.
+            ]]
+            return: size; [[Size in bytes]]
+        }
+
+        @property cork {
+            [[Controls UDP's cork using UDP_CORK]]
+            get { }
+            set {
+                return: bool (false); [[$true on success, $false otherwise]]
+            }
+            values {
+                cork: bool; [[$true if cork is enabled for this socket, $false otherwise]]
+            }
+        }
+
+        @property dont_route {
+            [[Avoids sent UDP packets being routed by a gateway, limiting them to the local network.
+
+              This will use SO_DONTROUTE option to avoid gateways
+              routing sent packets outside the local network. It's
+              useful for some protocols that only want the local area to
+              be affected.
+            ]]
+            get { }
+            set {
+                return: bool (false); [[$true on success]]
+            }
+            values {
+                dont_route: bool; [[$true if do not route is enabled, $false otherwise]]
+            }
+        }
+
+        @property reuse_address {
+            [[Controls address reuse() using SO_REUSEADDR]]
+            get { }
+            set {
+                return: bool (false); [[$true on success]]
+            }
+            values {
+                reuse_address: bool; [[$true if address reuse is enabled, $false otherwise]]
+            }
+        }
+
+        @property reuse_port {
+            [[Controls port reuse() using SO_REUSEPORT (since Linux 3.9)]]
+            get { }
+            set {
+                return: bool (false); [[$true on success]]
+            }
+            values {
+                reuse_port: bool; [[$true if port reuse is enabled, $false otherwise]]
+            }
+        }
+
+        multicast_join {
+            [[Joins a multicast group.
+
+              The multicast address should be in the format:
+
+                 IP\@INTERFACE
+
+              With '\@INTERFACE' being optional, such as:
+
+                 224.0.0.1 - use any interface (ie: 0.0.0.0)
+                 224.0.0.1@0.0.0.0
+                 224.0.0.1@192.168.0.1 - use the interface assigned to 192.168.0.1
+                 ff02::1@0 - use any interface
+                 ff02::1@1 - use loopback interface (idx=1)
+            ]]
+            params {
+                address: string; [[Multicast address to join]]
+            }
+            return: Eina.Error; [[$0 on success, error code otherwise]]
+        }
+
+        multicast_leave {
+            [[Leaves a multicast group.
+
+              This reverses the effect of @.multicast_join.
+            ]]
+            params {
+                address: string; [[Multicast address to leave]]
+            }
+            return: Eina.Error; [[$0 on success, error code otherwise]]
+        }
+
+        multicast_groups_get {
+            [[Returns the multicast groups this server has joined.
+
+              The iterator is only valid until a new group is joined
+              or left using @.multicast_join or @.multicast_leave.
+            ]]
+            return: iterator<string> @move; [[Iterator to multicast groups]]
+        }
+
+        @property multicast_time_to_live {
+            [[Controls time to live in number of hops.
+
+              If 1 (default), packets are only delivered to the local network.
+            ]]
+            get { }
+            set {
+                return: Eina.Error; [[$0 on success, error code otherwise]]
+            }
+            values {
+                ttl: uint8; [[Time to live]]
+            }
+        }
+
+        @property multicast_loopback {
+            [[Controls whenever multicast will loopback packets locally.
+
+              If $false, then packets won't be looped back locally,
+              just delivered for remote peers.
+            ]]
+            get { }
+            set {
+                return: Eina.Error; [[$0 on success, error code otherwise]]
+            }
+            values {
+                loopback: bool; [[$true multicast packets are loopbacked, $false otherwise]]
+            }
+        }
+
+        @property bind {
+            [[Forces binding to a specific address.
+
+              Some servers may request packets being sent from a
+              specific address, then one binds to that address
+              before proceeding to dial.
+
+              If no address is provided or bind is not called, a
+              random port is bound automatically to any address.
+
+              Note: IP and PORT must be all numeric, no name
+              resolution is applied.
+            ]]
+            get { }
+            set {
+                return: Eina.Error; [[$0 on success, error code otherwise]]
+            }
+            values {
+                address: string; [[Address to bind to]]
+            }
+        }
+
+        init @protected {
+            [[Initializes the socket to communicate with a given IP address]]
+            params {
+                remote_address: Efl.Net.Ip_Address; [[The remote address this socket will communicate with]]
+            }
+        }
+    }
+
+    implements {
+        Efl.Object.constructor;
+        Efl.Object.destructor;
+        Efl.Loop_Fd.fd { set; }
+        Efl.Io.Reader.read;
+        Efl.Io.Writer.write;
+    }
+}

@@ -1,0 +1,201 @@
+import efl_ui_layout_orientable;
+
+enum @beta Efl.Ui.Flip_Mode
+{
+   [[Efl UI flip mode used by @Efl.Ui.Flip.go and @Efl.Ui.Flip.go_to.]]
+   rotate_y_center_axis, [[Rotate Y center axis flip mode: Rotates the currently visible
+                           content around a vertical axis in the middle of its width, the
+                           other content is shown as the other side of the flip.]]
+   rotate_x_center_axis, [[Rotate X center axis flip mode: Rotates the currently visible
+                           content around a horizontal axis in the middle of its height,
+                           the other content is shown as the other side of the flip.]]
+   rotate_xz_center_axis, [[Rotate XZ center axis flip mode: Rotates the currently visible
+                            content around a diagonal axis in the middle of its width, the
+                            other content is shown as the other side of the flip.]]
+   rotate_yz_center_axis, [[Rotate YZ center axis flip mode: Rotates the currently visible
+                            content around a diagonal axis in the middle of its height, the
+                            other content is shown as the other side of the flip.]]
+   cube_left, [[Cube left flip mode: Rotates the currently visible content to the left as if
+                the flip was a cube, the other content is shown as the right face of the cube.]]
+   cube_right, [[Cube right flip mode: Rotates the currently visible content to the right as if
+                 the flip was a cube, the other content is shown as the left face of the cube.]]
+   cube_up, [[Cube up flip mode: Rotates the currently visible content up as if the flip was a
+              cube, the other content is shown as the bottom face of the cube.]]
+   cube_down, [[Cube down flip mode: Rotates the currently visible content down as if the flip
+                was a cube, the other content is shown as the upper face of the cube.]]
+   page_left, [[Page left flip mode: Moves the currently visible content to the left as if the
+                flip was a book, the other content is shown as the page below that.]]
+   page_right, [[Page right flip mode: Moves the currently visible content to the right as if
+                 the flip was a book, the other content is shown as the page below it.]]
+   page_up, [[Page up flip mode: Moves the currently visible content up as if the flip was a
+              book, the other content is shown as the page below it.]]
+   page_down, [[Page down flip mode: Moves the currently visible content down as if the flip
+                was a book, the other content is shown as the page below that.]]
+   cross_fade, [[Cross fade flip mode: Fades out the currently visible content, while fading in
+                 the invisible content.]]
+}
+
+enum @beta Efl.Ui.Flip_Interaction
+{
+   [[Efl UI flip interaction mode used by @Efl.Ui.Flip.interaction.]]
+   none, [[No interaction.]]
+   rotate, [[Rotate interaction.]]
+   cube, [[Cube interaction.]]
+   page [[Page interaction.]]
+}
+
+class @beta Efl.Ui.Flip extends Efl.Ui.Widget implements Efl.Pack_Linear
+{
+   [[Efl UI flip class]]
+   methods {
+      @property interaction {
+         [[Interactive flip mode.
+
+           This selects if the flip should be interactive (allow user to
+           click and drag a side of the flip to reveal the back page
+           and cause it to flip). By default a flip is not interactive.
+           You may also need to set which sides of the flip are "active"
+           for flipping and how much space they use (a minimum of a
+           finger size) with @.interaction_direction_enabled_set
+           and @.interaction_direction_hitsize_set.
+
+           The four available modes of interaction are @Efl.Ui.Flip_Interaction.none,
+           @Efl.Ui.Flip_Interaction.rotate, @Efl.Ui.Flip_Interaction.cube and
+           @Efl.Ui.Flip_Interaction.page.
+
+           Note: @Efl.Ui.Flip_Interaction.rotate cannot trigger
+           @Efl.Ui.Flip_Mode.rotate_xz_center_axis or
+           @Efl.Ui.Flip_Mode.rotate_yz_center_axis animations. These are only
+           available through the @.go and @.go_to methods.
+         ]]
+         set {
+         }
+         get {
+         }
+         values {
+            mode: Efl.Ui.Flip_Interaction; [[The interactive flip mode to use.]]
+         }
+      }
+      @property front_visible {
+         [[Get flip front visibility state.]]
+         get {
+            return: bool; [[$true if front front is showing, $false if
+                            the back is showing.]]
+         }
+      }
+      interaction_direction_hitsize_set {
+         [[Set the amount of the flip that is sensitive to interactive flip.
+
+           Set the amount of the flip that is sensitive to interactive flip,
+           with 0 representing no area in the flip and 1 representing the
+           entire flip. There is however a consideration to be made in that
+           the area will never be smaller than the finger size set (as set
+           in your Elementary configuration), and dragging must always start
+           from the opposite half of the flip (e.g. right half of the flip
+           when dragging to the left).
+
+           Note: The $dir parameter is not actually related to the direction
+           of the drag, it only refers to the area in the flip where
+           interaction can occur (top, bottom, left, right).
+
+           Negative values of $hitsize will disable this hit area.
+
+           See also @.interaction.set.
+         ]]
+         params {
+            @in dir: Efl.Ui.Layout_Orientation; [[The hit area to set.]]
+            @in hitsize: double; [[The amount of that dimension (0.0 to 1.0) to use.]]
+         }
+      }
+      interaction_direction_hitsize_get {
+         [[Get the amount of the flip that is sensitive to interactive flip.]]
+         return: double; [[The size set for that direction.]]
+         params {
+            @in dir: Efl.Ui.Layout_Orientation; [[The direction to check.]]
+         }
+      }
+      interaction_direction_enabled_set {
+         [[Set which directions of the flip respond to interactive flip
+
+           By default all directions are disabled, so you may want to
+           enable the desired directions for flipping if you need
+           interactive flipping. You must call this function once for
+           each direction that's enabled.
+
+           You can also set the appropriate hit area size by calling
+           @.interaction_direction_hitsize_set. By default, a minimum
+           hit area will be created on the opposite edge of the flip.
+         ]]
+         params {
+            @in dir: Efl.Ui.Layout_Orientation; [[The direction to change.]]
+            @in enabled: bool; [[If that direction is enabled or not.]]
+         }
+      }
+      interaction_direction_enabled_get {
+         [[Get the enabled state of that flip direction.]]
+         return: bool; [[If that direction is enabled or not.]]
+         params {
+            @in dir: Efl.Ui.Layout_Orientation; [[The direction to check.]]
+         }
+      }
+      go {
+         [[Runs the flip animation.
+
+           Flips the front and back contents using the $mode animation.
+           This effectively hides the currently visible content and shows
+           the hidden one.
+
+           Compare with @.go_to which only switches sides if necessary.
+         ]]
+         /* FIXME-doc
+          * @image html elm_flip.png
+          * @image latex elm_flip.eps width=\textwidth
+         */
+         params {
+            @in mode: Efl.Ui.Flip_Mode; [[The mode type.]]
+         }
+      }
+      go_to {
+         [[Runs the flip animation to front or back as selected with $front.
+           If the flip is already showing this side, nothing is done
+           (Compare with @.go which always switches sides).
+
+           Flips the front and back contents using the $mode animation.
+           This effectively hides the currently visible content and shows
+           he hidden one.
+         ]]
+         /* FIXME-doc
+          * @image html elm_flip.png
+          * @image latex elm_flip.eps width=\textwidth
+         */
+         params {
+            @in front: bool; [[If $true, makes front visible, otherwise
+                               makes back.]]
+            @in mode: Efl.Ui.Flip_Mode; [[The mode type.]]
+         }
+      }
+   }
+   implements {
+      Efl.Object.constructor;
+      Efl.Ui.Widget.widget_sub_object_add;
+      Efl.Ui.Widget.theme_apply;
+      Efl.Ui.Widget.widget_sub_object_del;
+      Efl.Container.content_iterate;
+      Efl.Container.content_count;
+      Efl.Part.part_get;
+      Efl.Pack.unpack;
+      Efl.Pack.pack;
+      Efl.Pack_Linear.pack_begin;
+      Efl.Pack_Linear.pack_end;
+      Efl.Pack_Linear.pack_before;
+      Efl.Pack_Linear.pack_after;
+      Efl.Pack_Linear.pack_at;
+      Efl.Pack_Linear.pack_content_get;
+      Efl.Pack_Linear.pack_unpack_at;
+      Efl.Pack_Linear.pack_index_get;
+   }
+   events {
+      animate,begin: void; [[Called when flip animation begins]]
+      animate,done: void; [[Called when flip animation is done]]
+   }
+}

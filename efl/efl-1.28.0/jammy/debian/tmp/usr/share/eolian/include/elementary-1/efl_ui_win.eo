@@ -1,0 +1,860 @@
+enum @beta Efl.Ui.Win_Type
+{
+   [[Defines the types of window that can be created.
+
+     These are hints set on a window so that a running Window Manager knows
+     how the window should be handled and/or what kind of decorations it
+     should have.
+
+     Currently, only the X11 backed engines use them.
+   ]]
+
+   unknown = -1, [[Default, unknown type.]]
+   basic, [[A normal window. Indicates a normal, top-level window. Almost every
+            window will be created with this type.]]
+   dialog_basic, [[Used for simple dialog windows.]]
+   desktop, [[For special desktop windows, like a background window holding
+              desktop icons.]]
+   dock, [[The window is used as a dock or panel. Usually would be kept on top
+           of any other window by the Window Manager.]]
+   toolbar, [[The window is used to hold a floating toolbar or similar.]]
+   menu, [[Similar to @Efl.Ui.Win_Type.toolbar.]]
+   utility, [[A persistent utility window, like a toolbox or palette.]]
+   splash, [[Splash window for a starting up application.]]
+   dropdown_menu, [[The window is a dropdown menu, as when an  entry in a
+                    menu bar is clicked.
+                    This hint exists for completeness' sake, as the EFL way of
+                    implementing a menu would not normally use a separate
+                    window for its contents.]]
+   popup_menu, [[Like @Efl.Ui.Win_Type.dropdown_menu, but for the menu triggered by
+                 right-clicking an object.]]
+   tooltip, [[The window is a tooltip. A short piece of explanatory text that
+              typically appear after the mouse cursor hovers over an object
+              for a while. Not commonly used in the EFL.]]
+   notification, [[A notification window, like a warning about battery life or
+                   a new E-Mail received.]]
+   combo, [[A window holding the contents of a combo box. Not commonly used in
+            the EFL.]]
+   dnd, [[Internal use.]]
+   inlined_image, [[Internal use.]]
+   socket_image, [[Internal use.]]
+   fake, [[Internal use.]]
+   /* Some types have been removed from EO. Skipping to 17. */
+   naviframe_basic = 17 [[Used for naviframe style replacement with a back
+                          button instead of a close button.
+                        ]]
+}
+
+enum @beta Efl.Ui.Win_Keyboard_Mode
+{
+   [[The different layouts that can be requested for the virtual keyboard.
+
+     When the application window is being managed by Illume it may request
+     any of the following layouts for the virtual keyboard.
+   ]]
+
+   unknown, [[Unknown keyboard state]]
+   off, [[Request to deactivate the keyboard]]
+   on, [[Enable keyboard with default layout]]
+   alpha, [[Alpha (a-z) keyboard layout]]
+   numeric, [[Numeric keyboard layout]]
+   pin, [[PIN keyboard layout]]
+   phone_number, [[Phone keyboard layout]]
+   hex, [[Hexadecimal numeric keyboard layout]]
+   terminal, [[Full (QWERTY) keyboard layout]]
+   password, [[Password keyboard layout]]
+   ip, [[IP keyboard layout]]
+   host, [[Host keyboard layout]]
+   file, [[File keyboard layout]]
+   url, [[URL keyboard layout]]
+   keypad, [[Keypad layout]]
+   j2me [[J2ME keyboard layout]]
+}
+
+enum Efl.Ui.Win_Indicator_Mode
+{
+   [[Defines the type indicator that can be shown.
+
+      @since 1.22
+   ]]
+   off, [[Request to deactivate the indicator.]]
+   bg_opaque, [[The indicator icon is opaque, as is the indicator background.
+                The content of window is located at the end of the indicator.
+                The area of indicator and window content are not overlapped.]]
+   bg_transparent, [[The icon of indicator is opaque, but the background is transparent.
+                     The content of window is located under the indicator in Z-order.
+                     The area of indicator and window content are overlapped.]]
+   hidden [[The indicator is hidden so user can see only the content of window such as in video mode.
+            If user flicks the upper side of window, the indicator is shown temporarily.]]
+}
+
+enum @beta Efl.Ui.Win_Modal_Mode
+{
+   [[Defines the mode of a modal window.]]
+
+   none, [[The window is not a modal window.]]
+   modal [[The window is a modal window.]]
+}
+
+enum @beta Efl.Ui.Win_Urgent_Mode
+{
+   [[Defines the mode of a urgent window.]]
+
+   none,  [[The window is not a urgent window.]]
+   urgent [[The window is a urgent window.]]
+}
+
+enum Efl.Ui.Win_Move_Resize_Mode
+{
+   [[Define the move or resize mode of a window.
+
+     The user can request the display server to start moving or resizing
+     the window by combining these modes. However only limited combinations
+     are allowed.
+
+     Currently, only the following 9 combinations are permitted.
+     More combinations may be added in future:
+     1. move,
+     2. top,
+     3. bottom,
+     4. left,
+     5. right,
+     6. top | left,
+     7. top | right,
+     8. bottom | left,
+     9. bottom | right.
+
+     @since 1.22
+   ]]
+
+   move = 1,           [[Start moving window]]
+   top = (1 << 1),     [[Start resizing window to the top]]
+   bottom = (1 << 2),  [[Start resizing window to the bottom]]
+   left = (1 << 3),    [[Start resizing window to the left]]
+   right = (1 << 4)    [[Start resizing window to the right]]
+}
+
+class Efl.Ui.Win extends Efl.Ui.Widget implements Efl.Canvas.Scene, Efl.Access.Window,
+                  Efl.Access.Component, Efl.Access.Widget.Action,
+                  Efl.Content, Efl.Input.State, Efl.Input.Interface, Efl.Screen,
+                  Efl.Text, Efl.Ui.Widget_Focus_Manager,
+                  Efl.Ui.Focus.Manager_Window_Root
+   composites     Efl.Config
+{
+   [[Efl UI window class.
+
+     @since 1.22
+   ]]
+   methods {
+      @property indicator_mode {
+           [[In some environments you may have an indicator that
+           shows battery status, reception, time etc. This is the indicator.
+
+           Sometimes you don't want this because you provide the same functionality
+           inside your app, so this will request that the indicator is disabled in
+           such circumstances. The default settings depends on the environment.
+           For example, on phones, the default is to enable the indicator.
+           The indicator is disabled on devices like televisions however.
+         ]]
+         set {
+         }
+         get {
+         }
+         values {
+            type: Efl.Ui.Win_Indicator_Mode; [[The type, one of @Efl.Ui.Win_Indicator_Mode.]]
+         }
+      }
+      @property keyboard_mode @beta {
+         [[The keyboard mode of the window.]]
+         set {
+         }
+         get {
+         }
+         values {
+            mode: Efl.Ui.Win_Keyboard_Mode; [[The mode, one of @Efl.Ui.Win_Keyboard_Mode.]]
+         }
+      }
+      @property wm_available_rotations @beta {
+         [[Defines which rotations this window supports.
+
+           The window manager will refer to these hints and rotate the window
+           accordingly, depending on the device orientation, for instance.
+         ]]
+         values {
+            allow_0: bool; [[Normal orientation.]]
+            allow_90: bool; [[Rotated 90 degrees CCW.]]
+            allow_180: bool; [[Rotated 180 degrees.]]
+            allow_270: bool; [[Rotated 270 degrees CCW (i.e. 90 CW).]]
+         }
+         set {
+         }
+         get {
+            return: bool; [[Returns $false if available rotations were
+                            not specified.]]
+         }
+      }
+      @property wm_available_profiles @beta {
+         [[Available profiles on a window.]]
+         set {
+         }
+         get {
+         }
+         values {
+            profiles: const(array<string>); [[A list of profiles.]]
+         }
+      }
+      @property screen_constrain @beta {
+         [[Constrain the maximum width and height of a window to the
+           width and height of the screen.
+
+           When $constrain is $true, $obj will never resize larger than
+           the screen.
+         ]]
+         set {
+         }
+         get {
+         }
+         values {
+            constrain: bool; [[$true to restrict the window's maximum size.]]
+         }
+      }
+      @property prop_focus_skip @beta {
+         [[Set the window to be skipped by keyboard focus.
+
+           This sets the window to be skipped by normal keyboard input.
+           This means a window manager will be asked not to focus this
+           window as well as omit it from things like the taskbar, pager,
+           "alt-tab" list etc. etc.
+
+           Call this and enable it on a window BEFORE you show it for
+           the first time, otherwise it may have no effect.
+
+           Use this for windows that have only output information or
+           might only be interacted with by the mouse or touchscreen,
+           never for typing. This may have
+           side-effects like making the window non-accessible in
+           some cases unless the window is specially handled. Use
+           this with care.
+         ]]
+         set {
+         }
+         values {
+            skip: bool; [[The skip flag state ($true if it is to be skipped).]]
+         }
+      }
+      @property autohide @beta {
+         [[Window's autohide state.
+
+           When closing the window in any way outside of the program control,
+           like pressing the X button in the titlebar or using a command from
+           the Window Manager, a "delete,request" signal is emitted to indicate
+           that this event occurred and the developer can take any action, which
+           may include, or not, destroying the window object.
+
+           When this property is set to $true, the window will be automatically
+           hidden when this event occurs, after the signal is emitted. If this
+           property is $false nothing will happen, beyond the event emission.
+
+           C applications can use this option along with the quit policy
+           $ELM_POLICY_QUIT_LAST_WINDOW_HIDDEN which allows exiting EFL's main
+           loop when all the windows are hidden.
+
+           Note: $autodel and $autohide are not mutually exclusive. The window
+           will be deleted if both are set to $true.
+         ]]
+         values {
+            autohide: bool; [[If $true, the window will automatically hide
+                              itself when closed.]]
+         }
+      }
+      @property exit_on_close {
+         [[Enable quitting the main loop when this window is closed.
+
+           When set, the window's loop object will exit using the passed exit code if the
+           window is closed.
+
+           The @Eina.Value passed should be $EMPTY to unset this state or an int value to be
+           used as the exit code.
+
+           Note this is different from @.exit_on_all_windows_closed which exits when ALL
+           windows are closed.
+         ]]
+         values {
+            exit_code: const(any_value_ref); [[The exit code to use when exiting]]
+         }
+      }
+      @property icon_object {
+         [[A window object's icon.
+
+           This sets an image to be used as the icon for the given
+           window, in the window manager decoration part. The exact
+           pixel dimensions of the object (not object size) will be
+           used and the image pixels will be used as-is when this
+           function is called. If the image object has been updated,
+           then call this function again to source the image pixels
+           and place them in the window's icon. Note that only objects of
+           type @Efl.Canvas.Image or @Efl.Ui.Image are allowed.
+         ]]
+         set {
+            values {
+               icon: Efl.Canvas.Object;
+                  [[The image object to use for an icon.]]
+            }
+         }
+         get {
+            values {
+               icon: const(Efl.Canvas.Object);
+                  [[The Evas image object to use for an icon.]]
+            }
+         }
+      }
+      @property minimized {
+         [[The minimized state of a window.]]
+         set {
+         }
+         get {
+         }
+         values {
+            state: bool; [[If $true, the window is minimized.]]
+         }
+      }
+      @property maximized {
+         [[The maximized state of a window.]]
+         set {
+         }
+         get {
+         }
+         values {
+            maximized: bool; [[If $true, the window is maximized.]]
+         }
+      }
+      @property fullscreen {
+         [[The fullscreen state of a window.]]
+         set {
+         }
+         get {
+         }
+         values {
+            fullscreen: bool; [[If $true, the window is fullscreen.]]
+         }
+      }
+      @property sticky @beta {
+         [[The sticky state of the window.
+
+           Hints the Window Manager that the window in $obj should be
+           left fixed at its position even when the virtual desktop
+           it's on moves or changes.
+         ]]
+         set {
+         }
+         get {
+         }
+         values {
+            sticky: bool; [[If $true, the window's sticky state is enabled.]]
+         }
+      }
+      @property urgent @beta {
+         [[The urgent state of a window.]]
+         set {
+         }
+         get {
+         }
+         values {
+            urgent: Efl.Ui.Win_Urgent_Mode;
+                [[The mode of a urgent window, one of @Efl.Ui.Win_Urgent_Mode.]]
+         }
+      }
+      @property modal @beta {
+         [[The modal state of a window.]]
+         set {
+         }
+         get {
+         }
+         values {
+            modal: Efl.Ui.Win_Modal_Mode; [[The mode of a window, one of @Efl.Ui.Win_Modal_Mode.]]
+         }
+      }
+      @property borderless @beta {
+         [[The borderless state of a window.
+
+           This function requests the Window Manager not to draw any
+           decoration around the window.
+         ]]
+         set {
+         }
+         get {
+         }
+         values {
+            borderless: bool; [[If $true, the window is borderless.]]
+         }
+      }
+      @property win_role @beta {
+         /* FIXME: Do we actually need this? There is only support in X. */
+         [[The role of the window.
+
+           It is a hint of how the Window Manager should handle it. Unlike
+           @.win_type and @.win_name this can be changed at runtime.
+
+           The returned string is an internal one and should not be
+           freed or modified. It will also be invalid if a new role
+           is set or if the window is destroyed.
+         ]]
+         set {
+         }
+         get {
+         }
+         values {
+            role: string; [[The role to set.]]
+         }
+      }
+      @property win_name {
+         [[The window name.
+
+           The meaning of name depends on the underlying windowing system.
+
+           The window name is a construction property that can only be set at
+           creation time, before finalize. In C this means inside $efl_add().
+
+           Note: Once set, it cannot be modified afterwards.
+         ]]
+         set {
+         }
+         get {
+         }
+         values {
+            name: string; [[Window name]]
+         }
+      }
+      @property win_type @beta {
+         [[The type of the window.
+
+           It is a hint of how the Window Manager should handle it.
+
+           The window type is a construction property that can only be set at
+           creation time, before finalize. In C this means inside $efl_add().
+
+           Note: Once set, it cannot be modified afterward.
+
+           If the object is not window object, returns @Efl.Ui.Win_Type.unknown.
+         ]]
+         set {
+         }
+         get {
+         }
+         values {
+            type: Efl.Ui.Win_Type(Efl.Ui.Win_Type.basic); [[Window type]]
+         }
+      }
+      @property accel_preference @beta {
+         [[The hardware acceleration preference for this window.
+
+           This is a constructor function and can only be called before
+           @Efl.Object.finalize.
+
+           This property overrides the global EFL configuration option
+           "accel_preference" for this single window, and accepts the same
+           syntax.
+
+           The $accel string is a freeform C string that indicates
+           what kind of acceleration is preferred. Here "acceleration" generally
+           refers to rendering and the hardware with which the unit application renders GUIs.
+           This may or may not be honored but a best attempt will
+           be made. Known strings are as follows:
+
+           "gl", "opengl" - try use OpenGL.
+           "3d" - try to use a 3d acceleration unit.
+           "hw", "hardware", "accel" - try any acceleration unit (best possible)
+           "none" - use no acceleration but software instead (since 1.16)
+
+           Since 1.14, it is also possible to specify some GL properties for the GL
+           window surface. This allows applications to use GLView with depth, stencil
+           and MSAA buffers with direct rendering. The new accel preference string
+           format is thus "{HW Accel}[:depth{value}[:stencil{value}[:msaa{str}$]$]$]".
+
+           Accepted values for depth are for instance "depth", "depth16", "depth24".
+           Accepted values for stencil are "stencil", "stencil1", "stencil8".
+           For MSAA, only predefined strings are accepted: "msaa", "msaa_low",
+           "msaa_mid" and "msaa_high". The selected configuration is not guaranteed
+           and is only valid in case of GL acceleration. Only the base acceleration
+           string will be saved (e.g. "gl" or "hw").
+
+           Full examples include:
+
+           "gl", - try to use OpenGL
+           "hw:depth:stencil", - use HW acceleration with default depth and stencil buffers
+           "opengl:depth24:stencil8:msaa_mid" - use OpenGL with 24-bit depth,
+                8-bit stencil and a medium number of MSAA samples in the backbuffer.
+
+           Note that this option may be overriden by environment variables
+           or the configuration option "accel_preference_override".
+         ]]
+         values {
+            accel: string; [[Acceleration]]
+         }
+         set {
+         }
+         get {
+         }
+      }
+      @property alpha {
+         [[The alpha channel state of a window.
+
+           If $alpha is true, the alpha channel of the canvas will be
+           enabled possibly making parts of the window completely or
+           partially transparent. This is also subject to the underlying
+           system supporting it, for example a system using a
+           compositing manager.
+
+           Note: Alpha window can be enabled automatically by window
+           theme style's property. If "alpha" data.item is "1" or
+           "true" in window style(eg. elm/win/base/default), the window
+           is switched to alpha automatically without the explicit api
+           call.
+         ]]
+         set {
+         }
+         get {
+         }
+         values {
+            alpha: bool; [[$true if the window alpha channel is enabled,
+                           $false otherwise.]]
+         }
+      }
+      @property stack_id @beta {
+         [[Get the stack ID string of the window as an opaque string.
+
+           This ID is immutable and can never be modified. It will be
+           an opaque string that has no specific defined format or
+           content other than being a string (no character with a
+           value of 0).
+
+           This string is intended for use as a stack master ID to be
+           use by other windows to make this window part of a stack
+           of windows to be placed on top of each other as if they are
+           a series of dialogs or questions one after the other, allowing
+           you to go back through history.]]
+         get {
+         }
+         values {
+            id: string; [[An opaque string that has no specific format
+                          but identifies a specific unique window on the
+                          display.]]
+         }
+      }
+      @property stack_master_id @beta {
+         [[The window stack ID to use as the master top-level.
+
+           This sets the ID string to be used as the master top-level
+           window as the base of a stack of windows. This must be set
+           before the first time the window is shown and should never
+           be changed afterwards.]]
+         set {
+         }
+         get {
+         }
+         values {
+            id: string; [[An opaque string that has no specific format,
+                          but identifies a specific unique window on the
+                          display.]]
+         }
+      }
+      @property stack_base @beta {
+         [[The stack base state of this window
+
+           This is a boolean flag that determines if this window will
+           become the base of a stack at all. You must enable this
+           on a base (the bottom of a window stack) for things to work
+           correctly.
+
+           This state should be set before a window is shown for the
+           first time and never changed afterwards.]]
+
+         set {}
+         get {}
+         values {
+            base: bool; [[$true if this is a stack base window, $false
+                          otherwise.]]
+         }
+      }
+      stack_pop_to @beta {
+         [[Pop (delete) all windows in the stack above this window.
+
+           This will try and delete all the windows in the stack that
+           are above the window.]]
+      }
+      @property exit_on_all_windows_closed @static {
+         [[Enable quitting the main loop when all windows are closed.
+
+           When set, the main loop will quit with the passed exit code once all windows have been closed.
+
+           The @Eina.Value passed should be $EMPTY to unset this state or an int value to be
+           used as the exit code.
+
+           Note this is different from @.exit_on_close which exits when a given window is closed.
+         ]]
+         values {
+            exit_code: const(any_value_ref); [[The exit code to use when exiting.]]
+         }
+      }
+      activate {
+         [[Activate a window object.
+
+           This function sends a request to the Window Manager to activate
+           the window pointed by $obj. If honored by the WM, the window
+           will receive the keyboard focus.
+
+           Note: This is just a request that a Window Manager may ignore,
+           so calling this function does not ensure in any way that the
+           window will be the active one afterwards.
+         ]]
+      }
+      center @beta {
+         [[Center a window on the screen.
+
+           This function centers window $obj horizontally and/or vertically
+           based on the values of $h and $v.
+
+           Note: This is just a request that a Window Manager may ignore,
+           so calling this function does not ensure in any way that the
+           window will be centered afterwards.
+         ]]
+         params {
+            @in h: bool; [[If $true, center horizontally. If $false, do not change horizontal location.]]
+            @in v: bool; [[If $true, center vertically. If $false, do not change vertical location.]]
+         }
+      }
+      move_resize_start {
+         [[Start moving or resizing the window.
+
+           The user can request the display server to start moving or resizing
+           the window by combining modes from @Efl.Ui.Win_Move_Resize_Mode.
+           This API can only be called if none of the following conditions is
+           true:
+
+           1. Called in the absence of a pointer down event,
+           2. Called more than once before a pointer up event,
+           3. Called when the window is already being resized or moved,
+           4. Called with an unsupported combination of modes.
+
+           Right usage:
+           1. Pointer (mouse or touch) down event,
+           2. @.move_resize_start called only once with a supported mode,
+           3. Pointer (mouse or touch) up event.
+
+           If a pointer up event occurs after calling the function, it
+           automatically ends the window move and resize operation.
+
+           Currently, only the following 9 combinations are allowed, and
+           possibly more combinations may be added in the future:
+           1. @Efl.Ui.Win_Move_Resize_Mode.move
+           2. @Efl.Ui.Win_Move_Resize_Mode.top
+           3. @Efl.Ui.Win_Move_Resize_Mode.bottom
+           4. @Efl.Ui.Win_Move_Resize_Mode.left
+           5. @Efl.Ui.Win_Move_Resize_Mode.right
+           6. @Efl.Ui.Win_Move_Resize_Mode.top | @Efl.Ui.Win_Move_Resize_Mode.left
+           7. @Efl.Ui.Win_Move_Resize_Mode.top | @Efl.Ui.Win_Move_Resize_Mode.right
+           8. @Efl.Ui.Win_Move_Resize_Mode.bottom | @Efl.Ui.Win_Move_Resize_Mode.left
+           9. @Efl.Ui.Win_Move_Resize_Mode.bottom | @Efl.Ui.Win_Move_Resize_Mode.right
+
+           In particular move and resize cannot happen simultaneously.
+
+           Note: the result of this API can only guarantee that the request has
+           been forwarded to the server, but there is no guarantee that the
+           request can be processed by the display server.
+         ]]
+         return: bool; [[$true if the request was successfully sent to the
+                         display server, $false in case of error.]]
+         params {
+            @in mode: Efl.Ui.Win_Move_Resize_Mode; [[The requested move or
+                                                     resize mode.]]
+         }
+      }
+      @property hint_base {
+         [[Base size for objects with sizing restrictions.
+
+           This is not a size enforcement in any way, it's just a hint
+           that should be used whenever appropriate.
+
+           @.hint_base + N x @.hint_step is what is calculated for object
+           sizing restrictions.
+
+           See also @.hint_step.
+         ]]
+         values {
+            sz: Eina.Size2D; [[Base size (hint) in pixels.]]
+         }
+      }
+      @property hint_step {
+         [[Step size for objects with sizing restrictions.
+
+           This is not a size enforcement in any way, it's just a hint
+           that should be used whenever appropriate.
+
+           Set this to for an object to scale up by steps and not continuously.
+
+           @.hint_base + N x @.hint_step is what is calculated for object
+           sizing restrictions.
+         ]]
+         values {
+            sz: Eina.Size2D; [[Step size (hint) in pixels.]]
+         }
+      }
+      /* FIXME: maybe not necessary if gesture supports this */
+      pointer_iterate @const @beta {
+         [[Returns an iterator over the current known pointer positions.
+
+           This is used to iterate over the current known multi-touch positions,
+           including the first finger. Each pointer position is represented by
+           an object of type @Efl.Input.Pointer.
+
+           Each finger in a multi touch environment can then be identified
+           by the @Efl.Input.Pointer.touch_id property. The order of the pointers
+           in this iterator is not defined.
+
+           Note: If the input surface supports hovering input, some pointers
+           may not be in a "down" state. To retrieve the list of such pointers,
+           set the $hover value to $true. Remember though that most devices
+           currently don't support this.
+         ]]
+         params {
+            /* FIXME: missing seat. hover is not useful */
+            hover: bool @optional; [[$false by default, $true means to include
+                                     fingers that are currently hovering.]]
+         }
+         return: iterator<const(Efl.Input.Pointer)> @move; [[Iterator to pointer positions]]
+      }
+      @property win_rotation @beta {
+         [[The rotation of this window
+
+           The value will automatically change when the Window Manager of this window changes its rotation.
+           This rotation is automatically applied to all @Efl.Ui.Layout objects.
+         ]]
+         set {
+         }
+         get {
+         }
+         values {
+           rotation : int; [[The rotation of the window]]
+         }
+      }
+      @property focus_highlight_enabled {
+         [[Whether focus highlight is enabled or not on this window, regardless of the global setting.
+
+           See also @.focus_highlight_style.
+           See also @.focus_highlight_animate.
+         ]]
+         set {
+         }
+         get {
+         }
+         values {
+            enabled: bool; [[The enabled value for the highlight.]]
+         }
+      }
+      @property focus_highlight_style {
+         [[Control the widget focus highlight style.
+
+           If $style is $null, the default will be used.
+
+           See also @.focus_highlight_enabled.
+           See also @.focus_highlight_animate.
+         ]]
+         set {
+            /* FIXME: This is async... success here means nothing. */
+            return: bool; [[$true on success, $false otherwise.]]
+         }
+         get {
+         }
+         values {
+            style: string; [[The name of the focus highlight style.]]
+         }
+      }
+      @property focus_highlight_animate {
+         [[Whether focus highlight should animate or not.
+
+           See also @.focus_highlight_style.
+           See also @.focus_highlight_enabled.
+         ]]
+         set {
+         }
+         get {
+         }
+         values {
+            animate: bool; [[The enabled value for the highlight animation.]]
+         }
+      }
+   }
+   implements {
+      class.constructor;
+      Efl.Object.constructor;
+      Efl.Object.destructor;
+      Efl.Object.provider_find;
+      Efl.Object.finalize;
+      Efl.Object.debug_name_override;
+      Efl.Gfx.Entity.visible { set; }
+      Efl.Gfx.Entity.position { set; }
+      Efl.Gfx.Entity.size { set; }
+      Efl.Gfx.Stack.raise_to_top; [[Places the window at the top of the stack, so
+                                   that it's not covered by any other window.]]
+      Efl.Gfx.Stack.lower_to_bottom; [[This action is ignored by the Window.]]
+      Efl.Ui.Widget.theme_apply;
+      Efl.Ui.Focus.Object.focus { get; }
+      Efl.Ui.Focus.Object.on_focus_update;
+      Efl.Ui.Widget.widget_input_event_handler;
+      Efl.Ui.Widget_Focus_Manager.focus_manager_create;
+      Efl.Access.Object.state_set { get; }
+      Efl.Access.Object.i18n_name { get; }
+      Efl.Access.Component.extents { get; }
+      Efl.Access.Widget.Action.elm_actions { get; }
+      Efl.Input.State.modifier_enabled { get; }
+      Efl.Input.State.lock_enabled { get; }
+      Efl.Screen.screen_dpi { get; }
+      Efl.Screen.screen_rotation { get; }
+      Efl.Screen.screen_size_in_pixels { get; }
+      Efl.Screen.screen_scale_factor { get; }
+      Efl.Gfx.Hint.hint_aspect { set; }
+      Efl.Gfx.Hint.hint_weight { set; }
+      Efl.Gfx.Hint.hint_size_max { set; }
+      Efl.Text.text { get; set; }
+      Efl.Ui.L10n.l10n_text { get; set; }
+      Efl.Ui.I18n.language { get; set; }
+      Efl.Canvas.Scene.seat_default { get; }
+      Efl.Canvas.Scene.pointer_position { get; }
+      Efl.Canvas.Pointer.pointer_inside { get; }
+      Efl.Canvas.Scene.image_max_size { get; }
+      Efl.Canvas.Scene.group_objects_calculate;
+      Efl.Canvas.Scene.group_objects_calculating { get; }
+      Efl.Canvas.Scene.objects_at_xy_get;
+      Efl.Canvas.Scene.object_top_at_xy_get;
+      Efl.Canvas.Scene.objects_in_rectangle_get;
+      Efl.Canvas.Scene.object_top_in_rectangle_get;
+      Efl.Canvas.Scene.device { get; }
+      Efl.Canvas.Scene.seat { get; }
+      Efl.Content.content { get; set; }
+      Efl.Content.content_unset;
+      Efl.Part.part_get;
+   }
+   constructors {
+      .win_name;
+      .win_type @optional;
+      .accel_preference;
+   }
+   events {
+      delete,request: void; [[Called when the window receives a delete request]]
+      withdrawn @beta: void; [[Called when window is withdrawn]]
+      minimized: void; [[Called when window is minimized]]
+      normal: void; [[Called when window is set to normal state]]
+      stick @beta: void; [[Called when window is set as sticky]]
+      unstick @beta: void; [[Called when window is no  longer set as sticky]]
+      fullscreen,changed: bool; [[Called when window is set to or from fullscreen]]
+      maximized,changed: bool; [[Called when window is set to or from maximized]]
+      indicator,prop,changed @beta: void; [[Called when indicator is property changed]]
+      win_rotation,changed: int; [[Called when window rotation is changed, sends current rotation in degrees]]
+      profile,changed @beta: void; [[Called when profile is changed]]
+      wm,rotation,changed @beta: void; [[Called when window manager rotation is changed]]
+      theme,changed: void; [[Called when theme is changed]]
+      elm,action,block_menu @beta: void; [[Called when elementary block menu action occurs]]
+      pause: void; [[Called when the window is not going be displayed for some time]]
+      resume: void; [[Called before a window is rendered after a pause event]]
+   }
+}

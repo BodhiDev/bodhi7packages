@@ -1,0 +1,146 @@
+enum @beta Efl.Net.Session_State {
+    [[Provides the session connectivity state.
+    ]]
+    offline, [[No access point is connected.]]
+    local, [[At least one access point has connected and the internet connection hasn't been verified.]]
+    online, [[At least one access point has connected and the internet connection has been verified.]]
+}
+
+/* keep in sync with efl_net_control_technology.eo, comment what doesn't make sense */
+enum @beta Efl.Net.Session_Technology {
+    [[Bitwise-able technologies to allow for a network session.
+    ]]
+    unknown = 0, [[Type: unknown]]
+/*    system = (1 << 0), [[Type: system]]*/
+    ethernet = (1 << 1), [[Type: ethernet]]
+    wifi = (1 << 2), [[Type: WiFi]]
+    bluetooth = (1 << 3), [[Type: Bluetooth]]
+    cellular = (1 << 4), [[Type: cellular/mobile]]
+/*    gps = (1 << 5), [[Type: GPS]]*/
+    vpn = (1 << 6), [[Type: Virtual Private Network]]
+    gadget = (1 << 7), [[Type: USB gadget]]
+/*    p2p = (1 << 8), [[Type: Peer-2-Peer]]*/
+    all = (Efl.Net.Session_Technology.ethernet | Efl.Net.Session_Technology.wifi | Efl.Net.Session_Technology.bluetooth | Efl.Net.Session_Technology.cellular | Efl.Net.Session_Technology.vpn | Efl.Net.Session_Technology.gadget), [[All technology types]]
+}
+
+class @beta Efl.Net.Session extends Efl.Loop_Consumer {
+    [[Used by application to request network connectivity.
+
+      This API is targeted at applications that need access to the
+      network, specifying the allowed bearer technologies to connect
+      to the internet, as well as whether local networking is enough
+      or validated internet access is required.
+
+      Some platforms may not implement the backend for this class. In
+      this cases the system will report always @.state "online"
+      (@Efl.Net.Session_State.online) and other properties will be
+      $NULL, such as @.network_name, @.interface, @.ipv4 and @.ipv6; as well as
+      @.technology is set to @Efl.Net.Session_Technology.unknown. As such
+      if you need to detect for an actual backend, check if the
+      state is online but those properties are $NULL or technology is
+      unknown.
+
+      Note: the @.connect method is subject to backend policy. For
+      instance, ConnMan uses
+      https://github.com/aldebaran/connman/blob/master/doc/session-policy-format.txt
+    ]]
+    events {
+        changed: void; [[Called when some properties were changed.]]
+    }
+
+    methods {
+        connect {
+            [[Asks the session to be connected.
+
+              This method doesn't need to be called if an
+              application only needs to monitor the connectivity state,
+              such as  a poller which will only try to access the
+              webservice when there is an existing connection, without
+              triggering one.
+
+              This method is subject to backend policy. For instance,
+              ConnMan uses
+              https://github.com/aldebaran/connman/blob/master/doc/session-policy-format.txt
+            ]]
+            params {
+                online_required: bool; [[If $false, access points with local state are enough. If $true, the access point must be in online state, with a validated internet connection]]
+                technologies_allowed: Efl.Net.Session_Technology; [[Bitwise OR of technologies to allow]]
+            }
+        }
+
+        disconnect {
+            [[Indicates this session doesn't need a connection anymore.
+
+              This reverses the effect of @.connect, let the system
+              disconnect if nothing else needs a connection. You can
+              still use the session object to monitor the connectivity
+              state via properties and "changed" event.
+            ]]
+        }
+
+        @property network_name {
+            [[The user-friendly access point name.]]
+            get { }
+            values {
+                name: string; [[Access point name]]
+            }
+        }
+
+        @property state {
+            [[If the session connectivity is offline, local or online.
+
+              Note: if there is no backend for this class, then state
+              will be always online, however @.technology will be
+              unknown, @.interface, @.network_name, @.ipv4 and @.ipv6 will be
+              $NULL.
+            ]]
+            get { }
+            values {
+                state: Efl.Net.Session_State; [[Network session state]]
+            }
+        }
+
+        @property technology {
+            [[The access point technology that backs this session]]
+            get { }
+            values {
+                technology: Efl.Net.Session_Technology; [[Network session technology]]
+            }
+        }
+
+        @property interface {
+            [[The interface allows the application to assign the socket to a given device using SO_BINDTODEVICE]]
+            get { }
+            values {
+                interface: string; [[Network interface to bind to]]
+            }
+        }
+
+        @property ipv4 {
+            [[IPv4 in use for this session.]]
+            get { }
+            values {
+                address: string; [[IPv4 address]]
+                netmask: string; [[IPv4 netmask]]
+                gateway: string; [[IPv4 gateway]]
+            }
+        }
+
+        @property ipv6 {
+            [[IPv6 in use for this session.]]
+            get { }
+            values {
+                address: string; [[IPv6 address]]
+                prefix_length: uint8; [[IPv6 prefix]]
+                netmask: string; [[IPv6 netmask]]
+                gateway: string; [[IPv6 gateway]]
+            }
+        }
+    }
+
+    implements {
+        Efl.Object.destructor;
+        Efl.Object.constructor;
+        Efl.Object.finalize;
+    }
+}

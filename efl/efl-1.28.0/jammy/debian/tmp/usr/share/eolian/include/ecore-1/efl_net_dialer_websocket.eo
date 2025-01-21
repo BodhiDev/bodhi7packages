@@ -1,0 +1,328 @@
+import eina_types;
+import efl_net_http_types;
+
+enum @beta Efl.Net.Dialer_Websocket_Streaming_Mode {
+    [[How to map WebSocket to EFL I/O Interfaces.
+    ]]
+    disabled, [[@Efl.Io.Writer.write and @Efl.Io.Reader.read will fail by returning ENOSTR]]
+    binary, [[@Efl.Io.Writer.write will result in @Efl.Net.Dialer_Websocket.binary_send]]
+    text, [[@Efl.Io.Writer.write will result in @Efl.Net.Dialer_Websocket.text_send]]
+}
+
+enum @beta Efl.Net.Dialer_Websocket_Close_Reason {
+    [[Registered reasons for the CLOSE (opcode=0x8).
+
+      These are the well known reasons, with some ranges being defined
+      using "_start" and "end" suffixes.
+
+      See https://tools.ietf.org/html/rfc6455#section-7.4.1
+    ]]
+    normal = 1000, [[Indicates a normal closure, meaning that the purpose for which the connection was established has been fulfilled.]]
+    going_away = 1001, [[Indicates that an endpoint is "going away", such as a server going down or a browser having navigated away from a page.]]
+    protocol_error = 1002, [[Indicates that an endpoint is terminating the connection due to a protocol error.]]
+    no_reason = 1005, [[Reserved value and MUST NOT be set as a status code in a Close control frame by an endpoint. It is designated for use in applications expecting a status code to indicate that no status code was actually present.]]
+    abruptly = 1006, [[Reserved value and MUST NOT be set as a status code in a Close control frame by an endpoint.  It is designated for use in applications expecting a status code to indicate that the connection was closed abnormally, e.g., without sending or receiving a Close control frame.]]
+    unexpected_data = 1003, [[Indicates that an endpoint is terminating the connection because it has received a type of data it cannot accept (e.g., an endpoint that understands only text data MAY send this if it receives a binary message).]]
+    inconsistent_data = 1007, [[Indicates that an endpoint is terminating the connection because it has received data within a message that was not consistent with the type of the message (e.g., non-UTF-8 data within a text message).]]
+    policy_violation = 1008, [[Indicates that an endpoint is terminating the connection because it has received a message that violates its policy.  This is a generic status code that can be returned when there is no other more suitable status code (e.g., 1003 or 1009) or if there is a need to hide specific details about the policy.]]
+    too_big = 1009, [[Indicates that an endpoint is terminating the connection because it has received a message that is too big for it to process.]]
+    missing_extension = 1010, [[Indicates that an endpoint (client) is terminating the connection because it has expected the server to negotiate one or more extension, but the server didn't return them in the response message of the WebSocket handshake.  The list of extensions that are needed SHOULD appear in the reason part of the Close frame.  Note that this status code is not used by the server, because it can fail the WebSocket handshake instead.]]
+    server_error = 1011, [[Indicates that a server is terminating the connection because it encountered an unexpected condition that prevented it from fulfilling the request.]]
+    iana_registry_start = 3000, [[IANA registry starts at 3000]]
+    iana_registry_end = 3999, [[IANA registry ends at 3999]]
+    private_start = 4000, [[Applications can use range 4000-4999]]
+    private_end = 4999, [[Applications can use range 4000-4999]]
+}
+
+struct @beta Efl.Net.Dialer_Websocket_Closed_Reason {
+    [[Close reason event payload.
+    ]]
+    reason: Efl.Net.Dialer_Websocket_Close_Reason; [[Closing reason]]
+    message: string; [[Textual closing reason message]]
+}
+
+class @beta Efl.Net.Dialer_Websocket extends Efl.Loop_Consumer implements Efl.Net.Dialer {
+    [[WebSocket Dialer (Client).
+
+      The WebSocket Protocol (https://tools.ietf.org/html/rfc6455) is
+      a message-based protocol over HTTP, this allows it to leverage
+      on authentication, cookies, proxies and SSL/TLS.
+
+      Although it uses the HTTP dialer, it's
+      not a subclass and thus not all HTTP features are exposed as the
+      WebSocket has strict requirements that must be respected.
+
+      If the proxy is $NULL (default), then the system proxy will be
+      used. On UNIX that's the environment variable $http_proxy (or
+      '$all_proxy') is used if the given address doesn't match
+      $no_proxy patterns. To disable the proxy use an empty string. If
+      provided, the proxy must be one of the following protocols:
+
+       - http://username:password\@proxyserver:port
+       - http://username\@proxyserver:port
+       - http://proxyserver:port
+       - http://proxyserver  (default port 1080)
+       - socks5://username:password\@proxyserver:port (SOCKSv5)
+       - socks5h://username\@proxyserver:port (let socks server to resolve domain)
+       - socks5://proxyserver:port
+       - socks5://proxyserver (default port 1080)
+       - socks4a://proxyserver:port (SOCKSv4 and let socks server to resolve domain)
+       - socks4://proxyserver:port (SOCKSv4)
+    ]]
+
+    methods {
+        ping {
+            [[Sends a PING (opcode=0x9) to the server.
+
+              The server should reply with a PONG, which will be
+              emitted as "pong" event.
+            ]]
+
+            params {
+                reason: string @optional; [[Reason]]
+            }
+        }
+
+        text_send {
+            [[Sends an UTF-8 TEXT (opcode=0x1) to the server.
+
+              The message text will be delivered as a single
+              entity to the remote peer.
+
+              The text is copied into a local buffer. No references
+              are kept after this method returns.
+            ]]
+            params {
+                text: string; [[Text to send]]
+            }
+        }
+
+        binary_send {
+            [[Sends a binary blob (opcode=0x2) to the server.
+
+              The slice describing the blob goes in a message which will be
+              delivered as a single entity to the remote peer.
+
+              The memory is copied into a local buffer, no references
+              are kept after this method returns.
+            ]]
+            params {
+                blob: const(Eina.Slice); [[Binary blob to send]]
+            }
+        }
+
+        close_request {
+            [[Requests (opcode=0x8) the server to terminate the connection.
+
+              Unlike @Efl.Io.Closer.close, this won't abruptly close
+              the connection, rather it'll queue a message requesting
+              the server to gracefully close it.
+
+              After this method is called you should consider the
+              object in "closing" state. No more messages can be sent
+              (@.text_send, @.binary_send and @.ping will fail).
+
+              The object will be automatically closed with
+              @Efl.Io.Closer.close once the server replies with his own
+              close message, which will be reported as "closed,reason".
+            ]]
+            params {
+                reason: Efl.Net.Dialer_Websocket_Close_Reason; [[Reason for closing]]
+                message: string @optional; [[Additional closing message]]
+            }
+        }
+
+        request_protocol_add {
+            [[Adds a new WebSocket protocol to the request.
+
+              This should be set before dialing.
+            ]]
+            params {
+                protocol: string; [[WebSocket protocol]]
+            }
+        }
+
+        request_protocols_get {
+            [[Returns an iterator to the requested WebSocket protocols]]
+            return: iterator<string> @move @no_unused; [[Iterator to protocols]]
+        }
+
+        request_protocols_clear {
+            [[Clears all request protocols]]
+        }
+
+        response_protocols_get {
+            [[Returns an iterator to the server-replied (response) WebSocket protocols it supports]]
+            return: iterator<string> @move @no_unused; [[Iterator to server protocols]]
+        }
+
+        @property streaming_mode {
+            [[Configures how to map streaming APIs to WebSocket.
+
+              WebSocket is a message-based protocol with these send
+              via @.text_send and @.binary_send and delivered via
+              events such as "message,text" and "message,binary".
+
+              However this class can operate in streaming mode,
+              mapping each @Efl.Io.Writer.write to a @.binary_send if
+              streaming_mode is set to
+              @Efl.Net.Dialer_Websocket_Streaming_Mode.binary, of
+              @.text_send if
+              @Efl.Net.Dialer_Websocket_Streaming_Mode.text
+
+              @Efl.Io.Reader.read may consume less then the whole
+              received message, in this case the rest of the message
+              is kept for the next read call. (Note this differs from
+              SOCK_SEQPACKET + read(2)).
+
+              By default, streaming is disabled
+              (@Efl.Net.Dialer_Websocket_Streaming_Mode.disabled).
+            ]]
+            get { }
+            set { }
+            values {
+                streaming_mode: Efl.Net.Dialer_Websocket_Streaming_Mode; [[Streaming mode]]
+            }
+        }
+
+        @property user_agent {
+            [[The User-Agent to specify.
+
+              This should be set before dialing.
+            ]]
+            get { }
+            set { }
+            values {
+                user_agent: string; [[User-agent]]
+            }
+        }
+
+        @property authentication {
+            [[HTTP authentication to use.
+
+              This should be set before dialing.
+            ]]
+            get { }
+            set { }
+            values {
+                username: string; [[HTTP authentication username]]
+                password: string; [[HTTP authentication password]]
+                method: Efl.Net.Http.Authentication_Method @optional; [[The authentication method to use. Defaults to @Efl.Net.Http.Authentication_Method.basic]]
+                restricted: bool @optional; [[Restrict method]]
+            }
+        }
+
+        @property allow_redirects {
+            [[Allows HTTP redirects to be followed.
+
+              This should be set before dialing.
+            ]]
+            get { }
+            set { }
+            values {
+                allow_redirects: bool; [[$true when following redirects, $false otherwise]]
+            }
+        }
+
+        request_header_add {
+            [[Adds a HTTP request header 'key: value'.
+
+              See @.request_headers_clear
+
+              WebSocket won't allow the following headers to be added
+              as they conflict with its own operation:
+
+                 - Content-Length
+                 - Content-Type
+                 - Transfer-Encoding
+                 - Connection
+                 - Upgrade
+                 - Expect
+                 - Sec-WebSocket-Version
+                 - Sec-WebSocket-Key
+
+              This should be called before dialing.
+            ]]
+            params {
+                @in key: string; [[HTTP request header key]]
+                @in value: string; [[HTTP request header value]]
+            }
+        }
+
+        request_headers_clear {
+            [[Clears all request headers.
+
+              See @.request_header_add
+
+              This should be called before dialing.
+            ]]
+        }
+
+        request_headers_get {
+            [[Returns an iterator to the key-value pairs for request headers]]
+            return: iterator<Efl.Net.Http.Header> @move @no_unused; [[Iterator to key value pairs]]
+        }
+
+        @property cookie_jar {
+            [[This property sets the filename where to read and write cookies.
+
+              By setting a file to load and store cookies, the
+              internal cookie system will be activated, automatically
+              handling HTTP headers such as 'Set-cookie:' and sending
+              the appropriate cookies for a server.
+
+              If a new, empty session is to be used, start with an
+              empty or non-existent file such as one created with
+              eina_file_mkstemp() or tmpfile(). Alternatively use an
+              empty string ("") to keep it in memory.
+
+              If you want to start from a pre-existent cookie jar
+              but do not want to modify it, first copy that file and
+              then pass the new, temporary file.
+
+              Likewise, if you want to store some cookies in the
+              system, create a cookie jar and pass its path to this
+              property.
+
+              Note: that whenever this property is set, even if to the
+              same value, it will flush all cookies to the previously
+              set file, then erase all known cookies, then use the new
+              file (if any).
+            ]]
+            get { }
+            set { }
+            values {
+                path: string; [[Path to cookie jar]]
+            }
+        }
+    }
+
+    events {
+        message,text: string; [[Received a text string message (opcode=0x1)]]
+        message,binary: ptr(const(Eina.Slice)); [[Received a binary message (opcode=0x2)]]
+        pong: string; [[Received a pong (opcode=0xA) with optional message/reason]]
+        closed,reason: Efl.Net.Dialer_Websocket_Closed_Reason; [[Received a request to close the connection. It may be a reply/confirmation from a local request, see @.close_request, or some server-generated reason. After this point, no more messages are allowed to be sent and no more will be received. @Efl.Io.Closer.close will be called.]]
+    }
+
+    implements {
+        Efl.Object.constructor;
+        Efl.Object.invalidate;
+        Efl.Object.destructor;
+        Efl.Net.Dialer.dial;
+        Efl.Net.Dialer.address_dial { get; set; }
+        Efl.Net.Dialer.connected { get; set; }
+        Efl.Net.Dialer.proxy { get; set; }
+        Efl.Net.Dialer.timeout_dial { get; set; }
+        Efl.Net.Socket.address_local { get; }
+        Efl.Net.Socket.address_remote { get; set; }
+        Efl.Io.Reader.read;
+        Efl.Io.Reader.can_read { get; set; }
+        Efl.Io.Reader.eos { get; set; }
+        Efl.Io.Writer.write;
+        Efl.Io.Writer.can_write { get; set; }
+        Efl.Io.Closer.close;
+        Efl.Io.Closer.closed { get; }
+        Efl.Io.Closer.close_on_exec { get; set; }
+        Efl.Io.Closer.close_on_invalidate { get; set; }
+    }
+}

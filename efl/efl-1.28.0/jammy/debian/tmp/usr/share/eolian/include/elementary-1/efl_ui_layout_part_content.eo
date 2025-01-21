@@ -1,0 +1,12 @@
+class Efl.Ui.Layout_Part_Content extends Efl.Ui.Layout_Part implements Efl.Content
+{
+   [[Elementary layout internal part class
+
+     @since 1.23
+   ]]
+   data: null;
+   implements {
+      Efl.Content.content { get; set; }
+      Efl.Content.content_unset;
+   }
+}

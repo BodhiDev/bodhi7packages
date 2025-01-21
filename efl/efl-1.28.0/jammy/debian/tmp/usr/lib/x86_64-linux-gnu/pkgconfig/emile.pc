@@ -1,0 +1,12 @@
+prefix=/usr
+libdir=${prefix}/lib/x86_64-linux-gnu
+includedir=${prefix}/include
+
+Name: emile
+Description: efl: emile
+Version: 1.28.99
+Requires: eina, efl
+Requires.private: eo, libjpeg, openssl, zlib, liblz4
+Libs: -L${libdir} -lemile
+Libs.private: -lm -pthread -ldl
+Cflags: -I${includedir}/emile-1

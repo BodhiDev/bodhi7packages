@@ -1,0 +1,29 @@
+class Efl.Sinusoidal_Interpolator extends Efl.Object implements Efl.Interpolator
+{
+   [[Sinusoidal interpolator. It starts slow, then moves quickly and then slows down
+     again before stopping.
+
+     How long it stays in the quick zone (the slope of the curve) can be customized.
+
+     @since 1.24
+   ]]
+   data: Efl_Sinusoidal_Interpolator_Data;
+   methods {
+      @property slope {
+         [[Customize the sinusoidal effect.]]
+         set {
+         }
+         get {
+         }
+         values {
+            slope: double; [[How steep is the effect. $[0] performs a linear interpolation,
+                             $[1] corresponds to a sinus function and higher numbers produce
+                             an increasingly steep effect.]]
+         }
+      }
+   }
+   implements {
+      Efl.Object.constructor;
+      Efl.Interpolator.interpolate;
+   }
+}

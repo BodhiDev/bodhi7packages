@@ -1,0 +1,39 @@
+class @beta Efl.Canvas.Layout_Part extends Efl.Object implements Efl.Gfx.Entity, Efl.Ui.Drag, Efl.Canvas.Layout_Part_Type_Provider
+{
+   [[Common class for part proxy objects for @Efl.Canvas.Layout.
+
+     As an @Efl.Part implementation class, all objects of this class are meant
+     to be used for one and only one function call. In pseudo-code, the use
+     of object of this type looks like the following:
+       rect = layout.part("somepart").geometry_get();
+   ]]
+   methods {
+      @property state {
+         [[The name and value of the current state of this part (read-only).
+
+           This is the state name as it appears in EDC description blocks. A
+           state has both a name and a value (double). The default state is
+           "default" 0.0, but this function will return "" if the part is
+           invalid.
+         ]]
+         get {}
+         values {
+            state: string(""); [[The name of the state.]]
+            val: double(0.0); [[The value of the state.]]
+         }
+      }
+   }
+   implements {
+      Efl.Object.finalize;
+      Efl.Object.debug_name_override;
+      Efl.Gfx.Entity.geometry { get; }
+      Efl.Ui.Drag.drag_value { set; get; }
+      Efl.Ui.Drag.drag_size { set; get; }
+      Efl.Ui.Drag.drag_dir { get; }
+      Efl.Ui.Drag.drag_step { set; get; }
+      Efl.Ui.Drag.drag_step_move;
+      Efl.Ui.Drag.drag_page { set; get; }
+      Efl.Ui.Drag.drag_page_move;
+      Efl.Canvas.Layout_Part_Type_Provider.part_type { get; }
+   }
+}

@@ -1,0 +1,58 @@
+import efl_types;
+
+abstract Efl.App extends Efl.Loop implements Efl.Core.Command_Line
+{
+   [[Object representing the application itself.
+
+     @since 1.22
+   ]]
+   data: null;
+   methods {
+      @property app_main @static {
+         [[ Returns the app object that is representing this process
+
+            Note: This function call only works in the main loop thread of the process.
+         ]]
+         get {}
+         values {
+            app : Efl.App; [[Application for this process]]
+         }
+      }
+      @property build_efl_version {
+         [[ Indicates the version of EFL with which this application was
+            compiled against/for.
+
+           This might differ from @.efl_version.
+         ]]
+         get {}
+         values {
+            version: const(Efl.Version) @by_ref; [[Efl build version]]
+         }
+      }
+      @property efl_version {
+         [[ Indicates the currently running version of EFL.
+
+           This might differ from @.build_efl_version.
+         ]]
+         get {}
+         values {
+            version: const(Efl.Version) @by_ref; [[Efl version]]
+         }
+      }
+   }
+   events {
+      pause: void; [[Called when the application is not going be displayed or otherwise used by a user for some time]]
+      resume: void; [[Called before a window is rendered after a pause event]]
+      standby: void; [[Called when the application's windows are all destroyed]]
+      terminate: void; [[Called before starting the shutdown of the application]]
+      signal,usr1: void; [[System specific, but on unix maps to SIGUSR1 signal to the process -
+                           only called on main loop object]]
+      signal,usr2: void; [[System specific, but on unix maps to SIGUSR2 signal to the process -
+                           only called on main loop object]]
+      signal,hup: void; [[System specific, but on unix maps to SIGHUP signal to the process -
+                          only called on main loop object]]
+   }
+   implements {
+      Efl.Task.priority { get; set; }
+   }
+}

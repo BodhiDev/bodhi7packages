@@ -1,0 +1,40 @@
+class @beta Efl.Canvas.Image extends Efl.Canvas.Image_Internal implements
+                        Efl.Gfx.Image_Load_Controller, Efl.Gfx.Frame_Controller,
+                        Efl.File
+{
+   [[Low-level Image object.
+
+     This replaces the legacy Evas Object Image, with only image-related
+     interfaces: file and data images only. This object does not implement
+     any special features such as proxy, snapshot or GL.
+   ]]
+   data: null;
+   implements {
+      Efl.Gfx.Buffer.buffer_managed_get;
+      Efl.Gfx.Buffer.buffer_managed_set;
+      Efl.Gfx.Buffer.buffer_copy_set;
+      Efl.Gfx.Buffer.buffer_size { get; }
+      Efl.Gfx.Buffer.buffer_map;
+      Efl.Gfx.Buffer.buffer_unmap;
+      Efl.File.loaded { get; }
+      Efl.File.mmap { get; }
+      Efl.File.load;
+      Efl.File.unload;
+      Efl.Gfx.Frame_Controller.animated { get; }
+      Efl.Gfx.Frame_Controller.frame { get; set; }
+      Efl.Gfx.Frame_Controller.frame_count { get; }
+      Efl.Gfx.Frame_Controller.loop_type { get; }
+      Efl.Gfx.Frame_Controller.loop_count { get; }
+      Efl.Gfx.Frame_Controller.frame_duration { get; }
+      Efl.Gfx.Frame_Controller.sector { set; get; }
+      Efl.Gfx.Image_Load_Controller.load_async_start;
+      Efl.Gfx.Image_Load_Controller.load_async_cancel;
+      Efl.Gfx.Image_Load_Controller.load_dpi { get; set; }
+      Efl.Gfx.Image_Load_Controller.load_size { get; set; }
+      Efl.Gfx.Image_Load_Controller.load_orientation { get; set; }
+      Efl.Gfx.Image_Load_Controller.load_scale_down { get; set; }
+      Efl.Gfx.Image_Load_Controller.load_skip_header { get; set; }
+      Efl.Gfx.Image_Load_Controller.load_region { get; set; }
+      Efl.Gfx.Image_Load_Controller.load_region_support { get; }
+   }
+}

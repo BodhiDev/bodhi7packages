@@ -1,0 +1,30 @@
+class Efl.Ui.Button extends Efl.Ui.Layout_Base implements Efl.Input.Clickable, Efl.Ui.Autorepeat,
+                     Efl.Text, Efl.Content,
+                     Efl.Access.Widget.Action
+{
+   [[Push-button widget
+
+     Press it and run some function. It can contain a simple label and icon
+     object and it also has an autorepeat feature.
+
+     The icon can be set using @Efl.Content.content, the text can be set using @Efl.Text.text.
+
+     The events of @Efl.Input.Clickable can be used to listen to a click event from the user.
+
+     @since 1.23
+   ]]
+   implements {
+      class.constructor;
+      Efl.Object.constructor;
+      Efl.Ui.Autorepeat.autorepeat_initial_timeout { set; get; }
+      Efl.Ui.Autorepeat.autorepeat_gap_timeout { set; get; }
+      Efl.Ui.Autorepeat.autorepeat_enabled { set; get; }
+      Efl.Ui.Widget.on_access_activate;
+      Efl.Ui.Widget.widget_input_event_handler;
+      Efl.Access.Widget.Action.elm_actions { get; }
+      Efl.Content.content { get; set; }
+      Efl.Content.content_unset;
+      Efl.Text.text { get; set; }
+      Efl.Ui.L10n.l10n_text { get; set; }
+   }
+}

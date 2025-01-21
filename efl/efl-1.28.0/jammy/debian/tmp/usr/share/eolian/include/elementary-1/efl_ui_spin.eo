@@ -1,0 +1,18 @@
+class Efl.Ui.Spin extends Efl.Ui.Layout_Base implements Efl.Ui.Range_Display,
+Efl.Ui.Format, Efl.Access.Widget.Action
+{
+   [[A Spin.
+
+     This is a widget which allows the user to increase or decrease a numeric value
+     using arrow buttons. It's a basic type of widget for choosing and displaying values.
+
+     @since 1.23
+   ]]
+   implements {
+      Efl.Object.constructor;
+      Efl.Object.destructor;
+      Efl.Ui.Range_Display.range_limits { get; set; }
+      Efl.Ui.Range_Display.range_value { get; set; }
+      Efl.Ui.Format.apply_formatted_value;
+   }
+}

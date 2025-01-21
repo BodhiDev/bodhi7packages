@@ -1,0 +1,200 @@
+#
+# libecore-dev.install
+usr/include/ecore-*
+usr/lib/*/libecore.so
+usr/lib/*/libecore_audio.so
+usr/lib/*/libecore_con.so
+usr/lib/*/libecore_evas.so
+usr/lib/*/libecore_fb.so
+# Conditionally installed from debian/rules (Linux-only):
+usr/lib/*/libecore_fb.so
+usr/lib/*/libecore_file.so
+usr/lib/*/libecore_imf_evas.so
+usr/lib/*/libecore_imf.so
+usr/lib/*/libecore_input.so
+usr/lib/*/libecore_input_evas.so
+usr/lib/*/libecore_ipc.so
+usr/lib/*/libecore_x.so
+usr/lib/*/pkgconfig/ecore*.pc
+usr/lib/*/cmake/Ecore/*.cmake
+usr/lib/*/cmake/EcoreCxx/*.cmake
+
+usr/include/eldbus-*
+usr/lib/*/libeldbus.so
+usr/lib/*/pkgconfig/eldbus.pc
+usr/lib/*/pkgconfig/eldbus-cxx.pc
+usr/lib/*/cmake/Eldbus/*.cmake
+
+#
+# libector-dev.install
+usr/lib/*/pkgconfig/ector.pc
+usr/lib/*/libector.so
+
+#
+# libedje-dev.install
+usr/include/edje-1
+usr/include/edje-cxx-1
+usr/lib/*/libedje.so
+usr/lib/*/pkgconfig/edje*.pc
+usr/lib/*/cmake/Edje/*.cmake
+
+#
+# libeet-dev.install
+usr/include/eet-1
+usr/include/eet-cxx-1
+usr/lib/*/libeet.so
+usr/lib/*/pkgconfig/eet*.pc
+usr/lib/*/cmake/Eet/*.cmake
+usr/lib/*/cmake/EetCxx/*.cmake
+
+#
+# libeeze-dev.install
+usr/include/eeze-*
+usr/lib/*/libeeze.so
+usr/lib/*/pkgconfig/eeze.pc
+usr/lib/*/cmake/Eeze/*.cmake
+
+#
+# libefreet-dev.install
+usr/include/efreet-1/*.h
+usr/lib/*/pkgconfig/efreet.pc
+usr/lib/*/pkgconfig/efreet-mime.pc
+usr/lib/*/pkgconfig/efreet-trash.pc
+usr/lib/*/libefreet.so
+usr/lib/*/libefreet_mime.so
+usr/lib/*/libefreet_trash.so
+usr/lib/*/cmake/Efreet/*.cmake
+
+#
+# libeina-dev.install
+usr/include/eina-1
+usr/include/eina-cxx-1
+usr/lib/*/libeina.so
+usr/lib/*/pkgconfig/eina*.pc
+usr/lib/*/cmake/Eina/*.cmake
+usr/lib/*/cmake//EinaCxx/*.cmake
+
+# libeo
+usr/include/eo-1
+usr/include/eo-cxx-1/
+usr/lib/*/libeo.so
+usr/lib/*/libeo_dbg.so
+usr/lib/*/pkgconfig/eo.pc
+usr/lib/*/pkgconfig/eo-cxx.pc
+usr/share/gdb/auto-load/usr/lib/libeo.so.*-gdb.py
+#usr/share/eo/gdb/eo_gdb.py
+usr/lib/*/cmake/Eo/*.cmake
+usr/lib/*/cmake/EolianCxx/*.cmake
+usr/lib/*/cmake/EoCxx/*.cmake
+#usr/bin/eo_debug
+
+#libefl
+usr/include/efl-1
+usr/include/efl-cxx-1
+usr/lib/*/libefl.so
+usr/lib/*/pkgconfig/efl*.pc
+usr/lib/*/cmake/Efl/*.cmake
+
+#
+# libeio-dev.install
+usr/include/eio-*/*
+usr/lib/*/libeio.so
+usr/lib/*/pkgconfig/eio*.pc
+usr/lib/*/cmake/Eio/*.cmake
+
+#
+# libelementary-dev.install
+usr/include/elementary-1
+usr/include/elementary-cxx-1
+usr/lib/*/libelementary.so
+usr/lib/*/pkgconfig/elementary.pc
+usr/lib/*/pkgconfig/elementary-cxx.pc
+usr/lib/*/cmake/Elementary/*.cmake
+
+#
+# libelput-dev.install
+usr/include/elput-*
+usr/lib/*/libelput.so
+usr/lib/*/pkgconfig/elput.pc
+
+#
+# libelua-dev.install
+usr/include/elua-1
+usr/lib/*/libelua.so
+usr/lib/*/pkgconfig/elua*.pc
+usr/lib/*/cmake/Elua/*.cmake
+
+#
+# libembryo-dev.install
+usr/include/embryo-1
+usr/lib/*/libembryo.so
+usr/lib/*/pkgconfig/embryo.pc
+
+#
+# libemile-dev.install
+usr/include/emile-1
+usr/lib/*/libemile.so
+usr/lib/*/pkgconfig/emile*.pc
+usr/lib/*/cmake/Emile/*.cmake
+
+#
+# libemotion-dev.install
+usr/include/emotion-1
+usr/lib/*/libemotion.so
+usr/lib/*/pkgconfig/emotion.pc
+usr/lib/*/cmake/Emotion/*.cmake
+
+#
+# libeolian-dev.install
+usr/include/eolian*
+usr/lib/*/libeolian.so
+usr/lib/*/pkgconfig/eolian*.pc
+usr/lib/*/cmake/Eolian/*.cmake
+
+#
+# libethumb-dev.install
+usr/include/ethumb-1
+usr/include/ethumb-client-1
+
+usr/lib/*/libethumb.so
+usr/lib/*/libethumb_client.so
+
+usr/lib/*/pkgconfig/ethumb.pc
+usr/lib/*/pkgconfig/ethumb_client.pc
+usr/lib/*/pkgconfig/ethumb-client.pc
+usr/lib/*/cmake/Ethumb/*.cmake
+usr/lib/*/cmake/EthumbClient/*.cmake
+
+#
+# libevas-dev.install
+usr/include/evas-1
+usr/include/evas-cxx-1
+usr/lib/*/libevas.so
+usr/lib/*/pkgconfig/evas*.pc
+usr/lib/*/cmake/Evas/*.cmake
+usr/lib/*/cmake/EvasCxx/*.cmake
+
+# debugging & testing utilities
+#usr/bin/efl_canvas_wl_test_stack
+#usr/bin/efl_canvas_wl_test
+
+#
+# exactness
+#usr/lib/*/libexactness*
+usr/lib/*/libexactness_play.so
+usr/lib/*/libexactness_record.so
+#usr/bin/exactness*
+#usr/share/exactness/*
+
+#
+# install eo files
+#usr/share/eolian/include/ecore-1/*.eo*
+#usr/share/eolian/include/edje-1/*.eo*
+
+#usr/share/eolian/include/efl-1/*.eo*
+#usr/share/eolian/include/efl-canvas-wl-1/*.eo*
+#usr/share/eolian/include/eio-1/*.eo*
+#usr/share/eolian/include/elementary-1/*.eo*
+#usr/share/eolian/include/emotion-1/*.eo*
+#usr/share/eolian/include/eo-1/*.eo*
+#usr/share/eolian/include/evas-1/*.eo*

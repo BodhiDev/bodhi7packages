@@ -1,0 +1,22 @@
+class @beta Efl.Ui.Calendar_Item extends Efl.Object implements Efl.Ui.Focus.Object
+{
+    [[Item in a @Efl.Ui.Calendar
+
+      @Efl.Object.parent.set is the @Efl.Ui.Calendar object where this item is in.
+
+      This object is usally internal and should not be instantiated or used.
+    ]]
+    methods {
+       @property day_number {
+          [[Day number]]
+          values {
+            i : int; [[Day number]]
+          }
+       }
+    }
+    implements {
+       Efl.Ui.Focus.Object.focus {set;}
+       Efl.Ui.Focus.Object.focus_parent {get;}
+       Efl.Ui.Focus.Object.focus_geometry {get;}
+    }
+}

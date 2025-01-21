@@ -1,0 +1,12 @@
+prefix=/usr
+libdir=${prefix}/lib/x86_64-linux-gnu
+includedir=${prefix}/include
+
+Name: ecore-evas
+Description: efl: ecore_evas
+Version: 1.28.99
+Requires: evas, ecore, ector
+Requires.private: eina, ecore-input-evas, eo, efl, emile, ecore-input, eet
+Libs: -L${libdir} -lecore_evas
+Libs.private: -lm -pthread -ldl
+Cflags: -I${includedir}/ecore-evas-1

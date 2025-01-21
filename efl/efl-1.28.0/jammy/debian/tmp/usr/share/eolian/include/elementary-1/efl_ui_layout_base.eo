@@ -1,0 +1,143 @@
+abstract Efl.Ui.Layout_Base extends Efl.Ui.Widget implements Efl.Container,
+                     Efl.Ui.Factory_Bind,
+                     Efl.Layout.Calc, Efl.Layout.Signal,
+                     Efl.Layout.Group
+{
+   [[EFL layout widget abstract.
+
+     A "layout" in the context of EFL is an object which interfaces with the internal layout engine.
+     Layouts are created using the EDC language, and any widget which implements this abstract must
+     have a corresponding theme group to load in order to graphically display anything.
+
+     Theme groups for EFL widgets must be versioned. This means having a "version" $[data.item] key in
+     the theme group for the widget. If the loaded theme group for a widget has version info which
+     is lower than the currently-running EFL version, a warning will be printed to notify the user that
+     new features may be available. If the loaded theme group for a widget has no version info, an
+     error will be generated. If the loaded theme group for a widget has a version that is newer than
+     the currently-running EFL version, a critical error will be printed to notify the user that
+     the theme may not be compatible.
+
+     @since 1.22
+   ]]
+   c_prefix: efl_ui_layout;
+   data: Efl_Ui_Layout_Data;
+   methods {
+      @property finger_size_multiplier {
+         [[Set a multiplier for applying finger size to the layout.
+
+           By default, any widget which inherits from this class will apply
+           the finger_size global config value with a 1:1 width:height ratio during sizing
+           calculations. This will cause the widget to scale its size based on the finger_size
+           config value.
+
+           To disable finger_size in a layout's sizing calculations, set the multipliers for both
+           axes to 0.
+
+           @since 1.23
+         ]]
+         set {}
+         get {}
+         values {
+            multiplier_x: uint; [[Multiplier for X axis.]]
+            multiplier_y: uint; [[Multiplier for Y axis.]]
+         }
+      }
+      @property theme {
+         [[The theme of this widget, defines which edje group will be used.
+
+           Based on the type of widget ($klass), a given $group and a
+           $style (usually "default"), the edje group name will be formed
+           for this object.
+
+           Widgets that inherit from this class will call this function
+           automatically so it should not be called by applications, unless
+           you are dealing directly with a @Efl.Ui.Layout object.
+
+           Note that $style will be the new style of this object, as retrieved by
+           @Efl.Ui.Widget.style. As a consequence this function can only be
+           called during construction of the object, before finalize.
+
+           If this returns $false the widget is very likely to become non-functioning.
+         ]]
+         set {
+            return: Eina.Error;
+               [[Whether the theme was successfully applied or not, see
+                 the Efl.Ui.Theme.Apply_Error subset of @Eina.Error for more information.]]
+         }
+         get {
+         }
+         values {
+            klass: string; [[The class of the group, eg. "button".]]
+            group: string("base"); [[The group, eg. "base".]]
+            style: string("default"); [[The style to use, eg "default".]]
+         }
+      }
+      @property automatic_theme_rotation @beta {
+        [[This flag tells if this object will automatically mirror the rotation changes of the window to this object.
+        ]]
+        values {
+           automatic : bool; [[$true to mirror orientation changes to the theme $false otherwise]]
+        }
+      }
+      theme_rotation_apply  @beta {
+        [[Apply a new rotation value to this object.]]
+        params {
+          orientation : int; [[The new rotation angle, in degrees.]]
+        }
+      }
+      @property theme_version {
+        [[The version a theme does offer
+
+          A theme might offer older theme versions, with this property you can detect which version is running. The theme version is bound to the efl-version, the oldest version you will get here is 123. The newest of released EFL.
+
+          This property is only valid after @Efl.Ui.Widget.theme_apply has been called.
+
+          In case there is no version specified, 0 is returned.
+        ]]
+        get {
+
+        }
+        values {
+          version : int; [[Theme version of this objec, for a EFL version called 1.23, this property will return 123.]]
+        }
+      }
+   }
+   implements {
+      class.constructor;
+      Efl.Object.constructor;
+      Efl.Object.finalize;
+      Efl.Object.invalidate;
+      Efl.Canvas.Group.group_calculate;
+      Efl.Canvas.Group.group_change;
+      Efl.Layout.Calc.calc_freeze;
+      Efl.Layout.Calc.calc_thaw;
+      Efl.Layout.Calc.calc_auto_update_hints { get; set; }
+      Efl.Layout.Calc.calc_size_min;
+      Efl.Layout.Calc.calc_parts_extends;
+      Efl.Layout.Calc.calc_force;
+      Efl.Layout.Signal.signal_callback_add;
+      Efl.Layout.Signal.signal_callback_del;
+      Efl.Layout.Signal.signal_emit;
+      Efl.Layout.Signal.message_send;
+      Efl.Layout.Signal.signal_process;
+      Efl.Layout.Group.group_data { get; }
+      Efl.Layout.Group.group_size_min { get; }
+      Efl.Layout.Group.group_size_max { get; }
+      Efl.Layout.Group.part_exist { get; }
+      Efl.Ui.Widget.widget_sub_object_add;
+      Efl.Ui.Widget.theme_apply;
+      Efl.Ui.Widget.disabled {set;}
+      Efl.Ui.Widget.widget_sub_object_del;
+      Efl.Ui.Focus.Object.on_focus_update;
+      Efl.Container.content_count;
+      Efl.Container.content_iterate;
+      Efl.Part.part_get;
+      Efl.Ui.Property_Bind.property_bind;
+      Efl.Ui.Factory_Bind.factory_bind;
+      Efl.Ui.L10n.l10n_text { get; set; }
+      Efl.Ui.I18n.language { get; set; }
+   }
+   events {
+      theme,changed: void; [[Called when theme changed]]
+   }
+}

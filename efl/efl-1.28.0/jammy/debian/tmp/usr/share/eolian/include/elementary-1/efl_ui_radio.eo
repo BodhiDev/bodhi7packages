@@ -1,0 +1,49 @@
+class Efl.Ui.Radio extends Efl.Ui.Check implements Efl.Access.Widget.Action
+{
+   [[Elementary radio button class.
+
+     Radio buttons are like check boxes in that they can be either checked or unchecked.
+     However, radio buttons are always bunched together in groups, and only one button in
+     each group can be checked at any given time. Pressing a different button in the group
+     will automatically uncheck any previously checked button.
+
+     They are a common way to allow a user to select one option among a list.
+
+     To handle button grouping, you can either use an @Efl.Ui.Radio_Group_Impl object or
+     use more convenient widgets like @Efl.Ui.Radio_Box.
+
+     @since 1.23
+   ]]
+   methods {
+      @property state_value {
+         [[Integer value that this radio button represents.
+
+           Each radio button in a group must have a unique value. The selected button in a group
+           can then be set or retrieved through the @Efl.Ui.Radio_Group.selected_value property.
+           This value is also informed through the @[Efl.Ui.Radio_Group.value,changed] event.
+
+           All non-negative values are legal but keep in mind that 0 is the starting value for all new groups:
+           If no button in the group has this value, then no button in the group is initially
+           selected. -1 is the value that @Efl.Ui.Radio_Group.selected_value returns when no button
+           is selected and therefore cannot be used.
+         ]]
+         set {}
+         get {}
+         values {
+            value: int; [[The value to use when this radio button is selected.
+                          Any value can be used but 0 and -1 have special meanings as described
+                          above.]]
+         }
+      }
+   }
+   implements {
+      Efl.Object.constructor;
+      Efl.Object.destructor;
+      Efl.Ui.Widget.theme_apply;
+      Efl.Ui.Widget.on_access_activate;
+      Efl.Ui.Widget.widget_input_event_handler;
+      Efl.Access.Object.state_set { get; }
+      Efl.Access.Widget.Action.elm_actions { get; }
+      Efl.Ui.Selectable.selected {set;}
+   }
+}

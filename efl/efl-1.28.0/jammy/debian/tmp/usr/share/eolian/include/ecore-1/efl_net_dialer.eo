@@ -1,0 +1,130 @@
+error @beta Efl.Net.Dialer_Error.COULDNT_CONNECT = "Couldn't connect to server"; [[The dialer could not connect to the remote]]
+error @beta Efl.Net.Dialer_Error.COULDNT_RESOLVE_PROXY = "Couldn't resolve proxy name"; [[The dialer could not resolve the given proxy server]]
+error @beta Efl.Net.Dialer_Error.PROXY_AUTHENTICATION_FAILED = "Proxy authentication failed"; [[The dialer failed to authenticate against the proxy server]]
+
+interface @beta Efl.Net.Dialer extends Efl.Net.Socket {
+    [[Creates a client socket to reach a remote peer.
+
+      The connection process starts when @.dial is executed. This
+      allows implementations to request more complex setups
+      requiring a live object handle, which is not possible during
+      construction.
+
+      The socket should be considered connected and ready to use only
+      when "connected" event is dispatched. By then
+      @Efl.Io.Reader.can_read and @Efl.Io.Writer.can_write should
+      change accordingly.
+
+      Once the socket is closed, @Efl.Io.Closer.closed will be called
+      and the "closed" event is dispatched.
+    ]]
+    methods {
+        dial {
+            [[Dials to the remote peer.
+
+              This method starts the connection process, resolves the
+              address and then proceeds to the actual connection.
+
+              Once the connection is fully setup "connected" event is
+              dispatched.
+            ]]
+            params {
+                address: string; [[Remote address]]
+            }
+            return: Eina.Error; [[0 on success, error code otherwise]]
+        }
+
+        @property address_dial {
+            [[Returns the address given to @.dial.
+
+              If the resolved address is required, listen to
+              "resolved" event and use the
+              @Efl.Net.Socket.address_remote property.
+            ]]
+            get { }
+            set @protected { }
+            values {
+                address: string; [[Remote address]]
+            }
+        }
+
+        @property connected {
+            [[Returns whenever the socket is connected or not.
+
+              Whenever this property becomes true the "connected" event
+              should be dispatched.
+            ]]
+            get { }
+            set @protected { }
+            values {
+                connected: bool; [[$true if the socket is connected, $false otherwise]]
+            }
+        }
+
+        @property proxy {
+            [[Controls/retrieves if the dialer should use a proxy.
+
+              The proxy is an URL in the form:
+
+                - protocol://username:password\@proxyserver:port
+
+              Where protocol is defined by class, such as a TCP or
+              UDP, dialer will use 'socks4', 'socks4a', 'socks5' or
+              'socks5h'; while http and websocket will want those or
+              'http'.
+
+              Whenever appropriate dialers may use system proxy if the
+              proxy is $NULL (the default). To forcefully disable
+              proxy, use an empty string ("").
+
+                - http://username:password\@proxyserver:port
+                - http://username\@proxyserver:port
+                - http://proxyserver:port
+                - http://proxyserver  (default port)
+                - socks5://username:password\@proxyserver:port (SOCKSv5)
+                - socks5h://username\@proxyserver:port (let socks server to resolve domain)
+                - socks5://proxyserver:port
+                - socks5://proxyserver (default port 1080)
+                - socks4a://proxyserver:port (SOCKSv4 and let socks server to resolve domain)
+                - socks4://proxyserver:port (SOCKSv4)
+            ]]
+            get { }
+            set { }
+            values {
+                proxy_url: string; [[May be empty or $NULL to unset]]
+            }
+        }
+
+        @property timeout_dial {
+            [[The timeout in seconds to use for dialing/connecting.
+
+              This should be set before dialing.
+            ]]
+            get { }
+            set { }
+            values {
+                seconds: double; [[Timeout value is seconds]]
+            }
+        }
+    }
+
+    events {
+        /* tag nullable once supported by eolian */
+        dialer,resolved: string; [[Notifies @.address_dial was resolved to
+                            @Efl.Net.Socket.address_remote.
+
+                            This is emitted before "connected" and may
+                            be emitted from @Efl.Object.finalize. As such
+                            be sure to connect the callbacks during
+                            the object construction.
+
+                            Some protocols allows redirects and this
+                            may be emitted multiple times, such as
+                            HTTP.
+                          ]]
+        dialer,error: Eina.Error; [[Some error happened and the socket
+                             stopped working.
+                           ]]
+        dialer,connected: void; [[Notifies the socket is connected to the remote peer.]]
+    }
+}

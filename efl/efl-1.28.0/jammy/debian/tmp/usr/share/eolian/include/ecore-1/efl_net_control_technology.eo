@@ -1,0 +1,97 @@
+enum @beta Efl.Net.Control.Technology_Type {
+    [[Technology types
+    ]]
+    unknown, [[Type: unknown]]
+    system, [[Type: system]]
+    ethernet, [[Type: ethernet]]
+    wifi, [[Type: WiFi]]
+    bluetooth, [[Type: Bluetooth]]
+    cellular, [[Type: cellular/mobile]]
+    gps, [[Type: GPS]]
+    vpn, [[Type: Virtual Private Network]]
+    gadget, [[Type: USB gadget]]
+    p2p, [[Type: Peer-2-Peer]]
+}
+
+class @beta Efl.Net.Control.Technology extends Efl.Loop_Consumer {
+    [[A technology that allows control of network access points.
+
+      The @Efl.Net.Control.Manager is composed of multiple technologies, each
+      can be disabled/enabled with @.powered property.
+
+      When powered, the technology will dynamically create and remove
+      access points in
+      @Efl.Net.Control.Manager.access_points.
+    ]]
+    events {
+        changed: void; [[Called when some properties were changed.]]
+    }
+
+    methods {
+        @property powered {
+            [[If $true the technology is available. If $false technology is disabled and if possible rfkill is used.]]
+            get { }
+            set { }
+            values {
+                powered: bool; [[$true if technology is powered, $false otherwise]]
+            }
+        }
+
+        @property tethering {
+            [[Tethering allows the default access point to be bridged to all clients connected through the technology.
+
+              A common use case is to deploy the device as a router, such as
+              a tethered phone allowing a laptop to connect to a 4G
+              network.
+            ]]
+            get { }
+            set { }
+            values {
+                enabled: bool; [[When to enable or disable tethering for this technology.]]
+                identifier: string @optional; [[The name to identify the tethering. For WiFi this will translate to an
+                                                SSID.]]
+                passphrase: string @optional; [[The passphrase for tethering access. For WiFi this will translate to
+                                                WPA passphrase.]]
+            }
+        }
+
+        @property connected {
+            [[If $true the technology has at least one access point connected.]]
+            get { }
+            values {
+                connected: bool; [[$true if technology is connected, $false otherwise]]
+            }
+        }
+
+        @property type {
+            [[The technology type, such as "ethernet" or "wifi"]]
+            get { }
+            values {
+                type: Efl.Net.Control.Technology_Type; [[Technology type]]
+            }
+        }
+
+        scan {
+            [[Explicitly trigger a scan.
+
+              The scan will happen asynchronously in the background,
+              with the results being delivered by events in the
+              technology, @Efl.Net.Control.Manager or @Efl.Net.Control.Access_Point
+              associated with the technology. For example, a scan on
+              WiFi will add and remove access points.
+
+              Try to avoid explicit scans.
+              Rare exceptions to this rule include when the user requests them,
+              such as entering a configuration dialog which demands a fresh
+              state. Otherwise allow the system to perform
+              passive scans in a timely manner.
+            ]]
+            return: future<void> @move; [[Future return for finished background scan]]
+        }
+    }
+
+    implements {
+        Efl.Object.destructor;
+        Efl.Object.name { get; }
+    }
+}

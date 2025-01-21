@@ -1,0 +1,32 @@
+class Efl.Ui.Layout_Part_Box extends Efl.Object implements Efl.Pack_Linear,
+                              Efl.Ui.Layout_Orientable_Readonly
+{
+   [[Represents a Box created as part of a layout.
+
+     Cannot be deleted. This is only a representation of an internal object
+     of an EFL layout.
+
+     @since 1.23
+   ]]
+   data: Efl_Ui_Layout_Box_Data;
+   methods {
+   }
+   implements {
+      Efl.Object.destructor;
+      Efl.Container.content_iterate;
+      Efl.Container.content_count;
+      Efl.Ui.Layout_Orientable.orientation { get; }
+      Efl.Pack.pack_clear;
+      Efl.Pack.unpack_all;
+      Efl.Pack.unpack;
+      Efl.Pack.pack;
+      Efl.Pack_Linear.pack_begin;
+      Efl.Pack_Linear.pack_end;
+      Efl.Pack_Linear.pack_before;
+      Efl.Pack_Linear.pack_after;
+      Efl.Pack_Linear.pack_at;
+      Efl.Pack_Linear.pack_content_get;
+      Efl.Pack_Linear.pack_unpack_at;
+      Efl.Pack_Linear.pack_index_get;
+   }
+}

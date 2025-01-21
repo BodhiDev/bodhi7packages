@@ -1,0 +1,12 @@
+prefix=/usr
+libdir=${prefix}/lib/x86_64-linux-gnu
+includedir=${prefix}/include
+
+Name: ecore-audio
+Description: efl: ecore_audio
+Version: 1.28.99
+Requires: eina, eo
+Requires.private: ecore, efl, sndfile, libpulse
+Libs: -L${libdir} -lecore_audio
+Libs.private: -pthread -lm -ldl
+Cflags: -I${includedir}/ecore-audio-1

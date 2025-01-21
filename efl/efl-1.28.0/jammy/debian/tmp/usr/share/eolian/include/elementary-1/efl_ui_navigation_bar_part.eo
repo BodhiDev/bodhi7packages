@@ -1,0 +1,9 @@
+class @beta Efl.Ui.Navigation_Bar_Part extends Efl.Ui.Layout_Part_Content
+{
+   [[Efl UI Navigation_Bar internal part class]]
+   data: null;
+   implements {
+      Efl.Content.content { set; get; }
+      Efl.Content.content_unset;
+   }
+}

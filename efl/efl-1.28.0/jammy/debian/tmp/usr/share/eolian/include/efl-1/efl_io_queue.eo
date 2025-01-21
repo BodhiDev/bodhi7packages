@@ -1,0 +1,121 @@
+class @beta Efl.Io.Queue extends Efl.Object implements Efl.Io.Reader, Efl.Io.Writer, Efl.Io.Closer {
+    [[Generic In-memory queue of data to be used as I/O.
+
+      This class is to be used to receive temporary data using
+      @Efl.Io.Writer.write and hold it until someone calls
+      @Efl.Io.Reader.read to consume it.
+
+      A fixed sized queue can be implemented by setting @.limit
+      followed by @.preallocate
+    ]]
+
+    methods {
+        preallocate {
+            [[Immediately pre-allocate a buffer of at least a given size.]]
+            params {
+                @in size: size; [[Amount of bytes to pre-allocate.]]
+            }
+        }
+
+        @property limit {
+            [[Limit how big the buffer can grow.
+
+              This affects both @.preallocate and how buffer grows
+              when @Efl.Io.Writer.write is called.
+
+              If you want a buffer of an exact size, always set the
+              limit before any further calls that can expand it.
+            ]]
+            get { }
+            set {
+                [[Constructor-only property to set buffer limit. 0 is unlimited]]
+            }
+            values {
+                size: size; [[Defines a maximum buffer size, or 0 to allow unlimited amount of bytes]]
+            }
+        }
+
+        @property usage {
+            [[How many bytes are available for read]]
+            get { }
+            values {
+                usage: size; [[Bytes available to read]]
+            }
+        }
+
+        @property slice {
+            [[Gain temporary access to queue's internal read memory.
+
+              The memory pointed to by slice may be changed by other
+              methods of this class. The event "slice,changed" will be
+              called in those situations.
+            ]]
+            get { }
+            values {
+                slice: Eina.Slice; [[Slice of the current buffer, may be invalidated if @Efl.Io.Writer.write,
+                                     @Efl.Io.Closer.close or @Efl.Io.Reader.read are called.
+                                     It is the full slice available for reading.]]
+            }
+        }
+
+        discard {
+            [[Discard the given number of bytes.
+
+              This has the same effect as reading and discarding the
+              given amount of bytes, without executing the actual
+              copy.
+
+              It's often paired with @.slice, if users read the
+              information from the slice and once they're done, that
+              data must be discarded.
+
+              As an example, some protocols provide messages with a
+              "size" header, in which case @.slice is used to peek into the
+              available memory to see if there is a "size" and if the
+              rest of the slice is the full payload. In that situation the
+              slice may be handled by a processing function. When
+              the function is complete the defined amount of data must be
+              discarded -- with this function.
+            ]]
+            params {
+                amount: size; [[Bytes to discard]]
+            }
+        }
+
+        clear {
+            [[Clears the queue. Same as reading all data.
+
+              This is equivalent to calling @.discard with @.usage
+              amount of bytes.
+            ]]
+        }
+
+        eos_mark {
+            [[Mark this end-of-stream.
+
+              That will set @Efl.Io.Reader.eos to $true and forbid any
+              further writes.
+
+              Unlike @Efl.Io.Closer.close, this won't clear anything.
+            ]]
+        }
+    }
+
+    events {
+        slice,changed: void; [[The read-slice returned by @.slice may have changed.]]
+    }
+
+    implements {
+        Efl.Object.finalize;
+        Efl.Object.destructor;
+        Efl.Io.Reader.read;
+        Efl.Io.Reader.can_read { get; set; }
+        Efl.Io.Reader.eos { get; set; }
+        Efl.Io.Writer.write;
+        Efl.Io.Writer.can_write { get; set; }
+        Efl.Io.Closer.close;
+        Efl.Io.Closer.closed { get; }
+        Efl.Io.Closer.close_on_exec { get; set; }
+        Efl.Io.Closer.close_on_invalidate { get; set; }
+    }
+}

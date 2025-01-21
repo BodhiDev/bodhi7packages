@@ -1,0 +1,31 @@
+class @beta Efl.Canvas.Gesture_Zoom extends Efl.Canvas.Gesture
+{
+   [[Zoom gesture class holding state information.
+     See @Efl.Canvas.Gesture to see what this state is and
+     @[Efl.Canvas.Gesture_Events.gesture,zoom] for a description of the Zoom gesture.
+
+     Application developers receive these objects inside a gesture event and do not typically need to create their own.
+   ]]
+   c_prefix: efl_gesture_zoom;
+   methods {
+      @property radius {
+         [[The current radius (i.e. the distance between the two fingers) of the gesture.]]
+         get {
+         }
+         values {
+            radius: double; [[The radius value in pixels.]]
+         }
+      }
+      @property zoom {
+         [[The current zoom value of the gesture. When the gesture begins, the finger
+           distance is recorded. When the distance becomes greater than the initial one, a
+           zoom value greater than $[1.0] is reported. When it becomes smaller, a zoom value
+           lesser than $[1.0] is reported.]]
+         get {
+         }
+         values {
+            zoom: double; [[The zoom value. $[1.0] means no zoom.]]
+         }
+      }
+   }
+}

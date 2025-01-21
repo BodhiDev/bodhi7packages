@@ -1,0 +1,40 @@
+This needs rethought 
+
+I have stuff in libefl-data that should not be there
+
+check against what should be installed
+
+add efl physics shit
+ for some reason have libefl: symbols-file-contains-current-version-with-debian-revision
+ 
+ see libefl.lintian-overrides file
+ 
+# How can I fix this
+libefl: hardening-no-fortify-functions 
+pkg-e-devel@lists.alioth.debian.org
+
+
+
+dh_installexamples: warning: Cannot auto-detect main package for efl-doc.  If the default is wrong, please use --doc-main-package 
+ 
+ 
+ User defined options
+    buildtype            : plain
+    libdir               : lib/x86_64-linux-gnu
+    localstatedir        : /var
+    prefix               : /usr
+    sysconfdir           : /etc
+    wrap_mode            : nodownload
+    bindings             : ['lua', 'cxx']
+    build-tests          : false
+    docs                 : true
+    drm                  : false
+    elua                 : true
+    embedded-lz4         : false
+    evas-loaders-disabler: ['json', 'avif', 'jxl']
+    fb                   : true
+    network-backend      : none
+    opengl               : full
+    tslib                : false
+    wl                   : false
+    xpresent             : true

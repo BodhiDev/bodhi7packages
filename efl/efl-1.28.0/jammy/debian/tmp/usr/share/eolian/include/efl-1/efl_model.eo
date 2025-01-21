@@ -1,0 +1,205 @@
+struct Efl.Model_Property_Event {
+     [[EFL model property event data structure
+
+       @since 1.23
+     ]]
+     changed_properties: array<stringshare>; [[List of changed properties]]
+     invalidated_properties: array<stringshare>; [[Removed properties identified by name]]
+}
+
+struct Efl.Model_Children_Event {
+     [[Every time a child is added the event @[Efl.Model.child,added] is dispatched
+       passing along this structure.
+
+       @since 1.24
+     ]]
+     index: uint; [[index is a hint and is intended to provide a way for applications
+                    to control/know children relative positions through listings.]]
+     child: Efl.Object; [[If an object has been built for this index and it is currently tracked by
+                          the parent, it will be available here.]]
+}
+
+interface Efl.Model
+{
+   [[Basic Model abstraction.
+
+     A model in EFL can have a set of key-value properties, where key can only be a string.
+     The value can be anything within an Eina_Value. If a property is not yet available EAGAIN is returned.
+
+     Additionally a model can have a list of children. The fetching of the children is asynchronous, this has the advantage of
+     having as few data sets as possible in the memory itself.
+
+     @since 1.23
+   ]]
+   c_prefix: efl_model;
+      methods {
+         @property properties {
+            [[Get properties from model.
+
+              Properties_get is due to provide callers a way the fetch the
+              current properties implemented/used by the model. The event
+              @[Efl.Model.properties,changed] will be raised to notify
+              listeners of any modifications in the properties.
+
+              See also @[Efl.Model.properties,changed].
+            ]]
+            get {
+            }
+            values {
+               properties: iterator<string> @move; [[Array of current properties]]
+            }
+        }
+        @property property {
+           [[ ]]
+           set {
+              [[Set a property value of a given property name.
+
+               The caller must first read @.properties to obtain the list of available properties
+               before being able to access them through @.property. This function sets
+               a new property value into given property name. Once the
+               operation is completed the concrete implementation should
+               raise @[Efl.Model.properties,changed] event in order to
+               notify listeners of the new value of the property.
+
+               If the model doesn't have the property then there are two
+               possibilities, either raise an error or create the new
+               property in model
+
+               See @.property.get, @[Efl.Model.properties,changed]
+              ]]
+              return: future<any_value_ref>; [[Return an error in case the property could not be set,
+                                               or the value that was set otherwise.]]
+           }
+           get {
+              [[Retrieve the value of a given property name.
+
+                At this point the caller is free to get values from properties.
+                The event @[Efl.Model.properties,changed] may be raised to
+                notify listeners of the property/value.
+
+                See @.properties.get, @[Efl.Model.properties,changed]
+              ]]
+           }
+           keys {
+              property: string; [[Property name]]
+           }
+           values {
+              value: any_value_ref; [[Property value]]
+           }
+        }
+        property_ready_get {
+           [[Get a future value when it changes to something that is not error:EAGAIN
+
+             @.property.get can return an error with code EAGAIN when it doesn't have any
+             meaningful value. To make life easier, this future will resolve when
+             the error:EAGAIN disappears. Either into a failed future in case the error
+             code changed to something else or a success with the value of the property
+             whenever the property finally changes.
+
+
+             The future can also be canceled if the model itself gets destroyed.
+           ]]
+           params {
+              @in property: string; [[Property name.]]
+           }
+           return: future<any_value_ref>; [[Future to be resolved when the property changes to anything other than
+                                            error:EAGAIN]]
+        }
+        children_slice_get {
+               [[Get children slice OR full range.
+
+                 @.children_slice_get behaves in two different ways, it may
+                 provide the slice if $count is non-zero
+                 OR full range otherwise.
+
+                 Since 'slice' is a range, for example if we have 20 children a
+                 slice could be the range from 3(start) with 4(count), see:
+
+                 child 0  [no]
+                 child 1  [no]
+                 child 2  [no]
+                 child 3  [yes]
+                 child 4  [yes]
+                 child 5  [yes]
+                 child 6  [yes]
+                 child 7  [no]
+
+                 Optionally the user can call @.children_count.get to know the
+                 number of children so a valid range can be known in advance.
+
+                 See @.children_count.get
+
+                 Note: The returned children will live only as long as the future
+                 itself. Once the future is done, if you want to keep the object
+                 alive, you need to take a reference for yourself.
+               ]]
+            params {
+                @in start: uint; [[Range begin - start from here.]]
+                @in count: uint; [[Range size. If count is 0, start is
+                               ignored.]]
+            }
+            /* XXX: is this right? */
+            return: future<array<Efl.Object>>; [[Array of children]]
+         }
+         children_index_get {
+              [[Get children as specified by iterator.
+
+                Provided index have to be between 0 and @.children_count.get.
+
+                This function might rely on @.children_slice_get as a fallback.
+              ]]
+            params {
+               @in indices: iterator<uint>; [[Indices of the requested children.]]
+            }
+            return: future<array<Efl.Object>>; [[Array of children]]
+         }
+         @property children_count {
+            [[Number of children.
+
+               After @[.properties,changed] is emitted, @.children_count.get
+               can be used to get the number of children. @.children_count.get
+               can also be used before calling @.children_slice_get so a valid
+               range is known. Event @[Efl.Model.children,count,changed] is
+               emitted when count is finished.
+
+               See also @.children_slice_get.
+            ]]
+            get {
+            }
+            values {
+               count: uint; [[Current known children count]]
+            }
+         }
+         child_add {
+            [[Add a new child.
+
+              Add a new child, possibly dummy, depending on the implementation,
+              of a internal keeping. When the child is effectively
+              added the event @[Efl.Model.child,added] is then raised
+              and the new child is kept along with other children.
+            ]]
+            return: Efl.Object; [[Child object]]
+         }
+         child_del {
+            [[Remove a child.
+
+              Remove a child of a internal keeping. When the child is effectively
+              removed the event @[Efl.Model.child,removed] is then
+              raised to give a chance for listeners to perform any cleanup
+              and/or update references.
+            ]]
+            params {
+               @in child: Efl.Object; [[Child to be removed]]
+            }
+         }
+      }
+
+   events {
+      properties,changed: Efl.Model_Property_Event; [[Event dispatched when
+                                                      properties list is
+                                                      available.]]
+      child,added @beta: Efl.Model_Children_Event; [[Event dispatched when new child is added.]]
+      child,removed @beta: Efl.Model_Children_Event; [[Event dispatched when child is removed.]]
+      children,count,changed: void; [[Event dispatched when children count is finished.]]
+   }
+}

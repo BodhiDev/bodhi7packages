@@ -1,0 +1,34 @@
+class Efl.Ui.Layout_Factory extends Efl.Ui.Caching_Factory
+{
+   [[@Efl.Ui.Factory that creates @Efl.Ui.Layout objects with caching.
+
+     This factory is meant to be used by @Efl.Ui.View objects that use
+     items with Layout and need the items to be created, updated,
+     their model set and connected automatically before the @Efl.Ui.View
+     receives the item instance.
+
+     This class inherits from @Efl.Ui.Caching_Factory and inherits
+     all its properties.
+
+     @since 1.24
+   ]]
+   methods {
+      theme_config {
+         [[Set the theme that will be applied to the created @Efl.Ui.Layout objects.
+           See @Efl.Ui.Layout_Base.theme for more details.
+         ]]
+         params {
+            klass: string; [[The class of the group.]]
+            group: string; [[The group.]]
+            style: string; [[The style to use.]]
+         }
+      }
+   }
+
+   implements {
+      Efl.Object.constructor;
+      Efl.Object.destructor;
+      Efl.Ui.Property_Bind.property_bind;
+      Efl.Ui.Factory_Bind.factory_bind;
+   }
+}

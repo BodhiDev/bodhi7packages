@@ -1,0 +1,31 @@
+interface Efl.Pack_Layout
+{
+   [[Low-level APIs for objects that can lay their children out.
+
+     Used for containers like @Efl.Ui.Box and @Efl.Ui.Table.
+
+     @since 1.23
+   ]]
+   c_prefix: efl_pack;
+   methods {
+      // Note: Do we need a layout_force or a sync flag in layout_request?
+      layout_request {
+         [[Requests EFL to recalculate the layout of this object.
+
+           Internal layout methods might be called asynchronously.
+         ]]
+      }
+      layout_update @protected {
+         [[Implementation of this container's layout algorithm.
+
+           EFL will call this function whenever the contents of this
+           container need to be re-laid out on the canvas.
+
+           This can be overridden to implement custom layout behaviors.
+         ]]
+      }
+   }
+   events {
+      layout,updated: void; [[Sent after the layout was updated.]]
+   }
+}

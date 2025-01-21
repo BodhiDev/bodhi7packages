@@ -1,0 +1,236 @@
+import eina_types;
+
+type Efl.Gfx.Align: double; [[Efl alignment type:
+                              As a horizontal component, 0.0 means the start of the axis
+                              in the direction that the current language reads, 1.0 means the end of the axis.
+
+                              As a vertical component, 0.0 is the top, 1.0 is the bottom.
+
+                              The default for this type is always 0.5 unless explicitly specified.
+
+                              @since 1.24
+                            ]]
+
+enum @beta Efl.Gfx.Colorspace {
+  [[Graphics colorspace type]]
+  argb8888,             [[ARGB 32 bits per pixel, high-byte is Alpha, accessed one 32bit word at a time.]]
+  ycbcr422p601_pl,      [[YCbCr 4:2:2 Planar, ITU.BT-601 specifications. The data pointed to is just an array of row pointer, pointing to the Y rows, then the Cb, then Cr rows.]]
+  ycbcr422p709_pl,      [[YCbCr 4:2:2 Planar, ITU.BT-709 specifications. The data pointed to is just an array of row pointer, pointing to the Y rows, then the Cb, then Cr rows.]]
+  rgb565_a5p,           [[16bit rgb565 + Alpha plane at end - 5 bits of the 8 being used per alpha byte.]]
+  gry8 = 4,             [[8-bit gray image, or alpha only.]]
+  ycbcr422601_pl,       [[YCbCr 4:2:2, ITU.BT-601 specifications. The data pointed to is just an array of row pointer, pointing to line of Y,Cb,Y,Cr bytes.]]
+  ycbcr420nv12601_pl,   [[YCbCr 4:2:0, ITU.BT-601 specifications. The data pointed to is just an array of row pointer, pointing to the Y rows, then the Cb,Cr rows..]]
+  ycbcr420tm12601_pl,   [[YCbCr 4:2:0, ITU.BT-601 specifications. The data pointed to is just an array of tiled row pointer, pointing to the Y rows, then the Cb,Cr rows..]]
+  agry88 = 8,           [[AY 8bits Alpha and 8bits Grey, accessed 1 16bits at a time.]]
+  etc1 = 9,             [[OpenGL ETC1 encoding of RGB texture (4 bit per pixel) @since 1.10.]]
+  rgb8_etc2 = 10,       [[OpenGL GL_COMPRESSED_RGB8_ETC2 texture compression format (4 bit per pixel) @since 1.10.]]
+  rgba8_etc2_eac = 11,  [[OpenGL GL_COMPRESSED_RGBA8_ETC2_EAC texture compression format, supports alpha (8 bit per pixel) @since 1.10.]]
+  etc1_alpha = 12,      [[ETC1 with alpha support using two planes: ETC1 RGB and ETC1 grey for alpha @since 1.11.]]
+  rgb_s3tc_dxt1 = 13,   [[OpenGL COMPRESSED_RGB_S3TC_DXT1_EXT format with RGB only. @since 1.11.]]
+  rgba_s3tc_dxt1 = 14,  [[OpenGL COMPRESSED_RGBA_S3TC_DXT1_EXT format with RGBA punchthrough. @since 1.11.]]
+  rgba_s3tc_dxt2 = 15,  [[DirectDraw DXT2 format with premultiplied RGBA. Not supported by OpenGL itself. @since 1.11.]]
+  rgba_s3tc_dxt3 = 16,  [[OpenGL COMPRESSED_RGBA_S3TC_DXT3_EXT format with RGBA. @since 1.11.]]
+  rgba_s3tc_dxt4 = 17,  [[DirectDraw DXT4 format with premultiplied RGBA. Not supported by OpenGL itself. @since 1.11.]]
+  rgba_s3tc_dxt5 = 18   [[OpenGL COMPRESSED_RGBA_S3TC_DXT5_EXT format with RGBA. @since 1.11.]]
+}
+
+enum Efl.Gfx.Render_Op {
+  [[Graphics render operation mode
+
+    @since 1.23
+  ]]
+  blend = 0, [[Alpha blending onto destination (default); d = d*(1-sa) + s.]]
+  copy  = 1, [[Copy source to destination; d = s.]]
+  last       [[Sentinel value to indicate last enum field during iteration]]
+}
+
+enum Efl.Gfx.Path_Command_Type {
+  [[These values determine how the points are interpreted in a stream of points.
+     @since 1.22
+  ]]
+  end = 0,   [[The end of stream , no more points to process.]]
+  move_to,   [[The next point is the start point of a sub path.]]
+  line_to,   [[The next point is used to draw a line from current point.]]
+  cubic_to,  [[The next three point is used to draw a cubic bezier curve from current point.]]
+  close,     [[Close the current subpath by drawing a line between current point and the first point of current subpath.]]
+  last       [[Sentinel value to indicate last enum field during iteration]]
+}
+
+enum Efl.Gfx.Cap {
+  [[These values determine how the end of opened sub-paths are rendered in a
+    stroke.
+    @Efl.Gfx.Shape.stroke_cap.set
+     @since 1.22
+  ]]
+  butt = 0,  [[The end of lines is rendered as a full stop on the last point itself.]]
+  round,     [[The end of lines is rendered as a half-circle around the last point.]]
+  square,    [[The end of lines is rendered as a square around the last point.]]
+  last       [[Sentinel value to indicate last enum field during iteration]]
+}
+
+enum Efl.Gfx.Join
+{
+  [[These values determine how two joining lines are rendered in a stroker.
+    @Efl.Gfx.Shape.stroke_join.set
+     @since 1.22
+  ]]
+  miter = 0, [[Used to render mitered line joins. The intersection of the strokes is clipped at a line perpendicular to the bisector of the angle between the strokes, at the distance from the intersection of the segments equal to the product of the miter limit value and the border radius.  This prevents long spikes being created.]]
+  round, [[Used to render rounded line joins. Circular arcs are used to join two lines smoothly.]]
+  bevel, [[Used to render beveled line joins. The outer corner of the joined lines is filled by enclosing the triangular region of the corner with a straight line between the outer corners of each stroke.]]
+  last [[Sentinel value to indicate last enum field during iteration]]
+}
+
+enum Efl.Gfx.Gradient_Spread
+{
+  [[Specifies how the area outside the gradient area should be filled.
+    @Efl.Gfx.Gradient.spread.set
+
+     @since 1.22
+  ]]
+  pad, [[The area is filled with the closest stop color. This is the default.]]
+  reflect, [[The gradient is reflected outside the gradient area.]]
+  repeat, [[The gradient is repeated outside the gradient area.]]
+  last [[Sentinel value to indicate last enum field during iteration]]
+}
+
+enum @beta Efl.Gfx.Fill_Rule
+{
+  [[Type defining how an image content get filled.
+  ]]
+  winding = 0, [[Draw a horizontal line from the point to a location outside the shape. Determine whether the direction of the line at each intersection point is up or down. The winding number is determined by summing the direction of each intersection. If the number is non zero, the point is inside the shape. This mode is the default]]
+  odd_even = 1,  [[Draw a horizontal line from the point to a location outside the shape, and count the number of intersections. If the number of intersections is an odd number, the point is inside the shape.]]
+}
+
+struct Efl.Gfx.Dash {
+  [[Type describing dash.
+    @Efl.Gfx.Shape.stroke_dash.set
+
+    @since 1.22
+  ]]
+  length: double;  [[Dash drawing length.]]
+  gap: double;     [[Distance between two dashes.]]
+}
+
+struct Efl.Gfx.Gradient_Stop
+{
+  [[Type defining gradient stops.
+    Describes the location and color of a transition point in a gradient.
+
+    @since 1.22
+  ]]
+  offset: double; [[The location of the gradient stop within the gradient vector]]
+  r: int; [[The component R color of the gradient stop]]
+  g: int; [[The component G color of the gradient stop]]
+  b: int; [[The component B color of the gradient stop]]
+  a: int; [[The component A color of the gradient stop]]
+}
+
+struct @beta Efl.Gfx.Stroke_Color
+{
+  [[Internal structure for @Efl.Gfx.Stroke.]]
+  r: int; [[The component R color of the stroke]]
+  g: int; [[The component G color of the stroke]]
+  b: int; [[The component B color of the stroke]]
+  a: int; [[The component A color of the stroke]]
+}
+
+struct @beta Efl.Gfx.Stroke
+{
+  [[Type defining stroke information.
+    Describes the properties to define the path stroke.
+    @since 1.14
+  ]]
+  scale: double; [[Stroke scale]]
+  width: double; [[Stroke width]]
+  centered: double; [[Stroke centered]]
+  color: Efl.Gfx.Stroke_Color; [[Stroke color]]
+  dash: ptr(Efl.Gfx.Dash); [[Stroke dash]]
+  dash_length: uint; [[Stroke dash length]]
+  cap: Efl.Gfx.Cap; [[Stroke cap]]
+  join: Efl.Gfx.Join; [[Stroke join]]
+  miterlimit: double; [[Stroke miterlimit]]
+}
+
+struct @beta Efl.Gfx.Shape_Public
+{
+   [[Public shape]]
+   stroke: Efl.Gfx.Stroke; [[Internal representation as stroke]]
+}
+
+enum @beta Efl.Gfx.Vg_Composite_Method
+{
+   none,
+   matte_alpha,
+   matte_alpha_inverse,
+   mask_add,
+   mask_substract,
+   mask_intersect,
+   mask_difference
+}
+
+enum Efl.Gfx.Center_Fill_Mode
+{
+   [[How an image's center region (the complement to the border region) should be rendered by EFL @since 1.23]]
+   none = 0, [[Image's center region is $not to be rendered]]
+   default = 1, [[Image's center region is to be $blended with objects underneath it, if it has transparency. This is the default behavior for image objects]]
+   solid = 2 [[Image's center region is to be made solid, even if it has transparency on it]]
+}
+
+enum Efl.Gfx.Change_Flag
+{
+   [[What property got changed for this object @since 1.22]]
+   none    = 0x0, [[Nothing changed.]]
+   matrix  = 0x1, [[Matrix got changed.]]
+   path    = 0x2, [[Path got changed.]]
+   fill    = 0x4, [[Coloring or fill information changed, not geometry.]]
+   all     = 0xffff [[All properties got changed.]]
+}
+
+struct @beta Efl.Gfx.Event.Render_Post
+{
+   [[Data sent along a "render,post" event, after a frame has been rendered. @since 1.23]]
+   updated_area: list<Eina.Rect>; [[A list of rectangles that were
+                                    updated in the canvas.]]
+}
+
+enum Efl.Gfx.Hint_Aspect
+{
+   [[Aspect types/policies for scaling size hints.
+
+     See also @Efl.Gfx.Hint.hint_aspect.
+
+     @since 1.23
+   ]]
+
+   none = 0, [[No preference on either direction of the container
+               for aspect ratio control.]]
+   neither = 1, [[Same effect as disabling aspect ratio preference]]
+   horizontal = 2, [[Use all horizontal container space to place an object,
+                     using the given aspect.]]
+   vertical = 3, [[Use all vertical container space to place an object, using
+                   the given aspect.]]
+   both = 4 [[Use all horizontal and vertical container spaces to place an
+              object (never growing it out of those bounds), using the given
+              aspect.]]
+}
+
+enum @beta Efl.Gfx.Color_Class_Layer {
+   [[Efl Gfx Color Class layer enum]]
+   normal = 0, [[Default color]]
+   outline, [[Outline color]]
+   shadow [[Shadow color]]
+}
+
+type Efl.Font.Size: int; [[Efl font size type @since 1.24]]
+
+error @extern @beta Efl.Gfx.Image.Load_Error.NONE = "XXX"; [[No error on load]]
+error @extern @beta Efl.Gfx.Image.Load_Error.GENERIC = "XXX"; [[A non-specific error occurred]]
+error @extern @beta Efl.Gfx.Image.Load_Error.DOES_NOT_EXIST = "XXX"; [[File (or file path) does not exist]]
+error @extern @beta Efl.Gfx.Image.Load_Error.PERMISSION_DENIED = "XXX"; [[Permission denied to an existing file (or path)]]
+error @extern @beta Efl.Gfx.Image.Load_Error.RESOURCE_ALLOCATION_FAILED = "XXX"; [[Allocation of resources failure prevented load]]
+error @extern @beta Efl.Gfx.Image.Load_Error.CORRUPT_FILE = "XXX"; [[File corrupt (but was detected as a known format)]]
+error @extern @beta Efl.Gfx.Image.Load_Error.UNKNOWN_FORMAT = "XXX"; [[File is not a known format]]
+error @extern @beta Efl.Gfx.Image.Load_Error.CANCELLED = "XXX"; [[Reading operation has been cancelled during decoding]]
+error @extern @beta Efl.Gfx.Image.Load_Error.INCOMPATIBLE_FILE = "XXX"; [[(Edje only) The file pointed to is incompatible, i.e., it doesn't match the library's current version's format.]]
+error @extern @beta Efl.Gfx.Image.Load_Error.UNKNOWN_COLLECTION = "XXX"; [[(Edje only) The group/collection set to load from was not found in the file]]
+error @extern @beta Efl.Gfx.Image.Load_Error.RECURSIVE_REFERENCE = "XXX"; [[(Edje only) The group/collection set to load from had recursive references on its components]]

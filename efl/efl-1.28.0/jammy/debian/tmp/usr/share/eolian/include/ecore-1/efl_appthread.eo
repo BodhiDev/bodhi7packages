@@ -1,0 +1,26 @@
+class @beta Efl.Appthread extends Efl.Loop
+                          implements Efl.ThreadIO, Efl.Io.Reader, Efl.Io.Writer, Efl.Io.Closer, Efl.Core.Command_Line
+{
+   [[This class houses the application's thread and main loop.
+     It works similarly to @Efl.App but allows communicating with it from a different thread
+     through the @Efl.ThreadIO, @Efl.Io.Reader and @Efl.Io.Writer interfaces.
+     Methods can be scheduled to be executed in this thread using @Efl.ThreadIO.call and @Efl.ThreadIO.call_sync.
+   ]]
+   methods {
+   }
+   events {
+   }
+   implements {
+      Efl.Object.constructor;
+      Efl.Object.destructor;
+      Efl.Io.Closer.close;
+      Efl.Io.Closer.closed { get; }
+      Efl.Io.Reader.read;
+      Efl.Io.Reader.can_read { get; set; }
+      Efl.Io.Reader.eos { get; set; }
+      Efl.Io.Writer.write;
+      Efl.Io.Writer.can_write { get; set; }
+      Efl.ThreadIO.call;
+      Efl.ThreadIO.call_sync;
+   }
+}

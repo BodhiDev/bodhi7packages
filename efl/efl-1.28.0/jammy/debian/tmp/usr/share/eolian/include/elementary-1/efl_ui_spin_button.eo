@@ -1,0 +1,78 @@
+class Efl.Ui.Spin_Button extends Efl.Ui.Spin
+                         implements Efl.Ui.Focus.Composition, Efl.Ui.Layout_Orientable, Efl.Ui.Range_Interactive,
+                                    Efl.Access.Widget.Action
+{
+   [[A Button Spin.
+
+     This is a widget which allows the user to increase or decrease
+     numeric values using the arrow buttons or to edit values directly by clicking
+     over them and inputting new ones.
+
+     @since 1.23
+   ]]
+   methods {
+      @property wraparound {
+         [[Control whether the spin should circulate value when it reaches its minimum or maximum value.
+
+           Disabled by default. If disabled, when the user tries to increment the
+           value
+           but displayed value plus step value is bigger than maximum value,
+           the new value will be the maximum value.
+           The same happens when the user tries to decrement it
+           but the value less step is less than minimum value. In this case,
+           the new displayed value will be the minimum value.
+
+           If enabled, when the user tries to increment the value
+           but displayed value plus step value is bigger than maximum value,
+           the new value will become the minimum value. When the user tries to
+           decrement it, if the value minus step is less than minimum value,
+           the new displayed value will be the maximum value.
+
+           E.g.:
+           $min = 10
+           $max = 50
+           $step = 20
+           $displayed = 20
+
+           When the user decrements the value (using left or bottom arrow), it will
+           display $50.]]
+         set {
+         }
+         get {
+         }
+         values {
+            circulate: bool(false); [[$true to enable circulate or $false to disable it.]]
+         }
+      }
+      @property direct_text_input @beta {
+         [[Control whether the spin can be directly edited by the user.
+
+           Spin objects can have editing disabled, in which case they can only
+           be changed by using arrows.
+           This is useful for situations
+           where you don't want your users to write their own value.
+           It's especially useful
+           when using special values. The user can see the real values instead
+           of special label when editing.]]
+         set {
+         }
+         get {
+         }
+         values {
+            direct_text_input: bool(false); [[$true to allow users to directly edit the value.]]
+         }
+      }
+   }
+   implements {
+      Efl.Object.constructor;
+      Efl.Ui.Widget.theme_apply;
+      Efl.Ui.Widget.widget_input_event_handler;
+      Efl.Ui.Focus.Object.on_focus_update;
+      Efl.Ui.Range_Display.range_value { set; }
+      Efl.Ui.Layout_Orientable.orientation { get; set; }
+      Efl.Access.Object.i18n_name { get; }
+      Efl.Access.Widget.Action.elm_actions { get; }
+      Efl.Ui.Format.apply_formatted_value;
+      Efl.Ui.Range_Interactive.range_step { get; set; }
+   }
+}

@@ -1,0 +1,54 @@
+interface @beta Efl.Access.Editable.Text
+{
+   [[Elementary editable text interface]]
+   methods {
+      @property text_content @protected @beta {
+         [[Editable content property]]
+         set {
+            return: bool; [[$true if setting the value succeeded, $false otherwise]]
+         }
+         values {
+            string: string; [[Content]]
+         }
+      }
+      insert @protected @beta {
+      [[Insert text at given position]]
+         params {
+            @in string: string; [[String to be inserted]]
+            @in position: int; [[Position to insert string]]
+         }
+         return: bool; [[$true if insert succeeded, $false otherwise]]
+      }
+      copy @protected @beta {
+      [[Copy text between start and end parameter]]
+         params {
+            @in start: int; [[Start position to copy]]
+            @in end: int; [[End position to copy]]
+         }
+         return: bool; [[$true if copy succeeded, $false otherwise]]
+      }
+      cut @protected @beta {
+      [[Cut text between start and end parameter]]
+         params {
+            @in start: int; [[Start position to cut]]
+            @in end: int; [[End position to cut]]
+         }
+         return: bool; [[$true if cut succeeded, $false otherwise]]
+      }
+      delete @protected @beta {
+      [[Delete text between start and end parameter]]
+         params {
+            @in start: int; [[Start position to delete]]
+            @in end: int; [[End position to delete]]
+         }
+         return: bool; [[$true if delete succeeded, $false otherwise]]
+      }
+      paste @protected @beta {
+      [[Paste text at given position]]
+         params {
+            @in position: int; [[Position to insert text]]
+         }
+         return: bool; [[$true if paste succeeded, $false otherwise]]
+      }
+   }
+}

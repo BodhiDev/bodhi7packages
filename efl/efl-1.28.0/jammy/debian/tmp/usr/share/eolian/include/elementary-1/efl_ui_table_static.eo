@@ -1,0 +1,15 @@
+class @beta Efl.Ui.Table_Static extends Efl.Ui.Table
+{
+   [[Widget container that arranges its elements in a uniform grid.
+
+     For convenience, the grid has an initial size of 100 by 100 cells, so all positions and
+     sizes can be interpreted as percentages.
+     Cells are always shown with the same size, regardless of their content. Therefore, adding
+     content to one cell does not affect other cells.
+   ]]
+   data: null;
+   implements {
+      Efl.Object.constructor;
+      Efl.Pack_Layout.layout_update;
+   }
+}

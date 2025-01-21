@@ -1,0 +1,182 @@
+import efl_gfx_types;
+enum Efl.Text_Font_Weight {
+   [[The weight of a particular font is the thickness of the character outlines relative to their height.
+     The given numerical values follow the TrueType scale (from 100 to 900) and are approximate.
+     It is up to each font to provide all of them.
+     @since 1.24
+     ]]
+   normal,     [[Normal font weight (400).]]
+   thin,       [[Thin font weight (100).]]
+   ultralight, [[Ultralight font weight (200).]]
+   extralight, [[Extralight font weight (200).]]
+   light,      [[Light font weight (300).]]
+   book,       [[Book font weight (350).]]
+   medium,     [[Medium font weight (500).]]
+   semibold,   [[Semibold font weight (600).]]
+   bold,       [[Bold font weight (700).]]
+   ultrabold,  [[Ultrabold font weight (800).]]
+   extrabold,  [[Extrabold font weight (800).]]
+   black,      [[Black font weight (900).]]
+   extrablack, [[Extrablack font weight (950).]]
+}
+
+enum Efl.Text_Font_Width {
+   [[Font width relative to its height.
+     It is up to each font to provide all these widths.
+     @since 1.24
+   ]]
+   normal,         [[Normal font width.]]
+   ultracondensed, [[Ultracondensed font width.]]
+   extracondensed, [[Extracondensed font width.]]
+   condensed,      [[Condensed font width.]]
+   semicondensed,  [[Semicondensed font width.]]
+   semiexpanded,   [[Semiexpanded font width.]]
+   expanded,       [[Expanded font width.]]
+   extraexpanded,  [[Extraexpanded font width.]]
+   ultraexpanded,  [[Ultraexpanded font width.]]
+}
+
+enum Efl.Text_Font_Slant {
+    [[Type of font slant.
+     @since 1.24
+    ]]
+    normal,  [[Normal font slant: Sets the text to the normal font (non-italicized).]]
+    oblique, [[Oblique font slant: Sets the text to use a simulated version of an italic font,
+               created by algorithmically slanting the normal version.]]
+    italic,  [[Italic font slant: Sets the text to use the italic version of the font if available.
+               If not available, it will simulate italics with oblique instead.]]
+}
+
+enum Efl.Text_Font_Bitmap_Scalable {
+   [[When are bitmap fonts allowed to be scaled.
+     @since 1.24
+   ]]
+   none = 0,         [[Disable scaling for bitmap fonts.]]
+   color = (1 << 0), [[Enable scaling for color bitmap fonts.]]
+}
+
+interface Efl.Text_Font_Properties {
+   [[Properties related to font handling.
+     @since 1.24
+   ]]
+   c_prefix: efl_text;
+   methods {
+      @property font_family {
+         [[The font family, filename for a given text object.
+
+           This property controls the font name of a text object.
+           The font string has to follow fontconfig's convention for
+           naming fonts, as it's the underlying library used to query system
+           fonts by EFL (see the $[fc-list] command's output, on your system,
+           to get an idea). Alternatively, you can use the full path to a font
+           file.
+
+           When reading it, the font name string is still owned by
+           EFL and should not be freed.
+           See also @.font_source.
+         ]]
+         set {
+         }
+         get {
+         }
+         values {
+            font: string; [[The font family name or filename.]]
+         }
+      }
+
+      @property font_size {
+         [[The font size to use, in points.
+
+           If the specified @.font_family does not provide this particular size, it will be scaled.
+         ]]
+         set {}
+         get {}
+         values {
+            size: Efl.Font.Size; [[The font size, in points.]]
+         }
+      }
+
+      @property font_source {
+         [[The font (source) file to be used on a given text object.
+
+           This function allows the font file to be explicitly set for a
+           given text object, overriding system lookup, which will first
+           occur in the given file's contents.
+
+           See also @.font_family.
+         ]]
+         set {
+         }
+         get {
+         }
+         values {
+            font_source: string; [[The font file's path.]]
+         }
+      }
+
+      @property font_fallbacks {
+         [[Comma-separated list of font fallbacks.
+
+           Will be used in case the primary font isn't available.
+         ]]
+         values {
+            font_fallbacks: string; [[List of fallback font names.]]
+         }
+      }
+
+      @property font_weight {
+         [[Type of weight (e.g. bold or normal) of the displayed font
+
+           Default is @Efl.Text_Font_Weight.normal.
+         ]]
+         values {
+            font_weight: Efl.Text_Font_Weight; [[Font weight.]]
+         }
+      }
+
+      @property font_slant {
+         [[Type of slant (e.g. italic or normal) of the displayed font.
+
+           Default is @Efl.Text_Font_Slant.normal.
+         ]]
+         values {
+            style: Efl.Text_Font_Slant; [[Font slant.]]
+         }
+      }
+
+      @property font_width {
+         [[Type of width (e.g. condensed, expanded or normal) of the displayed font.
+
+           Default is @Efl.Text_Font_Width.normal.
+         ]]
+         values {
+            width: Efl.Text_Font_Width; [[Font width.]]
+         }
+      }
+
+      @property font_lang {
+         [[Specific language of the displayed font
+
+           This is used to lookup fonts suitable to the specified language, as
+           well as helping the font shaper backend.
+           The language $lang can be either a code e.g "en_US",
+           "auto" to use the system locale, or "none".
+         ]]
+         values {
+            lang: string; [[Language code.]]
+         }
+      }
+
+      @property font_bitmap_scalable {
+           [[Bitmap fonts have fixed size glyphs for several available sizes.
+             Other sizes need to be algorithmically scaled, resulting in blurry glyphs.
+             This property controls whether scaling of non-provided sizes is allowed.
+
+             Default is @Efl.Text_Font_Bitmap_Scalable.none.
+           ]]
+           values {
+              scalable: Efl.Text_Font_Bitmap_Scalable; [[When should bitmap fonts be scaled.]]
+           }
+      }
+   }
+}

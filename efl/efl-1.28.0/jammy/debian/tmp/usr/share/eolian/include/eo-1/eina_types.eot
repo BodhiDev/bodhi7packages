@@ -1,0 +1,177 @@
+/* FIXME: Move to Eina when we decide they are handled properly. */
+struct @extern @free(eina_rectangle_free) Eina.Rect {
+    [[A rectangle in pixel dimensions.
+
+     @since 1.22
+   ]]
+    x: int; [[X coordinate of the rectangle, from the top-left corner.]]
+    y: int; [[Y coordinate of the rectangle, from the top-left corner.]]
+    w: int; [[Width of the rectangle in pixels.]]
+    h: int; [[Height of the rectangle in pixels.]]
+}
+
+struct @extern Eina.Position2D {
+   [[A 2D location in pixels.
+
+     @since 1.22
+   ]]
+   x: int; [[X position in pixels, from the top-left corner.]]
+   y: int; [[Y position in pixels, from the top-left corner.]]
+}
+
+struct @extern Eina.Size2D {
+   [[A 2D size in pixels.
+
+     @since 1.22
+   ]]
+   w: int; [[X position in pixels, from the top-left corner.]]
+   h: int; [[Y position in pixels, from the top-left corner.]]
+}
+
+struct @extern Eina.File; [[Eina file data structure
+
+  @since 1.22
+]]
+
+struct @extern Eina.Vector2 {
+   [[A simple 2D vector type using floating point values.
+
+     @since 1.22
+   ]]
+   x: double; [[X coordinate.]]
+   y: double; [[Y coordinate.]]
+}
+
+struct @extern Eina.Matrix3 {
+   [[A bidimensional array of floating point values with 3 rows and 3 columns.
+
+     @since 1.22
+   ]]
+   xx: double; [[XX value.]]
+   xy: double; [[XY value.]]
+   xz: double; [[XZ value.]]
+
+   yx: double; [[YX value.]]
+   yy: double; [[YY value.]]
+   yz: double; [[YZ value.]]
+
+   zx: double; [[ZX value.]]
+   zy: double; [[ZY value.]]
+   zz: double; [[ZZ value.]]
+}
+
+struct @extern Eina.Content; [[
+  Container for any type of content.
+
+  Each @Eina.Content is made of an @Eina.Slice of memory and an IANA MIME type:
+  https://www.iana.org/assignments/media-types/media-types.xhtml
+
+  If the type is a text-style type, the last byte of the slice must be \0.
+
+  @since 1.24
+]]
+
+struct @extern Eina.Matrix4 {
+   [[A bidimensional array of floating point values with 4 rows and 4 columns.
+
+     @since 1.24
+   ]]
+   xx: double; [[XX value.]]
+   xy: double; [[XY value.]]
+   xz: double; [[XZ value.]]
+   xw: double; [[XW value.]]
+
+   yx: double; [[YX value.]]
+   yy: double; [[YY value.]]
+   yz: double; [[YZ value.]]
+   yw: double; [[YW value.]]
+
+   zx: double; [[ZX value.]]
+   zy: double; [[ZY value.]]
+   zz: double; [[ZZ value.]]
+   zw: double; [[ZW value.]]
+
+   wx: double; [[WX value.]]
+   wy: double; [[WY value.]]
+   wz: double; [[WZ value.]]
+   ww: double; [[WW value.]]
+}
+
+struct @extern Eina.Range {
+   [[A range sequence of values.
+     @since 1.24
+   ]]
+   start: size; [[Start of the range.]]
+   length: size; [[Length of the range.]]
+}
+
+type @extern Eina.Unicode: uint32; [[Eina unicode type. @since 1.24]]
+
+struct @extern @beta Eina.File_Direct_Info; [[Eina file direct information data structure]]
+/*{
+   path_lenght:    size_t;              [[Size of the whole path]]
+   name_length:    size_t;              [[Size of the filename/basename component]]
+   name_start:     size_t;              [[Start position of the filename/basename component]]
+   type:           Eina_File_Type;      [[File type]]
+   path:           char[EINA_PATH_MAX]; [[The path]]
+};*/
+
+enum @extern @beta Eina.Xattr.Flags {
+  [[Eina file extended attributes flags]]
+  insert, [[This is the default behaviour, it will either create or replace the extended attribute]]
+  replace, [[This will only succeed if the extended attribute previously existed]]
+  created [[This will only succeed if the extended attribute wasn't previously set]]
+}
+
+type @extern Eina.Error: int; [[Eina error type
+
+  @since 1.22
+]]
+
+struct @extern @beta Eina.Slice {
+    [[A linear, read-only, memory segment]]
+    len: size; [[Length of the memory segment]]
+    mem: const(void_ptr); [[Pointer to memory segment]]
+}
+
+struct @extern @beta Eina.Rw_Slice {
+    [[A linear, read-write, memory segment]]
+    len: size; [[Length of the memory segment]]
+    mem: void_ptr; [[Pointer to memory segment]]
+}
+
+struct @extern @beta Eina.Value; [[Eina value placeholder so it can be referenced from docs.]]
+struct @extern @beta Eina.Value_Type; [[Eina value type]]
+
+struct @extern @beta Eina.Stat {
+    [[The structure to store some file statistics.]]
+    dev      : ulong; [[The device where this file is located]]
+    ino      : ulong; [[The inode]]
+    mode     : uint;  [[The mode]]
+    nlink    : uint;  [[The link number]]
+    uid      : uint;  [[The owner user id]]
+    gid      : uint;  [[The owner group id]]
+    rdev     : ulong; [[The remote device]]
+    size     : ulong; [[The file size in bytes]]
+    blksize  : ulong; [[The block size in bytes]]
+    blocks   : ulong; [[The number of blocks allocated]]
+    atime    : ulong; [[The tilestamp when the file was last accessed]]
+    atimensec: ulong; [[The nano version of the timestmap when the file was last accessed]]
+    mtime    : ulong; [[The tilestamp when the file was modified]]
+    mtimensec: ulong; [[The nano version of the timestmap when the file was modified]]
+    ctime    : ulong; [[The tilestamp when the file was created]]
+    ctimensec: ulong; [[The nano version of the timestmap when the file was created]]
+}
+
+struct @extern @free(eina_promise_free) Eina.Promise; [[Eina promise type
+
+  @since 1.22
+]]
+
+/* FIXME: This definitely shouldn't be here. */
+type @beta Efl.Event_Cb: __undefined_type; [[Efl event callback type]]
+
+type @extern Eina.Success_Flag: char; [[Eina error type
+
+  @since 1.24
+]]

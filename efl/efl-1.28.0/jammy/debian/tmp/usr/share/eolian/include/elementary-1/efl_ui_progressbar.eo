@@ -1,0 +1,62 @@
+class @beta Efl.Ui.Progressbar extends Efl.Ui.Layout_Base implements Efl.Ui.Range_Display, Efl.Ui.Format,
+                          Efl.Ui.Layout_Orientable, 
+                          Efl.Text, Efl.Content, Efl.Text_Markup
+{
+   [[Progress bar widget.
+
+     It shows a graphical indication of the current progress of some lengthy operation,
+     typically as a bar that gradually fills or a pointer that moves from one side of the
+     bar to the other. The bar can be horizontal or vertical, controlled with @Efl.Ui.Layout_Orientable.
+
+     The minimum and maximum values (or starting and ending values), along with the current
+     value can be set using the @Efl.Ui.Range_Display interface.
+
+     @.infinite_mode can be set when the progress state is unknown.
+     An optional textual label can be shown to indicate the exact numerical value of the progress.
+
+     @since 1.24
+   ]]
+   methods {
+      @property infinite_mode {
+         [[When this mode is enabled the progress bar indicates that there is an operation
+           going on, but does not give information about its progress.
+           This is typically shown as a "pulsing" animation or an endless spinning bar,
+           depending on the theme.
+         ]]
+         set {
+         }
+         get {
+         }
+         values {
+           state: bool; [[$true if the progress bar should animate infinitely.]]
+         }
+      }
+      @property show_progress_label {
+         [[Whether a textual progress label is shown alongside the progress bar to give an exact
+           numerical indication of the current progress. Control the conversion of the numerical
+           value to a text string using @Efl.Ui.Format.
+
+           Not to be confused with the widget label set through @Efl.Text.text.
+
+           The exact location and appearance of the progress label depend on the theme.
+         ]]
+         values {
+           show: bool; [[$true to show the progress label.]]
+         }
+      }
+   }
+   implements {
+      Efl.Object.constructor;
+      Efl.Ui.Widget.theme_apply;
+      Efl.Ui.Range_Display.range_value { get; set; }
+      Efl.Ui.Range_Display.range_limits {get; set; }
+      Efl.Ui.Layout_Orientable.orientation { get; set; }
+      Efl.Ui.Format.apply_formatted_value;
+      Efl.Part.part_get;
+      Efl.Text.text { get; set; }
+      Efl.Text_Markup.markup { get; set; }
+      Efl.Content.content { get; set; }
+      Efl.Content.content_unset;
+      Efl.Ui.L10n.l10n_text { get; set; }
+   }
+}

@@ -1,0 +1,69 @@
+import efl_ui;
+
+mixin @beta Efl.Access.Action
+{
+   [[Accessible action mixin]]
+   data: null;
+   methods {
+      @property action_name @protected @pure_virtual @beta {
+         [[Gets action name for given id]]
+         get {
+         }
+         values {
+            name: string; [[Action name]]
+         }
+         keys {
+            id: int; [[ID to get action name for]]
+         }
+      }
+      @property action_localized_name @protected @beta {
+         [[Gets localized action name for given id]]
+         get {
+         }
+         values {
+            name: string; [[Localized name]]
+         }
+         keys {
+            id: int; [[ID to get localized name for]]
+         }
+      }
+      @property action_description @protected @pure_virtual @beta {
+         [[Action description for given id]]
+         get {
+         }
+         set {
+            return: bool; [[$true if description was set, $false otherwise]]
+         }
+         values {
+            description: string; [[Action description]]
+         }
+         keys {
+            id: int; [[ID to set or get description for]]
+         }
+      }
+      @property actions @protected @beta {
+         /* C-only, internal API */
+         [[Get list of available widget actions]]
+         get @pure_virtual {
+         }
+         values {
+            actions: list<Efl.Access.Action_Data> @move;
+               [[Contains statically allocated strings.]]
+         }
+      }
+      action_do @protected @pure_virtual @beta {
+         [[Performs action on given widget.]]
+         params {
+            @in id: int; [[ID for widget]]
+         }
+         return: bool; [[$true if action was performed, $false otherwise]]
+      }
+      action_keybinding_get @protected @pure_virtual @beta {
+         [[Gets configured keybinding for specific action and widget.]]
+         params {
+            @in id: int; [[ID for widget]]
+         }
+         return: mstring @move @no_unused; [[Should be freed by the user.]]
+      }
+   }
+}

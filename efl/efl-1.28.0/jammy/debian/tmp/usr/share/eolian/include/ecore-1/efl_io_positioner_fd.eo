@@ -1,0 +1,20 @@
+mixin @beta Efl.Io.Positioner_Fd extends Efl.Io.Positioner {
+    [[Positions fd using lseek(2).
+    ]]
+
+    methods {
+        @property positioner_fd {
+            [[Positionier file descriptor]]
+            get {}
+            set @protected {}
+            values {
+                fd: int; [[File descriptor]]
+            }
+        }
+    }
+
+    implements {
+        Efl.Io.Positioner.seek;
+        Efl.Io.Positioner.position { get; }
+    }
+}

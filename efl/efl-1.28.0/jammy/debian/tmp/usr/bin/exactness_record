@@ -1,0 +1,76 @@
+#!/usr/bin/python3
+
+import argparse
+import subprocess
+import os
+
+parser = argparse.ArgumentParser(description='A scenario recorder for EFL-based applications.\n\n'
+  'This records all actions the user performs on an EFL application (like keystrokes\n'
+  'and mouse clicks) and stores them on a file.\n'
+  'Later on, the `exactness` or `exactness_play` commands can be used to play\n'
+  'back these actions and obtain screenshots.\n'
+  '\n'
+  'While running this application, use the following keys to control the process:\n'
+  '\tF1 - Request stabilization.\n'
+  '\tF2 - Request screenshot.\n'
+  '\tF3 - Request to save the scenario.\n'
+  '\n'
+  'Note: If you don\'t press F3 at least once, no output file will be generated.',
+  formatter_class=argparse.RawDescriptionHelpFormatter,
+  epilog='Example:\n'
+  'exactness_record -t my_app.exu -- my_app --app --arguments')
+parser.add_argument('app', metavar='app', help='The app to run. You can also pass environment variables here. '
+  'Use a -- if you need to provide arguments to the app.',
+  type=str, nargs='*')
+parser.add_argument('-t', '--tests', metavar='tests', help='Name of the file where to store the test. '
+  'It is recommended to use the `.exu` extension.', type=str)
+parser.add_argument('-f', '--fontsdir', metavar='fontsdir', help='Directory of the fonts that should be used.',
+  type=str)
+parser.add_argument('-L', '--license', help='Print license information and exit.', action='store_true')
+parser.add_argument('-C', '--copyright', help='Print copyright information and exit.', action='store_true')
+parser.add_argument('-V', '--version', help='Print version information and exit.', action='store_true')
+
+G = parser.parse_args()
+
+if G.license:
+  print("BSD.")
+  exit(0)
+
+if G.copyright:
+  print("(C) 2017-2020 Enlightenment.")
+  exit(0)
+
+if G.version:
+  print("1.28.99")
+  exit(0)
+
+spawn_env = os.environ.copy()
+spawn_env["LD_PRELOAD"] = "/home/ylee/Code/debs/New/efl/obj-x86_64-linux-gnu/src/bin/exactness/libexactness_record.so.1.28.99"
+
+if G.tests != None:
+  spawn_env["EXACTNESS_DEST"] = G.tests
+else:
+  print("Tests dir must be passed!")
+  exit(-1)
+
+if G.fontsdir != None:
+  spawn_env["EXACTNESS_FONTS_DIR"] = G.fontsdir
+
+passed_all_the_env_vars = False
+app = []
+
+for argument in G.app:
+  if '=' not in argument:
+    passed_all_the_env_vars = True
+  else:
+    if passed_all_the_env_vars:
+      print("Error, env vars can only be specified at the beginning of the app call line")
+      exit(-1)
+    split_env_var = argument.split('=')
+    spawn_env[split_env_var[0]] = split_env_var[1]
+
+  if passed_all_the_env_vars:
+    app.append(argument)
+
+recorder = subprocess.Popen(app, env=spawn_env)
+recorder.wait()

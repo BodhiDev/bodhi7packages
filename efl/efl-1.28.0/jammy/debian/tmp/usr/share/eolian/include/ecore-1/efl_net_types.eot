@@ -1,0 +1,1 @@
+error @beta Efl.Net.Error.COULDNT_RESOLVE_HOST = "Couldn't resolve host name"; [[Could not resolve the given host name]]

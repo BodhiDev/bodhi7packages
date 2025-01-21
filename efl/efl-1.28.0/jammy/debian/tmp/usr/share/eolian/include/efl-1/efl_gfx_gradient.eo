@@ -1,0 +1,32 @@
+import efl_gfx_types;
+
+interface @beta Efl.Gfx.Gradient
+{
+   [[Efl graphics gradient interface]]
+   c_prefix: efl_gfx_gradient;
+   methods {
+      @property stop {
+         [[The list of color stops for the gradient]]
+         set {
+         }
+         get {
+         }
+         values {
+            colors: ptr(const(Efl.Gfx.Gradient_Stop)); [[Color stops list]]
+            length: uint; [[Length of the list]]
+         }
+      }
+      @property spread {
+         [[The spread method that should be used for this gradient.
+           The default is @Efl.Gfx.Gradient_Spread.pad.
+         ]]
+         set {
+         }
+         get {
+         }
+         values {
+            s: Efl.Gfx.Gradient_Spread; [[Spread type to be used.]]
+         }
+      }
+   }
+}

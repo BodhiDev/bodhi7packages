@@ -1,0 +1,150 @@
+interface @beta Efl.Net.Server {
+    [[The basic server interface.
+
+      This will start serving and accepting clients once @.serve is
+      called and the "serving" event is dispatched.
+
+      When new clients are accepted the "client,add" event is
+      dispatched with a child object implementing @Efl.Net.Socket
+      interface. These implement the standard @Efl.Io.Reader,
+      @Efl.Io.Writer and @Efl.Io.Closer interfaces, so can be used
+      with utilities such as @Efl.Io.Copier.
+    ]]
+
+    events {
+        client,add @hot: Efl.Net.Socket; [[A new client socket has been created.
+
+                                           The socket will have the
+                                           server as parent and can be
+                                           closed by both the server
+                                           or the user using
+                                           @Efl.Io.Closer.
+                                         ]]
+        client,rejected: string; [[Notifies a client was rejected due
+                                   excess, see @.clients_limit.
+                                 ]]
+
+        server,error: Eina.Error; [[An error has occurred and the server needs
+                             to be stopped.
+                           ]]
+        serving: void; [[Notifies the server is ready to accept clients.
+                   See property @.serving]]
+    }
+
+    methods {
+        serve {
+            [[Starts serving requests.
+
+              This method starts the server, resolves addresses and
+              then proceeds to the actual listen(2)/bind(2)
+              equivalent..
+
+              Once the connection is fully set up the "serving" event is
+              dispatched.
+            ]]
+            params {
+                address: string; [[Address to run server on]]
+            }
+            return: Eina.Error; [[$0 on success, error code otherwise]]
+        }
+
+        @property address {
+            [[The address to which the server is bound.
+
+              The actual value depends on the type of server, such as an
+              IPv4 (ip:port) or IPv6 ([ip]:port) formatted for a
+              TCP/UDP server, the path if an Unix Local...
+
+              It's always resolved. If operations are working
+              with domain names or URLs, these are the values the kernel
+              reports. It's similar to getsockname() in behavior.
+            ]]
+            get { }
+            set @protected { }
+            values {
+                address: string; [[Address the server is bound to]]
+            }
+        }
+
+        @property clients_count {
+            [[Number of concurrent clients accepted by the server.]]
+            get { }
+            set @protected { }
+            values {
+                count: uint; [[Number of connected clients]]
+            }
+        }
+
+        @property clients_limit {
+            [[Number of maximum concurrent clients allowed by the server.
+
+              If reject_excess is set to true, then the connection
+              will be accepted and immediately closed.
+
+              If reject_excess is set to false (default), then
+              accept(2) won't be called and clients will be queued at
+              the kernel side, usually up to 4096 pending clients.
+
+              Whenever changed, this property will only apply to new
+              connections, that is, if the current connection count
+              already exceeds the limit, no connections will be closed.
+            ]]
+            values {
+                limit: uint; [[Number of allowed client connections]]
+                reject_excess: bool @optional; [[If $true connection is accepted and immediately closed]]
+            }
+        }
+
+        client_announce @protected {
+            [[Implementions should call this method to announce new clients.
+
+              This method will account the new client in
+              @.clients_count as well as emit the event "client,add".
+
+              After this call, the client ownership will be
+              managed. If no event handler references the object, it
+              will be deleted.
+
+              Most implementions will do the sequence:
+
+               - emit "client,add"
+
+               - check if client was referenced
+
+               - if we're not the parent anymore, ignore (do not
+                 change @.clients_count) and return $true.
+
+               - if not referenced, delete it and return $false.
+
+               - if it's closed, delete it and return $false.
+
+               - if referenced, increment @.clients_count and monitor
+                 for client "closed" event and return $true.
+
+               - on client "closed", decrease @.clients_count and
+                 unset its parent (if we're still the parent).
+
+              Do not monitor "closed" before emitting
+              "client,add". Doing so may lead to double free if
+              callbacks close the client by themselves!
+            ]]
+            params {
+                client: Efl.Net.Socket; [[A socket representing the client.]]
+            }
+            return: bool(false); [[If $true, then client was handled. If $false, it was dropped and deleted.]]
+        }
+
+        @property serving {
+            [[Returns whenever the server is ready to accept clients or not.
+
+              Whenever this property becomes true, "serving" event
+              should be dispatched.
+            ]]
+            get { }
+            set @protected { }
+            values {
+                serving: bool; [[$true if server is ready to accept connections, $false otherwise]]
+            }
+        }
+    }
+}

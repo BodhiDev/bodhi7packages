@@ -1,0 +1,6 @@
+libefl-bin: no-manual-page
+libefl-bin: desktop-entry-lacks-keywords-entry
+libefl-bin: executable-in-usr-lib
+# These are false positives
+libefl-bin: spelling-error-in-binary
+libefl-bin: hardening-no-fortify-functions

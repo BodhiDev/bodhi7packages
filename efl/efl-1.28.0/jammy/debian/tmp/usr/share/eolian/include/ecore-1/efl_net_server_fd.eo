@@ -1,0 +1,164 @@
+abstract @beta Efl.Net.Server_Fd extends Efl.Loop_Fd implements Efl.Net.Server {
+    [[A generic server based on file descriptors.
+    ]]
+
+    methods {
+        socket_activate {
+            [[If this method is called, use an already activated socket.
+
+              This method allows a server to use an existing socket
+              received from systemd or any similar system.
+
+              It will replace @Efl.Net.Server.serve, thus if this is
+              used, this method will return EALREADY.
+
+              Note: The parameter 'address' given to this function is
+              only used to validate the next socket available. It
+              doesn't search for a socket with the given address. Thus
+              the socket to be used is the next unused one : order
+              matters if using multiple servers!
+
+              Note: subclasses must validate the socket and return
+              EINVAL prior to call the base class with
+              Efl.Object.super. They must also emit "serving" when
+              ready. For instance stream protocols may need to check
+              for listening and if not, try to listen. Usually they
+              will also query getsockname() and set
+              @Efl.Net.Server.address.
+
+              Errors:
+
+                - EALREADY: There already is a socket, either from
+                  previous @.socket_activate or
+                  @Efl.Net.Server.serve. Usually represents a
+                  programming error.
+
+                - ENOENT: No sockets received from process manager
+                  (ie: systemd). Usually this is not a fatal error,
+                  just proceed by calling @Efl.Net.Server.serve
+
+                - EINVAL: the socket received is not of the correct
+                  family, type or protocol. Usually this means a
+                  configuration mismatch between the order of server
+                  creation and calls to socket_activate. The
+                  systemd.socket entries must match the order in your
+                  application.
+            ]]
+            params {
+                address: string; [[The address to validate the next available socket. It cannot be used to search, only for validation.]]
+            }
+            return: Eina.Error; [[$0 on success, ENOENT if no socket is available or EALREADY if already have a socket]]
+        }
+
+        @property family {
+            [[The address family (AF_*) family of this socket.
+
+              It will be one of AF_INET (IPv4), AF_INET6 (IPv6),
+              AF_UNIX...
+
+              It must be set before the @Efl.Loop_Fd.fd.set is called
+              with a valid file descriptor.
+            ]]
+            get { }
+            set @protected { }
+            values {
+                family: int; [[Socket address family]]
+            }
+        }
+
+        @property close_on_exec {
+            [[Controls Close-on-Exec() using FD_CLOEXEC.
+
+              Child sockets inherit the server's settings by
+              default. You can change the behavior using each instance
+              @Efl.Io.Closer.close_on_exec.set. Defaults to $true.
+            ]]
+            get { }
+            set {
+                return: bool (false); [[$true on success, $false otherwise]]
+            }
+            values {
+                close_on_exec: bool; [[If $true close on exec will be used, $false otherwise]]
+            }
+        }
+
+        @property reuse_address {
+            [[Controls address reuse() using SO_REUSEADDR]]
+            get { }
+            set {
+                return: bool (false); [[$true on success, $false otherwise]]
+            }
+            values {
+                reuse_address: bool; [[If $true the server will reuse the address, $false otherwise]]
+            }
+        }
+
+        @property reuse_port {
+            [[Controls port reuse() using SO_REUSEPORT (since linux 3.9)]]
+            get { }
+            set {
+                return: bool (false); [[$true on success, $false otherwise]]
+            }
+            values {
+                reuse_port: bool; [[If $true the server will reuse the port, $false otherwise]]
+            }
+        }
+
+        process_incoming_data @protected {
+            [[When the socket has data to be read, process it.
+
+              By default this method will call accept() and then
+              decide if @.client_add or @.client_reject must be
+              executed, however it may be replaced with something
+              else, such as in SOCK_DGRAM (UDP) there is no accept(),
+              only recvfrom().
+
+              It is called straight from @Efl.Loop_Fd "read" event
+              handler and is provided as a method to allow easy
+              extending of the class for various purposes.
+            ]]
+        }
+
+        client_add @protected @pure_virtual {
+            [[Accepts a new client, should emit "client,add".
+
+              Remember to create the client object with a callback to
+              EFL_IO_CLOSER_EVENT_CLOSED during the construction,
+              decrease @Efl.Net.Server.clients_count as well as unref
+              the client and remove yourself as parent.
+
+              The new clients should have the server as parent and
+              increase the @Efl.Net.Server.clients_count.
+
+              Whenever this function fails, it must close the given
+              client file descriptor.
+            ]]
+            params {
+                client_fd: int; [[The file descriptor of the client socket. It comes preconfigured with close_on_exec. On failure, remember to close this socket.]]
+            }
+        }
+
+        client_reject @protected @pure_virtual {
+            [[Rejects a new client, should emit "client,rejected".
+
+              Must always close the client socket when it's done.
+            ]]
+            params {
+                client_fd: int; [[The file descriptor of the client socket. It comes preconfigured with close_on_exec and should be closed once it's not needed anymore]]
+            }
+        }
+    }
+
+    implements {
+        Efl.Object.finalize;
+        Efl.Object.constructor;
+        Efl.Object.destructor;
+        Efl.Loop_Fd.fd { set; }
+        Efl.Net.Server.address { get; set; }
+        Efl.Net.Server.clients_count { get; set; }
+        Efl.Net.Server.clients_limit { get; set; }
+        Efl.Net.Server.serving { get; set; }
+        Efl.Net.Server.serve;
+        Efl.Net.Server.client_announce;
+    }
+}

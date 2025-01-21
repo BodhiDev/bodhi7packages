@@ -1,0 +1,23 @@
+mixin @beta Efl.Io.Closer_Fd requires Efl.Object extends Efl.Io.Closer {
+    [[Close fd using close(2).
+    ]]
+
+    methods {
+        @property closer_fd {
+            [[Closer file descriptor]]
+            get {}
+            set @protected {}
+            values {
+                fd: int; [[File descriptor]]
+            }
+        }
+    }
+
+    implements {
+        Efl.Object.constructor;
+        Efl.Io.Closer.close;
+        Efl.Io.Closer.closed { get; }
+        Efl.Io.Closer.close_on_exec { get; set; }
+        Efl.Io.Closer.close_on_invalidate { get; set; }
+    }
+}

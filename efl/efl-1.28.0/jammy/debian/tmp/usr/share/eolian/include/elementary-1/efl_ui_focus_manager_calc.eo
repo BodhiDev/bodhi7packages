@@ -1,0 +1,89 @@
+class @beta Efl.Ui.Focus.Manager_Calc extends Efl.Object implements Efl.Ui.Focus.Manager {
+    [[Calculates the elements present in each @Efl.Ui.Focus.Direction.
+
+      Each registered item will get a target item in each direction.
+      You can get the target items for the currently focused item by
+      calling @Efl.Ui.Focus.Manager.request_move.
+    ]]
+    methods {
+        register {
+            [[Registers a new item in the graph.
+
+              $parent can not be $null, it will be used as the parent in the logical tree.
+              $redirect will be set as redirect property on that manager, once $child gets focused.
+            ]]
+            params {
+                child : Efl.Ui.Focus.Object; [[The object to register.]]
+                parent : Efl.Ui.Focus.Object; [[The parent to use in the logical tree.]]
+                redirect : Efl.Ui.Focus.Manager; [[The redirect manager to set once this child is focused.
+                                                   Can be $NULL for no redirect.]]
+            }
+            return : bool; [[$true if successful, $false otherwise.]]
+        }
+        register_logical {
+            [[Registers a new logical item in the graph.
+
+              The item can never get focus, it just helps to build the tree.
+              Compare to @.register.
+            ]]
+            params {
+                child : Efl.Ui.Focus.Object; [[The object to register.]]
+                parent : Efl.Ui.Focus.Object; [[The parent to use in the logical tree.]]
+                redirect : Efl.Ui.Focus.Manager; [[The redirect manager to set once this child is focused.
+                                                   Can be $NULL for no redirect.]]
+            }
+            return : bool; [[$true if successful, $false otherwise.]]
+        }
+        update_redirect {
+            [[Sets a new redirect object for the given child.
+
+              Once $child is focused the redirect manager will be set
+              in the redirect property. Set redirect to $NULL if nothing should happen.
+            ]]
+            params {
+                child : Efl.Ui.Focus.Object; [[The child to update.]]
+                redirect : Efl.Ui.Focus.Manager; [[Once $child is focused this
+                    element will be set as redirect.]]
+            }
+            return : bool; [[$true if successful, $false otherwise.]]
+        }
+        update_parent {
+            [[Sets a new logical parent for the given child.]]
+            params {
+                child : Efl.Ui.Focus.Object; [[The child to update.]]
+                parent : Efl.Ui.Focus.Object; [[The parent which now will be the logical parent of child.]]
+            }
+            return : bool; [[$true if successful, $false otherwise.]]
+        }
+        unregister {
+            [[Unregister the given item from the focus graph.]]
+            params {
+                child : Efl.Ui.Focus.Object; [[The child to unregister.]]
+            }
+        }
+    }
+    implements {
+        class.constructor;
+        class.destructor;
+        Efl.Ui.Focus.Manager.move;
+        Efl.Ui.Focus.Manager.request_move;
+        Efl.Ui.Focus.Manager.manager_focus {get; set;}
+        Efl.Ui.Focus.Manager.redirect {set; get;}
+        Efl.Ui.Focus.Manager.border_elements {get;}
+        Efl.Ui.Focus.Manager.border_elements_changed {get;}
+        Efl.Ui.Focus.Manager.viewport_elements {get;}
+        Efl.Ui.Focus.Manager.root {set; get;}
+        Efl.Ui.Focus.Manager.request_subchild;
+        Efl.Ui.Focus.Manager.fetch;
+        Efl.Ui.Focus.Manager.logical_end;
+        Efl.Ui.Focus.Manager.reset_history;
+        Efl.Ui.Focus.Manager.pop_history_stack;
+        Efl.Ui.Focus.Manager.setup_on_first_touch;
+        Efl.Ui.Focus.Manager.dirty_logic_freeze;
+        Efl.Ui.Focus.Manager.dirty_logic_unfreeze;
+        Efl.Object.constructor;
+        Efl.Object.finalize;
+        Efl.Object.provider_find;
+        Efl.Object.destructor;
+    }
+}

@@ -1,0 +1,22 @@
+interface Efl.Text
+{
+   [[Efl text interface
+
+     @since 1.22
+   ]]
+   methods {
+      @property text {
+         [[The text string to be displayed by the given text object.
+
+           Do not release (free) the returned value.
+         ]]
+         set {
+         }
+         get {
+         }
+         values {
+            text: string; [[Text string to display.]]
+         }
+      }
+   }
+}

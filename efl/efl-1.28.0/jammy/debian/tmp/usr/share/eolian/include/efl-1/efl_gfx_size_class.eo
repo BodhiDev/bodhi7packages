@@ -1,0 +1,43 @@
+interface @beta Efl.Gfx.Size_Class
+{
+   [[Efl Gfx Size Class interface]]
+   methods {
+      @property size_class {
+         [[Width and height of size class.
+
+           This property sets width and height for a size class.
+           This will make all edje parts in the specified object that have
+           the specified size class update their size with given values.
+           When reading, these values will only be valid until the size class is changed
+           or the edje object is deleted.
+         ]]
+         set {
+            return: bool; [[$true, on success or $false, on error]]
+         }
+         get {
+            return: bool; [[$true, on success or $false, on error]]
+         }
+         keys {
+            size_class: string; [[The name of size class]]
+         }
+         values {
+            minw: int; [[minimum width]]
+            minh: int; [[minimum height]]
+            maxw: int; [[maximum width]]
+            maxh: int; [[maximum height]]
+         }
+      }
+      size_class_del {
+         [[Delete the size class.
+
+           This function deletes any values for the specified size class.
+
+           Deleting the size class will revert it to the values defined
+           by @.size_class.set() or the size class defined in the theme file.
+         ]]
+         params {
+            @in size_class: string; [[The size class to be deleted.]]
+         }
+      }
+   }
+}

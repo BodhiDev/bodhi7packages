@@ -1,0 +1,29 @@
+class @beta Efl.Ui.Focus.Manager_Root_Focus extends Efl.Ui.Focus.Manager_Calc  {
+  [[This class ensures that the root is at least focusable, if nothing else is focusable.]]
+  methods {
+     @property canvas_object {
+        [[The default replacement object to use when there is no focusable object inside the manager.
+          You can change this object by setting this value to something else.
+          $null means that the same value as @Efl.Ui.Focus.Manager.root will be used.
+        ]]
+        values {
+           canvas_object : Efl.Canvas.Object; [[Canvas object.]]
+        }
+     }
+  }
+  implements {
+    Efl.Ui.Focus.Manager_Calc.register_logical;
+    Efl.Ui.Focus.Manager_Calc.register;
+    Efl.Ui.Focus.Manager_Calc.unregister;
+    Efl.Ui.Focus.Manager.manager_focus {set; get;}
+    Efl.Ui.Focus.Manager.fetch;
+    Efl.Ui.Focus.Manager.logical_end;
+    Efl.Ui.Focus.Manager.border_elements {get;}
+    Efl.Ui.Focus.Manager.viewport_elements {get;}
+    Efl.Ui.Focus.Manager.request_move;
+    Efl.Ui.Focus.Manager.move;
+    Efl.Object.constructor;
+    Efl.Object.destructor;
+    Efl.Object.finalize;
+  }
+}

@@ -1,0 +1,14 @@
+class @beta Efl.Loop_Message extends Efl.Object
+{
+   [[Base message payload object class. Inherit this and extend for
+     specific message types.]]
+   methods {
+   }
+   events {
+      message: Efl.Loop_Message; [[The message payload data]]
+   }
+   implements {
+      Efl.Object.constructor;
+      Efl.Object.destructor;
+   }
+}

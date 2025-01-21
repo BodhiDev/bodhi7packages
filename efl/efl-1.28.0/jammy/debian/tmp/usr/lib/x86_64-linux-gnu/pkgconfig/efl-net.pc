@@ -1,0 +1,9 @@
+prefix=/usr
+libdir=${prefix}/lib/x86_64-linux-gnu
+includedir=${prefix}/include
+
+Name: efl-net
+Description: efl-net configutation file
+Version: 1.28.99
+Requires: ecore, ecore-con, emile
+Cflags: -I${includedir}

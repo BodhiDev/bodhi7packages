@@ -1,0 +1,8 @@
+class @beta Efl.Ui.Check_Legacy_Part extends Efl.Ui.Layout_Part_Content
+{
+   [[Elementary check internal part class]]
+   data: null;
+   implements {
+      Efl.Content.content { set; }
+   }
+}

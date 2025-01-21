@@ -1,0 +1,32 @@
+class @beta Efl.Divisor_Interpolator extends Efl.Object implements Efl.Interpolator
+{
+   [[Divisor interpolator.
+   ]]
+   data: Efl_Divisor_Interpolator_Data;
+   methods {
+      @property divisor {
+         [[Customize divisor factor.]]
+         set {
+         }
+         get {
+         }
+         values {
+            divisor: double; [[Divisor.]]
+         }
+      }
+      @property power {
+         [[Customize power factor.]]
+         set {
+         }
+         get {
+         }
+         values {
+            power: int; [[Exponent.]]
+         }
+      }
+   }
+   implements {
+      Efl.Object.constructor;
+      Efl.Interpolator.interpolate;
+   }
+}

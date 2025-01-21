@@ -1,0 +1,11 @@
+prefix=/usr
+libdir=${prefix}/lib/x86_64-linux-gnu
+includedir=${prefix}/include
+
+Name: eo-cxx
+Description: Eo cxx bindings
+Version: 1.28.99
+Requires: eina-cxx, eolian-cxx, eo
+Requires.private: eina, eolian
+Libs.private: -pthread -lm -lrt -ldl
+Cflags: -I${includedir}/eo-cxx-1 -I${includedir}/eo-cxx-1

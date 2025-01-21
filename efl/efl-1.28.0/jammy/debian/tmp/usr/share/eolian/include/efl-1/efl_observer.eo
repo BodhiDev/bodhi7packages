@@ -1,0 +1,15 @@
+interface @beta Efl.Observer {
+   [[Efl observer interface]]
+   methods {
+      update {
+         [[Update observer according to the changes of observable object.
+         ]]
+         params {
+            /* FIXME: obs should be Efl.Observable, but cyclic dependency error occurs. */
+            @in obs: Efl.Object; [[An observable object]]
+            @in key: string; [[A key to classify observer groups]]
+            @in data: void_ptr; [[Required data to update the observer, usually passed by observable object]]
+         }
+      }
+   }
+}

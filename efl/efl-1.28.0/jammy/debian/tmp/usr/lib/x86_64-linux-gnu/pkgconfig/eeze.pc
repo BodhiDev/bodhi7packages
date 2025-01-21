@@ -1,0 +1,12 @@
+prefix=/usr
+libdir=${prefix}/lib/x86_64-linux-gnu
+includedir=${prefix}/include
+
+Name: eeze
+Description: efl: eeze
+Version: 1.28.99
+Requires: eina, efl, ecore, ecore-file
+Requires.private: eo, mount, libudev >= 148
+Libs: -L${libdir} -leeze
+Libs.private: -pthread -lm -ldl
+Cflags: -I${includedir}/eeze-1

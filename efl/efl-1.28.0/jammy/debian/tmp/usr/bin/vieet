@@ -1,0 +1,77 @@
+#!/bin/sh
+
+cleanup() {
+    if [ ! -z "$TFILE" ]; then
+        rm "$TFILE"
+    fi
+}
+
+die() {
+    echo "$@"
+    echo "Aborting"
+    cleanup
+    exit 1
+}
+
+usage() {
+    die "Usage: vieet [-r] <eet file> [section]"
+}
+
+READONLY=0
+EETFILE="$1"
+SECTION="$2"
+ARGCNT=2
+
+if [ $# -eq 1 ]; then
+    if [ "$1" = "-h" ]; then usage; fi
+    echo "Available sections:"
+    eet -l "$EETFILE"
+    exit $?
+fi
+
+if [ "$1" = "-r" ]; then
+    READONLY=1
+    EETFILE=$2
+    SECTION=$3
+    ARGCNT=3
+fi
+
+if [ $# -ne $ARGCNT ]; then
+    usage
+fi
+
+if [ -z "$EDITOR" ]; then
+    die "EDITOR env var must be set."
+fi
+
+TFILE=$(mktemp)
+
+if [ $? -ne 0 ]; then
+    die "Failed creating tempfile."
+fi
+
+# Decode the file
+eet -d "$EETFILE" "$SECTION" "$TFILE"
+
+if [ $? -ne 0 ]; then
+    die "Failed decoding eet file."
+fi
+
+DONE=0
+
+while [ $DONE -ne 1 ]
+do
+    $EDITOR $TFILE
+
+    if [ $READONLY -eq 1 ]; then break; fi
+    eet -e "$EETFILE" "$SECTION" "$TFILE" 1
+    if [ $? -ne 0 ]; then
+        echo "Failed compiling eet file."
+        echo "Press 'Return' to reopen the editor, or ^C to abort."
+        read _dummy
+    else
+        DONE=1
+    fi
+done
+
+cleanup

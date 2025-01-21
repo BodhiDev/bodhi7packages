@@ -1,0 +1,13 @@
+class @beta Efl.Io.Stdin extends Efl.Loop_Fd implements Efl.Io.Reader_Fd {
+    [[Application's standard input (stdin).
+    ]]
+
+    data: null;
+
+    implements {
+        Efl.Object.finalize;
+        Efl.Loop_Fd.fd { set; }
+        Efl.Io.Reader.read;
+        Efl.Io.Reader.can_read { set; }
+    }
+}

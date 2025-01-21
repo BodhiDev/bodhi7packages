@@ -1,0 +1,11 @@
+prefix=/usr
+libdir=${prefix}/lib/x86_64-linux-gnu
+includedir=${prefix}/include
+
+Name: ecore
+Description: efl: ecore
+Version: 1.28.99
+Requires: eina, eo, efl
+Libs: -L${libdir} -lecore
+Libs.private: -lm -pthread -ldl
+Cflags: -I${includedir}/ecore-1

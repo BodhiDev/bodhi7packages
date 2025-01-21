@@ -1,0 +1,12 @@
+prefix=/usr
+libdir=${prefix}/lib/x86_64-linux-gnu
+includedir=${prefix}/include
+
+Name: ecore-ipc
+Description: efl: ecore_ipc
+Version: 1.28.99
+Requires: eina
+Requires.private: ecore, eo, efl, ecore-con
+Libs: -L${libdir} -lecore_ipc
+Libs.private: -pthread -lm -ldl
+Cflags: -I${includedir}/ecore-ipc-1

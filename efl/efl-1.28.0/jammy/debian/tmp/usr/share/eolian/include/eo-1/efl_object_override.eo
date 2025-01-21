@@ -1,0 +1,8 @@
+abstract @beta Efl.Object_Override
+{
+   [[A special class to pass to #eo_super() when using #eo_override()
+
+    Shouldn't be inherited from or anything of this sort.
+   ]]
+    data: null;
+}

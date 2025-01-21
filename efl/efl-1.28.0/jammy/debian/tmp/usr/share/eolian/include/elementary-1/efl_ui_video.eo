@@ -1,0 +1,49 @@
+class @beta Efl.Ui.Video extends Efl.Ui.Layout_Base
+   implements Efl.File, Efl.Access.Widget.Action
+   composites Efl.Player
+{
+   [[Efl UI video class]]
+   methods {
+      @property remember_position {
+         [[Whether the object can remember the last played position.
+
+           Note: This API only serves as indication. System support is
+           required.
+         ]]
+         set {
+         }
+         get {
+         }
+         values {
+            remember: bool; [[$true when the object can remember the last position, $false otherwise]]
+         }
+      }
+      @property emotion {
+         [[The underlying Emotion object.]]
+         get {
+            return: Efl.Canvas.Object; [[The underlying Emotion object.]]
+         }
+      }
+      @property title {
+         [[The title (for instance DVD title) from this emotion object.
+
+           This function is only useful when playing a DVD.
+
+           Note: Don't change or free the string returned by this function.
+         ]]
+         get {
+            return: string; [[A string containing the title.]]
+         }
+      }
+   }
+   implements {
+      Efl.Object.constructor;
+      Efl.File.load;
+      Efl.File.unload;
+      Efl.Canvas.Group.group_calculate;
+      Efl.Ui.Widget.widget_input_event_handler;
+      Efl.Access.Widget.Action.elm_actions { get; }
+      Efl.Player.playing { get; set; }
+      Efl.Player.paused { get; set; }
+   }
+}

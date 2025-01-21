@@ -1,0 +1,96 @@
+class Efl.Input.Key extends Efl.Object implements Efl.Input.Event, Efl.Input.State
+{
+   [[Represents a single key event from a keyboard or similar device.
+
+     @since 1.23
+   ]]
+   methods {
+      @property pressed {
+         [[$true if the key is down, $false if it is released.]]
+         values {
+            val: bool; [[$true if the key is pressed, $false otherwise.]]
+         }
+      }
+      @property key_name {
+         [[Name string of the physical key that produced this event.
+
+           This typically matches what is printed on the key. For example, "1"
+           or "a". Note that both "a" and "A" are obtained with the same
+           physical key, so both events will have the same @.key_name "a" but
+           different @.key_sym.
+
+           Commonly used in keyboard remapping menus to uniquely identify a
+           physical key.
+         ]]
+         values {
+            val: string; [[Name of the key that produced this event.]]
+         }
+      }
+      @property key_sym {
+         [[Name of the symbol produced by this key event.
+
+           For example, "a", "A", "1" or "exclam". The same physical key can
+           produce different symbols when combined with other keys like "shift"
+           or "alt gr". For example, "a" and "A" have different @.key_sym but
+           the same @.key_name "a".
+
+           This is the field you typically use to uniquely identify a keyboard
+           symbol, in keyboard shortcuts for example.
+         ]]
+         values {
+            val: string; [[Symbol name produced by key event.]]
+         }
+      }
+      @property string {
+         [[A UTF8 string if this keystroke has produced a visible string to be
+           added.
+         ]]
+         values {
+            val: string; [[Visible string produced by this key event, in UTF8.]]
+         }
+      }
+      @property compose_string {
+         [[A UTF8 string if this keystroke has modified a string in the middle
+           of being composed.
+
+           Note: This string replaces the previous one.
+         ]]
+         values {
+            val: string; [[Composed string in UTF8.]]
+         }
+      }
+      @property key_code {
+         [[Keyboard scan code of the physical key that produced this event.
+
+           You typically do not need to use this field, because the system maps scan
+           codes to the more convenient @.key_name.
+           Us this in keyboard remapping applications or when trying to use a keyboard
+           unknown to your operating system.
+         ]]
+         values {
+            val: int; [[Keyboard scan code.]]
+         }
+      }
+   }
+   implements {
+      class.destructor;
+      Efl.Object.constructor;
+      Efl.Object.destructor;
+      Efl.Input.Event.reset;
+      Efl.Duplicate.duplicate;
+         [[Creates a copy of this event. @Efl.Input.Event.fake is $true.
+
+           The returned event object is similar to the given object in most
+           ways except that @Efl.Input.Event.fake will be $true.
+
+           Note: A reference is given to the caller. In order to avoid leaks
+           the C API users should call $efl_unref() after use.
+         ]]
+      Efl.Input.Event.timestamp { get; set; }
+      Efl.Input.Event.fake { get; }
+      Efl.Input.Event.event_flags { get; set; }
+      Efl.Input.Event.device { get; set; }
+      Efl.Input.State.modifier_enabled { get; }
+      Efl.Input.State.lock_enabled { get; }
+   }
+}

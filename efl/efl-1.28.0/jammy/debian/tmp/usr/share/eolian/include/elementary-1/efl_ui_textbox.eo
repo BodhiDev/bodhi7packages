@@ -1,0 +1,162 @@
+enum @beta Efl.Ui.Textbox_Cnp_Content {
+   [[What kind of content can be pasted into this widget using Copy & Paste or Drag & Drop functionality.
+
+     Multiple options can be OR-ed together.
+   ]]
+   Nothing = 0, [[Nothing can be pasted or dropped into this widget.]]
+   Text = 1,    [[Plain text can be pasted or dropped into this widget.]]
+   Markup = 3,  [[Markup text can be pasted or dropped into this widget
+                  (This includes Plain text).]]
+   Image = 4,   [[Images can be pasted or dropped into this widget.]]
+}
+
+class Efl.Ui.Textbox extends Efl.Ui.Layout_Base implements Efl.Input.Clickable,
+                 Efl.Access.Text, Efl.Access.Editable.Text, Efl.Ui.Scrollable
+   composites
+                 Efl.Text_Interactive, Efl.Text_Markup, Efl.Input_Text.Entity
+{
+   [[A flexible text widget which can be static (as a label) or editable by
+     the user (as a text entry). It provides all sorts of editing facilities
+     like automatic scrollbars, virtual keyboard, clipboard, configurable
+     context menus or auto-capitalization, for example.
+     @since 1.24]]
+   methods {
+      @property scrollable {
+         [[Enable or disable scrolling in the widget.
+
+           When scrolling is enabled scrollbars will appear if the text does
+           not fit the widget size.
+
+           Direct control of the scroll through the @Efl.Ui.Scrollable interface
+           is only possible when this property is enabled.
+         ]]
+         set {}
+         get {}
+         values {
+            scroll: bool(false); [[$true to enable scrolling.]]
+         }
+      }
+      @property context_menu_enabled {
+         [[This enables or disables the widget's contextual menu, typically
+           accessible through a long-press or a right-button click.
+         ]]
+         set {
+         }
+         get {
+         }
+         values {
+            enabled: bool; [[$true to enable the contextual menu.]]
+         }
+      }
+      @property cnp_dnd_mode @beta {
+         [[Controls the type of content which can be pasted into the widget.
+
+           By default, both text and images are allowed..
+         ]]
+         set {
+         }
+         get {
+         }
+         values {
+            allowed_formats : Efl.Ui.Textbox_Cnp_Content; [[Allowed content types.]]
+         }
+      }
+      @property selection_handles_enabled {
+         [[This enables or disables the visual handles around selected text,
+           to allow simpler modification on touch screens.]]
+         set {
+         }
+         get {
+         }
+         values {
+            enabled: bool; [[$true to enable the selection handles.]]
+         }
+      }
+
+      @property item_factory @beta {
+         [[The factory that provides item in the text e.g.
+           "emoticon/happy" or "href=file://image.jpg" etc.
+         ]]
+         values {
+            item_factory: Efl.Canvas.Textblock_Factory; [[Factory to create items]]
+         }
+      }
+      cursor_create {
+         [[Creates and returns a new cursor for the text.]]
+         return: Efl.Text_Cursor.Object @move; [[Text cursor.]]
+      }
+      selection_copy {
+         [[This executes a "copy" action on the selected text in the widget.]]
+      }
+      selection_paste {
+         [[This executes a "paste" action in the widget.]]
+      }
+      selection_cut {
+         [[This executes a "cut" action on the selected text in the widget.]]
+      }
+   }
+   implements {
+      Efl.Object.constructor;
+      Efl.Object.finalize;
+      Efl.Object.destructor;
+      Efl.Gfx.Entity.visible { set; }
+      Efl.Gfx.Entity.position { set; }
+      Efl.Gfx.Entity.size { set; }
+      Efl.Canvas.Group.group_member_add;
+      Efl.Canvas.Group.group_calculate;
+      Efl.Ui.Widget.on_access_activate;
+      Efl.Ui.Widget.theme_apply;
+      Efl.Ui.Widget.widget_input_event_handler;
+      Efl.Ui.Focus.Object.on_focus_update;
+      Efl.Ui.Widget.interest_region { get; }
+      Efl.Ui.Widget.disabled {set;}
+      Efl.Text_Format.password {set;}
+      Efl.Text_Format.multiline {set;}
+      Efl.Text_Style.text_color { set; }
+      Efl.Access.Object.state_set { get; }
+      Efl.Access.Object.i18n_name { get; }
+      Efl.Access.Text.access_text { get; }
+      Efl.Access.Text.string { get; }
+      Efl.Access.Text.attribute { get; }
+      Efl.Access.Text.text_attributes { get; }
+      Efl.Access.Text.default_attributes { get; }
+      Efl.Access.Text.caret_offset { get; set; }
+      Efl.Access.Text.character { get; }
+      Efl.Access.Text.character_extents { get; }
+      Efl.Access.Text.character_count { get; }
+      Efl.Access.Text.offset_at_point { get; }
+      Efl.Access.Text.bounded_ranges { get; }
+      Efl.Access.Text.range_extents { get; }
+      Efl.Access.Text.access_selection { get; set; }
+      Efl.Access.Text.selections_count { get; }
+      Efl.Access.Text.selection_add;
+      Efl.Access.Text.selection_remove;
+      Efl.Access.Editable.Text.text_content { set; }
+      Efl.Access.Editable.Text.insert;
+      Efl.Access.Editable.Text.copy;
+      Efl.Access.Editable.Text.cut;
+      Efl.Access.Editable.Text.delete;
+      Efl.Access.Editable.Text.paste;
+      Efl.Text_Interactive.editable { set; }
+      Efl.Part.part_get;
+      Efl.Ui.Scrollable.content_pos { set; get; }
+      Efl.Ui.Scrollable.content_size{ get; }
+      Efl.Ui.Scrollable.viewport_geometry{ get; }
+      Efl.Ui.Scrollable.bounce_enabled { set; get; }
+      Efl.Ui.Scrollable.scroll_freeze { get; set; }
+      Efl.Ui.Scrollable.scroll_hold { get; set; }
+      Efl.Ui.Scrollable.looping { get; set; }
+      Efl.Ui.Scrollable.movement_block { get; set; }
+      Efl.Ui.Scrollable.gravity { get; set; }
+      Efl.Ui.Scrollable.match_content { set; }
+      Efl.Ui.Scrollable.step_size { set; get; }
+      Efl.Ui.Scrollable.scroll;
+   }
+   events {
+      selection,paste: void; [[Called when selection is pasted.]]
+      selection,copy: void; [[Called when selection is copied.]]
+      selection,cut: void; [[Called when selection is cut.]]
+      changed: void; [[Called when entry changes]]
+      context,open: void; [[Called when context menu was opened]]
+   }
+}

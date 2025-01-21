@@ -1,0 +1,12 @@
+prefix=/usr
+libdir=${prefix}/lib/x86_64-linux-gnu
+includedir=${prefix}/include
+
+Name: eldbus
+Description: efl: eldbus
+Version: 1.28.99
+Requires: eina, eo, efl
+Requires.private: ecore, dbus-1
+Libs: -L${libdir} -leldbus
+Libs.private: -lm -pthread -ldl
+Cflags: -I${includedir}/eldbus-1

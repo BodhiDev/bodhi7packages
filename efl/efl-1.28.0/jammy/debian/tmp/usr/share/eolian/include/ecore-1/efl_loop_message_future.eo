@@ -1,0 +1,18 @@
+class @beta Efl.Loop_Message_Future extends Efl.Loop_Message
+{
+   [[ Used internally for futures on the loop ]]
+   methods {
+      @property data {
+         [[ ]]
+         set { }
+         get { }
+         values {
+            data: void_ptr; [[ ]]
+         }
+      }
+   }
+   implements {
+      Efl.Object.constructor;
+      Efl.Object.destructor;
+   }
+}

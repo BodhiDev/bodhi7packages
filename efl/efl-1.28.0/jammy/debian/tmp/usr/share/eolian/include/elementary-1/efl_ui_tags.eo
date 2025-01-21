@@ -1,0 +1,66 @@
+class @beta Efl.Ui.Tags extends Efl.Ui.Layout_Base
+   implements Efl.Ui.Format
+   composites Efl.Text
+{
+   [[A widget displaying a list of tags. The user can remove tags by clicking
+     on each tag "close" button and add new tags by typing text in the text
+     entry at the end of the list.]]
+   methods {
+      @property editable {
+         [[Control if the tag list is to be editable by the user or not.]]
+         set {
+         }
+         get {
+         }
+         values {
+            editable: bool; [[If $true, the user can add/delete tags to the tag list,
+                              if not, the tag list is non-editable.]]
+         }
+      }
+      @property expanded {
+         [[Control whether the tag list is expanded or not.
+
+           In the expanded state, all tags will be displayed.
+           Otherwise, only a single line of tags will be displayed with a marker to
+           indicate that there is more content.]]
+         set {
+         }
+         get {
+         }
+         values {
+            expanded: bool; [[The expanded state. Set this to $true to allow multiple
+                              lines of tags. Set to $false for a single line.]]
+         }
+      }
+      @property items {
+         [[List of tags in the tag list. Tags can be added and removed by the user
+           using the UI, and by the program by modifying this property.]]
+         set {
+         }
+         get {
+         }
+         values {
+            items: const(array<string>); [[The array of items, or $NULL if none.]]
+         }
+      }
+   }
+   implements {
+      Efl.Object.constructor;
+      Efl.Object.destructor;
+      Efl.Ui.Widget.widget_input_event_handler;
+      Efl.Text.text { get; set; }
+      Efl.Ui.Format.apply_formatted_value;
+   }
+   events {
+      /* FIXME: Returning a basic type is not future-proof, better return a struct */
+      item,selected: string; [[Called when item was selected]]
+      item,added: string; [[Called when item was added]]
+      item,deleted: string; [[Called when item was deleted]]
+      item,clicked: string; [[Called when item was clicked]]
+      item,longpressed: string; [[Called when item got a longpress]]
+      expanded: void; [[Called when expanded]]
+      contracted: void; [[Called when contracted]]
+      /* FIXME: Not future-proof */
+      expand,state,changed: int; [[Called when expanded state changed]]
+   }
+}

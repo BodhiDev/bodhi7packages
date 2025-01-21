@@ -1,0 +1,55 @@
+class @beta Efl.Ui.Frame extends Efl.Ui.Layout_Base implements Efl.Input.Clickable, Efl.Text, Efl.Text_Markup,
+                    Efl.Content
+{
+   [[Frame widget
+
+   The Frame widget allows for collapsing and expanding the content widget
+   by clicking on the frame label.
+   the label and content can be set using text_set and content_set api.
+   ]]
+   methods {
+      @property collapse {
+         [[Manually collapse a frame without animations.
+           Use this to toggle the collapsed state of a frame, bypassing animations.
+         ]]
+         set {
+         }
+         get {
+         }
+         values {
+            collapse: bool; [[$true to collapse, $false to expand.]]
+         }
+      }
+      @property autocollapse {
+         [[Toggle autocollapsing of a frame.
+           When $enable is $true, clicking a frame's label will collapse the frame
+           vertically, shrinking it to the height of the label.
+           By default, this is DISABLED.
+         ]]
+         set {
+         }
+         get {
+         }
+         values {
+            autocollapse: bool; [[Whether to enable autocollapse.]]
+         }
+      }
+      collapse_go {
+         [[Manually collapse a frame with animations
+           Use this to toggle the collapsed state of a frame, triggering animations.
+         ]]
+         params {
+            @in collapse: bool; [[$true to collapse, $false to expand.]]
+         }
+      }
+   }
+   implements {
+      Efl.Object.constructor;
+      Efl.Canvas.Group.group_calculate;
+      Efl.Text.text { get; set; }
+      Efl.Text_Markup.markup { get; set; }
+      Efl.Ui.L10n.l10n_text { get; set; }
+      Efl.Content.content { get; set; }
+      Efl.Content.content_unset;
+   }
+}

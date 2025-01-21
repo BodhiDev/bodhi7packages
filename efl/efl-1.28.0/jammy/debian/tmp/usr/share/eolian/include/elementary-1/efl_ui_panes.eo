@@ -1,0 +1,56 @@
+class @beta Efl.Ui.Panes extends Efl.Ui.Layout_Base implements Efl.Ui.Layout_Orientable,
+                                                               Efl.Input.Clickable
+{
+   [[Elementary panes class]]
+   event_c_prefix: elm_panes;
+   methods {
+      @property split_ratio {
+         [[Set the split ratio between panes widget first and second parts.
+
+           By default it's homogeneous, i.e., both sides have the same size.
+
+           If something different is required, it can be set with this function.
+           For example, if the first content should be displayed over
+           75% of the panes size, $ratio should be passed as 0.75.
+           This way, second content will be resized to 25% of panes size.
+
+           If displayed vertically, first content is displayed at top, and
+           second content at bottom.
+
+           Note: This ratio will change when user drags the panes bar.]]
+           set {
+           }
+           get {
+           }
+         values {
+            ratio: double; [[Value between 0.0 and 1.0 representing split ratio between panes first and second parts.]]
+         }
+      }
+      @property fixed {
+         [[Set whether the left and right panes can be resized by user interaction.
+
+           By default panes' contents are resizable by user interaction.]]
+         set {
+         }
+         get {
+         }
+         values {
+            fixed: bool; [[Use $true to fix the left and right panes sizes and make
+            them not to be resized by user interaction. Use $false to make them
+            resizable.]]
+         }
+      }
+   }
+   parts {
+      first: Efl.Ui.Panes_Part; [[The first half of the panes widget (left or top)]]
+      second: Efl.Ui.Panes_Part; [[The second half of the panes widget (right or bottom)]]
+   }
+   implements {
+      Efl.Object.constructor;
+      Efl.Canvas.Group.group_calculate;
+      Efl.Ui.Widget.theme_apply;
+      Efl.Ui.Layout_Orientable.orientation { get; set; [[Only supports $vertical and $horizontal.
+                                                         Default is $vertical.]] }
+      Efl.Part.part_get;
+   }
+}

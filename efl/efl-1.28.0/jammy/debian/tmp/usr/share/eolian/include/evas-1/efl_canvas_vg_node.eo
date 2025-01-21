@@ -1,0 +1,65 @@
+import eina_types;
+
+abstract @beta Efl.Canvas.Vg.Node extends Efl.Object
+                                  implements Efl.Gfx.Entity, Efl.Gfx.Color, Efl.Gfx.Stack, Efl.Duplicate, Efl.Gfx.Path
+{
+   [[Efl vector graphics abstract class]]
+   methods {
+      @property transformation {
+         [[The transformation matrix to be used for this node object.
+
+           Note: Pass $null to cancel the applied transformation.
+         ]]
+         set {
+         }
+         get {
+         }
+         values {
+            m: ptr(const(Eina.Matrix3)); [[Transformation matrix.]]
+         }
+      }
+      @property origin {
+         [[The origin position of the node object.
+
+           This origin position affects node transformation.
+         ]]
+         set {
+         }
+         get {
+         }
+         values {
+            x: double; [[$origin x position.]]
+            y: double; [[$origin y position.]]
+         }
+      }
+      @property comp_method {
+         [[Set a composite target node to this node object.]]
+         set {
+         }
+         values {
+            target: Efl.Canvas.Vg.Node; [[Composite target node]]
+            method: Efl.Gfx.Vg_Composite_Method; [[Composite Method.]]
+         }
+      }
+   }
+   implements {
+      Efl.Object.name { set; }
+      Efl.Object.parent { set; }
+      Efl.Object.constructor;
+      Efl.Object.invalidate;
+      Efl.Object.destructor;
+      Efl.Gfx.Entity.visible { get; set; }
+      Efl.Gfx.Color.color { get; set; }
+      Efl.Gfx.Entity.size { get; }
+      Efl.Gfx.Entity.position { get; set; }
+      Efl.Gfx.Entity.geometry { get; }
+      Efl.Gfx.Stack.below { get; }
+      Efl.Gfx.Stack.above { get; }
+      Efl.Gfx.Stack.stack_below;
+      Efl.Gfx.Stack.stack_above;
+      Efl.Gfx.Stack.raise_to_top;
+      Efl.Gfx.Stack.lower_to_bottom;
+      Efl.Gfx.Path.interpolate;
+      Efl.Duplicate.duplicate;
+   }
+}

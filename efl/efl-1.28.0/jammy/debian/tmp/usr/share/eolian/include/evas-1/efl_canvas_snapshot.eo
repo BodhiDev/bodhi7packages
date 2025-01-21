@@ -1,0 +1,13 @@
+class @beta Efl.Canvas.Snapshot extends Efl.Canvas.Image_Internal
+{
+   [[Low-level snapshot image object.
+
+     A snapshot is a special kind of image containing the pixels from
+     all the objects below it. This allows applications to save screenshots
+     of all or part of their UI, or apply filters to parts of the UI.
+   ]]
+   data: null;
+   implements {
+      Efl.Object.constructor;
+   }
+}

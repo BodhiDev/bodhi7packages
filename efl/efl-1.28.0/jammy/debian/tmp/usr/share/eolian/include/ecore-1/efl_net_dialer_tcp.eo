@@ -1,0 +1,34 @@
+class @beta Efl.Net.Dialer_Tcp extends Efl.Net.Socket_Tcp implements Efl.Net.Dialer {
+    [[Connects to a remote TCP server.
+
+      If the proxy is $NULL (default), then the system proxy will be
+      used. On UNIX that's the environment variable $socks_proxy (or
+      '$proxy' or '$all_proxy') is used if the given address doesn't
+      match $no_proxy patterns. To disable proxy use an empty string.
+
+      If the proxy is $NULL (default), then the system proxy will be
+      used. On UNIX that's the environment variable $socks_proxy (or
+      '$all_proxy') is used if the given address doesn't match
+      $no_proxy patterns. To disable proxy use an empty string. If
+      provided proxy must be one of the protocols:
+
+       - socks5://username:password\@proxyserver:port (SOCKSv5)
+       - socks5h://username\@proxyserver:port (let socks server to resolve domain)
+       - socks5://proxyserver:port
+       - socks5://proxyserver (default port 1080)
+       - socks4a://proxyserver:port (SOCKSv4 and let socks server to resolve domain)
+       - socks4://proxyserver:port (SOCKSv4)
+    ]]
+
+    implements {
+        Efl.Object.constructor;
+        Efl.Object.invalidate;
+        Efl.Object.destructor;
+        Efl.Net.Dialer.dial;
+        Efl.Net.Dialer.address_dial { get; set; }
+        Efl.Net.Dialer.connected { get; set; }
+        Efl.Net.Dialer.proxy { get; set; }
+        Efl.Net.Dialer.timeout_dial { get; set; }
+        Efl.Io.Closer.close;
+    }
+}

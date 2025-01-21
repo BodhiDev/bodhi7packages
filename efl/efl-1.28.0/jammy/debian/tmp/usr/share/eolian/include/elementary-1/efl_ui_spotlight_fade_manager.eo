@@ -1,0 +1,7 @@
+class @beta Efl.Ui.Spotlight.Fade_Manager extends Efl.Ui.Spotlight.Animation_Manager
+{
+   c_prefix: efl_ui_spotlight_manager_fade;
+   implements {
+      Efl.Object.constructor;
+   }
+}

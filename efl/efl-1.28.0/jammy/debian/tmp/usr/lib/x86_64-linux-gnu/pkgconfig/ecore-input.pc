@@ -1,0 +1,12 @@
+prefix=/usr
+libdir=${prefix}/lib/x86_64-linux-gnu
+includedir=${prefix}/include
+
+Name: ecore-input
+Description: efl: ecore_input
+Version: 1.28.99
+Requires: eina, eo
+Requires.private: ecore, efl, eeze, ecore-file
+Libs: -L${libdir} -lecore_input
+Libs.private: -pthread -lm -ldl
+Cflags: -I${includedir}/ecore-input-1

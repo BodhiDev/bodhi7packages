@@ -1,0 +1,27 @@
+class @beta Efl.Net.Server_Ssl extends Efl.Net.Server_Tcp {
+    [[A SSL server over TCP.
+    ]]
+
+    methods {
+        @property ssl_context {
+            [[Defines the SSL context to use for this server.
+
+              This specifies a shared context for all clients, with
+              certificate, private keys, CRL, CAs...
+
+              If changed in runtime, it will only affect new clients.
+            ]]
+            values {
+                ssl_context: Efl.Net.Ssl.Context; [[SSL context]]
+            }
+        }
+    }
+
+    implements {
+        Efl.Object.constructor;
+        Efl.Object.invalidate;
+        Efl.Object.destructor;
+        Efl.Net.Server.client_announce;
+        Efl.Net.Server_Fd.client_add;
+    }
+}

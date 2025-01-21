@@ -1,0 +1,9 @@
+class @beta Efl.Ui.Progressbar_Part extends Efl.Ui.Layout_Part implements Efl.Ui.Range_Display
+{
+   [[Elementary progressbar internal part class]]
+   data: null;
+   implements {
+      Efl.Ui.Range_Display.range_value { set; get; }
+      Efl.Ui.Range_Display.range_limits {get; set; }
+   }
+}

@@ -1,0 +1,185 @@
+import efl_input_types;
+import eina_types;
+
+class Efl.Input.Pointer extends Efl.Object implements Efl.Input.Event, Efl.Input.State
+{
+   [[Event data carried over with any pointer event (mouse, touch, pen, ...)
+
+     @since 1.23
+   ]]
+   methods {
+      @property action {
+         [[The action represented by this event.]]
+         values {
+            act: Efl.Pointer.Action; [[Event action]]
+         }
+      }
+      @property value_has @beta {
+         [[$true if this event carries a valid value for the specified $key.]]
+         get {}
+         keys {
+            key: Efl.Input.Value; [[Pressed $key]]
+         }
+         values {
+            has: bool; [[$true if input value is valid, $false otherwise]]
+         }
+      }
+      @property value @beta  {
+         [[Represents a generic value for this event.
+
+           Refer to the documentation of @Efl.Input.Value for each value's
+           meaning, type and range. Call @.value_has.get to determine whether
+           the returned value is valid or not for this event.
+
+           Most values are precise floating point values, usually in pixels,
+           radians, or in a range of [-1, 1] or [0, 1]. Some values are
+           discrete values (integers) and thus should preferably be queried
+           with the other methods of this class.
+         ]]
+         set {
+            return: bool; [[$false if the value could not be set.]]
+         }
+         get {}
+         keys {
+            key: Efl.Input.Value; [[$key]]
+         }
+         values {
+            val: double; [[$key value]]
+         }
+      }
+      @property button {
+         [[The mouse button that triggered the event.
+
+           Valid if and only if @.value_has($button) is $true.
+         ]]
+         values {
+            but: int; [[1 to 32, 0 if not a button event.]]
+         }
+      }
+      @property button_pressed {
+         [[Whether a mouse button is pressed at the moment of the event.
+
+           Valid if and only if @.value_has($button_pressed) is $true.]]
+         keys {
+            button: int; [[1 to 32, 0 if not a button event.]]
+         }
+         values {
+            pressed: bool; [[$true when the button was pressed, $false otherwise]]
+         }
+      }
+      @property position {
+         [[Position where the event happened, relative to the window.
+
+           See @.precise_position for floating point precision (subpixel
+           location).
+         ]]
+         values {
+            pos: Eina.Position2D; [[The position of the event, in pixels.]]
+         }
+      }
+      @property precise_position {
+         [[Position where the event happened, relative to the window.
+
+           This position is in floating point values, for more precise
+           coordinates, in subpixels. Note that many input devices are unable
+           to give better precision than a single pixel, so this may be
+           equal to @.position.
+
+           See also @.position.
+         ]]
+         values {
+            pos: Eina.Vector2; [[The position of the event, in pixels.]]
+         }
+      }
+      @property previous_position {
+         [[Position of the previous event, valid for move events.
+
+           Relative to the window. May be equal to @.position (by default).
+
+           This position, in integers, is an approximation of
+           @.value.get($previous_x), @.value.get($previous_y).
+           Use @.previous_position if you need simple pixel positions,
+           but prefer the generic interface if you need precise coordinates.
+         ]]
+         values {
+            pos: Eina.Position2D; [[The position of the event, in pixels.]]
+         }
+      }
+      @property touch_id {
+         [[The ID associated with this pointer.
+
+           In case there are multiple pointers (for example when multiple fingers are touching the screen) this number
+           uniquely identifies each pointer, for as long as it is present. This is, when a finger is lifted its ID can
+           be later reused by another finger touching the screen.
+         ]]
+         values {
+            id: int; [[An ID uniquely identifying this pointer among the currently present pointers.]]
+         }
+      }
+      @property source {
+         [[The object where this event first originated, in case of
+           propagation or repetition of the event.
+         ]]
+         values {
+            src: Efl.Object; [[Source object: @Efl.Gfx.Entity]]
+         }
+      }
+      @property button_flags {
+         [[Double or triple click information.]]
+         values {
+            flags: Efl.Pointer.Flags; [[Button information flags]]
+         }
+      }
+      @property double_click {
+         [[$true if @.button_flags indicates a double click (2nd press).
+
+           This is just a helper function around @.button_flags.
+         ]]
+         values {
+            val: bool; [[$true if the button press was a double click, $false otherwise]]
+         }
+      }
+      @property triple_click {
+         [[$true if @.button_flags indicates a triple click (3rd press).
+
+           This is just a helper function around @.button_flags.
+         ]]
+         values {
+            val: bool; [[$true if the button press was a triple click, $false otherwise]]
+         }
+      }
+      @property wheel_horizontal {
+         [[Direction of the wheel, usually vertical.]]
+         values {
+            horizontal: bool(false); [[If $true this was a horizontal wheel.]]
+         }
+      }
+      @property wheel_delta {
+         [[Delta movement of the wheel in discrete steps.]]
+         values {
+            dist: int; [[Wheel movement delta]]
+         }
+      }
+   }
+   implements {
+      Efl.Object.constructor;
+      Efl.Object.destructor;
+      class.destructor;
+      Efl.Input.Event.reset;
+      Efl.Duplicate.duplicate;
+         [[Creates a copy of this event. @Efl.Input.Event.fake is $true.
+
+           The returned event object is similar to the given object in most
+           ways except that @Efl.Input.Event.fake will be $true.
+
+           Note: A reference is given to the caller. In order to avoid leaks
+           the C API users should call $efl_unref() after use.
+         ]]
+      Efl.Input.Event.timestamp { get; set; }
+      Efl.Input.Event.fake { get; }
+      Efl.Input.Event.event_flags { get; set; }
+      Efl.Input.Event.device { get; set; }
+      Efl.Input.State.modifier_enabled { get; }
+      Efl.Input.State.lock_enabled { get; }
+   }
+}

@@ -1,0 +1,46 @@
+class @beta Efl.Net.Socket_Tcp extends Efl.Net.Socket_Fd {
+    [[A base TCP socket.
+
+      This is the common class and takes an existing FD, usually
+      created by an dialer or server.
+    ]]
+
+    methods {
+        @property keep_alive {
+            [[Controls keep-alive using SO_KEEPALIVE]]
+            get { }
+            set {
+                return: bool (false); [[$true on success]]
+            }
+            values {
+                keep_alive: bool; [[$true if keep alive is enabled, $false otherwise]]
+            }
+        }
+
+        @property no_delay {
+            [[Controls TCP's no-delay using TCP_NODELAY]]
+            get { }
+            set {
+                return: bool (false); [[$true on success]]
+            }
+            values {
+                no_delay: bool; [[$true if no delay is enabled, $false otherwise]]
+            }
+        }
+
+        @property cork {
+            [[Controls TCP's cork using TCP_CORK]]
+            get { }
+            set {
+                return: bool (false); [[$true on success]]
+            }
+            values {
+                cork: bool; [[$true if cork is enabled, $false otherwise]]
+            }
+        }
+    }
+
+    implements {
+        Efl.Loop_Fd.fd { set; }
+    }
+}

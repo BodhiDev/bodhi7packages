@@ -1,0 +1,18 @@
+class @beta Efl.Loop_Message_Future_Handler extends Efl.Loop_Message_Handler
+{
+   [[ Internal use for future on an efl loop - replacing legacy ecore events ]]
+   methods {
+      message_type_add {
+         [[ ]]
+         return: Efl.Loop_Message_Future; [[ ]]
+      }
+   }
+   events {
+      message,future: Efl.Loop_Message_Future; [[ ]]
+   }
+   implements {
+      Efl.Object.constructor;
+      Efl.Object.destructor;
+      Efl.Loop_Message_Handler.message_call; [[ ]]
+   }
+}

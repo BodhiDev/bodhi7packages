@@ -1,0 +1,36 @@
+interface @beta Efl.Access.Value
+{
+   [[Elementary Access value interface]]
+   methods {
+      @property value_and_text @protected @beta {
+          [[Value and text displayed bye accessible widget.]]
+         get {
+         }
+         set {
+            return: bool; [[$true if setting widgets value has succeeded, otherwise $false .]]
+         }
+         values {
+            value: double; [[Value of widget casted to floating point number.]]
+            text: string; [[string describing value in given context eg. small, enough]]
+         }
+      }
+      @property range @protected @beta {
+         [[The range of all possible values and its description]]
+         get {
+         }
+         values {
+            lower_limit: double; [[Lower limit of the range]]
+            upper_limit: double; [[Upper limit of the range]]
+            description: string; [[Description of the range]]
+         }
+      }
+      @property increment @protected @beta {
+         [[Gets an minimal incrementation value]]
+         get {
+         }
+         values {
+            increment: double; [[Minimal incrementation value]]
+         }
+      }
+   }
+}

@@ -1,0 +1,20 @@
+mixin @beta Efl.Io.Sizer_Fd extends Efl.Io.Sizer {
+    [[Resizes fd usign ftruncate(2).
+    ]]
+
+    methods {
+        @property sizer_fd {
+            [[Sizer file descriptor]]
+            get {}
+            set @protected {}
+            values {
+                fd: int; [[File descriptor]]
+            }
+        }
+    }
+
+    implements {
+        Efl.Io.Sizer.resize;
+        Efl.Io.Sizer.size { get; }
+    }
+}

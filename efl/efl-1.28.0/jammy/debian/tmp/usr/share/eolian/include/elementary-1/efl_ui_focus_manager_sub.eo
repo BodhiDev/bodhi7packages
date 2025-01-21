@@ -1,0 +1,21 @@
+mixin @beta Efl.Ui.Focus.Manager_Sub requires Efl.Object extends Efl.Ui.Focus.Manager
+{
+    [[A class that automatically registers its border elements in the parent manager.
+
+      This sub manager will register its border elements on the parent manager.
+      The parent manager is found with the @Efl.Ui.Focus.Object interface of the
+      @Efl.Object.parent.
+
+      Each sub manager also has to be a focus object, the object itself will be
+      registered into the parent manager. It will be used as logical parent
+      while registering the border elements.
+
+      You can filter the border elements by overriding the property
+      @Efl.Ui.Focus.Manager.border_elements.
+    ]]
+    implements {
+        Efl.Object.constructor;
+        Efl.Object.destructor;
+        Efl.Ui.Focus.Manager.move;
+    }
+}

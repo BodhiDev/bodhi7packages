@@ -1,0 +1,15 @@
+libefl: package-name-doesnt-match-sonames
+libefl: library-not-linked-against-libc
+libefl: exit-in-shared-library
+libefl: package-contains-documentation-outside-usr-share-doc
+libefl: executable-in-usr-lib
+# These are false positives
+libefl: spelling-error-in-binary
+# How can I fix this
+libefl: hardening-no-fortify-functions
+# libefreet_trash and libefreet_mime have had all of their symbols
+# moved into libefreet.  But the files must be kept to avoid breaking
+# stable ABI users (consumers must be linked to libefreet anyhow).
+# lintian is tricked because they have no symbols.
+libefl: shared-library-lacks-prerequisites
+libefl: symbols-file-missing-build-depends-package-field

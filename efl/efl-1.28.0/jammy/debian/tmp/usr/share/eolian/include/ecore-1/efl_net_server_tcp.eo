@@ -1,0 +1,12 @@
+class @beta Efl.Net.Server_Tcp extends Efl.Net.Server_Ip {
+    [[A TCP server.
+    ]]
+
+    implements {
+        Efl.Object.destructor;
+        Efl.Net.Server.serve;
+        Efl.Net.Server_Fd.client_add;
+        Efl.Net.Server_Fd.client_reject;
+        Efl.Net.Server_Fd.socket_activate;
+    }
+}

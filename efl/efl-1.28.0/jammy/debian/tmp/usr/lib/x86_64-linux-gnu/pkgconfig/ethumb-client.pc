@@ -1,0 +1,12 @@
+prefix=/usr
+libdir=${prefix}/lib/x86_64-linux-gnu
+includedir=${prefix}/include
+
+Name: ethumb-client
+Description: efl: ethumb_client
+Version: 1.28.99
+Requires: eina, eo, efl, ethumb
+Requires.private: eldbus, ecore
+Libs: -L${libdir} -lethumb_client
+Libs.private: -lm -pthread -ldl
+Cflags: -I${includedir}/ethumb-client-1

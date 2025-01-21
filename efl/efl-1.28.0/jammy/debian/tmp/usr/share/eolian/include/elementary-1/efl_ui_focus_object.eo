@@ -1,0 +1,87 @@
+import eina_types;
+
+mixin Efl.Ui.Focus.Object
+{
+    [[Functions of focusable objects.
+
+      @since 1.22
+    ]]
+    methods {
+        @property focus_geometry {
+            [[The geometry (that is, the bounding rectangle) used to calculate the
+              relationship with other objects.]]
+            get {}
+            values {
+                rect : Eina.Rect; [[The geometry to use.]]
+            }
+        }
+        @property focus {
+            [[Whether the widget is currently focused or not.]]
+            get {
+            }
+            set @protected {
+              [[This is called by the manager and should never be called by
+                anyone else.
+
+                The function emits the focus state events, if focus is
+                different to the previous state.
+            ]]
+            }
+            values {
+                focus : bool; [[The focused state of the object.]]
+            }
+        }
+        @property focus_manager {
+            [[This is the focus manager where this focus object is registered in.
+              The element which is the $root of an @Efl.Ui.Focus.Manager will not
+              have this focus manager as this object, but rather the focus manager
+              where that is registered in.
+            ]]
+            get {}
+            values {
+                manager : Efl.Ui.Focus.Manager; [[The manager object.]]
+            }
+        }
+        @property focus_parent {
+            [[The logical parent used by this object.]]
+            get {}
+            values {
+                logical_parent : Efl.Ui.Focus.Object; [[The focus parent.]]
+            }
+        }
+        @property child_focus @protected {
+            [[Indicates if a child of this object has focus set to true.]]
+            values {
+               child_focus : bool; [[$true if a child has focus.]]
+            }
+        }
+        setup_order {
+            [[Tells the object that its children will be queried soon by the focus manager.
+              Overwrite this to have a chance to update the order of the children.
+              Deleting items in this call will result in undefined behaviour and may cause your system to crash.
+            ]]
+        }
+        setup_order_non_recursive @protected {
+            [[This is called when @.setup_order is called, but only on the first call,
+              additional recursive calls to @.setup_order will not call this function again.]]
+        }
+        on_focus_update @protected {
+           [[Virtual function handling focus in/out events on the widget.]]
+           return: bool; [[$true if this widget can handle focus, $false otherwise.]]
+        }
+    }
+    implements {
+        @empty .focus_geometry;
+        @empty .setup_order_non_recursive;
+        @empty .focus_manager;
+        @empty .focus_parent;
+        @empty .on_focus_update;
+    }
+    events {
+        focus,changed : bool; [[Emitted if the focus state has changed.]]
+        focus_manager,changed: Efl.Ui.Focus.Manager; [[Emitted when a new manager is the parent for this object.]]
+        focus_parent,changed: Efl.Ui.Focus.Object; [[Emitted when a new logical parent should be used.]]
+        child_focus,changed: bool; [[Emitted if child_focus has changed.]]
+        focus_geometry,changed: Eina.Rect; [[Emitted if focus geometry of this object has changed.]]
+    }
+}

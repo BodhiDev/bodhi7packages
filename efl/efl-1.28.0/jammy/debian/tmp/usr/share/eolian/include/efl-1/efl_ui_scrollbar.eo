@@ -1,0 +1,92 @@
+import efl_ui_layout_orientable;
+
+enum Efl.Ui.Scrollbar_Mode
+{
+   [[When should the scrollbar be shown. @since 1.23]]
+   auto = 0, [[Visible if necessary.]]
+   on,       [[Always visible.]]
+   off,      [[Always invisible.]]
+   last      [[For internal use only.]]
+}
+
+interface Efl.Ui.Scrollbar
+{
+   [[Interface used by widgets which can display scrollbars, enabling them to hold more content
+     than actually visible through the viewport.
+     A scrollbar contains a draggable part (thumb) which allows the user to move the viewport
+     around the content. The size of the thumb relates to the size of the viewport compared to
+     the whole content.
+
+     @since 1.23
+   ]]
+   methods {
+      @property bar_mode {
+         [[Scrollbar visibility mode, for each of the scrollbars.]]
+         set {
+         }
+         get {
+         }
+         values {
+            hbar: Efl.Ui.Scrollbar_Mode(Efl.Ui.Scrollbar_Mode.auto); [[Horizontal scrollbar mode.]]
+            vbar: Efl.Ui.Scrollbar_Mode(Efl.Ui.Scrollbar_Mode.auto); [[Vertical scrollbar mode.]]
+         }
+      }
+      @property bar_size {
+         [[This returns the relative size the thumb should have, given the current size of the viewport and
+           the content.
+           $[0.0] means the viewport is much smaller than the content: the thumb will have its minimum size.
+           $[1.0] means the viewport has the same size as the content (or bigger): the thumb will have the same
+           size as the scrollbar and cannot move.
+         ]]
+         get {
+         }
+         values {
+            width: double; [[Value between $[0.0] and $[1.0].]]
+            height: double; [[Value between $[0.0] and $[1.0].]]
+         }
+      }
+      @property bar_position {
+         [[Position of the thumb (the draggable zone) inside the scrollbar.
+           It is calculated based on current position of the viewport inside the total content.
+         ]]
+         set {
+         }
+         get {
+         }
+         values {
+            posx: double; [[Value between $[0.0] (the left side of the thumb is touching the left edge of the widget)
+                            and $[1.0] (the right side of the thumb is touching the right edge of the widget).]]
+            posy: double; [[Value between $[0.0] (the top side of the thumb is touching the top edge of the widget)
+                            and $[1.0] (the bottom side of the thumb is touching the bottom edge of the widget).]]
+         }
+      }
+      @property bar_visibility {
+         [[Current visibility state of the scrollbars.
+           This is useful in @Efl.Ui.Scrollbar_Mode.auto mode where EFL decides if the scrollbars
+           are shown or hidden. See also the @[.bar,show] and @[.bar,hide] events.
+         ]]
+         get {
+         }
+         values {
+            hbar: bool; [[Whether the horizontal scrollbar is currently visible.]]
+            vbar: bool; [[Whether the vertical scrollbar is currently visible.]]
+         }
+      }
+      bar_visibility_update @protected @beta{
+         [[Update bar visibility.
+
+           The object will call this function whenever the bar
+           needs to be shown or hidden.
+         ]]
+      }
+   }
+   events {
+      bar,pressed: Efl.Ui.Layout_Orientation; [[Emitted when thumb is pressed.]]
+      bar,unpressed: Efl.Ui.Layout_Orientation; [[Emitted when thumb is unpressed.]]
+      bar,dragged: Efl.Ui.Layout_Orientation; [[Emitted when thumb is dragged.]]
+      bar,size,changed: void; [[Emitted when thumb size has changed.]]
+      bar,pos,changed: void; [[Emitted when thumb position has changed.]]
+      bar,show: Efl.Ui.Layout_Orientation; [[Emitted when scrollbar is shown.]]
+      bar,hide: Efl.Ui.Layout_Orientation; [[Emitted when scrollbar is hidden.]]
+   }
+}

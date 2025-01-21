@@ -1,0 +1,40 @@
+class @beta Efl.Ui.Slider_Interval extends Efl.Ui.Layout_Base implements Efl.Ui.Range_Interactive,
+                              Efl.Ui.Layout_Orientable, Efl.Access.Widget.Action
+{
+    [[An interval slider.
+
+      This is a slider with two indicators.
+    ]]
+    methods {
+        @property interval_value {
+            [[Sets up position of two indicators at start and end position.
+            ]]
+            get {
+            }
+            set {
+            }
+            values {
+                from: double;[[interval minimum value]]
+                to: double; [[interval maximum value]]
+            }
+        }
+    }
+    implements {
+       Efl.Object.constructor;
+       Efl.Object.destructor;
+       Efl.Ui.Widget.theme_apply;
+       Efl.Ui.Widget.on_access_activate;
+       Efl.Ui.Widget.widget_input_event_handler;
+       Efl.Ui.Range_Display.range_value { get; set; }
+       Efl.Ui.Range_Display.range_limits {get; set; }
+       Efl.Ui.Range_Interactive.range_step { get; set; }
+       Efl.Ui.Layout_Orientable.orientation { get; set; }
+       Efl.Access.Widget.Action.elm_actions { get; }
+    }
+    events {
+      slider,drag,start: void; [[Called when a slider drag operation has started. This means a $press event
+                                 has been received on the slider thumb but not the $unpress.]]
+      slider,drag,stop: void; [[Called when a slider drag operation has finished. This means an $unpress event
+                                has been received on the slider thumb.]]
+   }
+}

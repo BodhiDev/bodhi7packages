@@ -1,0 +1,12 @@
+prefix=/usr
+libdir=${prefix}/lib/x86_64-linux-gnu
+includedir=${prefix}/include
+
+Name: ecore-x
+Description: efl: ecore_x
+Version: 1.28.99
+Requires: eina, efl
+Requires.private: eo, ecore, ecore-input, x11, xcb, x11-xcb
+Libs: -L${libdir} -lecore_x
+Libs.private: -lm -pthread -ldl -lXcomposite -lXdamage -lXext -lXfixes -lXinerama -lXrandr -lXrender -lXtst -lXss -lXpresent -lXi -lXcursor
+Cflags: -I${includedir}/ecore-x-1

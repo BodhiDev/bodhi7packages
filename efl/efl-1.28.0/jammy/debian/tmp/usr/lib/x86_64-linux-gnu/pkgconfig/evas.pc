@@ -1,0 +1,12 @@
+prefix=/usr
+libdir=${prefix}/lib/x86_64-linux-gnu
+includedir=${prefix}/include
+
+Name: evas
+Description: efl: evas
+Version: 1.28.99
+Requires: eina, ecore, ector, emile, efl, eo
+Requires.private: eet, lua52 >= 5.2.0, lua52 < 5.3.0, valgrind, freetype2, fontconfig, fribidi, harfbuzz, libjpeg, libpng
+Libs: -L${libdir} -levas
+Libs.private: -lm -pthread -ldl
+Cflags: -I${includedir}/evas-1 -I${includedir}/evas-1/canvas -I${includedir}/evas-1/gesture

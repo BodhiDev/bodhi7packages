@@ -1,0 +1,144 @@
+interface Efl.Player
+{
+   [[Efl media player interface
+
+     @since 1.23
+   ]]
+   c_prefix: efl_player;
+   methods {
+        @property playing {
+           [[Playback state of the media file.
+
+             This property sets the playback state of the object. Re-setting the current
+             playback state has no effect.
+
+             If set to $false, the object's @.playback_progress property is, by default, reset to $[0.0]. A
+             class may alter this behavior, and it will be stated in the documentation for a class
+             if such behavior changes should be expected.
+
+             Applying the $false playing state also has the same effect as the player object reaching
+             the end of its playback, which may invoke additional behavior based on a class's
+             implementation.
+           ]]
+           set {
+              return: bool(false); [[If $true, the property change has succeeded.]]
+           }
+           get {
+           }
+           values {
+                playing: bool; [[$true if playing, $false otherwise.]]
+           }
+        }
+        @property paused {
+           [[Pause state of the media file.
+
+             This property sets the pause state of the media.  Re-setting the current
+             pause state has no effect.
+
+             If @.playing is set to $true, this property can be used to pause and resume
+             playback of the media without changing its @.playback_progress property. This property
+             cannot be changed if @.playing is $false.
+           ]]
+           set {
+              return: bool(false); [[If $true, the property change has succeeded.]]
+           }
+           get {
+           }
+           values {
+                paused: bool; [[$true if paused, $false otherwise.]]
+           }
+        }
+        @property playback_position {
+           [[Position in the media file.
+
+             This property sets the current position of the media file
+             to $sec seconds since the beginning of the media file.
+             This only works on seekable streams. Setting the
+             position doesn't change the @.playing or @.paused states of the media file.
+           ]]
+           set {
+           }
+           get {
+           }
+           values {
+                sec: double; [[The position (in seconds).]]
+           }
+        }
+        @property playback_progress {
+           [[How much of the file has been played.
+
+             This function sets or gets the progress in playing the file, the
+             value is in the [0, 1] range.
+           ]]
+           set {
+           }
+           get {
+           }
+           values {
+                progress: double; [[The progress within the [0, 1] range.]]
+           }
+        }
+        @property playback_speed {
+             [[Control the playback speed of the media file.
+
+               This function control the speed with which the media file will
+               be played. 1.0 represents the normal speed, 2 double speed, 0.5
+               half speed and so on.
+             ]]
+             set {
+             }
+             get {
+             }
+             values {
+                  speed: double; [[The play speed in the [0, infinity) range.]]
+             }
+        }
+        @property autoplay {
+           [[When $true, playback will start as soon as the media is ready.
+
+             This means that the media file has been successfully loaded and the
+             object is visible.
+
+             If the object becomes invisible later on the playback is paused,
+             resuming when it is visible again.
+
+             Changing this property affects the next media being loaded,
+             so set it before setting the media file.
+
+             @since 1.24
+           ]]
+           set {
+           }
+           get {
+           }
+           values {
+              autoplay: bool; [[Auto play mode, Default is $false unless specified by the implementing class.]]
+           }
+        }
+        @property playback_loop {
+           [[Enable playback looping.
+
+             When $true, playback continues from the beginning when it reaches the last frame.
+             Otherwise, playback stops.
+             This works both when playing forward and backward.
+
+             @since 1.24
+           ]]
+           set {
+           }
+           get {
+           }
+           values {
+              looping: bool; [[Loop mode, Default is $false unless specified by the implementing class.]]
+           }
+        }
+   }
+   events {
+      playing,changed: bool; [[Called when the playing state has changed. The event value reflects the current state. @since 1.24]]
+      paused,changed: bool; [[Called when the paused state has changed. The event value reflects the current state. @since 1.24]]
+      playback_progress,changed: double; [[Called when the playback_progress state has changed. The event value reflects the current state. @since 1.24]]
+      playback_position,changed: double; [[Called when the playback_position state has changed. The event value reflects the current state. @since 1.24]]
+      playback,repeated: int; [[Called when the player has begun to repeat its data stream. The event value is the current number of repeats. @since 1.24]]
+      playback,finished: void; [[Called when the player has completed playing its data stream. @since 1.24]]
+   }
+}

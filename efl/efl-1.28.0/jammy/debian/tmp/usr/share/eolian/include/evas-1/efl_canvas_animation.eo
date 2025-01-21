@@ -1,0 +1,132 @@
+import efl_canvas_animation_types;
+
+class Efl.Canvas.Animation extends Efl.Object implements Efl.Playable
+{
+   [[Base class to be used by classes implementing specific canvas animations.
+
+     A canvas animation modifies the properties of a @Efl.Canvas.Object like
+     @Efl.Gfx.Entity.position, @Efl.Gfx.Entity.scale or @Efl.Gfx.Mapping.rotate, for example.
+     The value of the changed properties moves smoothly as the provided progress value
+     evolves from $[0] to $[1].
+
+     For example implementations see @Efl.Canvas.Translate_Animation or @Efl.Canvas.Scale_Animation.
+
+     Note: Unless @.final_state_keep is used, when an animation finishes any effect it introduced on the object is
+     removed. This means that if the animation does not end in the object's initial state there will be a noticeable
+     sudden jump.
+     To avoid this, animations must finish in the same state as they begin, or the object's state must be
+     matched to the animation's ending state once the animation finishes (using the @[Efl.Canvas.Object_Animation.animation,changed]
+     event).
+
+     @since 1.24
+   ]]
+   c_prefix: efl_animation;
+   methods {
+      @property final_state_keep {
+         [[If $true the last mapping state the animation applies will be kept.
+           Otherwise all the @Efl.Gfx.Mapping properties will be reset when the animation ends.
+
+           Be careful, though. Object properties like @Efl.Gfx.Entity.position do not take
+           animations into account so they might not match the actual rendered values.
+           It is usually better to remove the effects of the animation as soon as it finishes
+           and set the final values on the object's properties.
+         ]]
+         set {
+         }
+         get {
+         }
+         values {
+            keep: bool; [[$true to keep the final state.]]
+         }
+      }
+      @property duration {
+         [[The duration of a single animation "run".
+           The @Efl.Playable.length implementation will return this duration adjusted by @.repeat_mode and
+           @.play_count.
+         ]]
+         set {
+         }
+         get {
+         }
+         values {
+            sec: double; [[Duration in seconds.]]
+         }
+      }
+      @property repeat_mode {
+         [[What to do when the animation finishes.
+         ]]
+         set {
+         }
+         get {
+         }
+         values {
+            mode: Efl.Canvas.Animation_Repeat_Mode(Efl.Canvas.Animation_Repeat_Mode.restart); [[Repeat mode.]]
+         }
+      }
+      @property play_count {
+         [[How many times to play an animation.
+           $[1] means that the animation only plays once (it is not repeated), whereas $[2] will play it
+           again once it finishes the first time and then stop.
+           $[0] means that the animation is repeated forever.
+           @.repeat_mode controls the direction in which subsequent playbacks will run.
+         ]]
+         values {
+            count: int(1); [[Play count.]]
+         }
+      }
+      @property start_delay {
+         [[The time that passes since the animation is started and the first real change to the object is applied.
+         ]]
+         set {
+         }
+         get {
+         }
+         values {
+            sec: double; [[Delay time in seconds.]]
+         }
+      }
+      @property interpolator {
+         [[Optional mapping function.
+
+           Animations are based on a timer that moves linearly from 0 to 1. This $interpolator
+           method is applied before the timer is passed to the animation, to achieve effects
+           like acceleration or deceleration, for example.
+         ]]
+         set {
+         }
+         get {
+         }
+         values {
+            interpolator: Efl.Interpolator; [[Mapping function. By default it is $NULL (linear mapping).]]
+         }
+      }
+      animation_apply {
+         [[Overwrite this method to implement your own animation subclasses.
+
+           This is used for example by @Efl.Canvas.Translate_Animation or @Efl.Canvas.Scale_Animation.
+
+           Subclasses should call their parent's @.animation_apply to get the adjusted $progress value
+           and then perform the animation by modifying the $target's properties.
+         ]]
+         params {
+            @in progress: double; [[Animation progress from $[0] to $[1].]]
+            @in target: Efl.Canvas.Object; [[Object to animate.]]
+         }
+         return: double; [[Final applied progress, after possible adjustments. See @.interpolator.]]
+      }
+      @property default_duration @static {
+         [[Duration that will be used by default on all animations unless another value
+           is set per object using @.duration.
+         ]]
+         values {
+            animation_time : double; [[Default animation duration, in seconds.]]
+         }
+      }
+   }
+   implements {
+      Efl.Object.constructor;
+      Efl.Playable.length { get; }
+      Efl.Playable.seekable { get; }
+      Efl.Playable.playable { get; }
+   }
+}

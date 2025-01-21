@@ -1,0 +1,104 @@
+class @beta Efl.Net.Server_Udp extends Efl.Net.Server_Ip {
+    [[A UDP server.
+    ]]
+
+    methods {
+        @property dont_route {
+            [[Avoids sent UDP packets being routed by a gateway, limiting them to the local network.
+
+              This will use SO_DONTROUTE option to avoid gateways
+              routing sent packets to outside the local network. It's
+              useful for some protocols that only want the local area to
+              be affected.
+            ]]
+            get { }
+            set {
+                return: bool (false); [[$true on success]]
+            }
+            values {
+                dont_route: bool; [[If $true limit packets to the local network, $false otherwise]]
+            }
+        }
+
+        multicast_join {
+            [[Joins a multicast group.
+
+              The multicast address should be in the format:
+
+                 IP\@INTERFACE
+
+              With '\@INTERFACE' being optional, such as:
+
+                 224.0.0.1 - use any interface (ie: 0.0.0.0)
+                 224.0.0.1@0.0.0.0
+                 224.0.0.1@192.168.0.1 - use the interface assigned to 192.168.0.1
+                 ff02::1@0 - use any interface
+                 ff02::1@1 - use loopback interface (idx=1)
+            ]]
+            params {
+                address: string; [[Multicast group address]]
+            }
+            return: Eina.Error; [[0 on success, error code otherwise]]
+        }
+
+        multicast_leave {
+            [[Leaves a multicast group.
+
+              This reverses the effect of @.multicast_join.
+            ]]
+            params {
+                address: string; [[Multicast group address]]
+            }
+            return: Eina.Error; [[0 on success, error code otherwise]]
+        }
+
+        multicast_groups_get {
+            [[Returns the multicast groups this server has joined.
+
+              The iterator is only valid until a new group is joined
+              or left using @.multicast_join or @.multicast_leave.
+            ]]
+            return: iterator<string> @move; [[List of multicast groups]]
+        }
+
+        @property multicast_time_to_live {
+            [[Controls time to live in number of hops.
+
+              If 1 (default), packets are only delivered to the local network.
+            ]]
+            get { }
+            set {
+                return: Eina.Error; [[0 on success, error code otherwise]]
+            }
+            values {
+                ttl: uint8; [[Time to live]]
+            }
+        }
+
+        @property multicast_loopback {
+            [[Controls whenever multicast will loopback packets locally.
+
+              If $false, then packets won't be looped back locally,
+              just delivered for remote peers.
+            ]]
+            get { }
+            set {
+                return: Eina.Error; [[0 on success, error code otherwise]]
+            }
+            values {
+                loopback: bool; [[$true when multicast packets are looped back, $false otherwise]]
+            }
+        }
+    }
+
+    implements {
+        Efl.Object.constructor;
+        Efl.Object.destructor;
+        Efl.Net.Server.serve;
+        Efl.Net.Server_Fd.process_incoming_data;
+        Efl.Net.Server_Fd.socket_activate;
+        //These functions are not used, udp emits the there defined events from its internals
+        @empty Efl.Net.Server_Fd.client_add;
+        @empty Efl.Net.Server_Fd.client_reject;
+    }
+}

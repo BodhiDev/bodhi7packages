@@ -1,0 +1,12 @@
+prefix=/usr
+libdir=${prefix}/lib/x86_64-linux-gnu
+includedir=${prefix}/include
+
+Name: elput
+Description: efl: elput
+Version: 1.28.99
+Requires: eina, eldbus
+Requires.private: eo, efl, ecore, ecore-input, eeze, ecore-file, libinput >= 1.7.0, xkbcommon >= 0.3.0, libudev >= 148
+Libs: -L${libdir} -lelput
+Libs.private: -lm -pthread -ldl
+Cflags: -I${includedir}/elput-1

@@ -1,0 +1,53 @@
+class @beta Efl.Net.Server_Simple extends Efl.Loop_Consumer implements Efl.Net.Server {
+    [[A network server wrapper that creates clients based on @Efl.Net.Socket_Simple.
+
+      This is just a wrapper server. It takes an actual server
+      using @.inner_server or creates one using @.inner_class.
+    ]]
+    methods {
+        @property inner_class {
+            [[The class used to create @.inner_server if none was provided.
+
+              This class must be set at build time and will be
+              used to create the inner socket during
+              @Efl.Object.finalize.
+
+              It is a helper for users, saving them the trouble of
+              manually creating and specifying a dialer object.
+            ]]
+            get {
+                [[The internal class used to create the inner dialer.]]
+            }
+            set {
+                [[Constructor-only property to define the class used to create the inner dialer.]]
+            }
+            values {
+                klass: const(Efl.Class); [[The class]]
+            }
+        }
+
+        @property inner_server {
+            [[The inner @Efl.Net.Server this wrapper operates on.]]
+            get {
+                [[The internal server used for actual operations, use with care!]]
+            }
+            set {
+                [[Constructor-only property to set the inner_server.]]
+            }
+            values {
+                server: Efl.Object; [[The server instance]]
+            }
+        }
+    }
+
+    implements {
+        Efl.Object.finalize;
+        Efl.Object.invalidate;
+        Efl.Net.Server.serve;
+        Efl.Net.Server.client_announce;
+        Efl.Net.Server.address { get; }
+        Efl.Net.Server.clients_count { get; }
+        Efl.Net.Server.clients_limit { get; set; }
+        Efl.Net.Server.serving { get; }
+    }
+}

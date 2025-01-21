@@ -1,0 +1,17 @@
+interface @beta Efl.Duplicate
+{
+   [[An interface for duplication of objects.
+
+     Objects implementing this interface can be duplicated with @.duplicate.
+   ]]
+   methods {
+      duplicate @const {
+         [[Creates a carbon copy of this object and returns it.
+
+           The newly created object will have no event handlers or anything of
+           the sort.
+         ]]
+         return: Efl.Duplicate @move; [[Returned carbon copy]]
+      }
+   }
+}

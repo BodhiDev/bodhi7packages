@@ -1,0 +1,8 @@
+class @beta Efl.Ui.Textpath_Part extends Efl.Ui.Layout_Part_Text
+{
+   [[Efl UI Textpath internal part class]]
+   data: null;
+   implements {
+      Efl.Text.text { set; get; }
+   }
+}

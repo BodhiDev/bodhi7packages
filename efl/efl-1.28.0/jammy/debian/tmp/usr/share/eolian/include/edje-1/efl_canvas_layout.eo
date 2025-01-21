@@ -1,0 +1,141 @@
+// FIXME: This EO doc needs a direct link to the "edcref" doc
+
+class @beta Efl.Canvas.Layout extends Efl.Canvas.Group implements Efl.File, Efl.Container, Efl.Part,
+                         Efl.Observer, Efl.Ui.I18n, Efl.Layout.Calc,
+                         Efl.Layout.Signal, Efl.Layout.Group,
+                         Efl.Player, Efl.Playable, Efl.Gfx.Color_Class, Efl.Gfx.Text_Class,
+                         Efl.Gfx.Size_Class
+{
+   [[Edje object class
+
+     The @Efl.Player.autoplay and @Efl.Player.playback_loop properties both default to $true in this class.
+   ]]
+   event_c_prefix: efl_layout;
+   data: Edje;
+   methods {
+      @property animated {
+         [[Whether this object is animating or not.
+
+           This property indicates whether animations are stopped or not.
+           Animations here refer to transitions between states.
+
+           If animations are disabled, transitions between states (as
+           defined in EDC) are then instantaneous. This is conceptually similar
+           to setting the @Efl.Player.playback_speed to an infinitely high
+           value.
+         ]]
+         get {
+         }
+         set {
+         }
+         values {
+            on: bool; [[The animation state, $true by default.]]
+         }
+      }
+
+      access_part_iterate @beta {
+         [[Iterates over all accessibility-enabled part names.]]
+         return: iterator<string> @move; [[Part name iterator]]
+      }
+      @property seat {
+         [[The seat device given its Edje's name.
+
+           Edje references seats by a name that differs from Evas.
+           Edje naming follows a incrementional convention: first
+           registered name is "seat1", second is "seat2", differently
+           from Evas.
+         ]]
+         get {
+            return: Efl.Input.Device; [[The seat device or $null if not found.]]
+         }
+         keys {
+            name: stringshare; [[The name's character string.]]
+         }
+      }
+      @property seat_name {
+         [[The name given to a set by Edje.
+
+           Edje references seats by a name that differs from Evas.
+           Edje naming follows a incrementional convention: first
+           registered name is "seat1", second is "seat2", differently
+           from Evas.
+         ]]
+         get {
+            return: stringshare; [[The name's character string or $null if not found.]]
+         }
+         keys {
+            device: Efl.Input.Device; [[The seat device]]
+         }
+      }
+      @property layout_load_error {
+          [[The (last) file loading error for a given object.]]
+          get {
+          }
+          values {
+             error: Eina.Error; [[The load error code.]]
+          }
+      }
+      content_remove {
+         [[Unswallow an object from this Edje.]]
+         params {
+            @in content: Efl.Gfx.Entity; [[To be removed content.]]
+         }
+         return: bool; [[$false if $content was not a child or can not be removed.]]
+      }
+   }
+   events {
+      part,invalid @beta: string; [[Emitted when trying to use an invalid part.
+                                    The value passed is the part name.]]
+   }
+   implements {
+      Efl.Gfx.Entity.visible { set; }
+      Efl.Gfx.Entity.position { set; }
+      Efl.Gfx.Entity.size { set; }
+      Efl.Object.constructor;
+      Efl.Object.invalidate;
+      Efl.Object.debug_name_override;
+      Efl.Canvas.Object.no_render { set; }
+      Efl.Canvas.Object.paragraph_direction { set; }
+      Efl.Gfx.Color_Class.color_class { get; set; }
+      Efl.Gfx.Color_Class.color_class_description { get; }
+      Efl.Gfx.Color_Class.color_class_del;
+      Efl.Gfx.Color_Class.color_class_clear;
+      Efl.Gfx.Text_Class.text_class { get; set; }
+      Efl.Gfx.Text_Class.text_class_del;
+      Efl.Gfx.Size_Class.size_class { get; set; }
+      Efl.Gfx.Size_Class.size_class_del;
+      Efl.Canvas.Group.group_calculate;
+      Efl.Layout.Calc.calc_auto_update_hints { get; set; }
+      Efl.Layout.Calc.calc_size_min;
+      Efl.Layout.Calc.calc_parts_extends;
+      Efl.Layout.Calc.calc_freeze;
+      Efl.Layout.Calc.calc_thaw;
+      Efl.Layout.Calc.calc_force;
+      Efl.Layout.Group.group_size_min { get; }
+      Efl.Layout.Group.group_size_max { get; }
+      Efl.Layout.Group.group_data { get; }
+      Efl.Layout.Group.part_exist { get; }
+      Efl.Layout.Signal.message_send;
+      Efl.Layout.Signal.signal_callback_add;
+      Efl.Layout.Signal.signal_callback_del;
+      Efl.Layout.Signal.signal_emit;
+      Efl.Layout.Signal.signal_process;
+      Efl.Ui.I18n.mirrored { set; get; }
+      Efl.Ui.I18n.language { set; get; }
+      Efl.Gfx.Entity.scale { set; get; }
+      Efl.File.load;
+      Efl.File.unload;
+      Efl.Container.content_iterate;
+      Efl.Container.content_count;
+      Efl.Part.part_get; [[Returns @Efl.Canvas.Layout_Part]]
+      Efl.Observer.update;
+      Efl.Playable.playable { get; }
+      @empty Efl.Player.playing { get; set; }
+      Efl.Player.paused { get; set; }
+      @empty Efl.Player.playback_position { get; set; }
+      @empty Efl.Player.playback_progress { get; set; }
+      Efl.Player.playback_speed { get; set; }
+      @empty Efl.Player.autoplay { set; get; }
+      @empty Efl.Player.playback_loop { set; get; }
+   }
+}

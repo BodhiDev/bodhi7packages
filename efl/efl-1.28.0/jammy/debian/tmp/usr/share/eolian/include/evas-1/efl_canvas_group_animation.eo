@@ -1,0 +1,41 @@
+abstract Efl.Canvas.Group_Animation extends Efl.Canvas.Animation
+{
+   [[Base class for combined animations (groups of animations that are played together).
+
+     This class provides methods to add, remove and retrieve individual animations from the group.
+   
+     See for example @Efl.Canvas.Parallel_Group_Animation and @Efl.Canvas.Sequential_Group_Animation.
+
+     @since 1.24
+   ]]
+   c_prefix: efl_animation_group;
+   data: Efl_Canvas_Group_Animation_Data;
+   methods {
+      animation_add {
+         [[Adds the given animation to the animation group.]]
+         params {
+            @in animation: Efl.Canvas.Animation; [[Animation to add to the group.]]
+         }
+      }
+      animation_del {
+         [[Removes the given animation from the animation group.]]
+         params {
+            @in animation: Efl.Canvas.Animation; [[Animation to remove from the group.]]
+         }
+      }
+      @property animations {
+         [[All animations that are currently part of this group.]]
+         get { }
+         values {
+            animations : iterator<Efl.Canvas.Animation> @move; [[The iterator carrying all animations of this group]]
+         }
+      }
+   }
+   implements {
+      Efl.Object.constructor;
+      Efl.Object.destructor;
+      Efl.Canvas.Animation.duration { set; }
+      Efl.Canvas.Animation.final_state_keep { set; }
+      Efl.Canvas.Animation.interpolator { set; }
+   }
+}

@@ -1,0 +1,58 @@
+class @beta Efl.Canvas.Layout_Part_Invalid extends Efl.Canvas.Layout_Part implements Efl.Content,
+                                      Efl.Pack_Linear, Efl.Ui.Layout_Orientable_Readonly,
+                                      Efl.Pack_Table, Efl.Text,
+                                      Efl.Text_Markup
+{
+   [[Common class for part proxy objects for @Efl.Canvas.Layout.
+
+     As an @Efl.Part implementation class, all objects of this class are meant
+     to be used for one and only one function call. In pseudo-code, the use
+     of object of this type looks like the following:
+       rect = layout.part("somepart").geometry_get();
+   ]]
+   data: null;
+   implements {
+      // Efl.Canvas.Layout.Part
+      Efl.Canvas.Layout_Part.state { get; }
+      Efl.Canvas.Layout_Part_Type_Provider.part_type { get; }
+      Efl.Gfx.Entity.geometry { get; }
+      Efl.Ui.Drag.drag_value { set; get; }
+      Efl.Ui.Drag.drag_size { set; get; }
+      Efl.Ui.Drag.drag_dir { get; }
+      Efl.Ui.Drag.drag_step { set; get; }
+      Efl.Ui.Drag.drag_step_move;
+      Efl.Ui.Drag.drag_page { set; get; }
+      Efl.Ui.Drag.drag_page_move;
+      // Efl.Canvas.Layout_Part_Swallow & External
+      Efl.Content.content { get; set; }
+      Efl.Content.content_unset;
+      // Efl.Canvas.Layout_Part_Text
+      Efl.Text.text { set; get; }
+      Efl.Text_Markup.markup { get; set; }
+      // Efl.Canvas.Layout_Part_Box
+      Efl.Container.content_iterate;
+      Efl.Container.content_count;
+      Efl.Pack.pack_clear;
+      Efl.Pack.unpack_all;
+      Efl.Pack.unpack;
+      Efl.Pack.pack;
+      Efl.Pack_Linear.pack_begin;
+      Efl.Pack_Linear.pack_end;
+      Efl.Pack_Linear.pack_before;
+      Efl.Pack_Linear.pack_after;
+      Efl.Pack_Linear.pack_at;
+      Efl.Pack_Linear.pack_content_get;
+      Efl.Pack_Linear.pack_unpack_at;
+      Efl.Pack_Linear.pack_index_get;
+      Efl.Ui.Layout_Orientable.orientation { get; [[Returns $default if unknown.]] }
+      // Efl.Canvas.Layout_Part_Table
+      Efl.Pack_Table.pack_table;
+      Efl.Pack_Table.table_content_get;
+      Efl.Pack_Table.table_contents_get;
+      Efl.Pack_Table.table_cell_column { get; set; }
+      Efl.Pack_Table.table_cell_row { get; set; }
+      Efl.Pack_Table.table_size { get; }
+      Efl.Pack_Table.table_columns { get; }
+      Efl.Pack_Table.table_rows { get; }
+   }
+}

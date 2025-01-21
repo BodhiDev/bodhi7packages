@@ -1,0 +1,69 @@
+class Efl.Loop_Timer extends Efl.Loop_Consumer
+{
+   [[Timers are objects that will call a given callback at some point
+     in the future and repeat that tick at a given interval.
+
+     Timers require the ecore main loop to be running and functioning
+     properly. They do not guarantee exact timing but try to work on a
+     "best effort" basis.
+
+     The @Efl.Object.event_freeze and @Efl.Object.event_thaw calls are used to pause and unpause the timer.
+
+     @since 1.22
+   ]]
+   methods {
+      @property timer_interval {
+         [[Interval the timer ticks on.]]
+         set {
+            [[If set during a timer call this will affect the next interval.]]
+         }
+         get {
+         }
+         values {
+            in: double(-1.0); [[The new interval in seconds]]
+         }
+      }
+      @property time_pending {
+         [[Pending time regarding a timer.]]
+         get {
+         }
+         values {
+            pending: double; [[Pending time]]
+         }
+      }
+      timer_reset {
+          [[Resets a timer to its full interval. This effectively makes the
+            timer start ticking off from zero now.
+
+            This is equal to delaying the timer by the already passed time, since the timer started ticking
+          ]]
+      }
+      timer_loop_reset {
+         [[This effectively resets a timer but based on the time when this iteration of the main loop started.
+         ]]
+      }
+      timer_delay {
+         [[Adds a delay to the next occurrence of a timer.
+           This doesn't affect the timer interval.
+         ]]
+         params {
+            @in add: double; [[The amount of time by which to delay the timer in seconds]]
+         }
+      }
+   }
+   events {
+      timer,tick: void; [[Event triggered when the specified time as passed.]]
+   }
+   constructors {
+      .timer_interval;
+   }
+   implements {
+      Efl.Object.constructor;
+      Efl.Object.destructor;
+      Efl.Object.finalize;
+      Efl.Object.event_freeze;
+      Efl.Object.parent { set; }
+      Efl.Object.event_freeze_count { get; }
+      Efl.Object.event_thaw;
+   }
+}

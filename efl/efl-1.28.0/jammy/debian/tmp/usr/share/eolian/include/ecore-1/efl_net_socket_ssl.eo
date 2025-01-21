@@ -1,0 +1,100 @@
+error @beta Efl.Net.Socket_Ssl_Error.HANDSHAKE = "Failed SSL handshake"; [[Failed SSL handshake]]
+error @beta Efl.Net.Socket_Ssl_Error.CERTIFICATE_VERIFY_FAILED = "Failed to verify peer's certificate"; [[Failed to verify peer's certificate]]
+
+class @beta Efl.Net.Socket_Ssl extends Efl.Loop_Consumer implements Efl.Net.Socket {
+    [[A wrapper socket doing SSL (Secure Sockets Layer).
+
+      Use this wrapper around an existing socket for secure
+      communication. One common use is to apply it to TCP sockets
+      created with @Efl.Net.Dialer_Tcp or @Efl.Net.Server_Tcp created
+      with "client,add" event.
+    ]]
+
+    events {
+        ssl,ready: void; [[Notifies the SSL handshake has been performed and the socket is now able to communicate]]
+        ssl,error: Eina.Error; [[An error such as @Efl.Net.Socket_Ssl_Error.HANDSHAKE]]
+    }
+
+    methods {
+        adopt {
+            [[Adopt an Efl.Net.Dialer or regular Efl.Net.Socket that will be used for the actual communication.
+
+              If used with an Efl.Net.Dialer object, it will assume
+              the 'connect' role, otherwise will use 'accept'.
+
+              This is a constructor only method and should be called
+              before @Efl.Object.finalize.
+            ]]
+            params {
+                efl_net_socket: Efl.Net.Socket; [[The socket to adopt]]
+                ctx: Efl.Net.Ssl.Context; [[The SSL context to use when adopting the socket]]
+            }
+        }
+
+        @property adopted @protected {
+            [[Return the adopted object, if any. Be careful!]]
+            get {
+                return: bool(false); [[$true if adopted, $false otherwise]]
+            }
+            values {
+                efl_net_socket: Efl.Net.Socket; [[The adopted object, if any, otherwise $NULL]]
+                ctx: Efl.Net.Ssl.Context; [[The SSL context used when adopting the socket, if any, otherwise $NULL]]
+            }
+        }
+
+        @property verify_mode {
+            [[How to verify the remote peer.]]
+            values {
+                verify_mode: Efl.Net.Ssl.Verify_Mode; [[Remote verification mode]]
+            }
+        }
+
+        @property hostname_verify {
+            [[Define if hostname should be verified.
+
+              This will check the socket hostname (without the port in
+              case of an IP) or the overriden value from
+              @.hostname_override.
+            ]]
+            values {
+                hostname_verify: bool; [[$true if the hostname will be verified, $false otherwise]]
+            }
+        }
+
+        @property hostname_override {
+            [[Overrides the hostname to use for this socket.
+
+              Most of time this is useful if you're using an IP
+              address but the server certificate only specifies DNS
+              (names).
+
+              If $NULL, then it will fetch from socket using
+              @Efl.Net.Socket.address_remote or
+              @Efl.Net.Dialer.address_dial.
+
+              It's only used if @.hostname_verify is $true.
+            ]]
+            values {
+                hostname_override: string; [[Hostname for this socket]]
+            }
+        }
+    }
+
+    implements {
+        Efl.Object.constructor;
+        Efl.Object.finalize;
+        Efl.Object.invalidate;
+        Efl.Object.destructor;
+        Efl.Io.Closer.close;
+        Efl.Io.Closer.closed { get; }
+        Efl.Io.Closer.close_on_exec { get; set; }
+        Efl.Io.Closer.close_on_invalidate { get; set; }
+        Efl.Io.Reader.read;
+        Efl.Io.Reader.can_read { get; set; }
+        Efl.Io.Reader.eos { get; set; }
+        Efl.Io.Writer.write;
+        Efl.Io.Writer.can_write { get; set; }
+        Efl.Net.Socket.address_remote { get; }
+        Efl.Net.Socket.address_local { get; }
+    }
+}

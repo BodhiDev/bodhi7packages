@@ -1,0 +1,21 @@
+class @beta Efl.Canvas.Polygon extends Efl.Canvas.Object
+{
+   [[Low-level polygon object]]
+
+   methods {
+      point_add {
+         [[Adds the given point to the given evas polygon object.]]
+         params {
+            @in pos: Eina.Position2D; [[A point coordinate.]]
+         }
+      }
+      points_clear {
+         [[Removes all of the points from the given evas polygon object.]]
+      }
+   }
+   implements {
+      Efl.Object.constructor;
+      Efl.Object.destructor;
+   }
+
+}

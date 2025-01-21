@@ -1,0 +1,130 @@
+import efl_gfx_types;
+
+mixin @beta Efl.Gfx.Shape extends Efl.Gfx.Path
+{
+   [[EFL graphics shape object interface]]
+   methods {
+      @property stroke_scale {
+         [[The stroke scale to be used for stroking the path. Will be used along
+           with stroke width property.
+         ]]
+         set {
+         }
+         get {
+         }
+         values {
+            s: double; [[Stroke scale value]]
+         }
+      }
+      @property stroke_color {
+         [[The color to be used for stroking the path.
+         ]]
+         set {
+         }
+         get {
+         }
+         values {
+            r: int; [[The red component of the given color.]]
+            g: int; [[The green component of the given color.]]
+            b: int; [[The blue component of the given color.]]
+            a: int; [[The alpha component of the given color.]]
+         }
+      }
+      @property stroke_width {
+         [[The stroke width to be used for stroking the path.
+         ]]
+         set {
+         }
+         get {
+         }
+         values {
+            w: double; [[Stroke width to be used]]
+         }
+      }
+      @property stroke_location {
+         [[Not implemented]]
+         set {
+         }
+         get {
+         }
+         values {
+            centered: double; [[Centered stroke location]]
+         }
+      }
+      @property stroke_dash {
+         [[Set stroke dash pattern. A dash pattern is specified by dashes,
+           an array of @Efl.Gfx.Dash. @Efl.Gfx.Dash values(length, gap)
+           must be positive.
+
+           See also @Efl.Gfx.Dash
+         ]]
+         set {
+         }
+         get {
+         }
+         values {
+            dash: ptr(const(Efl.Gfx.Dash)); [[Stroke dash]]
+            length: uint; [[Stroke dash length]]
+         }
+      }
+      @property stroke_cap {
+         [[The cap style to be used for stroking the path.
+           The cap will be used for capping the end point of a
+           open subpath.
+
+           See also @Efl.Gfx.Cap.
+         ]]
+         set {
+         }
+         get {
+         }
+         values {
+            c: Efl.Gfx.Cap; [[Cap style to use, default is @Efl.Gfx.Cap.butt]]
+         }
+      }
+      @property stroke_join {
+         [[The join style to be used for stroking the path.
+           The join style will be used for joining the two line segment
+           while stroking the path.
+
+           See also @Efl.Gfx.Join.
+         ]]
+         set {
+         }
+         get {
+         }
+         values {
+            j: Efl.Gfx.Join; [[Join style to use, default is @Efl.Gfx.Join.miter]]
+         }
+      }
+      @property stroke_miterlimit {
+         [[The stroke_miterlimit is a presentation defining a limit on the ratio of
+           the miter length to the stroke-width used to draw a miter join.
+         ]]
+         set {
+         }
+         get {
+         }
+         values {
+            miterlimit: double; [[Limit value on the ratio of the miter.]]
+         }
+      }
+      @property fill_rule {
+         [[The fill rule of the given shape object.
+           @Efl.Gfx.Fill_Rule.winding or @Efl.Gfx.Fill_Rule.odd_even.
+         ]]
+         set {
+         }
+         get {
+         }
+         values {
+            fill_rule: Efl.Gfx.Fill_Rule; [[The current fill rule of the shape object.
+                                           One of @Efl.Gfx.Fill_Rule.winding or @Efl.Gfx.Fill_Rule.odd_even]]
+         }
+      }
+   }
+   implements {
+      Efl.Gfx.Path.copy_from;
+      Efl.Gfx.Path.interpolate;
+   }
+}

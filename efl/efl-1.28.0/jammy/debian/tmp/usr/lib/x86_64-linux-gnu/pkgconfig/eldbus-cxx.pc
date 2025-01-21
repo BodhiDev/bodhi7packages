@@ -1,0 +1,11 @@
+prefix=/usr
+libdir=${prefix}/lib/x86_64-linux-gnu
+includedir=${prefix}/include
+
+Name: eldbus-cxx
+Description: Eldbus cxx bindings
+Version: 1.28.99
+Requires: eina-cxx, eolian-cxx, eo-cxx, efl-cxx, ecore-cxx, eet-cxx, eio-cxx, evas-cxx, edje-cxx, eldbus
+Requires.private: eina, eo, efl, eolian, ecore, eet, emile, eio, evas, ector, edje
+Libs.private: -pthread -lm -lrt -ldl
+Cflags: -I${includedir}/eldbus-cxx-1 -I${includedir}/eldbus-cxx-1

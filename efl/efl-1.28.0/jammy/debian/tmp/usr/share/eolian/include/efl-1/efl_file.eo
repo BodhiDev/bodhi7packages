@@ -1,0 +1,99 @@
+import eina_types;
+
+mixin Efl.File requires Efl.Object {
+   [[Efl file interface
+
+     @since 1.22
+   ]]
+   methods {
+      @property mmap {
+         [[The mmaped file from where an object will fetch the real
+           data (it must be an @Eina.File).
+
+           If mmap is set during object construction, the object will automatically
+           call @.load during the finalize phase of construction.
+         ]]
+         set {
+            return: Eina.Error; [[0 on success, error code otherwise]]
+         }
+         get {
+         }
+         values {
+            f: const(Eina.File) @by_ref; [[The handle to the @Eina.File that will be used]]
+         }
+      }
+      @property file {
+         [[The file path from where an object will fetch the data.
+
+           If file is set during object construction, the object will automatically
+           call @.load during the finalize phase of construction.
+
+           You must not modify the strings on the returned pointers.
+         ]]
+         set {
+            return: Eina.Error; [[0 on success, error code otherwise]]
+         }
+         get {
+         }
+         values {
+            file: string; [[The file path.]]
+         }
+      }
+      @property key {
+         [[The key which corresponds to the target data within a file.
+
+           Some file types can contain multiple data streams which are indexed by
+           a key. Use this property for such cases (See for example @Efl.Ui.Image or
+           @Efl.Ui.Layout).
+
+           You must not modify the strings on the returned pointers.
+         ]]
+         set {
+         }
+         get {
+         }
+         values {
+            key: string; [[The group that the data belongs to. See the class documentation
+                           for particular implementations of this interface to see how this
+                           property is used.]]
+         }
+      }
+      @property loaded {
+         [[The load state of the object.
+         ]]
+         get {
+         }
+         values {
+            loaded: bool; [[$true if the object is loaded, $false otherwise.]]
+         }
+      }
+
+      load {
+         [[Perform all necessary operations to open and load file data into the object
+           using the @.file (or @.mmap) and @.key properties.
+
+           In the case where @.file.set has been called on an object, this will internally
+           open the file and call @.mmap.set on the object using the opened file handle.
+
+           Calling @.load on an object which has already performed file operations based on
+           the currently set properties will have no effect.
+         ]]
+
+         return: Eina.Error; [[0 on success, error code otherwise]]
+      }
+
+      unload {
+         [[Perform all necessary operations to unload file data from the object.
+
+           In the case where @.mmap.set has been externally called on an object, the file handle
+           stored in the object will be preserved.
+
+           Calling @.unload on an object which is not currently loaded will have no effect.
+         ]]
+      }
+   }
+   implements {
+       Efl.Object.destructor;
+       Efl.Object.finalize;
+   }
+}
