@@ -11,4 +11,6 @@ Package: moksha-module-trash
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, moksha
 Description: Trash module for Moksha desktop
- A trash module for E17/Mokhsa that uses efreet
+ A trash module for Mokhsa that uses efreet.
+ .
+ Loading the module allows access the trash can on the desktop.
