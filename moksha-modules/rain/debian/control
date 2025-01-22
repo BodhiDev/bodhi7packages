@@ -11,4 +11,7 @@ Package: moksha-module-rain
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, moksha
 Description: Rain Module for Moksha
- Adds rain to your Moksha desktop
+ Adds rain to your Moksha desktop.
+ .
+ Load the module and enjoy the rain!
+ 
