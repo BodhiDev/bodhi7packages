@@ -1,4 +1,0 @@
-[D-BUS Service]
-Name=org.enlightenment.Ethumb
-Exec=/usr/bin/ethumbd
-SystemdService=ethumb.service

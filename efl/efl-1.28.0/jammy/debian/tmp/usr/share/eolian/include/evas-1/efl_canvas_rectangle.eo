@@ -1,7 +1,0 @@
-class @beta Efl.Canvas.Rectangle extends Efl.Canvas.Object
-{
-   [[Evas canvas rectangle class]]
-   implements {
-      Efl.Object.constructor;
-   }
-}

@@ -1,9 +1,0 @@
-prefix=/usr
-libdir=${prefix}/lib/x86_64-linux-gnu
-includedir=${prefix}/include
-
-Name: efl-ui
-Description: efl-ui configutation file
-Version: 1.28.99
-Requires: elementary
-Cflags: -I${includedir}
