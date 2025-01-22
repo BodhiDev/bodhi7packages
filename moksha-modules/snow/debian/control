@@ -12,3 +12,5 @@ Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, moksha
 Description: Snow module for Moksha
  Adds snow to your Moksha desktop.
+ .
+ Load the module to enable a snowy desktop.
