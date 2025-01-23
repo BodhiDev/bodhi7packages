@@ -12,3 +12,6 @@ Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, moksha
 Description: Simple Alarm Module
  A simple alarm Module for the enlightenment Desktop.
+ .
+ A Moksha port of the old e17 module.
+ 
