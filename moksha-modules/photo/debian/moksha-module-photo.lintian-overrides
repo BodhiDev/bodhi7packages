@@ -1,1 +1,1 @@
-moksha-module-photo: non-empty-dependency_libs-in-la-file
+moksha-module-photo: image-file-in-usr-lib usr/lib/x86_64-linux-gnu/enlightenment/modules/photo/images/photo_logo.png

@@ -11,4 +11,6 @@ Package: moksha-module-photo
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, moksha
 Description: Photo module for Moksha
- View photos or a mini slideshow on your Moksha Desktop.
+ View photos or a mini-slideshow on your Moksha Desktop.
+ .
+ A Moksha port of the old e17 module. Enjoy the Fun!
