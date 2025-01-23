@@ -12,3 +12,6 @@ Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, moksha
 Description: Network module for the Moksha desktop
  Network monitor for the Moksha desktop
+ .
+ Moksha Port of the old e17 module.
+ 
