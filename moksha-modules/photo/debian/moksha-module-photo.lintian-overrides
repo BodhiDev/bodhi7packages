@@ -1,1 +1,2 @@
-moksha-module-photo: image-file-in-usr-lib usr/lib/x86_64-linux-gnu/enlightenment/modules/photo/images/photo_logo.png
+# Delete this file for Bookworm
+moksha-module-photo: image-file-in-usr-lib
