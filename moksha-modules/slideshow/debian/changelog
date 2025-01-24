@@ -1,3 +1,10 @@
+moksha-module-slideshow (0.1.1-5) jammy; urgency=medium
+
+  * Meson Build added
+  * Local issue fixed
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Fri, 24 Jan 2025 05:23:26 -0500
+
 moksha-module-slideshow (0.1.1-4) jammy; urgency=medium
 
   * gcc warnings fixed

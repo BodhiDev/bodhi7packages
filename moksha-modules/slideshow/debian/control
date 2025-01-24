@@ -12,3 +12,5 @@ Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, moksha
 Description: Slideshow Module for Moksha
  Turns your desktop background into a slideshow.
+ .
+ This module is a Moksha port of an old 17 module.
