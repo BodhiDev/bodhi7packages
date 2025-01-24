@@ -11,4 +11,7 @@ Package: moksha-module-mail
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, moksha
 Description: mail module for the Moksha desktop
- mail monitor for the Moksha desktop
+ Mail monitor for the Moksha desktop
+ .
+ Moksha port of an old e17 module.
+ 
