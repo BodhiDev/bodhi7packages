@@ -12,3 +12,6 @@ Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, moksha, emprint
 Description: Advanced Screenshot Module
  An advanced screenshot tool for the moksha desktop.
+ .
+ This module is Bodhi's port of the old e-17 module and has more features 
+ than the shot module.
