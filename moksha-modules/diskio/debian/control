@@ -11,4 +11,6 @@ Package: moksha-module-diskio
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, moksha
 Description: Disk io module for the Moksha desktop
- Disk monitoring module for the Moksha desktop
+ Disk monitoring module for the Moksha desktop.
+ .
+ A Moksha port of the old e17 Module.
