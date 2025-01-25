@@ -1,3 +1,11 @@
+moksha-module-news (0.1.2-5) focal; urgency=medium
+
+  * Meson build added
+  * Local errors fixed
+  * Multiple Spelling errors fixed
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Sat, 25 Jan 2025 06:13:11 -0500
+
 moksha-module-news (0.1.2-4) focal; urgency=medium
 
   * GCC warnings addressed
