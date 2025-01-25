@@ -12,3 +12,5 @@ Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, moksha
 Description: News Module for Moksha
  Moksha Gadget to monitor RSS feeds.
+ .
+ A Moksha port of an old e17 module.
