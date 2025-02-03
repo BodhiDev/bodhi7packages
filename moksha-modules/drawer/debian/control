@@ -1,0 +1,16 @@
+Source: moksha-module-drawer
+Section: utils
+Priority: optional
+Maintainer: Robert (ylee) Wiley <ylee@bodhilinux.com>
+Build-Depends: debhelper (>= 10), libc6 (>= 2.4), meson, pkg-config, libtool, intltool, libefl-dev, moksha-dev
+Standards-Version: 4.5.0
+Homepage: https://github.com/JeffHoogland/moksha-modules-extra
+Rules-Requires-Root: no
+
+Package: moksha-module-drawer
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, moksha
+Description: Drawer module for the Moksha desktop
+ Drawer gadgets for the Moksha desktop.
+ .
+ One can place a gadget of the shelf or desktop with 4 plugins.
