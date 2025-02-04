@@ -9,6 +9,10 @@ The debian folders used to package our themes and backgrounds are found separate
 * [Bodhi Themes](https://github.com/BodhiDev/Bodhi-themes)
 * [Bodhi Backgrounds](https://github.com/BodhiDev/bodhi-backgrounds)
 
-Credits: 
-- Robert Wiley 
+## Credits
 
+* Robert "ylee" Wiley
+
+## Disclaimer
+
+The Bodhi Linux Packaging Team strives to keep the repository contents stable and trouble-free, but we cannot guarantee this. We adhere to strict packaging guidelines to minimize compatibility issues. However, by using our repositories or packages, you acknowledge that you do so at your own risk.
