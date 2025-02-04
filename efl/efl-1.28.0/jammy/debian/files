@@ -1,7 +1,0 @@
-efl-doc_1.28.0-0jammy_all.deb doc optional
-efl_1.28.0-0jammy_amd64.buildinfo libs optional
-libefl-bin_1.28.0-0jammy_amd64.deb libs optional
-libefl-data_1.28.0-0jammy_all.deb misc optional
-libefl-dbg_1.28.0-0jammy_amd64.deb debug optional
-libefl-dev_1.28.0-0jammy_amd64.deb libdevel optional
-libefl_1.28.0-0jammy_amd64.deb libs optional
