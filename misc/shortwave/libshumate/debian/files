@@ -1,6 +1,0 @@
-gir1.2-shumate-1.0_1.0.0.alpha.1+20220818-0ubuntu1_amd64.deb introspection optional
-libshumate-1.0-1-dbgsym_1.0.0.alpha.1+20220818-0ubuntu1_amd64.ddeb debug optional automatic=yes
-libshumate-1.0-1_1.0.0.alpha.1+20220818-0ubuntu1_amd64.deb libs optional
-libshumate-dev_1.0.0.alpha.1+20220818-0ubuntu1_amd64.deb libdevel optional
-libshumate-doc_1.0.0.alpha.1+20220818-0ubuntu1_all.deb doc optional
-libshumate_1.0.0.alpha.1+20220818-0ubuntu1_amd64.buildinfo libs optional
