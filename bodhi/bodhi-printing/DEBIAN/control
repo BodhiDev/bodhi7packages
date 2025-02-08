@@ -6,4 +6,4 @@ Architecture: all
 Depends: cups, system-config-printer, cups-bsd
 Maintainer: Robert Wiley <ylee@bodhilinux.com>
 Description: Printing utilities for Bodhi Linux
- A meta package containing packages required for printing
+ A metapackage containing packages required for printing
