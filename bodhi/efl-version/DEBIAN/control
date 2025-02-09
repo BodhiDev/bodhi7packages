@@ -5,6 +5,8 @@ Priority: optional
 Maintainer: Robert (ylee) Wiley <ylee@bodhilinux.com>
 Depends:  libc6 (>= 2.29), libefl
 Architecture: amd64
-Homepage: https://www.bodhilinux.com/
-Description: Bodhi linux utility function
+Homepage: https://github.com/BodhiDev/Moksha-dev
+Description: Bodhi Linux utility function
  A simple utility to print the version of the EFL.
+ .
+ This simple utility is used by scripts included with Bodhi.
