@@ -1,0 +1,5 @@
+debian/tmp/usr/bin/rage
+debian/tmp/usr/lib/x86_64-linux-gnu/rage/utils/rage_thumb
+debian/tmp/usr/share/applications/rage.desktop
+debian/tmp/usr/share/rage/themes/default.edj
+debian/tmp/usr/share/icons/hicolor/256x256/apps/rage.png

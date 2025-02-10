@@ -1,0 +1,18 @@
+rage (0.4.0-2) jammyl; urgency=low
+
+  * git commit bef682c983
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Thu, 08 Jun 2023 06:31:55 -0400
+
+rage (0.4.0-1) focal; urgency=low
+
+  * Initial release 
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Sun, 02 Jan 2022 12:07:30 -0500
+
+
+rage (0.3.0-1) focal; urgency=low
+
+  * Initial release 
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Wed, 26 Aug 2020 10:41:31 -0400

@@ -1,0 +1,143 @@
+Rage 0.3.1
+
+
+******************************************************************************
+
+ FOR ANY ISSUES PLEASE EMAIL:
+ enlightenment-devel@lists.sourceforge.net
+
+******************************************************************************
+
+This is a Video + Audio player along the lines of mplayer. It's simple
+yet decent looking. It finds album art for you for music files,
+generates thumbnails for videos so you can select logaction by
+thumbnail and more. It accepts file lists on the cmdline ala:
+
+  rage file1.mp3 file2.mp3 file3.avi file4.mp4 file5.ogg
+  rage dvd:/
+  rage http://www.blah.com/stream
+
+You can tell it what media/video engine in emotion to use via -e:
+
+  rage -e vlc blah.mov
+  rage -e xine dvd:/
+  rage -e gstreamer1 blah.mp3
+
+You can also specify subtitle files with -sub:
+
+  rage file.mp4 -sub mysubs.srt
+
+And of course you can run it with no arguments:
+
+  rage
+
+Which goes into "Browser mode" where Rage will index/list your
+~/Videos directory as a library (and subdirectories).
+
+This depends on video engine support to display them, so it may not
+work. Also rage will use a srt or sub format file if found,
+automatically. If the filename is video.mp4 or video.avi, video.mov
+etc. then rage looks for video.srt or video.sub and automatically will
+use it.
+
+If you DND files onto its window, they are added to the playlist.
+Mouse over the right of the window brings up the playlist. Mouse over
+the position bar at the bottom, if it's a video, brings up a video
+thumbnail of that position (it may take a while to generate thumbnails
+for that video - they are cached).
+
+If you run rage without arguments at all it goes into "browser" mode
+where it will index all your media files in "$HOME/Videos" or whatever
+you have configured your XDG video directory to be. It will flatten
+out all directories that it recursively scans in this videos director
+with a header with the directory name and a list of images per video
+and the filename with extensions removed. It will either generate a
+series of images to flip as the video thumb or may actually search for
+a poster file dependig on length of video file (if it is more than 60
+minutes long and less than 5 hours and the image ratio is between 4:3
+and 4:1 it'll be assumed to be a movie for example). So while it is
+fetching or generating thumbnails for the first time, be a little
+patient. They will be cached so they only need to be generated or
+fetched once (or if the file changes).
+
+It's fully key controlled too. Key controls are:
+
+----------------+----------------------------------------------------------
+KEY             | Action
+----------------+----------------------------------------------------------
+Left            - rewind or DVD nav left
+[               - rewind
+Right           - fast forward or DVD nav right
+]               - fast forward
+Up              - Volume up or DVD nav up
++               - Volume up
+=               - Volume up
+Down            - Volume down DVD nav down
+-               - Volume down
+space           - Pause toggle
+Pause           - Pause toggle
+p               - Pause toggle
+XF86AudioPlay   - pause toggle
+s               - Stop
+XF86AudioStop   - Stop
+PgUp            - Previous file
+XF86AudioPrev   - Previous file
+PgDn            - Next file
+XF86AudioNext   - Next file
+Home            - First file
+End             - Last file
+m               - Mute toggle
+XF86AudioMute   - Mute toggle
+l               - Loop 1 mode toggle
+q               - Exit
+Escape          - Exit
+f               - Fullscreen toggle
+F11             - Fullscreen toggle
+n               - Normalize window size to video size
+\               - Toggle File list or browser mode depending on launch mode
+y               - Video low quality toggle
+z               - Video zoom fit/fill modes toggle
+e               - Eject file/media
+Return          - DVD nav select
+Enter           - DVD nav select
+,               - DVD nav angle prev
+<               - DVD nav angle prev
+.               - DVD nav angle next
+>               - DVD nav angle next
+Tab             - DVD nav force
+0               - DVD nav 0
+1               - DVD nav 1
+2               - DVD nav 2
+3               - DVD nav 3
+4               - DVD nav 4
+5               - DVD nav 5
+6               - DVD nav 6
+7               - DVD nav 7
+8               - DVD nav 8
+9               - DVD nav 9
+`               - DVD nav 10
+~               - DVD nav 10
+F1              - DVD nav menu 1
+F2              - DVD nav menu 2
+F3              - DVD nav menu 3
+F4              - DVD nav menu 4
+F5              - DVD nav menu 5
+F6              - DVD nav menu 6
+F7              - DVD nav menu 7
+----------------+----------------------------------------------------------
+
+Requirements:
+-------------
+
+  * elementary (>= 1.19.0)
+  * eina (>= 1.19.0)
+  * eet (>= 1.19.0)
+  * evas (>= 1.19.0)
+  * ecore (>= 1.19.0)
+  * edje (>= 1.19.0)
+  * emotion (>= 1.19.0)
+  * ecore-imf (>= 1.19.0)
+  * ecore-imf-evas (>= 1.19.0)
+  * ecore-input (>= 1.19.0)
+  * ethumb (>= 1.19.0)
+
