@@ -1,3 +1,9 @@
+moksha-module-wincontrol (0.1.1-6) unstable; urgency=medium
+
+  * Clarify description in control
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Mon, 10 Feb 2025 16:26:54 -0500
+
 moksha-module-wincontrol (0.1.1-5) jammy; urgency=medium
 
   * Gcc warnings addressed

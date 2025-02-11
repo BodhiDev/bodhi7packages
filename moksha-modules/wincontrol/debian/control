@@ -10,5 +10,8 @@ Rules-Requires-Root: no
 Package: moksha-module-wincontrol
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, moksha
-Description:  Winselector Module for Moksha
- This gadget provides a menu-based access to all the windows.
+Description:  Wincontrol Module for Moksha
+ Wincontrol is a Moksha module for easy window control from a shelf or desktop.
+ .
+ Add a gadget to your self to quickly close the focused window. This module is
+ a Moksha Port of a classic e17 module.
