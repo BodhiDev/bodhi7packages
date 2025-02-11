@@ -27,7 +27,7 @@ print_help()
   printf '%s %s\n\n'  "$0" "with no options, deletes all efreet caches, regenerates them all and resarts the WM"
   printf 'Options:\n'
   printf '\t%s\n' "-i, --icons:   Regenerate efreets icon cache "
-  printf '\t%s\n' "-d, --desks:   Regenerate efreets application data cache"
+  printf '\t%s\n' "-d, --data:    Regenerate efreets application data cache"
   printf '\t%s\n' "-m, --mimes:   Regenerate efreets mime types cache"
   printf '\t%s\n' "-s, --safe:    Do not delete efreet cache(s) before regeneration"
   printf '\t%s\n' "--restart:     Restart Window Manager after regeneration of cache(s)"
@@ -51,7 +51,7 @@ die()
 
 # THE DEFAULTS INITIALIZATION
 _ICONS=0
-_DESKS=0
+_DATA=0
 _MIMES=0
 _SAFE=0
 _RESET=0
@@ -132,8 +132,8 @@ parse_commandline()
       -i|--icons)
         _ICONS=1
         ;;
-      -d|--desks)
-        _DESKS=1
+      -d|--data)
+        _DATA=1
         ;;
       -m|--mimes)
         _MIMES=1
@@ -169,7 +169,7 @@ parse_commandline()
 
 parse_commandline "$@"
 
-sum=$(($_ICONS + $_MIMES + $_DESKS))
+sum=$(($_ICONS + $_MIMES + $_DATA))
 if [ $sum -eq 3 ]; then
   do_all
 fi
@@ -186,7 +186,7 @@ if ((_ICONS)) ; then
    "$EFREET_PATH/efreet_icon_cache_create" -d "$ICON_PATHS" -e .png .svg .jpg .xpm
 fi
 
-if ((_DESKS)) ; then
+if ((_DATA)) ; then
   if [ $_SAFE -eq 0 ]; then
      rm ~/.cache/efreet/desktop*
   fi
