@@ -1,5 +1,5 @@
-libthunarx-3.so.0 libthunarx-3-0 #MINVER#
-* Build-Depends-Package: libthunarx-3-dev
+libthunarx-bl-3.so.0 libthunarx-3-0 #MINVER#
+* Build-Depends-Package: libthunarx-bl-3-dev
  thunarx_check_version@Base 1.1.0
  thunarx_file_info_changed@Base 1.1.0
  thunarx_file_info_get_file_info@Base 1.1.0
