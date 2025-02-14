@@ -1,0 +1,18 @@
+Source: moksha-module-wallscape
+Section: utils
+Priority: optional
+Maintainer: Robert (ylee) Wiley <ylee@bodhilinux.com>
+Build-Depends: debhelper (>= 10), libc6 (>= 2.4), meson, pkg-config, libtool, intltool, libefl-dev, moksha-dev
+Standards-Version: 4.5.0
+Homepage: https://github.com/JeffHoogland/moksha-modules-extra
+Rules-Requires-Root: no
+
+Package: moksha-module-wallscape
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, moksha
+Description: Background module for the Moksha desktop
+ Wallscape module for the Moksha desktop.
+ .
+ This module is another way to change background images in Moksha.
+ Features some nice animated effects altho not as full featured as the 
+ Wallpaper module present in Moskha.
