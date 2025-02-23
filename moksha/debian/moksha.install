@@ -1,4 +1,5 @@
 etc/enlightenment/sysactions.conf
+etc/xdg/menus/e-applications.menu
 usr/bin/*
 usr/lib/*/enlightenment/modules/*
 usr/lib/*/enlightenment/utils/enlightenment_*
