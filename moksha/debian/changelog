@@ -1,4 +1,4 @@
-oksha (0.4.1-19) unstable; urgency=low
+moksha (0.4.1-19) unstable; urgency=low
 
   * Updated locals
   * Fix monitoring of non-existant files/dirs in clock module
