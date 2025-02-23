@@ -5,7 +5,7 @@
 #export DH_VERBOSE=1
 export DEB_BUILD_MAINT_OPTIONS = hardening=+all
 CPPFLAGS:=$(shell dpkg-buildflags --get CPPFLAGS)
-CFLAGS:=$(shell dpkg-buildflags --get CFLAGS)
+CFLAGS:=$(shell dpkg-buildflags --get CFLAGS) -DMOKSHA_MENU
 LDFLAGS:=$(shell dpkg-buildflags --get LDFLAGS)
 
 export CPPFLAGS

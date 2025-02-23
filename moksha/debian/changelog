@@ -1,3 +1,43 @@
+oksha (0.4.1-19) unstable; urgency=low
+
+  * Updated locals
+  * Fix monitoring of non-existant files/dirs in clock module
+  * Add Marathi to config-intl and e_wizard
+  * Minor Clipboard hist cleanup
+  * Allow xdg dir usage if you add -DDOXDG to CFLAGS
+  * Remove debug statements from notify
+  * Silence Places Module
+  * Favorites menu: fix efreet_xml ERR on empty file
+  * Fileman: custom FM entry under device tab
+  * EFM auto_mount was not working - fix
+  * Update copyright date
+  * Let's bring back adjacent iBar popup
+  * Theme: iBar adjacent popup
+  * iBar: we want only one config dialog
+  * iBar: adjacent label rewritten to theme independent
+  * Theme: no need adjacent label as theme independent
+  * Tasks: label hint theme independent
+  * Transition dialog size increased
+  * Clock: date leading zeros fix
+  * Notif: time leading zeros fix
+  * Edit for personal launcher dialog added
+  * Bigger textblock area for module description
+  * Typos in backlight mod desktop
+  * Shot module use internal tools
+  * Replace personal folder locations in e_test.c
+  * EFM: minor cleanup of strings
+  * Adding a few selected backgrounds back
+  * Background2 Win bg themed
+  * Background2 theme name ellipsis fix
+  * Added e-menu back
+  * Add compile option to force use of moksha-menu
+  * MOKSHA_CORE_MODULES: update mod list and add missing commas
+  * Removed old e17 mod in MOKSHA_CORE_MODULES
+  * Separator and Wallscape mods added to the list of mods
+  * Theme: wallpaper duplicity fix
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Sun, 23 Feb 2025 10:39:16 -0500
+
 moksha (0.4.1-18) jammy; urgency=low
 
   * Updated locals
