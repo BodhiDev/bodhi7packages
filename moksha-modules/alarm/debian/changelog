@@ -1,3 +1,10 @@
+moksha-module-alarm (0.1.1-7) jammy; urgency=low
+
+  * Two different dialogs assigned to one variable
+  * Local updates
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Sun, 23 Feb 2025 06:51:31 -0500
+
 moksha-module-alarm (0.1.1-6) jammy; urgency=low
 
   * Meson build
