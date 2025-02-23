@@ -1,3 +1,9 @@
+moksha-module-wincontrol (0.1.1-7) unstable; urgency=medium
+
+  * Spanish added to desktop
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Sun, 23 Feb 2025 17:02:44 -0500
+
 moksha-module-wincontrol (0.1.1-6) unstable; urgency=medium
 
   * Clarify description in control
