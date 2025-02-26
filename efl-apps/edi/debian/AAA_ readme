@@ -1,9 +1,0 @@
-My patch is not working and I manually patching the code
-
-Fails test: 
-../src/tests/edi_test_content_provider.c:70:F:content_provider:edi_test_content_provider_text_files:0: Assertion 'provider->id == type' failed: provider->id == "code", type == "text"
-
-
-NOTICE: Future-deprecated features used:
- * 0.56.0: {'meson.source_root', 'meson.build_root'}
-lintian error lintian desktop-mime-but-no-exec-code
