@@ -1,8 +1,7 @@
 Package: bodhi-appcenter
-Version: 0.2.6-5
+Version: 0.2.6-6
 Section: misc
 Priority: optional
-Recommends: x-www-browser
 Architecture: all
 Maintainer: Robert Wiley <ylee@bodhilinux.com>
 Description: Bodhi AppCenter Launcher
