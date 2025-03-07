@@ -1,9 +1,16 @@
+leafpad (0.8.18.1-9) unstable; urgency=medium
+
+  * Upstream changes
+  * Update pt locales
+  * Commit: 3e46c6c
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Fri, 07 Mar 2025 15:55:34 -0500
+
 leafpad (0.8.18.1-8) focal; urgency=medium
 
   * Add Policy kit file
 
  -- Robert Wiley <ylee@bodhilinux.com>  Wed, 12 May 2021 16:26:04 -0400
-
 
 leafpad (0.8.18.1-7) focal; urgency=medium
 
