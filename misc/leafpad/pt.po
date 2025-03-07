@@ -1,0 +1,298 @@
+# Leafpad Portuguese (Portugal) translation.
+# Copyright (C) 2025 Free Software Foundation, Inc.
+# This file is distributed under the same license as the leafpad package.
+# Hugo Carvalho <hugokarvalho@hotmail.com>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: leafpad 0.8.18.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-09-03 21:17+0900\n"
+"PO-Revision-Date: 2025-03-06 15:42+0000\n"
+"Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
+"Language-Team: Portuguese <hugokarvalho@hotmail.com>\n"
+"Language: pt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\\n;\n"
+"X-Generator: Poedit 3.0.1\n"
+
+#: ../src/menu.c:31
+msgid "/_File"
+msgstr "/_Ficheiro"
+
+#: ../src/menu.c:33
+msgid "/File/_New"
+msgstr "/Ficheiro/_Novo"
+
+#: ../src/menu.c:35
+msgid "/File/_Open..."
+msgstr "/Ficheiro/_Abrir..."
+
+#: ../src/menu.c:37
+msgid "/File/_Save"
+msgstr "/Ficheiro/_Gravar"
+
+#: ../src/menu.c:39
+msgid "/File/Save _As..."
+msgstr "/Ficheiro/Gravar _como..."
+
+#: ../src/menu.c:45
+msgid "/File/Print Pre_view"
+msgstr "/Ficheiro/Pré-_visualizar impressão"
+
+#: ../src/menu.c:48
+msgid "/File/_Print..."
+msgstr "/Ficheiro/Im_primir..."
+
+#: ../src/menu.c:55
+msgid "/File/_Quit"
+msgstr "/Ficheiro/_Sair"
+
+#: ../src/menu.c:57
+msgid "/_Edit"
+msgstr "/_Editar"
+
+#: ../src/menu.c:59
+msgid "/Edit/_Undo"
+msgstr "/Editar/_Desfazer"
+
+#: ../src/menu.c:61
+msgid "/Edit/_Redo"
+msgstr "/Editar/_Refazer"
+
+#: ../src/menu.c:65
+msgid "/Edit/Cu_t"
+msgstr "/Editar/Cor_tar"
+
+#: ../src/menu.c:67
+msgid "/Edit/_Copy"
+msgstr "/Editar/_Copiar"
+
+#: ../src/menu.c:69
+msgid "/Edit/_Paste"
+msgstr "/Editar/Co_lar"
+
+#: ../src/menu.c:71
+msgid "/Edit/_Delete"
+msgstr "/Editar/_Eliminar"
+
+#: ../src/menu.c:75
+msgid "/Edit/Select _All"
+msgstr "/Editar/Selecion_ar tudo"
+
+#: ../src/menu.c:77
+msgid "/_Search"
+msgstr "/_Procurar"
+
+#: ../src/menu.c:79
+msgid "/Search/_Find..."
+msgstr "/Procurar/_Localizar..."
+
+#: ../src/menu.c:81
+msgid "/Search/Find _Next"
+msgstr "/Procurar/Localizar segui_nte"
+
+#: ../src/menu.c:83
+msgid "/Search/Find _Previous"
+msgstr "/Procurar/Localizar _anterior"
+
+#: ../src/menu.c:85
+msgid "/Search/_Replace..."
+msgstr "/Procurar/Substitui_r..."
+
+#: ../src/menu.c:89
+msgid "/Search/_Jump To..."
+msgstr "/Procurar/_Ir para..."
+
+#: ../src/menu.c:91
+msgid "/_Options"
+msgstr "/_Opções"
+
+#: ../src/menu.c:93
+msgid "/Options/_Font..."
+msgstr "/Opções/_Tipo de letra..."
+
+#: ../src/menu.c:95
+msgid "/Options/_Word Wrap"
+msgstr "/Opções/_Quebra de linha"
+
+#: ../src/menu.c:97
+msgid "/Options/_Line Numbers"
+msgstr "/Opções/Numeração de _linhas"
+
+#: ../src/menu.c:101
+msgid "/Options/_Auto Indent"
+msgstr "/Opções/_Indentação automática"
+
+#: ../src/menu.c:103
+msgid "/_Help"
+msgstr "/A_juda"
+
+#: ../src/menu.c:105
+msgid "/Help/_About"
+msgstr "/Ajuda/_Acerca"
+
+#: ../src/callback.c:316
+msgid "GTK+ based simple text editor"
+msgstr "Editor de texto simples em GTK+"
+
+#: ../src/callback.c:321
+msgid "translator-credits"
+msgstr "Hugo Carvalho <hugokarvalho@hotmail.com>"
+
+#: ../src/view.c:62
+#, c-format
+msgid "Save changes to '%s'?"
+msgstr "Gravar alterações em '%s'?"
+
+#: ../src/font.c:44
+msgid "Font"
+msgstr "Tipo de letra"
+
+#: ../src/selector.c:99
+#, c-format
+msgid "Current Locale (%s)"
+msgstr "Idioma atual (%s)"
+
+#: ../src/selector.c:130
+msgid "Other Codeset"
+msgstr "Outro conjunto de caracteres"
+
+#: ../src/selector.c:170
+msgid "Code_set:"
+msgstr "Conjunto de caractere_s:"
+
+#: ../src/selector.c:192
+#, c-format
+msgid "'%s' is not supported"
+msgstr "'%s' não é suportado"
+
+#: ../src/selector.c:253
+msgid "Auto-Detect"
+msgstr "Indentação automática"
+
+#: ../src/selector.c:305
+msgid "Open"
+msgstr "Abrir"
+
+#: ../src/selector.c:305
+msgid "Save As"
+msgstr "Gravar como"
+
+#: ../src/selector.c:329
+msgid "C_haracter Coding:"
+msgstr "Codi_ficação de caracteres:"
+
+#: ../src/selector.c:400
+#, c-format
+msgid "'%s' already exists. Overwrite?"
+msgstr "'%s' já existe. Substituir?"
+
+#: ../src/file.c:55
+msgid "Untitled"
+msgstr "Sem título"
+
+#: ../src/file.c:212
+#, c-format
+msgid "Can't convert codeset to '%s'"
+msgstr "Não é possível converter para '%s'"
+
+#: ../src/file.c:225
+msgid "Can't open file to write"
+msgstr "Não é possível abrir o ficheiro para gravar"
+
+#: ../src/file.c:230
+msgid "Can't write file"
+msgstr "Não é possível gravar no ficheiro"
+
+#: ../src/search.c:140
+msgid "Search string not found"
+msgstr "Cadeia de caracteres não encontrada"
+
+#: ../src/search.c:193
+msgid "Replace?"
+msgstr "Substituir?"
+
+#: ../src/search.c:260
+#, c-format
+msgid "%d strings replaced"
+msgstr "%d cadeias de caracteres substituídas"
+
+#: ../src/search.c:306
+msgid "Replace"
+msgstr "Substituir"
+
+#: ../src/search.c:313
+msgid "Find"
+msgstr "Localizar"
+
+#: ../src/search.c:326
+msgid "Fi_nd what:"
+msgstr "Localizar:"
+
+#: ../src/search.c:342
+msgid "Re_place with:"
+msgstr "Substituir _por:"
+
+#: ../src/search.c:356
+msgid "_Match case"
+msgstr "_Diferenciar maiúsculas e minúsculas"
+
+#: ../src/search.c:361
+msgid "Replace _all at once"
+msgstr "Substituir tudo de uma vez"
+
+#: ../src/search.c:412
+msgid "Jump To"
+msgstr "Ir para"
+
+#: ../src/search.c:418
+msgid "_Jump"
+msgstr "_Ir"
+
+#: ../src/search.c:425
+msgid "_Line number:"
+msgstr "Número da linha:"
+
+#: ../src/about.c:102
+msgid "Credits"
+msgstr "Créditos"
+
+#: ../src/about.c:137
+msgid "Written by"
+msgstr "Programado por"
+
+#: ../src/about.c:140
+msgid "Documented by"
+msgstr "Documentado por"
+
+#: ../src/about.c:146
+msgid "Translated by"
+msgstr "Traduzido por"
+
+#: ../src/about.c:197
+msgid "C_redits"
+msgstr "C_réditos"
+
+#: ../src/about.c:199
+msgid "_Credits"
+msgstr "_Créditos"
+
+#: ../src/about.c:209
+#, c-format
+msgid "About %s"
+msgstr "Acerca do %s"
+
+#: ../src/gnomeprint.c:261
+msgid "Print"
+msgstr "Imprimir"
+
+#: ../src/gnomeprint.c:291
+msgid "Print Preview"
+msgstr "Pré-visualizar impressão"
+
+#: ../data/leafpad.desktop.in.h:1
+msgid "Simple text editor"
+msgstr "Editor de texto simples"
