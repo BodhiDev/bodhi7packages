@@ -1,7 +1,7 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0
 Upstream-Name: leafpad
 Upstream-Contact: Tarot Osuji <tarot@freeshell.org>, <tarot@sdf.lonestar.org>
-Source: http://tarot.freeshell.org/leafpad/
+Source: https://github.com/tarot231/leafpad
 X-Upstream-Bugs: <tarot@sdf.lonestar.org>
 Comment:
   See also
@@ -11,7 +11,7 @@ Comment:
 
 Files: *
 Copyright:
-  2004-2010 Tarot Osujia <tarot@freeshell.org>
+  Tarot Osujia <tarot@freeshell.org>
 License: GPL-2+
 
 Files: src/gtksourceiter.c src/gtksourceiter.h
