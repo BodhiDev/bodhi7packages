@@ -1,9 +1,21 @@
+moksha (0.4.1-21) unstable; urgency=low
+
+  * Update locals
+  * Border: fix for artifact buffer in shaped style while resizing
+  * Border: need one more var to be like internal win
+  * Moksha lacks dialog shaped style
+  * Correct ml.po plural forms
+  * config: Add env var to skip profile save
+  * Unfullscreen to max had no focus
+  * Prevent black squared BG in shaped edj style
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Mon, 10 Mar 2025 13:00:54 -0400
+
 moksha (0.4.1-20) unstable; urgency=low
 
   * Debian: ensure e menu is installed
 
  -- Robert Wiley <ylee@bodhilinux.com>  Sun, 23 Feb 2025 12:47:50 -0500
-
 
 moksha (0.4.1-19) unstable; urgency=low
 

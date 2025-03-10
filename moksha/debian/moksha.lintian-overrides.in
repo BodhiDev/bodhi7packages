@@ -5,7 +5,6 @@ moksha: non-empty-dependency_libs-in-la-file
 moksha: package-name-doesnt-match-sonames
 moksha: shared-library-lacks-prerequisites 
 moksha: shared-library-lacks-version
-moksha: lacks-unversioned-link-to-shared-library usr/lib/x86_64-linux-gnu/libepulse.so usr/lib/x86_64-linux-gnu/libepulse.so
 moksha: library-not-linked-against-libc
 moksha: package-contains-documentation-outside-usr-share-doc
 moksha: desktop-entry-lacks-keywords-entry
