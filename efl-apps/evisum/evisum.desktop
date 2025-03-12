@@ -15,6 +15,7 @@ Icon=evisum
 Categories=System;Monitor;
 StartupWMClass=evisum
 Actions=cpu-activity;disk-usage;memory-usage;network-activity;sensor-view
+Keywords=system;process;task
 
 [Desktop Action cpu-activity]
 Name=CPU Activity
