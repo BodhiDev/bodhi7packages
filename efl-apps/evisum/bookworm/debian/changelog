@@ -1,3 +1,11 @@
+evisum (0.6.2-1) unstable; urgency=medium
+
+  * Upstream changes
+  * Improved locals
+  * Commit f12d5a65f7
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Wed, 12 Mar 2025 15:32:40 -0400
+
 evisum (0.6.0-1) jammy; urgency=medium
 
   * Development release for jammy
