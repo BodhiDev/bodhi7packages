@@ -15,7 +15,7 @@ ae4d4be90bc79fd493c1f2b99cbdb2b0  usr/share/applications/arandr.desktop
 f3cb2b430f79e57855f1fd3827ebfb1a  usr/share/doc/arandr/NEWS.gz
 cbbd7f556f5b235d89bcc6e80eb75de1  usr/share/doc/arandr/README.gz
 c6e7e4c4d27db33e44714881263b4ea4  usr/share/doc/arandr/TODO
-19b4a68743639f0123bef07cad58cc5c  usr/share/doc/arandr/changelog.Debian.gz
+3fc96aa4713f52ca31e607efe1f459e5  usr/share/doc/arandr/changelog.Debian.gz
 1b4df0f05fb50120982ef7e363e7387f  usr/share/doc/arandr/copyright
 319af9508008b59890d020ba698337af  usr/share/locale/ar/LC_MESSAGES/arandr.mo
 34b75c2074e42ecff7111ee4b2e9bfb3  usr/share/locale/br/LC_MESSAGES/arandr.mo
@@ -43,6 +43,7 @@ be7294d7a3148ac7914adbf8d0b06e02  usr/share/locale/ko_KR/LC_MESSAGES/arandr.mo
 732d57bf26cc3891aee10c168ec62c31  usr/share/locale/nb_NO/LC_MESSAGES/arandr.mo
 727a5fe597681748b11ee2a71ae664d1  usr/share/locale/nl/LC_MESSAGES/arandr.mo
 69fe921449fe327f281921187305ab17  usr/share/locale/pl/LC_MESSAGES/arandr.mo
+6e37dffe1a840bdddaadba3b2c76e832  usr/share/locale/pt/LC_MESSAGES/arandr.mo
 3238b8c1240ed24df07e4612a3e1c4da  usr/share/locale/pt_BR/LC_MESSAGES/arandr.mo
 ab54e283d31c995a3727982fd37860d6  usr/share/locale/ro/LC_MESSAGES/arandr.mo
 1a117be36899f6414c13818c66162a17  usr/share/locale/ru/LC_MESSAGES/arandr.mo
