@@ -1,0 +1,40 @@
+Source: ephoto-bl
+Section: x11
+Priority: optional
+Maintainer: Robert Wiley <ylee@bodhilinux.com>
+Build-Depends: debhelper, libefl-dev
+Standards-Version: 4.4.1
+Homepage: https://www.enlightenment.org/about-ephoto
+
+Package: ephoto-bl
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Comprehensive Image Viewer Using EFL
+ Ephoto is an image viewer and editor written using the Enlightenment
+ Foundation Libraries(EFL).  It focuses on simplicity and ease of use,
+ while taking advantage of the speed and small footprint provided by
+ EFL.
+ .
+ Ephoto supports:
+  * Browsing the filesystem and displaying images in an easy to use grid view.
+  * Browsing images in a single image view format.
+  * Viewing images in a slideshow.
+  * Editing your images with features, such as cropping, auto enhance, blurring,
+    sharpening, brightness/contrast/gamma adjustments, hue/saturation/value
+    adjustments, and color level adjustment.
+  * Applying artistic filters to your images, such as black and white and old
+    photo.
+  * Drag And Drop file operations to easily maintain your photo directories.
+
+Package: ephoto-bl-dbg
+Architecture: any
+Section: debug
+Depends: ${misc:Depends}, ephoto-bl (= ${binary:Version})
+Priority: optional
+Description: Enlightenment - debugging symbols
+ Ephoto is an image viewer and editor written using the Enlightenment
+ Foundation Libraries(EFL). This package  contains unstripped shared
+ libraries. It is provided primarily to provide a backtrace with names in a
+ debugger, this makes it somewhat  easier to interpret core dumps.  The 
+ libraries are installed in  /usr/lib/debug and are automatically used by gdb.
+ 
