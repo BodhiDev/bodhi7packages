@@ -1,3 +1,11 @@
+ephoto-bl (1.6-6) jammy; urgency=medium
+
+  * Updated and new Locales
+  * DnD restored (buggy)
+  * Only external pics to drop
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Fri, 14 Mar 2025 09:45:16 -0400
+
 ephoto-bl (1.6-4) jammy; urgency=medium
 
   * Entry free prevention hack
