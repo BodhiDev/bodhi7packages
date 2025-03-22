@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+Name=CPU Activity
+Name[de]=CPU-Aktivität
+Name[es]=Actividad de CPU
+Name[fr]=Activité du CPU
+Name[it]=Attività della CPU
+Name[pt]=Atividade da CPU
+Name[pt_br]=Atividade da CPU
+Name[sk]=Aktivita CPU
+Exec=evisum -c
+Icon=evisum_cpu
+Categories=System;Monitor;
+StartupWMClass=evisum

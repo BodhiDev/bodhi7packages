@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+Name=Memory Usage
+Name[de]=Arbeitsspeicherverbrauch
+Name[es]=Uso de Memoria
+Name[fr]=Utilisation de la mémoire
+Name[it]=Utilizzo della memoria
+Name[pt]=Utilização da memória
+Name[pt_br]=Utilização da memória
+Name[sk]=Aktivita Pamäte
+Exec=evisum -m
+Icon=evisum_mem
+Categories=System;Monitor;
+StartupWMClass=evisum
