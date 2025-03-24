@@ -1,3 +1,11 @@
+evisum (0.6.4-1) unstable; urgency=medium
+
+  * Fix memory leak.
+  * Improve some visuals.
+  * Improve defaults.
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Mon, 24 Mar 2025 15:37:00 -0400
+
 evisum (0.6.3-1) unstable; urgency=medium
 
   * Upstream release
