@@ -1,0 +1,28 @@
+Source: entice
+Section: graphics
+Priority: optional
+Maintainer: Robert Wiley <ylee@bodhilinux.com>
+Build-Depends: debhelper (>=9), libc6 (>= 2.4), meson, pkg-config, libtool, intltool, libefl-dev, ccache, check, libefl-dev (>=1.25.0)
+Standards-Version: 4.5.0
+Homepage: http://enlightenment.org
+Rules-Requires-Root: no
+
+Package: entice
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Image Viewer Using EFL
+ Entice is an image viewer and editor written using the Enlightenment
+ Foundation Libraries(EFL). It focuses on simplicity and ease of use,
+ while taking advantage of the speed and small footprint provided by
+ EFL.
+
+Package: entice-dbg
+Architecture: any
+Depends: entice (=${binary:Version})
+Description: Image Viewer Using EFL
+ Entice is an image viewer and editor written using the Enlightenment
+ Foundation Libraries(EFL). It focuses on simplicity and ease of use,
+ while taking advantage of the speed and small footprint provided by
+ EFL.
+ . 
+ Debug symbols for rage
