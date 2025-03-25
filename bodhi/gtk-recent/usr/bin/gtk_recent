@@ -1,0 +1,169 @@
+#!/usr/bin/env python3
+
+# gtk_recent (c) Rbt Wiley 2019 <ylee@bodhilinux.com>
+#
+# This program is free software: you can redistribute it and/or modify
+#   it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+'''
+Python script to add document to recently-used.xbel.
+
+Usage: gtk_recent app_name file_path
+
+For more options see gtk_recent --help
+'''
+from __future__ import print_function  # May as well bite the bullet
+from argparse import ArgumentParser as Parser
+import os
+import mimetypes
+import gi
+gi.require_version('Gtk', '3.0')
+# pylint: disable=wrong-import-position
+from gi.repository import Gtk, Gio, GLib  # noqa: E402
+
+
+__version__ = '0.0.1'
+__license__ = 'GPL version 3'
+
+
+def parse_args():
+    '''
+    Initializes argparse.ArgumentParser.
+    Returns argparse.Namespace args.
+    '''
+    parser = Parser(description='Add document to recently-used.xbel')
+    parser.add_argument('-v', '--version', action='version',
+                        version='%(prog)s {}'.format(__version__))
+    parser.add_argument('-l', '--license', action='version',
+                        version=__license__,
+                        help='show programs license and exit.')
+    parser.add_argument('app', metavar='app_name',
+                        help="Specify the application")
+    parser.add_argument('path', metavar='path',
+                        help="File path")
+    parser.add_argument('-x', '--bin', metavar='app_exec',
+                        help="specify the executable")
+    parser.add_argument('mime', nargs='?', metavar='mime_type',
+                        help="Optional mime type to use")
+    parser.add_argument('-f', '--force', action='store_true',
+                        help="force usage of unknown mime type")
+    return parser.parse_args()
+
+
+def init():
+    '''
+    Read command line arguments and process using argparse.
+    Returns argparse.Namespace args.
+    '''
+    args = parse_args()
+
+    # Import here to aviod seeing the warning below unless needed
+    try:
+        import magic
+    except ImportError:
+        print('Warning: Python magic not installed.')
+
+    # Process arguments and exit on error
+    if not args.bin:
+        args.bin = args.app
+    if not which(args.bin):
+        print('Error: Application "{}" not found'
+              ' or is not executable.'.format(args.bin))
+        exit(1)
+    if not os.path.isfile(args.path):
+        print('Error: File {} does not exists'
+              ' or is a directory.'.format(args.path))
+        exit(1)
+
+    # Try to determine mime type if needed.
+    if not args.mime:
+        try:
+            args.mime = magic.from_file(args.path, mime=True)
+        except NameError:
+            args.mime = mimetypes.guess_type(args.path)[0]
+    if args.force and args.mime is None:
+        args.mime = 'application/unknown'
+    if not args.force and not is_valid_mime(args.mime):
+        if not args.mime:
+            print('Error: Unable to determine mime type'
+                  ' for file: "{}"'.format(args.path))
+            exit(1)
+    return args
+
+
+def which(app):
+    '''
+    Returns path of app is it exists and is executable. Otherwise returns None.
+    '''
+    def x_ok(app):
+        ''' Returns True if app is an executable file, False otherwise.'''
+        return os.path.isfile(app) and os.access(app, os.X_OK)
+
+    if os.path.split(app)[0]:
+        if x_ok(app):
+            return app
+    else:
+        for path in os.environ['PATH'].split(os.pathsep):
+            app_path = os.path.join(path, app)
+            if x_ok(app_path):
+                return app_path
+    return None
+
+
+def is_valid_mime(mime):
+    '''
+    Returns True if mime is a valid mime type. Otherwise, returns False.
+    '''
+    valid = False
+    # Read system and user mime.types
+    try:
+        with open('/etc/mime.types') as mime_type:
+            lines = mime_type.readlines()
+    except IOError:
+        print('Unable to find or open /etc/mime.types.')
+        lines = []
+    try:
+        with open(os.path.expanduser('~/.mime.types')) as mime_type:
+            line = mime_type.readline()
+            lines.append(line)
+            while line:
+                line = mime_type.readline()
+                lines.append(line)
+    except IOError:
+        print('No user defined mime_types.')
+
+    # search for mime
+    for line in lines:
+        i = line.split('\t')[0].strip()
+        if mime == i:
+            valid = True
+            break
+    return valid
+
+
+if __name__ == '__main__':
+
+    ARGS = init()
+
+    # Add data to gtk recent documents
+    RECENT = Gtk.RecentManager.get_default()
+    DATA = Gtk.RecentData()
+    DATA.app_name = ARGS.app
+    DATA.mime_type = ARGS.mime
+    DATA.app_exec = ARGS.bin
+
+    URI = Gio.File.new_for_path(ARGS.path).get_uri()
+    RECENT.add_full(URI, DATA)
+
+    # Let GLib update recently-used.xbel
+    GLib.idle_add(Gtk.main_quit)
+    Gtk.main()

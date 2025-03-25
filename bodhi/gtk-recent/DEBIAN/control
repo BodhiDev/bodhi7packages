@@ -1,0 +1,10 @@
+Package: gtk-recent
+Version: 0.0.1
+Section: utils
+Priority: optional
+Architecture: all
+Depends: python3, python3-gi
+Recommends: python3-magic
+Maintainer: Robert Wiley <ylee@bodhilinux.com>
+Description: Python command line tool
+ A command line tool to add documents to gtks recent document file.

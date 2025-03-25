@@ -1,0 +1,15 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: gtk-recent
+Source: https://github.com/rbtylee/gtk_recent
+
+Files: *
+Copyright: 2019 Robert Wiley <ylee@bodhilinux.com>
+License: GPL-3.0+
+
+Files: debian/*
+Copyright: 2019 Robert Wiley <ylee@bodhilinux.com>
+License: GPL-3.0+
+
+License: GPL-3+
+ On Debian systems, the complete text of the GNU General
+ Public License version 3 can be found in "/usr/share/common-licenses/GPL-3".
