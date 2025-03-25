@@ -1,0 +1,3 @@
+entice: no-manual-page [usr/bin/entice]
+entice: no-manual-page [usr/bin/entice_thumb_gen]
+entice: initial-upload-closes-no-bugs
