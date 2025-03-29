@@ -1,0 +1,20 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: ecrire-0.0.1
+Source: https://git.enlightenment.org/enlightenment/ecrire
+
+
+Files: *
+Copyright (C) 201 Tom Hacohen and various contributors
+License: GPL-3.0+
+
+Files: usr/share/icons/*
+Copyright (C) 2017 ApB (Apostolos B.)
+License: GPL-3.0+
+
+Files: debian/*
+Copyright: 2025 Robert Wiley <ylee@bodhilinux.com>
+License: GPL-3.0+
+
+License: GPL-3+
+ On Debian systems, the complete text of the GNU General
+ Public License version 3 can be found in "/usr/share/common-licenses/GPL-3".

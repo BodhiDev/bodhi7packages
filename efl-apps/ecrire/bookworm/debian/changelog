@@ -1,0 +1,25 @@
+ecrire (0.2.0-2) jammy; urgency=medium
+
+  * BL7 release
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Sun, 20 Nov 2022 18:16:56 -0500
+
+ecrire (0.2.0-1) focal; urgency=medium
+
+  * New upstream release
+  * Many changes
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Sun, 26 Dec 2021 12:44:19 -0500
+
+ecrire (0.1.2-1) focal; urgency=medium
+
+  * UI improvements
+  * Wrap- use mixed mode by default like other editors
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Wed, 26 Aug 2020 10:41:31 -0400
+
+ecrire (0.1.1-1) bionic; urgency=medium
+
+  * Initial release
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Sun, 11 Nov 2018 06:38:27 -0400
