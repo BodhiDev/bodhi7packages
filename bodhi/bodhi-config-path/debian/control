@@ -1,0 +1,21 @@
+Source: bodhi-config-path
+Section: utils
+Priority: optional
+Maintainer: Robert (ylee) Wiley <ylee@bodhilinux.com>
+Build-Depends: libc6, libefl-dev
+Standards-Version: 4.5.0
+Homepage: https://github.com/BodhiDev/Moksha-dev 
+Rules-Requires-Root: no
+
+Package: bodhi-config-path
+Architecture: any
+Section: utils
+Priority: optional
+Depends: ${shlibs:Depends}
+Description: Bodhi configuration utilities
+ This package contains three utilities of use for Neofetch like applications.
+ .
+ Three command line utilities are provided.
+   - bodhi-config-path: a shell script to provide unified access to the rest.
+   - elm-profile-get: a command to output the elementary profile name.
+   - elm_config_path: a command to output the Elementary configuration path.
