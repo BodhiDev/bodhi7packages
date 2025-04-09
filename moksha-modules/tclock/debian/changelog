@@ -1,3 +1,10 @@
+moksha-module-tclock (0.1.1-10) jammy; urgency=low
+
+  * Popup unwanted blink removed
+  * Time offset entry replaced to slider
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Wed, 09 Apr 2025 15:41:31 -0400
+
 moksha-module-tclock (0.1.1-9) jammy; urgency=low
 
   * Function with inst out of eina_list loop fixed
