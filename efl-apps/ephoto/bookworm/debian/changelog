@@ -1,3 +1,13 @@
+ephoto-bl (1.6-7) jammy; urgency=medium
+
+  * Locales update
+  * Cropper issues fixed
+  * Toolbar icons size and tooltips fixed
+  * Upload button fix: bad cb fnc name
+  * Efl version changed to 1.27 to prevent incompability
+ 
+ -- Robert Wiley <ylee@bodhilinux.com>  Fri, 15 Aug 2025 07:50:48 -0400
+
 ephoto-bl (1.6-6) jammy; urgency=medium
 
   * Updated and new Locales
