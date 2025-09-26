@@ -1,3 +1,16 @@
+moksha-module-forecasts (0.1.1-8) jammy; urgency=low
+
+  * Locale updates
+  * Spinner added for update progress
+  * Popup destroy when fc refresh after double click
+  * JSON cache problem fix (according Chubin)
+  * Module icon change
+  * Download icon change
+  * 
+  * 
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Fri, 26 Sep 2025 15:21:42 -0400
+
 moksha-module-forecasts (0.1.1-7) jammy; urgency=low
 
   * Meson Build
