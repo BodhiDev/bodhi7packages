@@ -6,8 +6,7 @@ moksha-module-forecasts (0.1.1-8) jammy; urgency=low
   * JSON cache problem fix (according Chubin)
   * Module icon change
   * Download icon change
-  * 
-  * 
+  * EDC Naming fix
 
  -- Robert Wiley <ylee@bodhilinux.com>  Fri, 26 Sep 2025 15:21:42 -0400
 
