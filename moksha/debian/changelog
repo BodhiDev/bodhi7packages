@@ -1,3 +1,44 @@
+moksha (0.4.1-24) unstable; urgency=low
+
+  * Dialog: avoid_damage set_
+  * Gadcon Popup tweaks
+  * Battery popup needs timer del when user click
+  * Gadcon: shelf vs gadcon position fix
+  * Border: noresize style fix
+  * Border color does not match to theme BG
+  * Border: left/right borders color consistency fix
+  * iBar: don't count app instances, just clear number at first
+  * Notification: storing notif items tweaks
+  * removed Unneeded e_dialog_resizable_set function
+  * Border: bigger resize tl corner
+  * Shot: leftover fix
+  * iBar DND fixes
+  * Ecore del funcs into macro
+  * Menu: typo fix
+  * Pointer: init signal added
+  * Pointer: handlers defined in macros
+  * Theme: EFL version added to avoid compat issues
+  * Clock: callback functions parameters added to avoid gcc warnings
+  * Bar: icon menu hide after bd close - segfault fix
+  * Fileman rename original file name fix
+  * e config: fix config fallback handling
+  * iBar: proper img and it Evas object removing
+  * iBar: unneeded data_set - leftoover
+  * New Places eject icon
+  * iBar: bd a focus after raise
+  * iBar: raise bd on menu item icon
+  * iBar: adjacent popup destroy fix
+  * iBar: adjacent label X position fix
+  * Tasks: adjacent label X position fix
+  * iBar: duplicated code in function
+  * Gadman: Localize desktop and overlay layers
+  * Notif: Unneeded history save
+  * Notif: No need to store icon without history
+  * Gadman gadget move-to menus fixed
+  * e_scale: scale ELM apps from Moksha dialog
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Fri, 17 Oct 2025 06:05:46 -0400
+
 moksha (0.4.1-22) unstable; urgency=low
 
   * Locale updates and better Indian Language support
@@ -20,7 +61,7 @@ moksha (0.4.1-22) unstable; urgency=low
   * Menu: added menus gap possibility
   * Evry: right click on selector to hide
   * Fileman EDC: Busy knob Y pos fix
-  
+
  -- Robert Wiley <ylee@bodhilinux.com>  Tue, 15 Apr 2025 09:42:28 -0400
 
 moksha (0.4.1-21) unstable; urgency=low
