@@ -1,3 +1,9 @@
+terminology (1.14.2-1) jammy; urgency=low
+
+   * commit  915e60c01
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Sat, 01 Nov 2025 10:15:03 -0400
+
 terminology (1.13.1-3) jammy; urgency=low
 
    * commit aca88e2016 
