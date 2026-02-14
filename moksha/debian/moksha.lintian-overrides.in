@@ -14,5 +14,8 @@ moksha: spelling-error-in-binary usr/lib/x86_64-linux-gnu/enlightenment/modules/
 moksha: arch-dep-package-has-big-usr-share
 moksha: hardening-no-fortify-functions
 moksha: no-symbols-control-file
+moksha: font-outside-font-dir
+moksha: font-in-non-font-package
 # todo
+moksha: truetype-font-prohibits-installable-embedding
 moksha: exit-in-shared-library
