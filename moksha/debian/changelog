@@ -1,3 +1,20 @@
+moksha (0.4.2-1) unstable; urgency=low
+
+   * Ibar: listen to exec timeout on launch - fix busy forever
+   * Notification: Improvements and minor refactoring
+   * Ibar: Improvements and minor refactoring
+   * Modules: launcher-places added into extra mods list
+   * Widget_entry object fix for EFL warnings
+   * Fix memory allocation for c_ptr in vasnprintf.c
+   * GTK4 theme support added
+   * Shot module E backport added
+   * Clipboard delayed loading
+   * Xkb: layout selection after init
+   * Shot: CTRL S/Ctrl C added
+   * Update Moksha version
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Sat, 14 Feb 2026 14:46:00 -0500
+
 moksha (0.4.1-24) unstable; urgency=low
 
   * Dialog: avoid_damage set_
