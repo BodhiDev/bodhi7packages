@@ -1,3 +1,9 @@
+entice (0.0.1-2) unstable; urgency=low
+
+  * git commit 2c56a6758d
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Sat, 28 Mar 2026 09:26:58 -0400
+
 entice (0.0.1-1) unstable; urgency=low
 
   * git commit efc07e2bd7
