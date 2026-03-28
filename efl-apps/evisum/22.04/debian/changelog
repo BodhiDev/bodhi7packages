@@ -1,3 +1,16 @@
+evisum (0.6.5-1) jammy; urgency=medium
+
+  * Implement new UI for network window.
+  * Implement new UI for storage window (simpler w/graph).
+  * Implement new UI for sensors.
+  * Implement new UI for memory.
+  * Bring all custom colours into the EDC for customisability.
+  * Toggle on/off all graph lines.
+  * Implement a graph API.
+  * Main process window fields are resizable and remembered in config.
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Sat, 28 Mar 2026 06:36:11 -0400
+
 evisum (0.6.4-1) jammy; urgency=medium
 
   * Fix memory leak.

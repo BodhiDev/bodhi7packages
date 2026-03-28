@@ -1,0 +1,13 @@
+#!/bin/sh
+set -e
+
+if [ "$1" = "configure" ]; then
+    echo
+    echo "============================================================================"
+    echo "Note. You may need to remove \$HOME/.config/evisum if you encounter a problem"
+    echo "migrating from the older configuration. Apologies."
+    echo "============================================================================"
+    echo
+fi
+
+exit 0
