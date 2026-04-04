@@ -1,3 +1,22 @@
+evisum (0.6.6-1) unstable; urgency=medium
+
+  * Add network in/out tracking (Linux only).
+  * Update process list and process view.
+  * Massive preparatory work undertaken to prepare for evisum 2.0.
+  * Fix IPC code.
+  * Fix invalid use of EDC (strdup/stringshare).
+  * Rework the animator on the about window.
+  * Add support for network transfer per-process (Linux).
+  * Create our own widget “exel”.
+  * Tidy up the other cpu visuals.
+  * Use evas_vg and vectors for our graphs.
+  * Add disk i/o tracking (Linux only).
+  * Fix process view window resize so it remembers.
+  * Columns in widget can reorder.
+  * Fix column header names to be concise like the others.
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Sat, 04 Apr 2026 05:19:42 -0400
+
 evisum (0.6.5-1) unstable; urgency=medium
 
   * Implement new UI for network window.
