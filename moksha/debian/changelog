@@ -1,3 +1,13 @@
+moksha (0.4.2-3) unstable; urgency=low
+
+   * Shot: url http->https
+   * Module desktop locale updates
+   * Shot: selection frame corners active on mouse over
+   * Shot edit: red color default
+   * Transitions: white BG issue?
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Wed, 29 Apr 2026 05:55:45 -0400
+
 moksha (0.4.2-2) unstable; urgency=low
 
    * Shot: xdg-open for saved pics
