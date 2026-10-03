@@ -1,3 +1,2 @@
 ephoto-bl: no-manual-page usr/bin/ephoto
 ephoto-bl: executable-in-usr-lib usr/lib/x86_64-linux-gnu/ephoto/ephoto_thumbnail
-ephoto-bl: icon-size-and-directory-name-mismatch
