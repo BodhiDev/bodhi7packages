@@ -1,3 +1,12 @@
+ephoto-bl (1.6-8) jammy; urgency=medium
+
+  * Locales update
+  * Return instead of ALT TAB in bindings
+  * We want focused pic to show, not selected
+  * Thumb_Browser: Enter for pic view
+ 
+ -- Robert Wiley <ylee@bodhilinux.com>  Sat, 03 Oct 2026 11:15:47 -0400
+
 ephoto-bl (1.6-7) jammy; urgency=medium
 
   * Locales update
