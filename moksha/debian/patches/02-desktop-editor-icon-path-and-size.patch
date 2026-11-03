@@ -1,0 +1,64 @@
+From e91c2ed37c284b2e36b7cab5db3a22a521dffbfe Mon Sep 17 00:00:00 2001
+From: Aleksei Tcelishchev <casualuser@gmail.com>
+Date: Tue, 3 Nov 2026 11:30:17 -0500
+Subject: [PATCH 2/3] fix(eap_editor): store absolute icon path and pick
+ highest-res _NET_WM_ICON
+
+When creating a .desktop entry from a running window via e_desktop_border_create(), saving desktop->icon as a bare PNG filename inside ~/.e/e/applications/icons/ failed Efreet XDG icon theme lookup (rendering a green '?' fallback icon) and prevented _e_desktop_edit_free_data() from unlinking editor->tmp_image_path on cancel.
+
+Store the full path in desktop->icon, sanitize bname via ecore_file_file_get(), and select the highest-resolution _NET_WM_ICON entry instead of unconditionally saving icons[0].
+---
+ src/bin/e_eap_editor.c | 26 ++++++++++++++++++--------
+ 1 file changed, 18 insertions(+), 8 deletions(-)
+
+diff --git a/src/bin/e_eap_editor.c b/src/bin/e_eap_editor.c
+index e8f02031f..72b2fdf82 100644
+--- a/src/bin/e_eap_editor.c
++++ b/src/bin/e_eap_editor.c
+@@ -74,6 +74,7 @@ e_desktop_border_create(E_Border *bd)
+    char path[PATH_MAX + PATH_MAX + 2];
+ 
+    bname = bd->client.icccm.name;
++   if (bname) bname = ecore_file_file_get(bname);
+    if ((bname) && (bname[0] == 0)) bname = NULL;
+    bclass = bd->client.icccm.class;
+    if ((bclass) && (bclass[0] == 0)) bclass = NULL;
+@@ -135,18 +136,27 @@ e_desktop_border_create(E_Border *bd)
+ 
+ // disable this
+ //   if (bd->client.netwm.startup_id > 0) desktop->startup_notify = 1;
+-   if (bd->client.netwm.icons)
++   if ((bd->client.netwm.icons) && (bd->client.netwm.num_icons > 0))
+      {
+-        /* FIXME
+-         * - Find the icon with the best size
+-         * - Should use mkstemp
+-         */
+         char file[PATH_MAX];
++        int i, best = 0;
++        unsigned int best_area = 0;
+ 
+-        snprintf(file, sizeof(file), "%s-%.6f.png", bname ?: "", ecore_time_get());
++        for (i = 0; i < bd->client.netwm.num_icons; i++)
++          {
++             unsigned int area = bd->client.netwm.icons[i].width *
++                                 bd->client.netwm.icons[i].height;
++             if ((bd->client.netwm.icons[i].data) && (area > best_area))
++               {
++                  best = i;
++                  best_area = area;
++               }
++          }
++
++        snprintf(file, sizeof(file), "%s-%.6f.png", bname ?: "app", ecore_time_get());
+         snprintf(path, sizeof(path), "%s/%s", icon_dir, file);
+-        if (e_util_icon_save(&(bd->client.netwm.icons[0]), path))
+-          desktop->icon = strdup(file);
++        if (e_util_icon_save(&(bd->client.netwm.icons[best]), path))
++          desktop->icon = strdup(path);
+         else
+           fprintf(stderr, "Could not save file from ARGB: %s\n", path);
+      }
+-- 
+2.34.1
+
