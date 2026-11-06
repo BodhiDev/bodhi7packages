@@ -1,3 +1,11 @@
+moksha (0.4.2-5) unstable; urgency=low
+
+   * Border/Actions: 8-zone window snapping (4 halves + 4 corners) with Top Half top-edge default
+   * Desktop Entry Editor: store absolute icon path and pick highest-resolution _NET_WM_ICON
+   * Border Icons: reverse-DNS WM_CLASS matching, AppImage .DirIcon fallback, and >=64px _NET_WM_ICON selection
+
+ -- Aleksei Tcelishchev <casualuser@gmail.com>  Tue, 03 Nov 2026 11:45:00 -0500
+
 moksha (0.4.2-4) unstable; urgency=low
 
    * Shot: border icon fix

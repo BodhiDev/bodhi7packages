@@ -1,0 +1,896 @@
+From 2af5f05ccb6f0e2b8ea4631538983cefad706312 Mon Sep 17 00:00:00 2001
+From: Aleksei Tcelishchev <casualuser@gmail.com>
+Date: Tue, 3 Nov 2026 11:25:40 -0500
+Subject: [PATCH 1/3] feat(border,actions): add 8-zone window snapping with
+ top-half edge default
+
+Add E_MAXIMIZE_TOP and E_MAXIMIZE_BOTTOM directions alongside existing quarter zones so windows can snap to all 4 screen halves (left, right, top, bottom) and all 4 corner quarters via both mouse drag and Super+Arrow keybindings.
+
+Default top-edge center drag to Top Half (E_MAXIMIZE_TOP) rather than Full Maximize so all four edges and four corners behave symmetrically, while preserving an opt-in 'Maximize fully when dragging to top edge' setting in Window Geometry (and keeping titlebar double-click, Maximize button, and double Super+Up for Full Maximize). Also clear bd->maximized transiently across zone transitions when allow_manip is disabled and restore X/Y cursor alignment when unsnapping.
+---
+ config/bodhi/e.src                            |  10 +
+ src/bin/e_actions.c                           | 124 +++++-
+ src/bin/e_border.c                            | 356 +++++++++++++-----
+ src/bin/e_border.h                            |   2 +
+ src/bin/e_config.c                            |   2 +
+ src/bin/e_config.h                            |   1 +
+ src/bin/e_int_border_menu.c                   |  54 +++
+ .../e_int_config_window_geometry.c            |  10 +-
+ 8 files changed, 447 insertions(+), 112 deletions(-)
+
+diff --git a/config/bodhi/e.src b/config/bodhi/e.src
+index a5e80fdc5..37d67868c 100644
+--- a/config/bodhi/e.src
++++ b/config/bodhi/e.src
+@@ -1375,6 +1375,15 @@ group "E_Config" struct {
+             value "modifiers" int: 8;
+             value "key" string: "Up";
+             value "action" string: "window_maximized_toggle";
++            value "params" string: "default top";
++            value "any_mod" uchar: 0;
++        }
++        group "E_Config_Binding_Key" struct {
++            value "context" int: 9;
++            value "modifiers" int: 8;
++            value "key" string: "Down";
++            value "action" string: "window_maximized_toggle";
++            value "params" string: "default bottom";
+             value "any_mod" uchar: 0;
+         }
+         group "E_Config_Binding_Key" struct {
+@@ -2021,6 +2030,7 @@ group "E_Config" struct {
+     value "border_fix_on_shelf_toggle" int: 0;
+     value "allow_above_fullscreen" int: 0;
+     value "max_top_edge" int: 1;
++    value "snap_top_edge_maximize" int: 0;
+     value "kill_if_close_not_possible" int: 1;
+     value "kill_process" int: 1;
+     value "kill_timer_wait" double: 10.0;
+diff --git a/src/bin/e_actions.c b/src/bin/e_actions.c
+index 8b83282ee..c6fa47063 100644
+--- a/src/bin/e_actions.c
++++ b/src/bin/e_actions.c
+@@ -696,45 +696,91 @@ ACT_FN_GO(window_maximized_toggle, )
+                e_border_unmaximize(bd, E_MAXIMIZE_BOTH);
+              else
+                {
+-                  E_Maximize max;
++                  E_Maximize max, cur, pol, dir;
+ 
+                   max = _e_actions_maximize_parse(params);
+-                  max &= E_MAXIMIZE_DIRECTION;
+-                  if (max == E_MAXIMIZE_VERTICAL)
++                  pol = (max & E_MAXIMIZE_TYPE);
++                  dir = (max & E_MAXIMIZE_DIRECTION);
++                  cur = (bd->maximized & E_MAXIMIZE_DIRECTION);
++                  if (dir == E_MAXIMIZE_VERTICAL)
+                     {
+-                       if (bd->maximized & E_MAXIMIZE_VERTICAL)
++                       if ((cur == E_MAXIMIZE_VERTICAL) || (cur == E_MAXIMIZE_BOTH))
+                          e_border_unmaximize(bd, E_MAXIMIZE_VERTICAL);
+                        else
+-                         goto maximize;
++                         e_border_maximize(bd, pol | E_MAXIMIZE_VERTICAL);
+                     }
+-                  else if (max == E_MAXIMIZE_HORIZONTAL)
++                  else if (dir == E_MAXIMIZE_HORIZONTAL)
+                     {
+-                       if (bd->maximized & E_MAXIMIZE_HORIZONTAL)
++                       if ((cur == E_MAXIMIZE_HORIZONTAL) || (cur == E_MAXIMIZE_BOTH))
+                          e_border_unmaximize(bd, E_MAXIMIZE_HORIZONTAL);
+                        else
+-                         goto maximize;
++                         e_border_maximize(bd, pol | E_MAXIMIZE_HORIZONTAL);
+                     }
+-                  else if (max == E_MAXIMIZE_LEFT)
++                  else if (dir == E_MAXIMIZE_LEFT)
+                     {
+-                       if (bd->maximized & E_MAXIMIZE_LEFT)
+-                         e_border_unmaximize(bd, E_MAXIMIZE_LEFT);
++                       if ((cur == E_MAXIMIZE_LEFT) || (cur == E_MAXIMIZE_RIGHT))
++                         e_border_unmaximize(bd, cur);
++                       else if ((cur == E_MAXIMIZE_TOP) || (cur == E_MAXIMIZE_RIGHT_TOP))
++                         e_border_maximize(bd, pol | E_MAXIMIZE_LEFT_TOP);
++                       else if ((cur == E_MAXIMIZE_BOTTOM) || (cur == E_MAXIMIZE_RIGHT_BOTTOM))
++                         e_border_maximize(bd, pol | E_MAXIMIZE_LEFT_BOTTOM);
+                        else
+-                         goto maximize;
++                         e_border_maximize(bd, pol | E_MAXIMIZE_LEFT);
+                     }
+-                  else if (max == E_MAXIMIZE_RIGHT)
++                  else if (dir == E_MAXIMIZE_RIGHT)
+                     {
+-                       if (bd->maximized & E_MAXIMIZE_RIGHT)
+-                         e_border_unmaximize(bd, E_MAXIMIZE_RIGHT);
++                       if ((cur == E_MAXIMIZE_RIGHT) || (cur == E_MAXIMIZE_LEFT))
++                         e_border_unmaximize(bd, cur);
++                       else if ((cur == E_MAXIMIZE_TOP) || (cur == E_MAXIMIZE_LEFT_TOP))
++                         e_border_maximize(bd, pol | E_MAXIMIZE_RIGHT_TOP);
++                       else if ((cur == E_MAXIMIZE_BOTTOM) || (cur == E_MAXIMIZE_LEFT_BOTTOM))
++                         e_border_maximize(bd, pol | E_MAXIMIZE_RIGHT_BOTTOM);
+                        else
+-                         goto maximize;
++                         e_border_maximize(bd, pol | E_MAXIMIZE_RIGHT);
++                    }
++                  else if (dir == E_MAXIMIZE_TOP)
++                    {
++                       if (cur == E_MAXIMIZE_TOP)
++                         e_border_maximize(bd, pol | E_MAXIMIZE_BOTH);
++                       else if ((cur == E_MAXIMIZE_BOTH) || (cur == E_MAXIMIZE_BOTTOM))
++                         e_border_unmaximize(bd, cur);
++                       else if ((cur == E_MAXIMIZE_LEFT) || (cur == E_MAXIMIZE_LEFT_BOTTOM))
++                         e_border_maximize(bd, pol | E_MAXIMIZE_LEFT_TOP);
++                       else if ((cur == E_MAXIMIZE_RIGHT) || (cur == E_MAXIMIZE_RIGHT_BOTTOM))
++                         e_border_maximize(bd, pol | E_MAXIMIZE_RIGHT_TOP);
++                       else
++                         e_border_maximize(bd, pol | E_MAXIMIZE_TOP);
++                    }
++                  else if (dir == E_MAXIMIZE_BOTTOM)
++                    {
++                       if ((cur == E_MAXIMIZE_BOTTOM) || (cur == E_MAXIMIZE_TOP) ||
++                           (cur == E_MAXIMIZE_BOTH))
++                         e_border_unmaximize(bd, cur);
++                       else if ((cur == E_MAXIMIZE_LEFT) || (cur == E_MAXIMIZE_LEFT_TOP))
++                         e_border_maximize(bd, pol | E_MAXIMIZE_LEFT_BOTTOM);
++                       else if ((cur == E_MAXIMIZE_RIGHT) || (cur == E_MAXIMIZE_RIGHT_TOP))
++                         e_border_maximize(bd, pol | E_MAXIMIZE_RIGHT_BOTTOM);
++                       else
++                         e_border_maximize(bd, pol | E_MAXIMIZE_BOTTOM);
++                    }
++                  else if (dir > E_MAXIMIZE_BOTH)
++                    {
++                       if (cur == dir)
++                         e_border_unmaximize(bd, cur);
++                       else
++                         e_border_maximize(bd, pol | dir);
+                     }
+                   else
+-                    e_border_unmaximize(bd, E_MAXIMIZE_BOTH);
++                    {
++                       if (cur == E_MAXIMIZE_BOTH)
++                         e_border_unmaximize(bd, E_MAXIMIZE_BOTH);
++                       else
++                         e_border_maximize(bd, pol | E_MAXIMIZE_BOTH);
++                    }
+                }
+           }
+         else
+           {
+-maximize:
+              e_border_maximize(bd, _e_actions_maximize_parse(params));
+           }
+      }
+@@ -772,6 +818,18 @@ ACT_FN_GO(window_maximized, )
+                     max = E_MAXIMIZE_LEFT;
+                   else if (!strcmp(s2, "right"))
+                     max = E_MAXIMIZE_RIGHT;
++                  else if (!strcmp(s2, "top"))
++                    max = E_MAXIMIZE_TOP;
++                  else if (!strcmp(s2, "bottom"))
++                    max = E_MAXIMIZE_BOTTOM;
++                  else if ((!strcmp(s2, "left_top")) || (!strcmp(s2, "top_left")))
++                    max = E_MAXIMIZE_LEFT_TOP;
++                  else if ((!strcmp(s2, "right_top")) || (!strcmp(s2, "top_right")))
++                    max = E_MAXIMIZE_RIGHT_TOP;
++                  else if ((!strcmp(s2, "left_bottom")) || (!strcmp(s2, "bottom_left")))
++                    max = E_MAXIMIZE_LEFT_BOTTOM;
++                  else if ((!strcmp(s2, "right_bottom")) || (!strcmp(s2, "bottom_right")))
++                    max = E_MAXIMIZE_RIGHT_BOTTOM;
+                   else
+                     max = E_MAXIMIZE_BOTH;
+                }
+@@ -3225,6 +3283,24 @@ e_actions_init(void)
+    e_action_predef_name_set(N_("Window : State"), N_("Maximize Right"),
+                             "window_maximized_toggle", "default right",
+                             NULL, 0);
++   e_action_predef_name_set(N_("Window : State"), N_("Maximize Top"),
++                            "window_maximized_toggle", "default top",
++                            NULL, 0);
++   e_action_predef_name_set(N_("Window : State"), N_("Maximize Bottom"),
++                            "window_maximized_toggle", "default bottom",
++                            NULL, 0);
++   e_action_predef_name_set(N_("Window : State"), N_("Maximize Top-Left"),
++                            "window_maximized_toggle", "default left_top",
++                            NULL, 0);
++   e_action_predef_name_set(N_("Window : State"), N_("Maximize Top-Right"),
++                            "window_maximized_toggle", "default right_top",
++                            NULL, 0);
++   e_action_predef_name_set(N_("Window : State"), N_("Maximize Bottom-Left"),
++                            "window_maximized_toggle", "default left_bottom",
++                            NULL, 0);
++   e_action_predef_name_set(N_("Window : State"), N_("Maximize Bottom-Right"),
++                            "window_maximized_toggle", "default right_bottom",
++                            NULL, 0);
+    e_action_predef_name_set(N_("Window : State"), N_("Maximize Fullscreen"),
+                             "window_maximized_toggle", "fullscreen", NULL, 0);
+    e_action_predef_name_set(N_("Window : State"), N_("Maximize Mode \"Smart\""),
+@@ -3897,6 +3973,18 @@ _e_actions_maximize_parse(const char *params)
+           max = E_MAXIMIZE_LEFT;
+         else if (!strcmp(s2, "right"))
+           max = E_MAXIMIZE_RIGHT;
++        else if (!strcmp(s2, "top"))
++          max = E_MAXIMIZE_TOP;
++        else if (!strcmp(s2, "bottom"))
++          max = E_MAXIMIZE_BOTTOM;
++        else if ((!strcmp(s2, "left_top")) || (!strcmp(s2, "top_left")))
++          max = E_MAXIMIZE_LEFT_TOP;
++        else if ((!strcmp(s2, "right_top")) || (!strcmp(s2, "top_right")))
++          max = E_MAXIMIZE_RIGHT_TOP;
++        else if ((!strcmp(s2, "left_bottom")) || (!strcmp(s2, "bottom_left")))
++          max = E_MAXIMIZE_LEFT_BOTTOM;
++        else if ((!strcmp(s2, "right_bottom")) || (!strcmp(s2, "bottom_right")))
++          max = E_MAXIMIZE_RIGHT_BOTTOM;
+         else
+           max = E_MAXIMIZE_BOTH;
+      }
+diff --git a/src/bin/e_border.c b/src/bin/e_border.c
+index 3bb6caf84..0a41086a9 100644
+--- a/src/bin/e_border.c
++++ b/src/bin/e_border.c
+@@ -129,6 +129,7 @@ static void      _e_border_cb_drag_finished(E_Drag *drag,
+ static Eina_Bool _e_border_cb_desk_window_profile_change(void *data,
+                                                          int   ev_type,
+                                                          void *ev);
++static Eina_Bool _e_border_cb_resume(void *data, int type, void *ev);
+ static void      _e_border_eval(E_Border *bd);
+ static void      _e_border_eval0(E_Border *bd);
+ static void      _e_border_container_layout_hook(E_Container *con);
+@@ -495,6 +496,8 @@ e_border_new(E_Container *con,
+                          _e_border_cb_mouse_move, bd);
+    E_LIST_HANDLER_APPEND(bd->handlers, ECORE_EVENT_MOUSE_WHEEL,
+                          _e_border_cb_mouse_wheel, bd);
++   E_LIST_HANDLER_APPEND(bd->handlers, E_EVENT_SYS_RESUME,
++                         _e_border_cb_resume, NULL);
+ 
+    bd->client.icccm.title = NULL;
+    bd->client.icccm.name = NULL;
+@@ -2738,12 +2741,36 @@ _e_border_maximize(E_Border *bd, E_Maximize max)
+              e_border_move_resize(bd, x1, bd->y, w, bd->h);
+              break;
+ 
++           case E_MAXIMIZE_TOP:
++             e_border_move_resize(bd, bd->zone->x, bd->zone->y, bd->zone->w, bd->zone->h / 2);
++             break;
++
++           case E_MAXIMIZE_BOTTOM:
++             e_border_move_resize(bd, bd->zone->x, bd->zone->y + bd->zone->h / 2, bd->zone->w, bd->zone->h / 2);
++             break;
++
+            case E_MAXIMIZE_LEFT:
+-             e_border_move_resize(bd, bd->zone->x, bd->zone->y, w / 2, h);
++             e_border_move_resize(bd, bd->zone->x, bd->zone->y, bd->zone->w / 2, bd->zone->h);
++             break;
++
++           case E_MAXIMIZE_LEFT_TOP:
++             e_border_move_resize(bd, bd->zone->x, bd->zone->y, bd->zone->w / 2, bd->zone->h / 2);
++             break;
++
++           case E_MAXIMIZE_LEFT_BOTTOM:
++             e_border_move_resize(bd, bd->zone->x, bd->zone->y + bd->zone->h / 2, bd->zone->w / 2, bd->zone->h / 2);
+              break;
+ 
+            case E_MAXIMIZE_RIGHT:
+-             e_border_move_resize(bd, x1, bd->zone->y, w / 2, h);
++             e_border_move_resize(bd, bd->zone->x + bd->zone->w / 2, bd->zone->y, bd->zone->w / 2, bd->zone->h);
++             break;
++
++           case E_MAXIMIZE_RIGHT_TOP:
++             e_border_move_resize(bd, bd->zone->x + bd->zone->w / 2, bd->zone->y, bd->zone->w / 2, bd->zone->h / 2);
++             break;
++
++           case E_MAXIMIZE_RIGHT_BOTTOM:
++             e_border_move_resize(bd, bd->zone->x + bd->zone->w / 2, bd->zone->y + bd->zone->h / 2, bd->zone->w / 2, bd->zone->h / 2);
+              break;
+           }
+         break;
+@@ -2801,6 +2828,14 @@ _e_border_maximize(E_Border *bd, E_Maximize max)
+              e_border_move_resize(bd, zx, bd->y, zw, bd->h);
+              break;
+ 
++           case E_MAXIMIZE_TOP:
++             e_border_move_resize(bd, zx, zy, zw, zh / 2);
++             break;
++
++           case E_MAXIMIZE_BOTTOM:
++             e_border_move_resize(bd, zx, zy + zh / 2, zw, zh / 2);
++             break;
++
+            case E_MAXIMIZE_LEFT:
+              e_border_move_resize(bd, zx, zy, zw / 2, zh);
+              break;
+@@ -2849,6 +2884,9 @@ _e_border_maximize(E_Border *bd, E_Maximize max)
+         /* center y-direction */
+         yy1 = yy1 + (ph - h) / 2;
+ 
++        if (bd->zone)
++          e_zone_useful_geometry_get(bd->zone, &zx, &zy, &zw, &zh);
++
+         switch (max & E_MAXIMIZE_DIRECTION)
+           {
+            case E_MAXIMIZE_BOTH:
+@@ -2863,12 +2901,36 @@ _e_border_maximize(E_Border *bd, E_Maximize max)
+              e_border_move_resize(bd, x1, bd->y, w, bd->h);
+              break;
+ 
++           case E_MAXIMIZE_TOP:
++             e_border_move_resize(bd, zx, zy, zw, zh / 2);
++             break;
++
++           case E_MAXIMIZE_BOTTOM:
++             e_border_move_resize(bd, zx, zy + zh / 2, zw, zh / 2);
++             break;
++
+            case E_MAXIMIZE_LEFT:
+-             e_border_move_resize(bd, bd->zone->x, bd->zone->y, w / 2, h);
++             e_border_move_resize(bd, zx, zy, zw / 2, zh);
++             break;
++
++           case E_MAXIMIZE_LEFT_TOP:
++             e_border_move_resize(bd, zx, zy, zw / 2, zh / 2);
++             break;
++
++           case E_MAXIMIZE_LEFT_BOTTOM:
++             e_border_move_resize(bd, zx, zy + zh / 2, zw / 2, zh / 2);
+              break;
+ 
+            case E_MAXIMIZE_RIGHT:
+-             e_border_move_resize(bd, x1, bd->zone->y, w / 2, h);
++             e_border_move_resize(bd, zx + zw / 2, zy, zw / 2, zh);
++             break;
++
++           case E_MAXIMIZE_RIGHT_TOP:
++             e_border_move_resize(bd, zx + zw / 2, zy, zw / 2, zh / 2);
++             break;
++
++           case E_MAXIMIZE_RIGHT_BOTTOM:
++             e_border_move_resize(bd, zx + zw / 2, zy + zh / 2, zw / 2, zh / 2);
+              break;
+           }
+         break;
+@@ -2879,6 +2941,8 @@ EAPI void
+ e_border_maximize(E_Border *bd,
+                   E_Maximize max)
+ {
++   E_Maximize cur_dir, new_dir;
++
+    E_OBJECT_CHECK(bd);
+    E_OBJECT_TYPE_CHECK(bd, E_BORDER_TYPE);
+ 
+@@ -2888,25 +2952,35 @@ e_border_maximize(E_Border *bd,
+    ecore_x_window_shadow_tree_flush();
+    if (bd->fullscreen)
+      e_border_unfullscreen(bd);
+-   /* Only allow changes in vertical/ horizontal maximization */
+-   if (((bd->maximized & E_MAXIMIZE_DIRECTION) == (max & E_MAXIMIZE_DIRECTION)) ||
+-       ((bd->maximized & E_MAXIMIZE_DIRECTION) == E_MAXIMIZE_BOTH)) return;
++
++   cur_dir = (bd->maximized & E_MAXIMIZE_DIRECTION);
++   new_dir = (max & E_MAXIMIZE_DIRECTION);
++   /* Allow transitions across directional snap zones and full maximize */
++   if ((cur_dir == new_dir) ||
++       ((cur_dir == E_MAXIMIZE_BOTH) && (new_dir <= E_MAXIMIZE_BOTH)))
++     return;
+    if (bd->new_client)
+      {
+         bd->need_maximize = 1;
+-        bd->maximized &= ~E_MAXIMIZE_TYPE;
+-        bd->maximized |= max;
++        if ((cur_dir > E_MAXIMIZE_BOTH) || (new_dir > E_MAXIMIZE_BOTH) ||
++            (cur_dir == E_MAXIMIZE_BOTH))
++          bd->maximized = (max & (E_MAXIMIZE_TYPE | E_MAXIMIZE_DIRECTION));
++        else
++          {
++             bd->maximized &= ~E_MAXIMIZE_TYPE;
++             bd->maximized |= max;
++          }
+         return;
+      }
+ 
+    bd->pre_res_change.valid = 0;
+-   if (!(bd->maximized & E_MAXIMIZE_HORIZONTAL))
++   if ((cur_dir == E_MAXIMIZE_NONE) || (cur_dir == E_MAXIMIZE_VERTICAL))
+      {
+         /* Horizontal hasn't been set */
+         bd->saved.x = bd->x - bd->zone->x;
+         bd->saved.w = bd->w;
+      }
+-   if (!(bd->maximized & E_MAXIMIZE_VERTICAL))
++   if ((cur_dir == E_MAXIMIZE_NONE) || (cur_dir == E_MAXIMIZE_HORIZONTAL))
+      {
+         /* Vertical hasn't been set */
+         bd->saved.y = bd->y - bd->zone->y;
+@@ -2918,17 +2992,27 @@ e_border_maximize(E_Border *bd,
+ 
+    e_border_raise(bd);
+ 
+-   _e_border_maximize(bd, max);
++   if ((cur_dir > E_MAXIMIZE_BOTH) || (new_dir > E_MAXIMIZE_BOTH) ||
++       (cur_dir == E_MAXIMIZE_BOTH))
++     bd->maximized = E_MAXIMIZE_NONE;
+ 
+-   /* Remove previous type */
+-   bd->maximized &= ~E_MAXIMIZE_TYPE;
+-   /* Add new maximization. It must be added, so that VERTICAL + HORIZONTAL == BOTH */
++   _e_border_maximize(bd, max);
+ 
+-   bd->maximized |= max;
++   if ((cur_dir > E_MAXIMIZE_BOTH) || (new_dir > E_MAXIMIZE_BOTH) ||
++       (cur_dir == E_MAXIMIZE_BOTH))
++     bd->maximized = (max & (E_MAXIMIZE_TYPE | E_MAXIMIZE_DIRECTION));
++   else
++     {
++        /* Remove previous type */
++        bd->maximized &= ~E_MAXIMIZE_TYPE;
++        /* Add new maximization. It must be added, so that VERTICAL + HORIZONTAL == BOTH */
++        bd->maximized |= max;
++     }
+ 
+    if ((bd->maximized & E_MAXIMIZE_DIRECTION) > E_MAXIMIZE_BOTH)
+-     /* left/right maximize */
+-     e_hints_window_maximized_set(bd, 0,
++     e_hints_window_maximized_set(bd,
++                                  ((bd->maximized & E_MAXIMIZE_DIRECTION) == E_MAXIMIZE_TOP) ||
++                                  ((bd->maximized & E_MAXIMIZE_DIRECTION) == E_MAXIMIZE_BOTTOM),
+                                   ((bd->maximized & E_MAXIMIZE_DIRECTION) == E_MAXIMIZE_LEFT) ||
+                                   ((bd->maximized & E_MAXIMIZE_DIRECTION) == E_MAXIMIZE_RIGHT));
+    else
+@@ -2990,23 +3074,33 @@ e_border_unmaximize(E_Border *bd,
+                       _e_border_client_inset_calc(bd);
+                     }
+                }
+-             if (max & E_MAXIMIZE_VERTICAL)
++             if ((bd->maximized & E_MAXIMIZE_DIRECTION) > E_MAXIMIZE_BOTH)
+                {
+-                  /* Remove vertical */
++                  w = bd->saved.w;
+                   h = bd->saved.h;
++                  x = bd->saved.x + bd->zone->x;
+                   y = bd->saved.y + bd->zone->y;
+-                  bd->saved.h = bd->saved.y = 0;
+-                  bd->maximized &= ~E_MAXIMIZE_VERTICAL;
+-                  bd->maximized &= ~E_MAXIMIZE_LEFT;
+-                  bd->maximized &= ~E_MAXIMIZE_RIGHT;
++                  bd->saved.w = bd->saved.h = bd->saved.x = bd->saved.y = 0;
++                  bd->maximized &= ~E_MAXIMIZE_DIRECTION;
+                }
+-             if (max & E_MAXIMIZE_HORIZONTAL)
++             else
+                {
+-                  /* Remove horizontal */
+-                  w = bd->saved.w;
+-                  x = bd->saved.x + bd->zone->x;
+-                  bd->saved.w = bd->saved.x = 0;
+-                  bd->maximized &= ~E_MAXIMIZE_HORIZONTAL;
++                  if (max & E_MAXIMIZE_VERTICAL)
++                    {
++                       /* Remove vertical */
++                       h = bd->saved.h;
++                       y = bd->saved.y + bd->zone->y;
++                       bd->saved.h = bd->saved.y = 0;
++                       bd->maximized &= ~E_MAXIMIZE_VERTICAL;
++                    }
++                  if (max & E_MAXIMIZE_HORIZONTAL)
++                    {
++                       /* Remove horizontal */
++                       w = bd->saved.w;
++                       x = bd->saved.x + bd->zone->x;
++                       bd->saved.w = bd->saved.x = 0;
++                       bd->maximized &= ~E_MAXIMIZE_HORIZONTAL;
++                    }
+                }
+ 
+              e_border_resize_limit(bd, &w, &h);
+@@ -3024,8 +3118,9 @@ e_border_unmaximize(E_Border *bd,
+                   e_hints_window_size_set(bd);
+                }
+           }
+-        e_hints_window_maximized_set(bd, bd->maximized & E_MAXIMIZE_HORIZONTAL,
+-                                     bd->maximized & E_MAXIMIZE_VERTICAL);
++        e_hints_window_maximized_set(bd,
++                                     (bd->maximized & E_MAXIMIZE_DIRECTION) == E_MAXIMIZE_HORIZONTAL,
++                                     (bd->maximized & E_MAXIMIZE_DIRECTION) == E_MAXIMIZE_VERTICAL);
+      }
+    e_remember_update(bd);
+ }
+@@ -6986,78 +7081,119 @@ _e_border_stay_within_container(E_Border *bd, int x, int y, int *new_x, int *new
+      }
+ }
+ 
++static void
++_window_snap_unmaximize_reset(E_Border *bd)
++{
++   int grab_y;
++
++   e_border_unmaximize(bd, E_MAXIMIZE_BOTH);
++   grab_y = MIN(MAX(bd->client_inset.t / 2, 10), MAX(bd->h / 2, 10));
++   if ((bd->moveinfo.down.button >= 1) && (bd->moveinfo.down.button <= 3))
++     {
++        bd->mouse.last_down[bd->moveinfo.down.button - 1].x =
++          bd->mouse.current.mx - bd->w / 2;
++        bd->mouse.last_down[bd->moveinfo.down.button - 1].y =
++          bd->mouse.current.my - grab_y;
++     }
++   else
++     {
++        bd->moveinfo.down.x = bd->mouse.current.mx - bd->w / 2;
++        bd->moveinfo.down.y = bd->mouse.current.my - grab_y;
++     }
++   bd->moveinfo.down.mx = bd->mouse.current.mx;
++   bd->moveinfo.down.my = bd->mouse.current.my;
++}
++
+ static Eina_Bool
+ window_snap_do(E_Border *bd)
+ {
+-   if (e_config->max_top_edge && ((e_config->maximize_policy &
+-       E_MAXIMIZE_TYPE) == E_MAXIMIZE_SMART))
+-     {
+-       E_Maximize max = 0;
+-       int zx, zy, zw, zh;
+-       int drag_gap;
++   Eina_Bool resizable;
+ 
+-       e_zone_useful_geometry_get(bd->zone, &zx, &zy, &zw, &zh);
+-       drag_gap = zw / 10;
++   if (!e_config->max_top_edge || !bd->zone ||
++       bd->lock_user_maximize || bd->lock_user_size)
++     return ECORE_CALLBACK_DONE;
+ 
+-       if ((bd->mouse.current.mx < zx + 1) &&
+-           (bd->mouse.current.mx > zx - drag_gap))
+-         {
+-           if (bd->mouse.current.my < zy + drag_gap / 2)
+-             max = E_MAXIMIZE_LEFT_TOP;
+-           else if (bd->mouse.current.my > zy + zh - drag_gap / 2)
+-             max = E_MAXIMIZE_LEFT_BOTTOM;
+-           else
+-             max = E_MAXIMIZE_LEFT;
++   resizable = (bd->client.icccm.min_w != bd->client.icccm.max_w) ||
++               (bd->client.icccm.min_h != bd->client.icccm.max_h);
++   if (resizable)
++     {
++        E_Maximize max = 0, pol;
++        int zx, zy, zw, zh;
++        int drag_gap, corner_w, corner_h, unsnap_gap;
++        int mx, my;
+ 
+-           e_border_maximize(bd, (e_config->maximize_policy &
+-           E_MAXIMIZE_TYPE) | max);
+-           return ECORE_CALLBACK_PASS_ON;
+-         }
++        e_zone_useful_geometry_get(bd->zone, &zx, &zy, &zw, &zh);
++        if ((zw <= 0) || (zh <= 0)) return ECORE_CALLBACK_DONE;
+ 
+-       if ((bd->mouse.current.mx > zx + zw - 2) &&
+-           (bd->mouse.current.mx < zx + zw + drag_gap))
+-         {
+-           if (bd->mouse.current.my < zy + drag_gap / 2)
+-             max = E_MAXIMIZE_RIGHT_TOP;
+-           else if (bd->mouse.current.my > zy + zh - drag_gap / 2)
+-             max = E_MAXIMIZE_RIGHT_BOTTOM;
+-           else
+-             max = E_MAXIMIZE_RIGHT;
++        pol = (e_config->maximize_policy & E_MAXIMIZE_TYPE);
++        if (pol == E_MAXIMIZE_NONE) pol = E_MAXIMIZE_SMART;
+ 
+-           e_border_maximize(bd, (e_config->maximize_policy &
+-           E_MAXIMIZE_TYPE) | max);
+-           return ECORE_CALLBACK_PASS_ON;
+-         }
++        drag_gap = MAX(zw / 10, 48);
++        corner_w = MAX(zw / 10, 64);
++        corner_h = MAX(zh / 8, 64);
++        unsnap_gap = MIN(drag_gap / 2, 32);
++        mx = bd->mouse.current.mx;
++        my = bd->mouse.current.my;
+ 
+-       if ((bd->mouse.current.my < zy + 1) &&
+-           (bd->mouse.current.my > zy - drag_gap) &&
+-           (bd->mouse.current.mx > zx + drag_gap * 2) &&
+-           (bd->mouse.current.mx < zx + zw - drag_gap * 2))
+-         e_border_maximize(bd, e_config->maximize_policy);
++        if ((mx <= zx + 1) && (mx >= zx - drag_gap))
++          {
++             if (my < zy + corner_h)
++               max = E_MAXIMIZE_LEFT_TOP;
++             else if (my > zy + zh - corner_h)
++               max = E_MAXIMIZE_LEFT_BOTTOM;
++             else
++               max = E_MAXIMIZE_LEFT;
++          }
++        else if ((mx >= zx + zw - 2) && (mx <= zx + zw + drag_gap))
++          {
++             if (my < zy + corner_h)
++               max = E_MAXIMIZE_RIGHT_TOP;
++             else if (my > zy + zh - corner_h)
++               max = E_MAXIMIZE_RIGHT_BOTTOM;
++             else
++               max = E_MAXIMIZE_RIGHT;
++          }
++        else if ((my <= zy + 1) && (my >= zy - drag_gap))
++          {
++             if (mx < zx + corner_w)
++               max = E_MAXIMIZE_LEFT_TOP;
++             else if (mx > zx + zw - corner_w)
++               max = E_MAXIMIZE_RIGHT_TOP;
++             else
++               max = e_config->snap_top_edge_maximize ?
++                     E_MAXIMIZE_BOTH : E_MAXIMIZE_TOP;
++          }
++        else if ((my >= zy + zh - 2) && (my <= zy + zh + drag_gap))
++          {
++             if (mx < zx + corner_w)
++               max = E_MAXIMIZE_LEFT_BOTTOM;
++             else if (mx > zx + zw - corner_w)
++               max = E_MAXIMIZE_RIGHT_BOTTOM;
++             else
++               max = E_MAXIMIZE_BOTTOM;
++          }
+ 
+-       if ((bd->maximized & E_MAXIMIZE_DIRECTION) > E_MAXIMIZE_BOTH)
+-         {
+-           if ((bd->mouse.current.my > bd->moveinfo.down.my + drag_gap / 2) ||
+-               (bd->mouse.current.my < bd->moveinfo.down.my - drag_gap / 2) ||
+-               (bd->mouse.current.mx > bd->moveinfo.down.mx + drag_gap / 2) ||
+-               (bd->mouse.current.mx < bd->moveinfo.down.mx - drag_gap / 2))
+-             {
+-               e_border_unmaximize(bd, E_MAXIMIZE_BOTH);
+-               bd->mouse.last_down[bd->moveinfo.down.button - 1].x =
+-                                   bd->moveinfo.down.mx - bd->w /2;
+-             }
+-         }
++        if (max)
++          {
++             if ((bd->maximized & E_MAXIMIZE_DIRECTION) != max)
++               {
++                  e_border_maximize(bd, pol | max);
++                  bd->moveinfo.down.mx = mx;
++                  bd->moveinfo.down.my = my;
++               }
++             return ECORE_CALLBACK_PASS_ON;
++          }
+ 
+-       if ((bd->maximized & E_MAXIMIZE_DIRECTION) == E_MAXIMIZE_BOTH)
+-         {
+-           if ((bd->mouse.current.my > zy + drag_gap / 2) ||
+-               (bd->mouse.current.my < zy - drag_gap / 2))
+-             {
+-               e_border_unmaximize(bd, E_MAXIMIZE_BOTH);
+-               bd->mouse.last_down[bd->moveinfo.down.button - 1].x =
+-                                   bd->moveinfo.down.mx - bd->w /2;
+-             }
+-         }
++        if ((bd->maximized & E_MAXIMIZE_DIRECTION) >= E_MAXIMIZE_BOTH)
++          {
++             if ((abs(my - bd->moveinfo.down.my) > unsnap_gap) ||
++                 (abs(mx - bd->moveinfo.down.mx) > unsnap_gap))
++               {
++                  _window_snap_unmaximize_reset(bd);
++                  return ECORE_CALLBACK_DONE;
++               }
++             return ECORE_CALLBACK_PASS_ON;
++          }
+      }
+    return ECORE_CALLBACK_DONE;
+ }
+@@ -7287,6 +7423,40 @@ _e_border_cb_desk_window_profile_change(void *data  __UNUSED__,
+    return ECORE_CALLBACK_PASS_ON;
+ }
+ 
++static Eina_Bool _e_border_cb_resume(void *data __UNUSED__, int type __UNUSED__, void *ev __UNUSED__)
++{
++   E_Border *bd;
++   Eina_List *l;
++
++   /* Reset focus after resume event */
++   focused = NULL;
++   focusing = NULL;
++   focus_next = eina_list_free(focus_next);  /* reset focus on all desk borders */
++
++   EINA_LIST_FOREACH(borders, l, bd)
++     {
++       if (bd->visible && !bd->iconic && (bd->desk == e_desk_current_get(bd->zone)))
++         {
++           bd->want_focus = 1;
++           bd->changed = 1;
++           bd->focused = 0; /* force re-eval */
++         }
++     }
++
++   /* Choose the last focused window from focus_stack */
++   if (focus_stack)
++     {
++        bd = eina_list_data_get(focus_stack);
++        if (bd && bd->visible)
++          e_border_focus_set(bd, 1, 1);
++     }
++
++   /* warp pointer or force grab */
++   e_grabinput_focus(bd->client.win, E_FOCUS_METHOD_PASSIVE);
++
++   return ECORE_CALLBACK_DONE;
++}
++
+ static Eina_Bool
+ _e_border_post_move_resize_job(void *data)
+ {
+diff --git a/src/bin/e_border.h b/src/bin/e_border.h
+index 6674bd5db..ea454b134 100644
+--- a/src/bin/e_border.h
++++ b/src/bin/e_border.h
+@@ -76,9 +76,11 @@ typedef enum _E_Maximize
+    E_MAXIMIZE_VERTICAL = 0x00000010,
+    E_MAXIMIZE_HORIZONTAL = 0x00000020,
+    E_MAXIMIZE_BOTH = 0x00000030,
++   E_MAXIMIZE_TOP = 0x00000050,
+    E_MAXIMIZE_LEFT = 0x00000070,
+    E_MAXIMIZE_LEFT_TOP = 0x000000a0,
+    E_MAXIMIZE_LEFT_BOTTOM = 0x00000080,
++   E_MAXIMIZE_BOTTOM = 0x00000090,
+    E_MAXIMIZE_RIGHT = 0x000000b0,
+    E_MAXIMIZE_RIGHT_TOP = 0x000000e0,
+    E_MAXIMIZE_RIGHT_BOTTOM = 0x000000c0,
+diff --git a/src/bin/e_config.c b/src/bin/e_config.c
+index 5286876b5..5647042f6 100644
+--- a/src/bin/e_config.c
++++ b/src/bin/e_config.c
+@@ -809,6 +809,7 @@ _e_config_edd_init(Eina_Bool old)
+    E_CONFIG_VAL(D, T, border_fix_on_shelf_toggle, INT); /**/
+    E_CONFIG_VAL(D, T, allow_above_fullscreen, INT); /**/
+    E_CONFIG_VAL(D, T, max_top_edge, INT); /**/
++   E_CONFIG_VAL(D, T, snap_top_edge_maximize, INT); /**/
+    E_CONFIG_VAL(D, T, kill_if_close_not_possible, INT); /**/
+    E_CONFIG_VAL(D, T, kill_process, INT); /**/
+    E_CONFIG_VAL(D, T, kill_timer_wait, DOUBLE); /**/
+@@ -1477,6 +1478,7 @@ while (!e_config)
+      E_CONFIG_LIMIT(e_config->border_fix_on_shelf_toggle, 0, 1);
+      E_CONFIG_LIMIT(e_config->allow_above_fullscreen, 0, 1);
+      E_CONFIG_LIMIT(e_config->max_top_edge, 0, 1);
++     E_CONFIG_LIMIT(e_config->snap_top_edge_maximize, 0, 1);
+      E_CONFIG_LIMIT(e_config->kill_if_close_not_possible, 0, 1);
+      E_CONFIG_LIMIT(e_config->kill_process, 0, 1);
+      E_CONFIG_LIMIT(e_config->kill_timer_wait, 0.0, 120.0);
+diff --git a/src/bin/e_config.h b/src/bin/e_config.h
+index 69528aaff..41a658cc8 100644
+--- a/src/bin/e_config.h
++++ b/src/bin/e_config.h
+@@ -140,6 +140,7 @@ struct _E_Config
+    int         border_fix_on_shelf_toggle; // GUI
+    int         allow_above_fullscreen; // GUI
+    int         max_top_edge; // GUI
++   int         snap_top_edge_maximize; // GUI
+    int         kill_if_close_not_possible; // GUI
+    int         kill_process; // GUI
+    double      kill_timer_wait; // GUI
+diff --git a/src/bin/e_int_border_menu.c b/src/bin/e_int_border_menu.c
+index 4a1fbf02d..0f3fa0527 100644
+--- a/src/bin/e_int_border_menu.c
++++ b/src/bin/e_int_border_menu.c
+@@ -15,6 +15,8 @@ static void _e_border_menu_cb_maximize_vertically(void *data, E_Menu *m, E_Menu_
+ static void _e_border_menu_cb_maximize_horizontally(void *data, E_Menu *m, E_Menu_Item *mi);
+ static void _e_border_menu_cb_maximize_left(void *data, E_Menu *m, E_Menu_Item *mi);
+ static void _e_border_menu_cb_maximize_right(void *data, E_Menu *m, E_Menu_Item *mi);
++static void _e_border_menu_cb_maximize_top(void *data, E_Menu *m, E_Menu_Item *mi);
++static void _e_border_menu_cb_maximize_bottom(void *data, E_Menu *m, E_Menu_Item *mi);
+ static void _e_border_menu_cb_unmaximize(void *data, E_Menu *m, E_Menu_Item *mi);
+ static void _e_border_menu_cb_shade(void *data, E_Menu *m, E_Menu_Item *mi);
+ static void _e_border_menu_cb_resistance(void *data, E_Menu *m, E_Menu_Item *mi);
+@@ -470,6 +472,28 @@ _e_border_menu_cb_maximize_pre(void *data, E_Menu *m __UNUSED__, E_Menu_Item *mi
+                                                         "e/widgets/border/default/maximize"),
+                                   "e/widgets/border/default/maximize");
+ 
++        submi = e_menu_item_new(subm);
++        e_menu_item_label_set(submi, _("Maximize Top"));
++        e_menu_item_radio_set(submi, 1);
++        e_menu_item_radio_group_set(submi, 3);
++        e_menu_item_toggle_set(submi, (bd->maximized & E_MAXIMIZE_DIRECTION) == E_MAXIMIZE_TOP);
++        e_menu_item_callback_set(submi, _e_border_menu_cb_maximize_top, bd);
++        e_menu_item_icon_edje_set(submi,
++                                  e_theme_edje_file_get("base/theme/borders",
++                                                        "e/widgets/border/default/maximize"),
++                                  "e/widgets/border/default/maximize");
++
++        submi = e_menu_item_new(subm);
++        e_menu_item_label_set(submi, _("Maximize Bottom"));
++        e_menu_item_radio_set(submi, 1);
++        e_menu_item_radio_group_set(submi, 3);
++        e_menu_item_toggle_set(submi, (bd->maximized & E_MAXIMIZE_DIRECTION) == E_MAXIMIZE_BOTTOM);
++        e_menu_item_callback_set(submi, _e_border_menu_cb_maximize_bottom, bd);
++        e_menu_item_icon_edje_set(submi,
++                                  e_theme_edje_file_get("base/theme/borders",
++                                                        "e/widgets/border/default/maximize"),
++                                  "e/widgets/border/default/maximize");
++
+         submi = e_menu_item_new(subm);
+         e_menu_item_label_set(submi, _("Unmaximize"));
+         e_menu_item_radio_set(submi, 1);
+@@ -554,6 +578,36 @@ _e_border_menu_cb_maximize_right(void *data, E_Menu *m __UNUSED__, E_Menu_Item *
+      }
+ }
+ 
++static void
++_e_border_menu_cb_maximize_top(void *data, E_Menu *m __UNUSED__, E_Menu_Item *mi __UNUSED__)
++{
++   E_Border *bd;
++
++   bd = data;
++   if (!bd->lock_user_maximize)
++     {
++        if ((bd->maximized & E_MAXIMIZE_DIRECTION))
++          e_border_unmaximize(bd, bd->maximized & E_MAXIMIZE_DIRECTION);
++        e_border_maximize(bd, (e_config->maximize_policy & E_MAXIMIZE_TYPE) |
++                          E_MAXIMIZE_TOP);
++     }
++}
++
++static void
++_e_border_menu_cb_maximize_bottom(void *data, E_Menu *m __UNUSED__, E_Menu_Item *mi __UNUSED__)
++{
++   E_Border *bd;
++
++   bd = data;
++   if (!bd->lock_user_maximize)
++     {
++        if ((bd->maximized & E_MAXIMIZE_DIRECTION))
++          e_border_unmaximize(bd, bd->maximized & E_MAXIMIZE_DIRECTION);
++        e_border_maximize(bd, (e_config->maximize_policy & E_MAXIMIZE_TYPE) |
++                          E_MAXIMIZE_BOTTOM);
++     }
++}
++
+ static void
+ _e_border_menu_cb_unmaximize(void *data, E_Menu *m __UNUSED__, E_Menu_Item *mi __UNUSED__)
+ {
+diff --git a/src/modules/conf_window_manipulation/e_int_config_window_geometry.c b/src/modules/conf_window_manipulation/e_int_config_window_geometry.c
+index cd34abfc0..393504f26 100644
+--- a/src/modules/conf_window_manipulation/e_int_config_window_geometry.c
++++ b/src/modules/conf_window_manipulation/e_int_config_window_geometry.c
+@@ -43,6 +43,7 @@ struct _E_Config_Dialog_Data
+    int border_fix_on_shelf_toggle;
+    int allow_above_fullscreen;
+    int max_top_edge;
++   int snap_top_edge_maximize;
+ };
+ 
+ E_Config_Dialog *
+@@ -92,6 +93,7 @@ _create_data(E_Config_Dialog *cfd __UNUSED__)
+    cfdata->maximize_policy = (e_config->maximize_policy & E_MAXIMIZE_TYPE);
+    cfdata->allow_above_fullscreen = e_config->allow_above_fullscreen;
+    cfdata->max_top_edge = e_config->max_top_edge;
++   cfdata->snap_top_edge_maximize = e_config->snap_top_edge_maximize;
+    if (cfdata->maximize_policy == E_MAXIMIZE_NONE)
+      cfdata->maximize_policy = E_MAXIMIZE_FULLSCREEN;
+    cfdata->maximize_direction = 
+@@ -136,6 +138,7 @@ _basic_apply(E_Config_Dialog *cfd __UNUSED__, E_Config_Dialog_Data *cfdata)
+    e_config->border_fix_on_shelf_toggle = cfdata->border_fix_on_shelf_toggle;
+    e_config->allow_above_fullscreen = cfdata->allow_above_fullscreen;
+    e_config->max_top_edge = cfdata->max_top_edge;
++   e_config->snap_top_edge_maximize = cfdata->snap_top_edge_maximize;
+    e_config_save_queue();
+    return 1; /* Apply was OK */
+ }
+@@ -165,6 +168,7 @@ _basic_check_changed(E_Config_Dialog *cfd __UNUSED__, E_Config_Dialog_Data *cfda
+            (e_config->allow_manip != cfdata->maximized_allow_manip) ||
+            (e_config->border_fix_on_shelf_toggle != cfdata->border_fix_on_shelf_toggle) ||
+            (e_config->max_top_edge != cfdata->max_top_edge) ||
++           (e_config->snap_top_edge_maximize != cfdata->snap_top_edge_maximize) ||
+            (e_config->allow_above_fullscreen != cfdata->allow_above_fullscreen));
+ }
+ 
+@@ -234,8 +238,12 @@ _basic_create(E_Config_Dialog *cfd __UNUSED__, Evas *evas, E_Config_Dialog_Data
+    ow = e_widget_check_add(evas, _("Allow windows above fullscreen window"),
+                            &(cfdata->allow_above_fullscreen));
+    e_widget_framelist_object_append(of, ow);
+-   ow = e_widget_check_add(evas, _("Snap windows to the screen edge"),
++   oc = e_widget_check_add(evas, _("Snap windows to the screen edge"),
+                            &(cfdata->max_top_edge));
++   e_widget_framelist_object_append(of, oc);
++   ow = e_widget_check_add(evas, _("Maximize fully when dragging to top edge"),
++                           &(cfdata->snap_top_edge_maximize));
++   e_widget_check_widget_disable_on_unchecked_add(oc, ow);
+    e_widget_framelist_object_append(of, ow);
+    e_widget_list_object_append(ol, of, 1, 0, 0.5);
+    e_widget_toolbook_page_append(otb, NULL, _("Maximization"), ol, 
+-- 
+2.34.1
+
