@@ -8,6 +8,7 @@ moksha: shared-library-lacks-version
 moksha: library-not-linked-against-libc
 moksha: package-contains-documentation-outside-usr-share-doc
 moksha: desktop-entry-lacks-keywords-entry
+moksha: lacks-unversioned-link-to-shared-library
 # "Viet Nam"
 moksha: spelling-error-in-binary usr/lib/x86_64-linux-gnu/enlightenment/modules/conf_intl/linux-gnu-x86_64/module.so Nam Name
 # Included locales: should be in a moksha-data package
