@@ -1,3 +1,21 @@
+moksha (0.4.2-5) unstable; urgency=low
+
+   * Shot: preview window resized
+   * Find cursor: Feature added
+   * Border focus fix after resume
+   * Fix substring match in evry (E-port)
+   * Intl:  use bounded strlcpy/snprintf in localename.c
+   * Thunar desktop conditions clean
+   * Shot: zoom buttons tooltips added
+   * Shot: undo/redo added
+   * Several XKB fixes
+   * EFM: Custom Grid icons added
+   * Sys: same string fix
+   * Evry: Categories and System plugins added
+   * iBar: icon menu hide
+
+ -- Robert Wiley <ylee@bodhilinux.com>  Sun, 08 Nov 2026 03:06:43 -0500
+
 moksha (0.4.2-4) unstable; urgency=low
 
    * Shot: border icon fix
